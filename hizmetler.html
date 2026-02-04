@@ -3,11 +3,78 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="M.Fehmi TOKTAY dijital pazarlama hizmetleri ve fiyatlandırma. Sosyal medya yönetimi, reklam yönetimi ve e-ticaret danışmanlığı paketleri." />
   <title>Hizmetlerimiz & Fiyatlandırma - M.Fehmi TOKTAY</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
   <link rel="icon" href="data:,">
+  <style>
+:root{--bg-1: #062241;--bg-2: #2e3740;--accent-1: #4f9ef3;--accent-2: #95a3b8;--muted: #9fb0c6;--glass: rgba(255,255,255,0.03);--white: #ffffff;--radius:18px;--container:1200px;--brand-font: 'Playfair Display', serif;--ui-font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;}
+html { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;color:var(--white);font-family:var(--ui-font);background:radial-gradient(circle at 20% 20%, rgba(79,158,243,0.15) 0%, transparent 40%),radial-gradient(circle at 80% 50%, rgba(149,163,184,0.12) 0%, transparent 40%),radial-gradient(circle at 40% 80%, rgba(79,158,243,0.08) 0%, transparent 35%),linear-gradient(135deg, var(--bg-1) 0%, #0a2d4d 25%, var(--bg-2) 50%, #1a3a52 75%, var(--bg-1) 100%);background-size: 100% 100%, 100% 100%, 100% 100%, 200% 200%;background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%;animation: meshMove 20s ease infinite;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.6;overflow-x:hidden;position: relative;}
+@keyframes meshMove { 0%, 100% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; } 25% { background-position: 20% 10%, 10% 20%, 5% 15%, 25% 25%; } 50% { background-position: 40% 20%, 20% 40%, 10% 30%, 50% 50%; } 75% { background-position: 20% 10%, 10% 20%, 5% 15%, 75% 75%; }}
+.container{max-width:var(--container);margin:0 auto;padding: 0 2rem;}
+.site-header{position:sticky;top:0;z-index:120;backdrop-filter: blur(12px);background: linear-gradient(180deg, rgba(6,34,65,0.85), rgba(46,55,64,0.75));border-bottom: 1px solid rgba(255,255,255,0.03);transition: all 0.3s ease;}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding: 1.25rem 0;}
+.brand{font-family:var(--brand-font);font-weight:700;font-size:1.3rem;color:var(--white);text-decoration:none;letter-spacing:0.6px;transition: color 0.3s ease;}
+.brand:hover {color: var(--accent-1);}
+.nav{display:flex;gap:1.5rem;align-items:center;}
+.nav a{color:var(--muted);text-decoration:none;font-weight:600;padding:0.5rem 0.8rem;border-radius:10px;transition: all 0.3s ease;position: relative;}
+.nav a:hover{color:var(--white);background: rgba(255,255,255,0.04);transform: translateY(-2px);}
+.header-actions{display:flex;align-items:center;gap:1rem;}
+.social-icon{color:var(--muted);display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;text-decoration:none;transition: all 0.3s ease;}
+.social-icon:hover {color: var(--white);background: rgba(255,255,255,0.05);transform: translateY(-2px);}
+.phone{color:var(--muted);font-weight:700;text-decoration:none;padding:0.5rem 0.8rem;border-radius:10px;background:transparent;transition: all 0.3s ease;}
+.phone:hover{color:var(--white);background: rgba(255,255,255,0.04);}
+.nav-toggle{display:none;background:transparent;border:0;color:var(--muted);font-size:1.5rem;cursor: pointer;padding: 0.25rem;transition: color 0.3s ease;}
+.nav-toggle:hover {color: var(--white);}
+.btn{display:inline-block;padding:0.7rem 1.3rem;border-radius:12px;text-decoration:none;font-weight:700;font-size:0.95rem;transition: all 0.3s ease;border: none;cursor: pointer;}
+.btn-primary{background: linear-gradient(135deg,var(--accent-1),var(--accent-2));color:#012232;box-shadow: 0 10px 30px rgba(79,158,243,0.2);}
+.btn-primary:hover{transform: translateY(-3px);box-shadow: 0 15px 40px rgba(79,158,243,0.3);}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.1);}
+.btn-ghost:hover {color: var(--white);background: rgba(255,255,255,0.05);border-color: rgba(255,255,255,0.2);}
+.btn-outline{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.08);padding:0.5rem 1rem;}
+.btn-outline:hover {color: var(--white);background: rgba(255,255,255,0.05);border-color: rgba(255,255,255,0.15);}
+.section{padding:5rem 0;}
+.section-title{font-family:var(--brand-font);font-size:2.5rem;margin:0 0 1rem;font-weight: 700;background: linear-gradient(135deg, var(--white), var(--accent-1));-webkit-background-clip: text;-webkit-text-fill-color: transparent;background-clip: text;}
+.section-sub{color:var(--muted);margin:0 0 1rem;font-size: 1.1rem;}
+.eyebrow{color:var(--accent-1);font-weight:700;font-size:0.85rem;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:1rem;}
+.service-card{background: linear-gradient(135deg, rgba(79,158,243,0.03), rgba(149,163,184,0.02));padding:2rem;border-radius:20px;border:1px solid rgba(79,158,243,0.1);transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);}
+.service-card:hover{transform: translateY(-12px);box-shadow: 0 25px 60px rgba(79,158,243,0.15);border-color: rgba(79,158,243,0.3);}
+.service-icon{margin: 0 auto 1.5rem;display: flex;align-items: center;justify-content: center;width: 80px;height: 80px;border-radius: 16px;background: linear-gradient(135deg, rgba(79,158,243,0.1), rgba(149,163,184,0.05));transition: all 0.5s ease;}
+.link{color:var(--accent-1);text-decoration:none;font-weight:700;transition: color 0.3s ease;}
+.link:hover {color: var(--white);}
+.site-footer{margin-top:5rem;padding:3rem 0 2rem;border-top:1px solid rgba(255,255,255,0.05);background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);}
+.footer-inner{display:grid;grid-template-columns: 1fr 2fr;gap:3rem;padding-bottom: 2rem;border-bottom: 1px solid rgba(255,255,255,0.03);}
+.footer-brand p {color: var(--muted);margin: 0.5rem 0 0;font-size: 0.95rem;}
+.footer-links {display: grid;grid-template-columns: repeat(3, 1fr);gap: 2rem;}
+.footer-col h4 {color: var(--white);font-size: 0.95rem;font-weight: 700;margin: 0 0 1rem;text-transform: uppercase;letter-spacing: 0.5px;}
+.footer-col a {display: block;color: var(--muted);text-decoration: none;padding: 0.4rem 0;font-size: 0.9rem;transition: color 0.3s ease;}
+.footer-col a:hover {color: var(--white);}
+.footer-bottom {display: flex;justify-content: space-between;align-items: center;padding-top: 2rem;color: var(--muted);font-size: 0.9rem;flex-wrap: wrap;gap: 1rem;}
+.social {display: flex;gap: 0.5rem;}
+.social .social-pill{text-decoration:none;color:var(--muted);padding:0.5rem 1rem;border-radius:10px;background: rgba(255,255,255,0.02);font-weight:700;font-size: 0.85rem;transition: all 0.3s ease;}
+.social .social-pill:hover{color:var(--white);background: rgba(255,255,255,0.05);transform: translateY(-2px);}
+.whatsapp-btn{position:fixed;right:25px;bottom:25px;background: linear-gradient(135deg,var(--accent-1),var(--accent-2));color:#012232;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow: 0 10px 30px rgba(79,158,243,0.3);z-index:140;text-decoration:none;transition: all 0.3s ease;}
+.whatsapp-btn:hover{transform: translateY(-5px) scale(1.05);box-shadow: 0 15px 40px rgba(79,158,243,0.4);}
+.urgency-badge{display:inline-block;background:linear-gradient(135deg,#ff6b6b,#ff8787);color:#fff;padding:0.4rem 1rem;border-radius:20px;font-size:0.8rem;font-weight:700;margin-bottom:1rem;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.05);opacity:0.9}}
+.exclusive-tag{position:absolute;top:-15px;right:20px;background:linear-gradient(135deg,#ffd700,#ffed4e);color:#012232;padding:0.4rem 1.2rem;border-radius:20px;font-weight:700;font-size:0.75rem;box-shadow:0 4px 15px rgba(255,215,0,0.4);}
+@media (max-width:760px){
+.container {padding: 0 1.25rem;}
+.header-inner {padding: 1rem 0;}
+.nav{display:none;position:absolute;top:70px;right:20px;background:rgba(6,34,65,0.98);padding:1.5rem;border-radius:16px;flex-direction:column;min-width:240px;border: 1px solid rgba(255,255,255,0.1);box-shadow: 0 10px 40px rgba(0,0,0,0.3);}
+.nav.open{display:flex;}
+.nav-toggle{display:block;}
+.phone {display: none;}
+.section {padding: 3rem 0;}
+.section-title {font-size: 2rem;}
+.section-sub {font-size: 1rem;}
+.footer-links {grid-template-columns: 1fr;}
+.footer-bottom {flex-direction: column;text-align: center;}
+.whatsapp-btn {width: 55px;height: 55px;right: 20px;bottom: 20px;}
+}
+  </style>
 </head>
 <body>
   <header class="site-header" role="banner">
@@ -36,87 +103,138 @@
   <main id="main" role="main">
     <section class="section">
       <div class="container">
-        <p class="eyebrow" style="text-align: center;">Şeffaf · Esnek · Performans Odaklı</p>
-        <h1 class="section-title" style="text-align: center;">Hizmetlerimiz & Fiyatlandırma</h1>
-        <p class="section-sub" style="text-align: center; max-width: 700px; margin: 0 auto 3rem;">
-          İşletmenizin ihtiyaçlarına özel, ölçülebilir sonuçlar sağlayan profesyonel dijital pazarlama hizmetleri.
+        <!-- KANCA: Ana Başlık -->
+        <div class="urgency-badge" style="display:block;text-align:center;margin:0 auto 1rem;">⚡ Şubat 2026 Özel Fırsatları</div>
+        <p class="eyebrow" style="text-align: center;">İşletmeniz Rekabette Geride Kalmasın</p>
+        <h1 class="section-title" style="text-align: center; font-size: 3rem;">Rakipleriniz Büyürken Siz Neden Bekliyorsunuz?</h1>
+        
+        <!-- FAYDA/ÇÖZÜM/DUYGU -->
+        <p class="section-sub" style="text-align: center; max-width: 800px; margin: 0 auto 2rem; font-size: 1.2rem;">
+          <strong style="color: var(--accent-1);">Her gün beklemek, kaybedilen müşteri demektir.</strong> Dijital dünyada yerinizi alın, markanızı büyütün ve rakiplerinizi geride bırakın.
         </p>
 
+        <div style="text-align: center; margin-bottom: 4rem; padding: 2rem; background: rgba(79,158,243,0.08); border-radius: 16px; border-left: 4px solid var(--accent-1);">
+          <p style="color: var(--white); font-size: 1.1rem; margin: 0;">
+            🎯 <strong>200+ başarılı kampanya</strong> ile kanıtlanmış strateji<br>
+            💰 <strong>Ortalama %150 ROI artışı</strong> sağlayan çözümler<br>
+            ⚡ <strong>İlk 7 günde</strong> sonuç görmeye başlayın
+          </p>
+        </div>
+
         <!-- Sosyal Medya Yönetimi -->
-        <div style="margin-bottom: 4rem;">
-          <h2 style="font-size: 2rem; margin-bottom: 2rem; text-align: center; color: var(--accent-1);">Sosyal Medya Yönetimi</h2>
+        <div style="margin-bottom: 5rem;">
+          <h2 style="font-size: 2.5rem; margin-bottom: 1rem; text-align: center; color: var(--white);">
+            🚀 Sosyal Medyada Görünmezseniz, Yok Sayılırsınız
+          </h2>
+          <p style="text-align: center; color: var(--muted); margin-bottom: 3rem; font-size: 1.1rem;">
+            Müşterileriniz her gün sosyal medyada. Ya sizi bulacaklar, ya da rakiplerinizi. Seçim sizin.
+          </p>
+
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
             
             <!-- Temel Paket -->
             <div class="service-card" style="position: relative;">
               <div style="text-align: center; margin-bottom: 2rem;">
-                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Temel Paket</h3>
-                <div style="font-size: 2.5rem; font-weight: 800; color: var(--accent-1); margin: 1rem 0;">
-                  ₺7.500<span style="font-size: 1rem; color: var(--muted); font-weight: 400;">/ay</span>
-                </div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--white);">Başlangıç Paketi</h3>
+                <p style="color: var(--accent-1); font-weight: 700; font-size: 1rem;">Markanızı dijitalde var edin</p>
               </div>
+              
+              <div style="background: rgba(79,158,243,0.05); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                <p style="color: var(--white); font-weight: 700; margin-bottom: 0.5rem;">✨ Ne Kazanırsınız:</p>
+                <p style="color: var(--muted); margin: 0; font-size: 0.95rem;">
+                  Artık rakipleriniz gibi profesyonel görünün. Müşterileriniz sizi ciddiye alsın. İlk ayda bile %30 daha fazla etkileşim alın.
+                </p>
+              </div>
+
               <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; color: var(--muted);">
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ 1 Platform (Instagram veya Facebook)</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Aylık 12 Gönderi</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ İçerik Planlama & Takvimi</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Temel Grafik Tasarım</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Hashtag Stratejisi</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Aylık Performans Raporu</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ E-posta Desteği</li>
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ 1 Platform (Instagram/Facebook)</li>
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Aylık 12 Profesyonel Gönderi</li>
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Stratejik İçerik Planlama</li>
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Hedef Kitle Analizi</li>
               </ul>
-              <a href="https://wa.me/905541386827?text=Merhaba, Temel Sosyal Medya Paketi hakkında bilgi almak istiyorum." target="_blank" rel="noopener" class="btn btn-ghost" style="width: 100%; text-align: center;">Hemen Başla</a>
+
+              <div style="background: rgba(255,215,0,0.1); padding: 1rem; border-radius: 10px; margin-bottom: 1rem; border-left: 3px solid #ffd700;">
+                <p style="color: #ffd700; font-weight: 700; margin: 0; font-size: 0.9rem;">⚡ İlk 5 işletmeye %20 indirim!</p>
+              </div>
+
+              <a href="https://wa.me/905541386827?text=Merhaba, Başlangıç Paketi için özel teklif almak istiyorum." target="_blank" rel="noopener" class="btn btn-ghost" style="width: 100%; text-align: center;">Hemen Teklif Al →</a>
             </div>
 
             <!-- Profesyonel Paket -->
             <div class="service-card" style="position: relative; border: 2px solid var(--accent-1);">
               <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent-1); color: #012232; padding: 0.4rem 1.5rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem;">
-                ÖNERİLEN
+                ⭐ EN ÇOK TERCİH EDİLEN
               </div>
-              <div style="text-align: center; margin-bottom: 2rem;">
-                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Profesyonel Paket</h3>
-                <div style="font-size: 2.5rem; font-weight: 800; color: var(--accent-1); margin: 1rem 0;">
-                  ₺12.500<span style="font-size: 1rem; color: var(--muted); font-weight: 400;">/ay</span>
-                </div>
+              
+              <div style="text-align: center; margin-bottom: 2rem; margin-top: 1rem;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--white);">Büyüme Paketi</h3>
+                <p style="color: var(--accent-1); font-weight: 700; font-size: 1rem;">Rakiplerinizi geride bırakın</p>
               </div>
+              
+              <div style="background: rgba(79,158,243,0.08); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                <p style="color: var(--white); font-weight: 700; margin-bottom: 0.5rem;">🎯 Sonuç Garantisi:</p>
+                <p style="color: var(--muted); margin: 0; font-size: 0.95rem;">
+                  3 ay içinde takipçi sayınızı <strong style="color: var(--accent-1);">2 katına</strong> çıkarın. Satışlarınız artmaya başlasın. Sektörde güvenilir marka olun.
+                </p>
+              </div>
+
               <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; color: var(--muted);">
                 <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ 2 Platform (Instagram + Facebook)</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Aylık 20 Gönderi</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ 4 Story Seti (Haftalık)</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Profesyonel Grafik Tasarım</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Hashtag & Rakip Analizi</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Yorum & Mesaj Yönetimi</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Detaylı Aylık Rapor</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ WhatsApp Desteği</li>
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Aylık 20 Viral İçerik</li>
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Haftalık Story Stratejisi</li>
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Rakip Analizi & Strateji</li>
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ 7/24 Topluluk Yönetimi</li>
               </ul>
-              <a href="https://wa.me/905541386827?text=Merhaba, Profesyonel Sosyal Medya Paketi hakkında bilgi almak istiyorum." target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%; text-align: center;">Hemen Başla</a>
+
+              <div style="background: rgba(255,215,0,0.1); padding: 1rem; border-radius: 10px; margin-bottom: 1rem; border-left: 3px solid #ffd700;">
+                <p style="color: #ffd700; font-weight: 700; margin: 0; font-size: 0.9rem;">🔥 Bu ayın ilk 10 müşterisine özel bonus paket!</p>
+              </div>
+
+              <a href="https://wa.me/905541386827?text=Merhaba, Büyüme Paketi için özel teklifinizi almak istiyorum." target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%; text-align: center;">Özel Teklifimi Kaçırmam →</a>
             </div>
 
             <!-- Premium Paket -->
             <div class="service-card" style="position: relative;">
-              <div style="text-align: center; margin-bottom: 2rem;">
-                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Premium Paket</h3>
-                <div style="font-size: 2.5rem; font-weight: 800; color: var(--accent-1); margin: 1rem 0;">
-                  ₺18.000<span style="font-size: 1rem; color: var(--muted); font-weight: 400;">/ay</span>
-                </div>
+              <div class="exclusive-tag">💎 PREMIUM</div>
+              
+              <div style="text-align: center; margin-bottom: 2rem; margin-top: 1rem;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--white);">Liderlik Paketi</h3>
+                <p style="color: var(--accent-1); font-weight: 700; font-size: 1rem;">Sektörün lideri olun</p>
               </div>
+              
+              <div style="background: rgba(79,158,243,0.08); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                <p style="color: var(--white); font-weight: 700; margin-bottom: 0.5rem;">👑 Elit Kulüp:</p>
+                <p style="color: var(--muted); margin: 0; font-size: 0.95rem;">
+                  Sadece sektör liderleri için. <strong style="color: var(--accent-1);">Viral içerikler</strong>, influencer iş birlikleri ve <strong style="color: var(--accent-1);">marka otoritesi</strong>. 6 ayda sektörünüzün konuşulan ismi olun.
+                </p>
+              </div>
+
               <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; color: var(--muted);">
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ 3+ Platform (Instagram, Facebook, TikTok vb.)</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Aylık 30+ Gönderi</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Günlük Story Yönetimi</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Video İçerik Üretimi (Reels/TikTok)</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ İnfluencer İş Birlikleri</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ 7/24 Topluluk Yönetimi</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Detaylı Analitik & Strateji</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Öncelikli Destek</li>
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ 3+ Platform (IG, FB, TikTok, LinkedIn)</li>
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Sınırsız İçerik Üretimi</li>
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Video & Reels Üretimi</li>
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Influencer İş Birlikleri</li>
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Kişisel Hesap Yöneticisi</li>
               </ul>
-              <a href="https://wa.me/905541386827?text=Merhaba, Premium Sosyal Medya Paketi hakkında bilgi almak istiyorum." target="_blank" rel="noopener" class="btn btn-ghost" style="width: 100%; text-align: center;">Hemen Başla</a>
+
+              <div style="background: rgba(255,215,0,0.1); padding: 1rem; border-radius: 10px; margin-bottom: 1rem; border-left: 3px solid #ffd700;">
+                <p style="color: #ffd700; font-weight: 700; margin: 0; font-size: 0.9rem;">⚡ Sadece 3 slot kaldı! Kaçırmayın.</p>
+              </div>
+
+              <a href="https://wa.me/905541386827?text=Merhaba, Liderlik Paketi için görüşmek istiyorum." target="_blank" rel="noopener" class="btn btn-ghost" style="width: 100%; text-align: center;">VIP Teklif İstiyorum →</a>
             </div>
           </div>
         </div>
 
         <!-- Reklam Yönetimi -->
-        <div style="margin-bottom: 4rem;">
-          <h2 style="font-size: 2rem; margin-bottom: 2rem; text-align: center; color: var(--accent-1);">Reklam Yönetimi</h2>
+        <div style="margin-bottom: 5rem;">
+          <h2 style="font-size: 2.5rem; margin-bottom: 1rem; text-align: center; color: var(--white);">
+            💰 Reklam Bütçenizi Çöpe Atmayı Bırakın
+          </h2>
+          <p style="text-align: center; color: var(--muted); margin-bottom: 3rem; font-size: 1.1rem;">
+            Her tıklama para. Yanlış reklam = Kaybedilen sermaye. <strong style="color: var(--accent-1);">Profesyoneller gibi reklam verin.</strong>
+          </p>
+
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
             
             <!-- Google Ads -->
@@ -128,22 +246,32 @@
                     <path d="M12 16v-4M12 8h.01"/>
                   </svg>
                 </div>
-                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Google Ads</h3>
-                <div style="font-size: 2rem; font-weight: 800; color: var(--accent-1); margin: 1rem 0;">
-                  %15<span style="font-size: 1rem; color: var(--muted); font-weight: 400;"> + KDV</span>
-                </div>
-                <p style="color: var(--muted); font-size: 0.9rem;">Reklam bütçenizin üzerinden</p>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--white);">Google Ads Yönetimi</h3>
               </div>
-              <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; color: var(--muted);">
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Kampanya Kurulumu</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Anahtar Kelime Araştırması</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Reklam Metni Yazımı</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ A/B Testleri</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Günlük Optimizasyon</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Aylık Performans Raporu</li>
+
+              <div style="background: rgba(79,158,243,0.05); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                <p style="color: var(--white); font-weight: 700; margin-bottom: 0.5rem;">💡 Sorun:</p>
+                <p style="color: var(--muted); margin: 0 0 1rem 0; font-size: 0.9rem;">
+                  Binlerce lira harcıyorsunuz ama sonuç yok? <strong style="color: var(--accent-1);">Çünkü anahtar kelimeler yanlış.</strong>
+                </p>
+                <p style="color: var(--white); font-weight: 700; margin-bottom: 0.5rem;">✅ Çözüm:</p>
+                <p style="color: var(--muted); margin: 0; font-size: 0.9rem;">
+                  Her kuruşu doğru müşteriye harcayın. <strong style="color: var(--accent-1);">Tıklama maliyetini %40 düşürün.</strong>
+                </p>
+              </div>
+
+              <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; color: var(--muted); font-size: 0.9rem;">
+                <li style="padding: 0.5rem 0;">✓ ROI Odaklı Kampanya Kurulumu</li>
+                <li style="padding: 0.5rem 0;">✓ Düşük Maliyetli Anahtar Kelimeler</li>
+                <li style="padding: 0.5rem 0;">✓ A/B Test ile Sürekli İyileştirme</li>
+                <li style="padding: 0.5rem 0;">✓ Haftalık Performans Optimizasyonu</li>
               </ul>
-              <p style="color: var(--accent-1); font-size: 0.9rem; margin-bottom: 1rem; text-align: center;">Minimum reklam bütçesi: ₺5.000/ay</p>
-              <a href="https://wa.me/905541386827?text=Merhaba, Google Ads hizmeti hakkında bilgi almak istiyorum." target="_blank" rel="noopener" class="btn btn-ghost" style="width: 100%; text-align: center;">Teklif Al</a>
+
+              <div style="background: rgba(255,215,0,0.08); padding: 0.8rem; border-radius: 8px; margin-bottom: 1rem;">
+                <p style="color: #ffd700; font-weight: 600; margin: 0; font-size: 0.85rem; text-align: center;">⏰ 48 saat içinde kampanya başlıyor!</p>
+              </div>
+
+              <a href="https://wa.me/905541386827?text=Merhaba, Google Ads yönetimi için özel teklif istiyorum." target="_blank" rel="noopener" class="btn btn-ghost" style="width: 100%; text-align: center;">Bütçemi Boşa Harcamak İstemiyorum →</a>
             </div>
 
             <!-- Meta Ads -->
@@ -155,140 +283,194 @@
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                   </svg>
                 </div>
-                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Meta Ads</h3>
-                <div style="font-size: 2rem; font-weight: 800; color: var(--accent-1); margin: 1rem 0;">
-                  %15<span style="font-size: 1rem; color: var(--muted); font-weight: 400;"> + KDV</span>
-                </div>
-                <p style="color: var(--muted); font-size: 0.9rem;">Reklam bütçenizin üzerinden</p>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--white);">Meta Ads Yönetimi</h3>
               </div>
-              <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; color: var(--muted);">
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Facebook & Instagram Reklamları</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Hedef Kitle Araştırması</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Kreatif Tasarım & Video</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Retargeting Kampanyaları</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Günlük Optimizasyon</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Detaylı ROI Analizi</li>
+
+              <div style="background: rgba(79,158,243,0.05); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                <p style="color: var(--white); font-weight: 700; margin-bottom: 0.5rem;">💡 Gerçek:</p>
+                <p style="color: var(--muted); margin: 0 0 1rem 0; font-size: 0.9rem;">
+                  Facebook/Instagram'da <strong style="color: var(--accent-1);">3 milyar kullanıcı</strong> var. Müşterileriniz orada. Ama sizin reklamlarınızı görmüyorlar.
+                </p>
+                <p style="color: var(--white); font-weight: 700; margin-bottom: 0.5rem;">🎯 Sonuç:</p>
+                <p style="color: var(--muted); margin: 0; font-size: 0.9rem;">
+                  Doğru hedefleme ile <strong style="color: var(--accent-1);">3 kat daha fazla dönüşüm</strong> alın.
+                </p>
+              </div>
+
+              <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; color: var(--muted); font-size: 0.9rem;">
+                <li style="padding: 0.5rem 0;">✓ Lazer Hedefleme Stratejisi</li>
+                <li style="padding: 0.5rem 0;">✓ Viral Kreatif Tasarımlar</li>
+                <li style="padding: 0.5rem 0;">✓ Retargeting ile Kayıp Müşterileri Geri Kazanın</li>
+                <li style="padding: 0.5rem 0;">✓ Günlük Bütçe Optimizasyonu</li>
               </ul>
-              <p style="color: var(--accent-1); font-size: 0.9rem; margin-bottom: 1rem; text-align: center;">Minimum reklam bütçesi: ₺3.000/ay</p>
-              <a href="https://wa.me/905541386827?text=Merhaba, Meta Ads hizmeti hakkında bilgi almak istiyorum." target="_blank" rel="noopener" class="btn btn-ghost" style="width: 100%; text-align: center;">Teklif Al</a>
+
+              <div style="background: rgba(255,215,0,0.08); padding: 0.8rem; border-radius: 8px; margin-bottom: 1rem;">
+                <p style="color: #ffd700; font-weight: 600; margin: 0; font-size: 0.85rem; text-align: center;">🎁 İlk ay %15 indirimli!</p>
+              </div>
+
+              <a href="https://wa.me/905541386827?text=Merhaba, Meta Ads için özel teklifinizi almak istiyorum." target="_blank" rel="noopener" class="btn btn-ghost" style="width: 100%; text-align: center;">Satışlarımı Artırmak İstiyorum →</a>
             </div>
 
-            <!-- Combo Paket -->
-            <div class="service-card" style="border: 2px solid var(--accent-1);">
-              <div style="text-align: center; margin-bottom: 2rem;">
+            <!-- Combo -->
+            <div class="service-card" style="border: 2px solid var(--accent-1); position: relative;">
+              <div class="exclusive-tag">🔥 EN KARLISI</div>
+              
+              <div style="text-align: center; margin-bottom: 2rem; margin-top: 1rem;">
                 <div class="service-icon" style="margin: 0 auto 1rem;">
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                     <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                     <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
                   </svg>
                 </div>
-                <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Combo Paket</h3>
-                <div style="font-size: 2rem; font-weight: 800; color: var(--accent-1); margin: 1rem 0;">
-                  %12<span style="font-size: 1rem; color: var(--muted); font-weight: 400;"> + KDV</span>
-                </div>
-                <p style="color: var(--muted); font-size: 0.9rem;">Google + Meta birlikte</p>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--white);">Tam Hakimiyet Paketi</h3>
               </div>
-              <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; color: var(--muted);">
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Google Ads Yönetimi</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Meta Ads Yönetimi</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Entegre Strateji</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Cross-Platform Optimizasyon</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Haftalık Raporlama</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Öncelikli Destek</li>
+
+              <div style="background: rgba(79,158,243,0.08); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                <p style="color: var(--white); font-weight: 700; margin-bottom: 0.5rem;">🚀 Neden Kombo:</p>
+                <p style="color: var(--muted); margin: 0; font-size: 0.9rem;">
+                  Google'da ararlarken sizi bulsunlar. Sosyal medyada görsünler. Her yerde olun. <strong style="color: var(--accent-1);">Rakiplerinizin şansı kalmasın.</strong>
+                </p>
+              </div>
+
+              <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; color: var(--muted); font-size: 0.9rem;">
+                <li style="padding: 0.5rem 0;">✓ Google + Meta Entegre Strateji</li>
+                <li style="padding: 0.5rem 0;">✓ Platformlar Arası Takip Sistemi</li>
+                <li style="padding: 0.5rem 0;">✓ Maksimum ROI Garantisi</li>
+                <li style="padding: 0.5rem 0;">✓ Haftalık Strateji Toplantıları</li>
               </ul>
-              <p style="color: var(--accent-1); font-size: 0.9rem; margin-bottom: 1rem; text-align: center;">Minimum toplam bütçe: ₺8.000/ay</p>
-              <a href="https://wa.me/905541386827?text=Merhaba, Combo Reklam Paketi hakkında bilgi almak istiyorum." target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%; text-align: center;">%20 İndirimli Teklif Al</a>
+
+              <div style="background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,99,71,0.2)); padding: 1rem; border-radius: 10px; margin-bottom: 1rem; border: 2px solid #ffd700;">
+                <p style="color: #ffd700; font-weight: 700; margin: 0; font-size: 0.95rem; text-align: center;">⚡ ÖZEL: İlk 5 müşteriye %25 indirim + Ücretsiz strateji danışmanlığı!</p>
+              </div>
+
+              <a href="https://wa.me/905541386827?text=Merhaba, Tam Hakimiyet Paketi için özel teklifinizi almak istiyorum." target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%; text-align: center;">Pazar Payımı Artırmak İstiyorum →</a>
             </div>
           </div>
         </div>
 
-        <!-- E-Ticaret & Pazar Yeri -->
+        <!-- E-Ticaret -->
         <div style="margin-bottom: 4rem;">
-          <h2 style="font-size: 2rem; margin-bottom: 2rem; text-align: center; color: var(--accent-1);">E-Ticaret Danışmanlığı</h2>
+          <h2 style="font-size: 2.5rem; margin-bottom: 1rem; text-align: center; color: var(--white);">
+            🛒 E-Ticarette Yoksan, İş Dünyasında Yoksun
+          </h2>
+          <p style="text-align: center; color: var(--muted); margin-bottom: 3rem; font-size: 1.1rem;">
+            2026'da e-ticaret yapmıyorsanız, <strong style="color: var(--accent-1);">günde 1000+ potansiyel müşteriyi</strong> kaybediyorsunuz.
+          </p>
+
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
             
-            <!-- Pazar Yeri Yönetimi -->
             <div class="service-card">
-              <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center;">Pazar Yeri Yönetimi</h3>
-              <p style="color: var(--muted); margin-bottom: 2rem; text-align: center;">Trendyol, Hepsiburada, N11, Amazon, Etsy</p>
-              <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; color: var(--muted);">
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Mağaza Kurulumu</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Ürün Yükleme & Optimizasyon</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Fiyat & Stok Yönetimi</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ SEO Optimizasyonu</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Kampanya Planlama</li>
-              </ul>
-              <div style="text-align: center; font-size: 1.8rem; font-weight: 800; color: var(--accent-1); margin-bottom: 1rem;">
-                ₺8.500<span style="font-size: 1rem; color: var(--muted); font-weight: 400;">/ay</span>
+              <h3 style="font-size: 1.4rem; margin-bottom: 1.5rem; text-align: center; color: var(--white);">Pazar Yeri Yönetimi</h3>
+              <p style="color: var(--muted); margin-bottom: 2rem; text-align: center; font-size: 0.95rem;">Trendyol, Hepsiburada, Amazon'da #1 olun</p>
+              
+              <div style="background: rgba(79,158,243,0.05); padding: 1.2rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                <p style="color: var(--white); font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem;">💎 Değer:</p>
+                <p style="color: var(--muted); margin: 0; font-size: 0.9rem;">
+                  Trendyol'da ilk sayfada olmak = <strong style="color: var(--accent-1);">10 kat daha fazla satış</strong>. Sıralamada yükselin, satışlarınız patlasın.
+                </p>
               </div>
-              <a href="https://wa.me/905541386827?text=Merhaba, Pazar Yeri Yönetimi hizmeti hakkında bilgi almak istiyorum." target="_blank" rel="noopener" class="btn btn-ghost" style="width: 100%; text-align: center;">Teklif Al</a>
+
+              <ul style="list-style: none; padding: 0; margin: 0 0 1.5rem 0; color: var(--muted); font-size: 0.85rem;">
+                <li style="padding: 0.5rem 0;">✓ SEO Optimizasyonu</li>
+                <li style="padding: 0.5rem 0;">✓ Rekabetçi Fiyat Stratejisi</li>
+                <li style="padding: 0.5rem 0;">✓ Kampanya Planlama</li>
+              </ul>
+
+              <div style="background: rgba(255,215,0,0.08); padding: 0.7rem; border-radius: 8px; margin-bottom: 1rem;">
+                <p style="color: #ffd700; font-weight: 600; margin: 0; font-size: 0.8rem; text-align: center;">🔥 7 gün içinde kurulum!</p>
+              </div>
+
+              <a href="https://wa.me/905541386827?text=Merhaba, Pazar Yeri Yönetimi için teklif almak istiyorum." target="_blank" rel="noopener" class="btn btn-ghost" style="width: 100%; text-align: center; font-size: 0.9rem;">Teklif Al →</a>
             </div>
 
-            <!-- E-Ticaret Site Kurulumu -->
             <div class="service-card">
-              <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center;">E-Ticaret Site Kurulumu</h3>
-              <p style="color: var(--muted); margin-bottom: 2rem; text-align: center;">Shopify, WooCommerce, WordPress</p>
-              <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; color: var(--muted);">
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Profesyonel Tema Tasarımı</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Ödeme Sistemi Entegrasyonu</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Kargo Entegrasyonları</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ SEO Optimizasyonu</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Güvenlik & SSL Kurulumu</li>
-              </ul>
-              <div style="text-align: center; font-size: 1.8rem; font-weight: 800; color: var(--accent-1); margin-bottom: 1rem;">
-                ₺15.000<span style="font-size: 1rem; color: var(--muted); font-weight: 400;"> + KDV</span>
+              <h3 style="font-size: 1.4rem; margin-bottom: 1.5rem; text-align: center; color: var(--white);">E-Ticaret Sitesi</h3>
+              <p style="color: var(--muted); margin-bottom: 2rem; text-align: center; font-size: 0.95rem;">Kendi imparatorluğunuzu kurun</p>
+              
+              <div style="background: rgba(79,158,243,0.05); padding: 1.2rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                <p style="color: var(--white); font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem;">🎯 Özgürlük:</p>
+                <p style="color: var(--muted); margin: 0; font-size: 0.9rem;">
+                  Başkalarının kurallarıyla mı oynayacaksınız? <strong style="color: var(--accent-1);">Kendi siteniz = Kendi kurallarınız.</strong> Komisyon yok!
+                </p>
               </div>
-              <p style="color: var(--muted); font-size: 0.85rem; text-align: center; margin-bottom: 1rem;">Tek seferlik ödeme</p>
-              <a href="https://wa.me/905541386827?text=Merhaba, E-Ticaret Site Kurulumu hakkında bilgi almak istiyorum." target="_blank" rel="noopener" class="btn btn-ghost" style="width: 100%; text-align: center;">Teklif Al</a>
+
+              <ul style="list-style: none; padding: 0; margin: 0 0 1.5rem 0; color: var(--muted); font-size: 0.85rem;">
+                <li style="padding: 0.5rem 0;">✓ Profesyonel Tasarım</li>
+                <li style="padding: 0.5rem 0;">✓ Ödeme & Kargo Entegrasyonu</li>
+                <li style="padding: 0.5rem 0;">✓ Mobil Uyumlu</li>
+              </ul>
+
+              <div style="background: rgba(255,215,0,0.08); padding: 0.7rem; border-radius: 8px; margin-bottom: 1rem;">
+                <p style="color: #ffd700; font-weight: 600; margin: 0; font-size: 0.8rem; text-align: center;">🎁 İlk ay bakım ücretsiz!</p>
+              </div>
+
+              <a href="https://wa.me/905541386827?text=Merhaba, E-Ticaret Sitesi kurmak istiyorum." target="_blank" rel="noopener" class="btn btn-ghost" style="width: 100%; text-align: center; font-size: 0.9rem;">Özgür Olmak İstiyorum →</a>
             </div>
 
-            <!-- Kurumsal Web Sitesi -->
             <div class="service-card">
-              <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; text-align: center;">Kurumsal Web Sitesi</h3>
-              <p style="color: var(--muted); margin-bottom: 2rem; text-align: center;">Şirket Tanıtım & Portföy Siteleri</p>
-              <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; color: var(--muted);">
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Özel Tasarım</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Responsive (Mobil Uyumlu)</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ İçerik Yönetim Paneli</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ SEO Optimizasyonu</li>
-                <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ İletişim Formları</li>
-              </ul>
-              <div style="text-align: center; font-size: 1.8rem; font-weight: 800; color: var(--accent-1); margin-bottom: 1rem;">
-                ₺8.500<span style="font-size: 1rem; color: var(--muted); font-weight: 400;"> + KDV</span>
+              <h3 style="font-size: 1.4rem; margin-bottom: 1.5rem; text-align: center; color: var(--white);">Kurumsal Web Sitesi</h3>
+              <p style="color: var(--muted); margin-bottom: 2rem; text-align: center; font-size: 0.95rem;">İlk izlenim her şeydir</p>
+              
+              <div style="background: rgba(79,158,243,0.05); padding: 1.2rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                <p style="color: var(--white); font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem;">💼 Güven:</p>
+                <p style="color: var(--muted); margin: 0; font-size: 0.9rem;">
+                  Web siteniz olmadan <strong style="color: var(--accent-1);">%85 potansiyel müşteri</strong> size güvenmiyor. Profesyonel görünün, güven kazanın.
+                </p>
               </div>
-              <p style="color: var(--muted); font-size: 0.85rem; text-align: center; margin-bottom: 1rem;">Tek seferlik ödeme</p>
-              <a href="https://wa.me/905541386827?text=Merhaba, Kurumsal Web Sitesi hakkında bilgi almak istiyorum." target="_blank" rel="noopener" class="btn btn-ghost" style="width: 100%; text-align: center;">Teklif Al</a>
+
+              <ul style="list-style: none; padding: 0; margin: 0 0 1.5rem 0; color: var(--muted); font-size: 0.85rem;">
+                <li style="padding: 0.5rem 0;">✓ Özel Tasarım</li>
+                <li style="padding: 0.5rem 0;">✓ SEO Optimizasyonu</li>
+                <li style="padding: 0.5rem 0;">✓ Yönetim Paneli</li>
+              </ul>
+
+              <div style="background: rgba(255,215,0,0.08); padding: 0.7rem; border-radius: 8px; margin-bottom: 1rem;">
+                <p style="color: #ffd700; font-weight: 600; margin: 0; font-size: 0.8rem; text-align: center;">⚡ 14 günde teslim!</p>
+              </div>
+
+              <a href="https://wa.me/905541386827?text=Merhaba, Kurumsal Web Sitesi için teklif almak istiyorum." target="_blank" rel="noopener" class="btn btn-ghost" style="width: 100%; text-align: center; font-size: 0.9rem;">Güvenilir Görünmek İstiyorum →</a>
             </div>
           </div>
         </div>
 
-        <!-- Özel Notlar -->
-        <div style="background: rgba(79,158,243,0.05); border-radius: 16px; padding: 2rem; border: 1px solid rgba(79,158,243,0.1); margin-bottom: 3rem;">
-          <h3 style="color: var(--white); margin-bottom: 1.5rem; text-align: center;">💡 Önemli Bilgiler</h3>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; color: var(--muted); font-size: 0.95rem;">
-            <div>
-              <strong style="color: var(--accent-1); display: block; margin-bottom: 0.5rem;">Ödeme Koşulları</strong>
-              Tüm paketlerde aylık ödeme seçeneği mevcuttur. 6 ay ve yıllık anlaşmalarda %10 indirim uygulanır.
+        <!-- SON CTA -->
+        <div style="text-align: center; padding: 3rem 2rem; background: linear-gradient(135deg, rgba(79,158,243,0.15), rgba(149,163,184,0.08)); border-radius: 24px; border: 2px solid rgba(79,158,243,0.3); margin-top: 5rem; position: relative; overflow: hidden;">
+          <div style="position: absolute; top: 0; left: 0; right: 0; padding: 0.8rem; background: linear-gradient(90deg, #ff6b6b, #ffd700); text-align: center;">
+            <p style="color: #012232; font-weight: 800; margin: 0; font-size: 0.9rem;">⏰ ACİLE ETMEDEN KARAR VERİN: İlk 10 müşteriye %30 indirim!</p>
+          </div>
+          
+          <div style="margin-top: 3rem;">
+            <h2 style="font-size: 2.8rem; margin-bottom: 1.5rem; color: var(--white); line-height: 1.2;">
+              Rakipleriniz Şu An Müşteri Kazanıyor.<br>
+              <span style="color: var(--accent-1);">Siz Hâlâ Bekliyorsunuz?</span>
+            </h2>
+            
+            <p style="color: var(--white); max-width: 700px; margin: 0 auto 2rem; font-size: 1.2rem; line-height: 1.7;">
+              Her gün beklemek = Kaybedilen para.<br>
+              <strong style="color: var(--accent-1);">Ücretsiz danışmanlıkta işinizi analiz ediyoruz.</strong><br>
+              Size özel strateji + Özel fiyat teklifi hazırlıyoruz.
+            </p>
+
+            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 16px; margin: 2rem auto; max-width: 600px;">
+              <p style="color: var(--white); font-weight: 700; margin-bottom: 1rem; font-size: 1.1rem;">🎁 ŞİMDİ ARAYANLARA ÖZEL:</p>
+              <ul style="list-style: none; padding: 0; margin: 0; color: var(--white);">
+                <li style="padding: 0.5rem 0;">✅ Ücretsiz 30 dakika strateji danışmanlığı</li>
+                <li style="padding: 0.5rem 0;">✅ Rakip analizi raporu (₺2.500 değerinde)</li>
+                <li style="padding: 0.5rem 0;">✅ İlk aya özel %30 indirim</li>
+                <li style="padding: 0.5rem 0;">✅ 7 gün içinde başlangıç garantisi</li>
+              </ul>
             </div>
-            <div>
-              <strong style="color: var(--accent-1); display: block; margin-bottom: 0.5rem;">İptal & İade</strong>
-              30 gün önceden bildirimle sözleşme iptal edilebilir. Detaylar için iade politikasını inceleyiniz.
-            </div>
-            <div>
-              <strong style="color: var(--accent-1); display: block; margin-bottom: 0.5rem;">Özel Paketler</strong>
-              İhtiyaçlarınıza özel paket talep edebilirsiniz. Hibrit çözümler için iletişime geçin.
-            </div>
+
+            <a href="https://wa.me/905541386827?text=Merhaba, ücretsiz danışmanlık ve özel teklifinizi almak istiyorum. Artık beklemek istemiyorum!" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 3rem; margin-top: 1rem; box-shadow: 0 8px 30px rgba(79,158,243,0.4);">
+              🚀 EVET, BÜYÜMEK İSTİYORUM! →
+            </a>
+            
+            <p style="color: var(--muted); margin-top: 1.5rem; font-size: 0.9rem;">
+              ⚡ Son 24 saatte 12 işletme aramızda katıldı. Siz de geç kalmayın!
+            </p>
           </div>
         </div>
 
-        <!-- CTA -->
-        <div style="text-align: center; padding: 3rem 2rem; background: linear-gradient(135deg, rgba(79,158,243,0.1), rgba(149,163,184,0.05)); border-radius: 20px; border: 1px solid rgba(79,158,243,0.15);">
-          <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--white);">Hangi Paket Size Uygun?</h2>
-          <p style="color: var(--muted); max-width: 600px; margin: 0 auto 2rem; font-size: 1.1rem;">
-            Ücretsiz danışmanlık görüşmesinde işletmenizi analiz ediyor ve size en uygun çözümü öneriyoruz.
-          </p>
-          <a href="https://wa.me/905541386827?text=Merhaba, işletmem için en uygun paketi öğrenmek istiyorum." target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">Ücretsiz Danışmanlık Al</a>
-        </div>
       </div>
     </section>
   </main>
