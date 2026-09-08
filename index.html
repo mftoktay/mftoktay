@@ -1,651 +1,320 @@
 <!doctype html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>M.Fehmi TOKTAY - Dijital Pazarlama Uzmanı | Satışlarınızı 3X Artırın</title>
-  <meta name="description" content="Rakipleriniz büyürken siz beklemeyin! Sosyal medya yönetimi, Google & Meta Ads ile satışlarınızı 3 katına çıkarın. %30 özel indirim!" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:,">
-  <style>
-:root{--bg-1: #062241;--bg-2: #2e3740;--accent-1: #4f9ef3;--accent-2: #95a3b8;--muted: #9fb0c6;--glass: rgba(255,255,255,0.03);--white: #ffffff;--radius:18px;--container:1200px;--brand-font: 'Playfair Display', serif;--ui-font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;}
-html { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;color:var(--white);font-family:var(--ui-font);background:radial-gradient(circle at 20% 20%, rgba(79,158,243,0.15) 0%, transparent 40%),radial-gradient(circle at 80% 50%, rgba(149,163,184,0.12) 0%, transparent 40%),radial-gradient(circle at 40% 80%, rgba(79,158,243,0.08) 0%, transparent 35%),linear-gradient(135deg, var(--bg-1) 0%, #0a2d4d 25%, var(--bg-2) 50%, #1a3a52 75%, var(--bg-1) 100%);background-size: 100% 100%, 100% 100%, 100% 100%, 200% 200%;background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%;animation: meshMove 20s ease infinite;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.6;overflow-x:hidden;position: relative;}
-@keyframes meshMove { 0%, 100% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; } 25% { background-position: 20% 10%, 10% 20%, 5% 15%, 25% 25%; } 50% { background-position: 40% 20%, 20% 40%, 10% 30%, 50% 50%; } 75% { background-position: 20% 10%, 10% 20%, 5% 15%, 75% 75%; }}
-.container{max-width:var(--container);margin:0 auto;padding: 0 2rem;}
-.site-header{position:sticky;top:0;z-index:120;backdrop-filter: blur(12px);background: linear-gradient(180deg, rgba(6,34,65,0.85), rgba(46,55,64,0.75));border-bottom: 1px solid rgba(255,255,255,0.03);transition: all 0.3s ease;}
-.header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding: 1.25rem 0;}
-.brand{font-family:var(--brand-font);font-weight:700;font-size:1.3rem;color:var(--white);text-decoration:none;letter-spacing:0.6px;transition: color 0.3s ease;}
-.brand:hover {color: var(--accent-1);}
-.nav{display:flex;gap:1.5rem;align-items:center;}
-.nav a{color:var(--muted);text-decoration:none;font-weight:600;padding:0.5rem 0.8rem;border-radius:10px;transition: all 0.3s ease;position: relative;}
-.nav a:hover{color:var(--white);background: rgba(255,255,255,0.04);transform: translateY(-2px);}
-.header-actions{display:flex;align-items:center;gap:1rem;}
-.social-icon{color:var(--muted);display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;text-decoration:none;transition: all 0.3s ease;}
-.social-icon:hover {color: var(--white);background: rgba(255,255,255,0.05);transform: translateY(-2px);}
-.phone{color:var(--muted);font-weight:700;text-decoration:none;padding:0.5rem 0.8rem;border-radius:10px;background:transparent;transition: all 0.3s ease;}
-.phone:hover{color:var(--white);background: rgba(255,255,255,0.04);}
-.nav-toggle{display:none;background:transparent;border:0;color:var(--muted);font-size:1.5rem;cursor: pointer;padding: 0.25rem;transition: color 0.3s ease;}
-.nav-toggle:hover {color: var(--white);}
-.btn{display:inline-block;padding:0.7rem 1.3rem;border-radius:12px;text-decoration:none;font-weight:700;font-size:0.95rem;transition: all 0.3s ease;border: none;cursor: pointer;}
-.btn-primary{background: linear-gradient(135deg,var(--accent-1),var(--accent-2));color:#012232;box-shadow: 0 10px 30px rgba(79,158,243,0.2);}
-.btn-primary:hover{transform: translateY(-3px);box-shadow: 0 15px 40px rgba(79,158,243,0.3);}
-.btn-ghost{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.1);}
-.btn-ghost:hover {color: var(--white);background: rgba(255,255,255,0.05);border-color: rgba(255,255,255,0.2);}
-.btn-outline{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.08);padding:0.5rem 1rem;}
-.btn-outline:hover {color: var(--white);background: rgba(255,255,255,0.05);border-color: rgba(255,255,255,0.15);}
-.section{padding:5rem 0;}
-.hero{padding:6rem 0 5rem;}
-.hero h1{font-family:var(--brand-font);font-size:3.5rem;margin:0 0 1.5rem;line-height:1.1;font-weight:700;background: linear-gradient(135deg, var(--white) 0%, var(--accent-1) 50%, var(--accent-2) 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;background-clip: text;}
-.section-title{font-family:var(--brand-font);font-size:2.5rem;margin:0 0 1rem;font-weight: 700;background: linear-gradient(135deg, var(--white), var(--accent-1));-webkit-background-clip: text;-webkit-text-fill-color: transparent;background-clip: text;}
-.section-sub{color:var(--muted);margin:0 0 1rem;font-size: 1.1rem;}
-.service-card{background: linear-gradient(135deg, rgba(79,158,243,0.03), rgba(149,163,184,0.02));padding:2rem;border-radius:20px;border:1px solid rgba(79,158,243,0.1);transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);height:100%;}
-.service-card:hover{transform: translateY(-12px);box-shadow: 0 25px 60px rgba(79,158,243,0.15);border-color: rgba(79,158,243,0.3);}
-.urgency-badge{display:inline-block;background:linear-gradient(135deg,#ff6b6b,#ff8787);color:#fff;padding:0.5rem 1.2rem;border-radius:20px;font-size:0.85rem;font-weight:700;margin-bottom:1rem;animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.05);opacity:0.9}}
-.site-footer{margin-top:5rem;padding:3rem 0 2rem;border-top:1px solid rgba(255,255,255,0.05);background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);}
-.footer-inner{display:grid;grid-template-columns: 1fr 2fr;gap:3rem;padding-bottom: 2rem;border-bottom: 1px solid rgba(255,255,255,0.03);}
-.footer-brand p {color: var(--muted);margin: 0.5rem 0 0;font-size: 0.95rem;}
-.footer-links {display: grid;grid-template-columns: repeat(3, 1fr);gap: 2rem;}
-.footer-col h4 {color: var(--white);font-size: 0.95rem;font-weight: 700;margin: 0 0 1rem;text-transform: uppercase;letter-spacing: 0.5px;}
-.footer-col a {display: block;color: var(--muted);text-decoration: none;padding: 0.4rem 0;font-size: 0.9rem;transition: color 0.3s ease;}
-.footer-col a:hover {color: var(--white);}
-.payment-icons {text-align: center;padding-top: 2rem;border-top: 1px solid rgba(255,255,255,0.05);}
-.footer-bottom {display: flex;justify-content: space-between;align-items: center;padding-top: 2rem;color: var(--muted);font-size: 0.9rem;flex-wrap: wrap;gap: 1rem;}
-.social {display: flex;gap: 0.5rem;}
-.social .social-pill{text-decoration:none;color:var(--muted);padding:0.5rem 1rem;border-radius:10px;background: rgba(255,255,255,0.02);font-weight:700;font-size: 0.85rem;transition: all 0.3s ease;}
-.social .social-pill:hover{color:var(--white);background: rgba(255,255,255,0.05);transform: translateY(-2px);}
-.whatsapp-btn{position:fixed;right:25px;bottom:25px;background: linear-gradient(135deg,var(--accent-1),var(--accent-2));color:#012232;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow: 0 10px 30px rgba(79,158,243,0.3);z-index:140;text-decoration:none;transition: all 0.3s ease;}
-.whatsapp-btn:hover{transform: translateY(-5px) scale(1.05);box-shadow: 0 15px 40px rgba(79,158,243,0.4);}
-@media (max-width:760px){
-.container {padding: 0 1.25rem;}
-.header-inner {padding: 1rem 0;}
-.nav{display:none;position:absolute;top:70px;right:20px;background:rgba(6,34,65,0.98);padding:1.5rem;border-radius:16px;flex-direction:column;min-width:240px;border: 1px solid rgba(255,255,255,0.1);box-shadow: 0 10px 40px rgba(0,0,0,0.3);}
-.nav.open{display:flex;}
-.nav-toggle{display:block;}
-.phone {display: none;}
-.hero{padding:3rem 0 2rem;}
-.hero h1{font-size:2rem;}
-.section {padding: 3rem 0;}
-.section-title {font-size: 2rem;}
-.section-sub {font-size: 1rem;}
-.footer-links {grid-template-columns: 1fr;}
-.footer-inner{grid-template-columns: 1fr;}
-.footer-bottom {flex-direction: column;text-align: center;}
-.whatsapp-btn {width: 55px;height: 55px;right: 20px;bottom: 20px;}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>M. Fehmi Toktay — E-ticaret altyapısı ve performans pazarlaması</title>
+<meta name="description" content="Shopify mağazaları kuruyorum, reklam hesaplarını yönetiyorum. Tahmin yerine ölçümle çalışırım. Ajans işleri Taftri üzerinden yürüyor." />
+<link rel="canonical" href="https://mftoktay.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mftoktay.com/" />
+<meta property="og:title" content="M. Fehmi Toktay — E-ticaret altyapısı ve performans pazarlaması" />
+<meta property="og:description" content="Shopify mağazaları kuruyorum, reklam hesaplarını yönetiyorum. Tahmin yerine ölçümle çalışırım." />
+<meta property="og:locale" content="tr_TR" />
+<meta name="twitter:card" content="summary" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Karla:wght@400;500;600&display=swap" />
+
+<style>
+:root{
+  --kagit:#F7F5F0;
+  --kagit-2:#FFFFFF;
+  --murekkep:#23241F;
+  --murekkep-2:#565851;
+  --murekkep-3:#6A6C62;
+  --cizgi:#E2DED3;
+  --yesil:#3D5A4A;
+  --yesil-2:#527060;
+  --yesil-yumusak:#E7EDE7;
+  --genislik:680px;
 }
-  </style>
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+
+body{
+  background:var(--kagit);
+  color:var(--murekkep);
+  font-family:'Karla',ui-sans-serif,system-ui,'Segoe UI',sans-serif;
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+.sarmal{max-width:var(--genislik);margin:0 auto;padding:0 24px}
+
+a{
+  color:var(--yesil);
+  text-decoration:none;
+  border-bottom:1px solid rgba(61,90,74,.3);
+  transition:border-color .2s ease,color .2s ease;
+}
+a:hover{color:var(--yesil-2);border-bottom-color:var(--yesil-2)}
+a:focus-visible{outline:2px solid var(--yesil);outline-offset:3px;border-radius:2px}
+
+.giris{padding:88px 0 0}
+.ad{
+  font-family:'Newsreader',Georgia,serif;
+  font-size:clamp(34px,6vw,46px);
+  font-weight:500;
+  letter-spacing:-.015em;
+  line-height:1.12;
+}
+.rol{
+  margin-top:10px;
+  font-size:14px;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  color:var(--murekkep-3);
+  font-weight:600;
+}
+.giris p:not(.rol){
+  margin-top:28px;
+  font-size:19px;
+  line-height:1.7;
+  color:var(--murekkep-2);
+  max-width:56ch;
+}
+.giris p:not(.rol) + p{margin-top:16px}
+.giris strong{font-weight:600;color:var(--murekkep)}
+
+section{padding:64px 0}
+.bolum-basligi{
+  font-family:'Newsreader',Georgia,serif;
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--murekkep-3);
+  padding-bottom:12px;
+  border-bottom:1px solid var(--cizgi);
+  margin-bottom:30px;
+}
+
+.alan{padding:22px 0;border-bottom:1px solid var(--cizgi)}
+.alan:last-child{border-bottom:0;padding-bottom:0}
+.alan h3{
+  font-family:'Newsreader',Georgia,serif;
+  font-size:21px;
+  font-weight:500;
+  letter-spacing:-.01em;
+  margin-bottom:6px;
+}
+.alan p{color:var(--murekkep-2);max-width:60ch}
+
+.ornek{padding:26px 0;border-bottom:1px solid var(--cizgi)}
+.ornek:last-child{border-bottom:0;padding-bottom:0}
+.ornek p{color:var(--murekkep-2);max-width:62ch}
+.ornek p + p{margin-top:12px}
+.sayi{
+  font-family:'Newsreader',Georgia,serif;
+  font-variant-numeric:tabular-nums;
+  font-weight:600;
+  color:var(--murekkep);
+  white-space:nowrap;
+}
+
+.markalar{display:flex;flex-wrap:wrap;gap:8px 10px}
+.marka{
+  font-size:15px;
+  padding:7px 14px;
+  border:1px solid var(--cizgi);
+  border-radius:999px;
+  color:var(--murekkep-2);
+  background:var(--kagit-2);
+  transition:border-color .2s ease,color .2s ease,background .2s ease;
+}
+a.marka:hover{color:var(--yesil);border-color:var(--yesil-2);background:var(--yesil-yumusak)}
+
+.taftri{
+  padding:28px 30px;
+  background:var(--yesil-yumusak);
+  border-left:2px solid var(--yesil);
+  border-radius:0 6px 6px 0;
+}
+.taftri h3{
+  font-family:'Newsreader',Georgia,serif;
+  font-size:20px;
+  font-weight:500;
+  margin-bottom:8px;
+}
+.taftri p{color:var(--murekkep-2);max-width:56ch}
+.taftri a{font-weight:500}
+
+.iletisim-satir{display:flex;flex-wrap:wrap;gap:14px 32px;font-size:17px}
+.iletisim-satir span{
+  color:var(--murekkep-3);
+  font-size:13px;
+  display:block;
+  margin-bottom:2px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-weight:600;
+}
+
+footer{
+  padding:40px 0 56px;
+  border-top:1px solid var(--cizgi);
+  color:var(--murekkep-3);
+  font-size:14px;
+}
+footer .sarmal{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+footer a{color:var(--murekkep-3);border-bottom-color:transparent}
+footer a:hover{color:var(--yesil);border-bottom-color:var(--yesil)}
+
+@media (max-width:600px){
+  body{font-size:16px}
+  .giris{padding-top:56px}
+  .giris p:not(.rol){font-size:17.5px}
+  section{padding:48px 0}
+  .taftri{padding:24px 22px}
+}
+</style>
 </head>
 <body>
-  <header class="site-header" role="banner">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">M.Fehmi TOKTAY</a>
-      <nav class="nav" aria-label="Ana Menü">
-        <a href="#services">Hizmetler</a>
-        <a href="hizmetler.html">Fiyatlandırma</a>
-        <a href="#work">Referanslar</a>
-        <a href="iletisim.html" class="btn btn-outline">İletişim</a>
-      </nav>
-      <div class="header-actions">
-        <a class="social-icon" href="https://www.instagram.com/m.fehmitoktay" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M17.5 6.5h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-        <a class="phone" href="tel:+905541386827" aria-label="Ara">+90 554 138 6827</a>
-        <button class="nav-toggle" aria-label="Menüyü aç">☰</button>
-      </div>
+
+<main>
+  <header class="giris">
+    <div class="sarmal">
+      <h1 class="ad">M. Fehmi Toktay</h1>
+      <p class="rol">E-ticaret altyapısı ve performans pazarlaması</p>
+      <p>Shopify mağazaları kuruyorum, reklam hesaplarını yönetiyorum. İşin büyük kısmı yeni
+        bir şey icat etmekle değil, hâlihazırda para kaybettiren yerleri bulmakla geçiyor.</p>
+      <p>Bunun tek yolu <strong>ölçmek</strong>. Bir butonun sayfanın kaçıncı pikselinde
+        durduğunu bilmeden onu yukarı almanın anlamı yok.</p>
     </div>
   </header>
 
-  <main id="main" role="main">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-          <div class="urgency-badge">⚡ Şubat 2026 - Son 5 Kontenjan</div>
-          
-          <h1>
-            Rakipleriniz Dijitalde<br>
-            <span style="color: var(--accent-1);">Büyürken Siz Beklemeyin!</span>
-          </h1>
-          
-          <p style="color: var(--muted); font-size: 1.3rem; line-height: 1.7; margin-bottom: 2rem;">
-            Sosyal medyada yoksan = <strong style="color: var(--white);">Yok sayılırsın.</strong><br>
-            Reklam vermiyorsan = <strong style="color: var(--white);">Rakiplerin kazanıyor.</strong><br>
-            E-ticaret yapmıyorsan = <strong style="color: var(--white);">Para kaybediyorsun.</strong>
-          </p>
+  <section aria-labelledby="alanlar-h">
+    <div class="sarmal">
+      <h2 class="bolum-basligi" id="alanlar-h">Çalıştığım alanlar</h2>
 
-          <div style="background: rgba(79,158,243,0.1); padding: 2rem; border-radius: 16px; margin: 2rem 0; border-left: 4px solid var(--accent-1);">
-            <p style="color: var(--white); font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">
-              🎯 Kanıtlanmış Sonuçlar:
-            </p>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
-              <div>
-                <p style="font-size: 2.5rem; font-weight: 800; color: var(--accent-1); margin: 0; line-height: 1;">200+</p>
-                <p style="color: var(--muted); margin: 0.5rem 0 0; font-size: 0.95rem;">Başarılı Kampanya</p>
-              </div>
-              <div>
-                <p style="font-size: 2.5rem; font-weight: 800; color: var(--accent-1); margin: 0; line-height: 1;">%150</p>
-                <p style="color: var(--muted); margin: 0.5rem 0 0; font-size: 0.95rem;">Ortalama ROI Artışı</p>
-              </div>
-              <div>
-                <p style="font-size: 2.5rem; font-weight: 800; color: var(--accent-1); margin: 0; line-height: 1;">7 Gün</p>
-                <p style="color: var(--muted); margin: 0.5rem 0 0; font-size: 0.95rem;">İlk Sonuçlar</p>
-              </div>
-            </div>
-          </div>
-
-          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2.5rem;">
-            <a href="https://wa.me/905541386827?text=Merhaba! Ücretsiz danışmanlık ve %30 indirim için aradım." class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">
-              🚀 Ücretsiz Danışmanlık + %30 İndirim
-            </a>
-            <a href="#services" class="btn btn-ghost" style="font-size: 1.1rem; padding: 1rem 2rem;">
-              📊 Hizmetleri Keşfet
-            </a>
-          </div>
-
-          <p style="color: var(--muted); margin-top: 1.5rem; font-size: 0.9rem;">
-            ⚡ Son 48 saatte 15 işletme aramıza katıldı
-          </p>
-        </div>
+      <div class="alan">
+        <h3>Mağaza kurulumu ve geçiş</h3>
+        <p>Shopify üzerinde sıfırdan kurulum, başka platformdan taşıma, tema geliştirme.
+          Geçişlerde asıl mesele veri değil, yönlendirme haritası — eski adresler yenisine
+          bağlanmazsa arama sıralaması gider.</p>
       </div>
-    </section>
 
-    <!-- SORUN & ÇÖZÜM -->
-    <section class="section" style="background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding: 4rem 0;">
-      <div class="container">
-        <div style="max-width: 1000px; margin: 0 auto;">
-          <h2 class="section-title" style="text-align: center; margin-bottom: 3rem;">
-            Dijitalde Görünmüyorsanız, Müşterileriniz Sizi Bulamıyor 😰
-          </h2>
-
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-            <div style="background: rgba(255,107,107,0.1); padding: 2rem; border-radius: 16px; border: 1px solid rgba(255,107,107,0.3);">
-              <p style="font-size: 2.5rem; margin: 0 0 1rem;">😞</p>
-              <h3 style="color: #ff6b6b; margin: 0 0 1rem; font-size: 1.3rem;">Şu An Yaşadığınız</h3>
-              <ul style="list-style: none; padding: 0; margin: 0; color: var(--muted);">
-                <li style="padding: 0.5rem 0;">❌ Sosyal medyada görünmüyorsunuz</li>
-                <li style="padding: 0.5rem 0;">❌ Reklamlar sonuç vermiyor</li>
-                <li style="padding: 0.5rem 0;">❌ Müşteri bulmak zor</li>
-                <li style="padding: 0.5rem 0;">❌ Rakipler önünüzde</li>
-              </ul>
-            </div>
-
-            <div style="background: rgba(79,158,243,0.1); padding: 2rem; border-radius: 16px; border: 1px solid rgba(79,158,243,0.3);">
-              <p style="font-size: 2.5rem; margin: 0 0 1rem;">🚀</p>
-              <h3 style="color: var(--accent-1); margin: 0 0 1rem; font-size: 1.3rem;">3 Ay Sonra Olacağınız</h3>
-              <ul style="list-style: none; padding: 0; margin: 0; color: var(--muted);">
-                <li style="padding: 0.5rem 0;">✅ Müşteriler SİZİ buluyor</li>
-                <li style="padding: 0.5rem 0;">✅ Satışlar %3X artıyor</li>
-                <li style="padding: 0.5rem 0;">✅ Marka otoritesi var</li>
-                <li style="padding: 0.5rem 0;">✅ Rekabette öndesiniz</li>
-              </ul>
-            </div>
-
-            <div style="background: rgba(255,215,0,0.1); padding: 2rem; border-radius: 16px; border: 1px solid rgba(255,215,0,0.3);">
-              <p style="font-size: 2.5rem; margin: 0 0 1rem;">💎</p>
-              <h3 style="color: #ffd700; margin: 0 0 1rem; font-size: 1.3rem;">Nasıl Olacak?</h3>
-              <ul style="list-style: none; padding: 0; margin: 0; color: var(--muted);">
-                <li style="padding: 0.5rem 0;">✨ Profesyonel strateji</li>
-                <li style="padding: 0.5rem 0;">✨ Viral içerikler</li>
-                <li style="padding: 0.5rem 0;">✨ Hedefli reklamlar</li>
-                <li style="padding: 0.5rem 0;">✨ Sürekli optimizasyon</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+      <div class="alan">
+        <h3>Reklam yönetimi</h3>
+        <p>Meta ve Google tarafında kampanya kurulumu, piksel ve dönüşüm ölçümü. Çoğu
+          hesapta sorun bütçede değil, ölçümün yanlış kurulmuş olmasında çıkıyor.</p>
       </div>
-    </section>
 
-    <!-- HİZMETLER -->
-    <section id="services" class="section">
-      <div class="container">
-        <div style="text-align: center; margin-bottom: 4rem;">
-          <h2 class="section-title">
-            İşletmenizi Dijitalde Büyütmenin 3 Yolu
-          </h2>
-          <p class="section-sub" style="max-width: 700px; margin: 0 auto;">
-            Her biri ayrı ayrı güçlü. Hepsi birlikte <strong style="color: var(--accent-1);">imha edici.</strong>
-          </p>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
-          
-          <!-- Sosyal Medya -->
-          <div class="service-card">
-            <div style="text-align: center;">
-              <p style="font-size: 3rem; margin: 0 0 1rem;">📱</p>
-              <h3 style="color: var(--white); font-size: 1.8rem; margin: 0 0 1rem;">Sosyal Medya Yönetimi</h3>
-              <p style="color: var(--accent-1); font-weight: 700; margin-bottom: 2rem;">Markanız 7/24 konuşulsun</p>
-            </div>
-
-            <div style="background: rgba(79,158,243,0.05); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem;">
-              <p style="color: var(--white); font-weight: 700; margin-bottom: 0.5rem;">💡 Sorun:</p>
-              <p style="color: var(--muted); margin: 0 0 1rem; font-size: 0.95rem;">
-                "İçerik üretmeye vaktim yok. Paylaşsam da kimse beğenmiyor."
-              </p>
-              <p style="color: var(--white); font-weight: 700; margin-bottom: 0.5rem;">✅ Çözüm:</p>
-              <p style="color: var(--muted); margin: 0; font-size: 0.95rem;">
-                Profesyonel ekip 7/24 sizi temsil ediyor. <strong style="color: var(--accent-1);">Her gün binlerce kişi markanızı görüyor.</strong>
-              </p>
-            </div>
-
-            <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; color: var(--muted);">
-              <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Viral İçerik Üretimi</li>
-              <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Story & Reels Stratejisi</li>
-              <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Topluluk Yönetimi</li>
-              <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Rakip Analizi</li>
-            </ul>
-
-            <a href="hizmetler.html" class="btn btn-primary" style="width: 100%; text-align: center;">
-              Detaylı Bilgi Al →
-            </a>
-          </div>
-
-          <!-- Reklam -->
-          <div class="service-card" style="border: 2px solid var(--accent-1);">
-            <div style="position: absolute; top: -12px; right: 20px; background: var(--accent-1); color: #012232; padding: 0.4rem 1rem; border-radius: 15px; font-size: 0.75rem; font-weight: 700;">
-              ⭐ EN HIZLI SONUÇ
-            </div>
-            <div style="text-align: center;">
-              <p style="font-size: 3rem; margin: 0 0 1rem;">💰</p>
-              <h3 style="color: var(--white); font-size: 1.8rem; margin: 0 0 1rem;">Reklam Yönetimi</h3>
-              <p style="color: var(--accent-1); font-weight: 700; margin-bottom: 2rem;">Her kuruştan maksimum sonuç</p>
-            </div>
-
-            <div style="background: rgba(79,158,243,0.08); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border: 1px solid rgba(79,158,243,0.3);">
-              <p style="color: var(--white); font-weight: 700; margin-bottom: 0.5rem;">💡 Sorun:</p>
-              <p style="color: var(--muted); margin: 0 0 1rem; font-size: 0.95rem;">
-                "Reklama para harcıyorum ama satış gelmiyor. Bütçe çöpe gidiyor."
-              </p>
-              <p style="color: var(--white); font-weight: 700; margin-bottom: 0.5rem;">✅ Çözüm:</p>
-              <p style="color: var(--muted); margin: 0; font-size: 0.95rem;">
-                Profesyonel optimizasyon ile <strong style="color: var(--accent-1);">harcadığınızın 3 katını</strong> geri alın. İlk haftadan sonuç görün.
-              </p>
-            </div>
-
-            <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; color: var(--muted);">
-              <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Google Ads Yönetimi</li>
-              <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Meta Ads (FB + IG)</li>
-              <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ ROI Odaklı Strateji</li>
-              <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ A/B Test & Optimizasyon</li>
-            </ul>
-
-            <a href="hizmetler.html" class="btn btn-primary" style="width: 100%; text-align: center;">
-              Bütçemi Boşa Harcamak İstemiyorum →
-            </a>
-          </div>
-
-          <!-- E-Ticaret -->
-          <div class="service-card">
-            <div style="text-align: center;">
-              <p style="font-size: 3rem; margin: 0 0 1rem;">🛒</p>
-              <h3 style="color: var(--white); font-size: 1.8rem; margin: 0 0 1rem;">E-Ticaret Çözümleri</h3>
-              <p style="color: var(--accent-1); font-weight: 700; margin-bottom: 2rem;">Uyurken bile satış yapın</p>
-            </div>
-
-            <div style="background: rgba(79,158,243,0.05); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem;">
-              <p style="color: var(--white); font-weight: 700; margin-bottom: 0.5rem;">💡 Sorun:</p>
-              <p style="color: var(--muted); margin: 0 0 1rem; font-size: 0.95rem;">
-                "Sadece fiziksel mağazam var. Online satış yapmıyorum."
-              </p>
-              <p style="color: var(--white); font-weight: 700; margin-bottom: 0.5rem;">✅ Çözüm:</p>
-              <p style="color: var(--muted); margin: 0; font-size: 0.95rem;">
-                E-ticaret sitesi + Pazar yerleri ile <strong style="color: var(--accent-1);">gelir kanallarınızı 5X artırın.</strong> Türkiye geneli satış yapın.
-              </p>
-            </div>
-
-            <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0; color: var(--muted);">
-              <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ E-Ticaret Sitesi</li>
-              <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Pazar Yeri Yönetimi</li>
-              <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Ödeme & Kargo Entegrasyonu</li>
-              <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ SEO & Optimizasyon</li>
-            </ul>
-
-            <a href="hizmetler.html" class="btn btn-primary" style="width: 100%; text-align: center;">
-              Online Satış Yapmak İstiyorum →
-            </a>
-          </div>
-        </div>
+      <div class="alan">
+        <h3>Pazaryeri</h3>
+        <p>Amazon hesap açılışı, listeleme kalitesi, FBA ile kendi kargon arasındaki karar.
+          Sırayı bozmak süreci uzatıyor; marka kaydı satışa başlamadan önce açılmalı, çünkü
+          tescil ülkeye göre aylar sürebiliyor.</p>
       </div>
-    </section>
 
-    <!-- REFERANSLAR -->
-    <section id="work" class="section" style="background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);">
-      <div class="container">
-        <div style="text-align: center; margin-bottom: 4rem;">
-          <h2 class="section-title">
-            Sadece Söz Vermiyoruz, Kanıtlıyoruz 📊
-          </h2>
-          <p class="section-sub" style="max-width: 700px; margin: 0 auto;">
-            200+ işletme bize güvendi. <strong style="color: var(--accent-1);">Sıradaki siz misiniz?</strong>
-          </p>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
-          
-          <div style="background: rgba(79,158,243,0.05); padding: 2rem; border-radius: 16px; border: 1px solid rgba(79,158,243,0.1);">
-            <p style="font-size: 2rem; margin: 0 0 1rem;">🏪</p>
-            <p style="color: var(--muted); font-style: italic; margin-bottom: 1.5rem; line-height: 1.7;">
-              "3 ayda Trendyol'da ilk 10'a girdik. Satışlarımız 4 katına çıktı. Fehmi Bey'e sonsuza kadar minnettarım."
-            </p>
-            <p style="color: var(--white); font-weight: 700;">- Ayşe K.</p>
-            <p style="color: var(--accent-1); font-size: 0.9rem;">E-Ticaret / Ev Tekstili</p>
-          </div>
-
-          <div style="background: rgba(79,158,243,0.05); padding: 2rem; border-radius: 16px; border: 1px solid rgba(79,158,243,0.1);">
-            <p style="font-size: 2rem; margin: 0 0 1rem;">💼</p>
-            <p style="color: var(--muted); font-style: italic; margin-bottom: 1.5rem; line-height: 1.7;">
-              "Instagram'da 500 takipçim vardı, şimdi 15.000. Her gün müşteri mesajı geliyor. İnanılmaz!"
-            </p>
-            <p style="color: var(--white); font-weight: 700;">- Mehmet Y.</p>
-            <p style="color: var(--accent-1); font-size: 0.9rem;">Emlak Danışmanı</p>
-          </div>
-
-          <div style="background: rgba(79,158,243,0.05); padding: 2rem; border-radius: 16px; border: 1px solid rgba(79,158,243,0.1);">
-            <p style="font-size: 2rem; margin: 0 0 1rem;">🍔</p>
-            <p style="color: var(--muted); font-style: italic; margin-bottom: 1.5rem; line-height: 1.7;">
-              "Google Ads ile günlük 20-30 sipariş alıyoruz. Reklam maliyeti %40 düştü. ROI harika!"
-            </p>
-            <p style="color: var(--white); font-weight: 700;">- Ahmet S.</p>
-            <p style="color: var(--accent-1); font-size: 0.9rem;">Restoran Sahibi</p>
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 3rem;">
-          <p style="color: var(--muted); font-size: 1.1rem; margin-bottom: 1.5rem;">
-            <strong style="color: var(--white);">Siz de başarı hikayenizi yazmaya hazır mısınız?</strong>
-          </p>
-          <a href="https://wa.me/905541386827?text=Merhaba! Başarı hikayelerini gördüm, ben de aramıza katılmak istiyorum." class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2.5rem;">
-            🚀 Evet, Başarı İstiyorum!
-          </a>
-        </div>
+      <div class="alan">
+        <h3>Katalog ve veri düzeni</h3>
+        <p>Ürün başlıkları, kategori yapısı, görsel alt metinleri. Kimsenin bakmadığı ama
+          Google Shopping ve Meta katalog eşleştirmesini doğrudan belirleyen kısım.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ÇALIŞMA SÜRECİ -->
-    <section class="section">
-      <div class="container">
-        <div style="text-align: center; margin-bottom: 4rem;">
-          <h2 class="section-title">
-            Nasıl Çalışıyoruz? 🎯
-          </h2>
-          <p class="section-sub" style="max-width: 700px; margin: 0 auto;">
-            Projelerinizi baştan sona <strong style="color: var(--accent-1);">profesyonelce yönetiyoruz</strong>
-          </p>
-        </div>
+  <section aria-labelledby="nasil-h">
+    <div class="sarmal">
+      <h2 class="bolum-basligi" id="nasil-h">Nasıl çalışıyorum</h2>
 
-        <div style="max-width: 900px; margin: 0 auto;">
-          <!-- Adım 1 -->
-          <div style="display: grid; grid-template-columns: 100px 1fr; gap: 2rem; margin-bottom: 2.5rem; align-items: start;">
-            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 800; color: #012232; font-family: var(--brand-font); flex-shrink: 0;">
-              01
-            </div>
-            <div>
-              <h3 style="color: var(--white); font-size: 1.8rem; margin: 0 0 1rem;">Keşif & Analiz</h3>
-              <p style="color: var(--muted); margin: 0; line-height: 1.7; font-size: 1.05rem;">
-                Markanızı, hedef kitlenizi ve rakiplerinizi detaylı analiz ederek stratejinin temelini atıyoruz. <strong style="color: var(--accent-1);">Her şey veriyle başlar.</strong>
-              </p>
-            </div>
-          </div>
-
-          <!-- Adım 2 -->
-          <div style="display: grid; grid-template-columns: 100px 1fr; gap: 2rem; margin-bottom: 2.5rem; align-items: start;">
-            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 800; color: #012232; font-family: var(--brand-font); flex-shrink: 0;">
-              02
-            </div>
-            <div>
-              <h3 style="color: var(--white); font-size: 1.8rem; margin: 0 0 1rem;">Strateji Geliştirme</h3>
-              <p style="color: var(--muted); margin: 0; line-height: 1.7; font-size: 1.05rem;">
-                Hedeflerinize özel dijital pazarlama stratejisi ve yol haritası oluşturuyoruz. <strong style="color: var(--accent-1);">Size özel, kopyala-yapıştır değil.</strong>
-              </p>
-            </div>
-          </div>
-
-          <!-- Adım 3 -->
-          <div style="display: grid; grid-template-columns: 100px 1fr; gap: 2rem; margin-bottom: 2.5rem; align-items: start;">
-            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 800; color: #012232; font-family: var(--brand-font); flex-shrink: 0;">
-              03
-            </div>
-            <div>
-              <h3 style="color: var(--white); font-size: 1.8rem; margin: 0 0 1rem;">Uygulama</h3>
-              <p style="color: var(--muted); margin: 0; line-height: 1.7; font-size: 1.05rem;">
-                Kampanyaları devreye alıyor, içerikleri yayınlıyor ve sistemleri kuruyoruz. <strong style="color: var(--accent-1);">7 gün içinde canlı.</strong>
-              </p>
-            </div>
-          </div>
-
-          <!-- Adım 4 -->
-          <div style="display: grid; grid-template-columns: 100px 1fr; gap: 2rem; margin-bottom: 2.5rem; align-items: start;">
-            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 800; color: #012232; font-family: var(--brand-font); flex-shrink: 0;">
-              04
-            </div>
-            <div>
-              <h3 style="color: var(--white); font-size: 1.8rem; margin: 0 0 1rem;">Optimizasyon</h3>
-              <p style="color: var(--muted); margin: 0; line-height: 1.7; font-size: 1.05rem;">
-                Performans verilerini analiz ederek sürekli iyileştirme yapıyoruz. <strong style="color: var(--accent-1);">Her gün daha iyi sonuçlar.</strong>
-              </p>
-            </div>
-          </div>
-
-          <!-- Adım 5 -->
-          <div style="display: grid; grid-template-columns: 100px 1fr; gap: 2rem; margin-bottom: 0; align-items: start;">
-            <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: 800; color: #012232; font-family: var(--brand-font); flex-shrink: 0;">
-              05
-            </div>
-            <div>
-              <h3 style="color: var(--white); font-size: 1.8rem; margin: 0 0 1rem;">Raporlama</h3>
-              <p style="color: var(--muted); margin: 0; line-height: 1.7; font-size: 1.05rem;">
-                Düzenli raporlar ile tüm metrikleri şeffaf şekilde paylaşıyoruz. <strong style="color: var(--accent-1);">Paranızın nereye gittiğini görün.</strong>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 4rem; padding: 2rem; background: rgba(79,158,243,0.08); border-radius: 16px; border-left: 4px solid var(--accent-1);">
-          <p style="color: var(--white); font-size: 1.2rem; margin: 0;">
-            💡 <strong>Her adımda yanınızdayız.</strong> Sorularınız, önerileriniz için 7/24 ulaşabilirsiniz.
-          </p>
-        </div>
+      <div class="ornek">
+        <p>Bir kuyum mağazasında “Sepete Ekle” butonu mobilde <span class="sayi">1147.</span>
+          pikseldeydi. Müşteri bir buçuk ekran boyunca hiçbir satın alma tetikleyicisi
+          görmüyordu.</p>
+        <p>Fiyat kırılımı ve ürün künyesi karar öncesi değil, karar sonrası bilgi. İkisini de
+          butonun altına aldık; buton <span class="sayi">948.</span> piksele çıktı.</p>
       </div>
-    </section>
 
-    <!-- SSS (FAQ) -->
-    <section class="section" style="background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);">
-      <div class="container">
-        <div style="text-align: center; margin-bottom: 4rem;">
-          <h2 class="section-title">
-            Sıkça Sorulan Sorular 💬
-          </h2>
-          <p class="section-sub" style="max-width: 700px; margin: 0 auto;">
-            Merak ettiklerinizin cevapları
-          </p>
-        </div>
-
-        <div style="max-width: 900px; margin: 0 auto;">
-          <!-- Soru 1 -->
-          <details style="background: rgba(79,158,243,0.03); border: 1px solid rgba(79,158,243,0.1); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; cursor: pointer;">
-            <summary style="font-weight: 700; color: var(--white); font-size: 1.1rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-              <span>Hangi sektörlerle çalışıyorsunuz?</span>
-              <span style="color: var(--accent-1); font-size: 1.5rem;">▼</span>
-            </summary>
-            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); color: var(--muted); line-height: 1.7;">
-              E-ticaret, emlak, restoran, sağlık, güzellik, eğitim, otomotiv ve daha birçok sektörde başarılı projeler yürüttük. <strong style="color: var(--accent-1);">Her sektöre özel strateji geliştiriyoruz.</strong>
-            </div>
-          </details>
-
-          <!-- Soru 2 -->
-          <details style="background: rgba(79,158,243,0.03); border: 1px solid rgba(79,158,243,0.1); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; cursor: pointer;">
-            <summary style="font-weight: 700; color: var(--white); font-size: 1.1rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-              <span>Fiyatlandırma nasıl çalışıyor?</span>
-              <span style="color: var(--accent-1); font-size: 1.5rem;">▼</span>
-            </summary>
-            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); color: var(--muted); line-height: 1.7;">
-              Her işletmenin ihtiyaçları farklı. <strong style="color: var(--accent-1);">Ücretsiz danışmanlıkta</strong> işletmenizi analiz ediyor ve size özel fiyat teklifi sunuyoruz. Şeffaf, net, sürpriz yok.
-            </div>
-          </details>
-
-          <!-- Soru 3 -->
-          <details style="background: rgba(79,158,243,0.03); border: 1px solid rgba(79,158,243,0.1); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; cursor: pointer;">
-            <summary style="font-weight: 700; color: var(--white); font-size: 1.1rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-              <span>Ne kadar sürede sonuç görebilirim?</span>
-              <span style="color: var(--accent-1); font-size: 1.5rem;">▼</span>
-            </summary>
-            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); color: var(--muted); line-height: 1.7;">
-              <strong style="color: var(--accent-1);">İlk 7 günde</strong> etkileşim artışını görebilirsiniz. Sosyal medyada 1 ay, reklamlarda 2-3 hafta, e-ticarette 1-2 ay içinde ciddi sonuçlar alırsınız. Ama sürekli optimizasyon ile sonuçlar büyümeye devam eder.
-            </div>
-          </details>
-
-          <!-- Soru 4 -->
-          <details style="background: rgba(79,158,243,0.03); border: 1px solid rgba(79,158,243,0.1); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; cursor: pointer;">
-            <summary style="font-weight: 700; color: var(--white); font-size: 1.1rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-              <span>Raporlama ve iletişim nasıl oluyor?</span>
-              <span style="color: var(--accent-1); font-size: 1.5rem;">▼</span>
-            </summary>
-            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); color: var(--muted); line-height: 1.7;">
-              <strong style="color: var(--accent-1);">Aylık detaylı raporlar</strong> sunuyoruz. Tüm metrikler, grafikler ve öneriler şeffaf şekilde paylaşılıyor. Ayrıca WhatsApp üzerinden <strong style="color: var(--accent-1);">7/24 ulaşabilirsiniz.</strong>
-            </div>
-          </details>
-
-          <!-- Soru 5 -->
-          <details style="background: rgba(79,158,243,0.03); border: 1px solid rgba(79,158,243,0.1); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; cursor: pointer;">
-            <summary style="font-weight: 700; color: var(--white); font-size: 1.1rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-              <span>Minimum anlaşma süresi var mı?</span>
-              <span style="color: var(--accent-1); font-size: 1.5rem;">▼</span>
-            </summary>
-            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); color: var(--muted); line-height: 1.7;">
-              Sosyal medya yönetiminde <strong style="color: var(--accent-1);">minimum 3 ay</strong> öneriyoruz çünkü strateji ve momentum 3 ayda oturur. Reklam yönetiminde aylık çalışıyoruz. <strong style="color: var(--accent-1);">30 gün önceden</strong> bildirimle iptal edebilirsiniz.
-            </div>
-          </details>
-
-          <!-- Soru 6 -->
-          <details style="background: rgba(79,158,243,0.03); border: 1px solid rgba(79,158,243,0.1); border-radius: 12px; padding: 1.5rem; margin-bottom: 0; cursor: pointer;">
-            <summary style="font-weight: 700; color: var(--white); font-size: 1.1rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-              <span>Hangi araçları kullanıyorsunuz?</span>
-              <span style="color: var(--accent-1); font-size: 1.5rem;">▼</span>
-            </summary>
-            <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); color: var(--muted); line-height: 1.7;">
-              Canva, Adobe Creative Suite, Meta Business Suite, Google Ads, Google Analytics, Hootsuite, SEMrush ve daha birçok <strong style="color: var(--accent-1);">profesyonel araç</strong> kullanıyoruz. Teknolojiye yatırım yapıyoruz ki siz kazanın.
-            </div>
-          </details>
-        </div>
-
-        <div style="text-align: center; margin-top: 4rem;">
-          <p style="color: var(--muted); font-size: 1.1rem; margin-bottom: 1.5rem;">
-            Başka sorunuz mu var? <strong style="color: var(--white);">Hemen sorun!</strong>
-          </p>
-          <a href="https://wa.me/905541386827?text=Merhaba! SSS'de cevabını bulamadığım sorularım var." class="btn btn-ghost" style="font-size: 1.05rem; padding: 0.9rem 2rem;">
-            Soru Sor →
-          </a>
-        </div>
+      <div class="ornek">
+        <p>Bir şapka markasında ürün sayfasındaki “Detaylar” paneli mobilde açık başlıyordu.
+          Tek başına <span class="sayi">845</span> piksel yer kaplıyor, satın alma butonunu
+          <span class="sayi">1811.</span> piksele itiyordu.</p>
+        <p>Kapalı başlatınca buton <span class="sayi">1064.</span> piksele geldi. Masaüstünde
+          eski davranışı bozmadık; orada yer sıkıntısı yoktu.</p>
       </div>
-    </section>
 
-    <!-- SON CTA -->
-    <section class="section">
-      <div class="container">
-        <div style="text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, rgba(79,158,243,0.15), rgba(149,163,184,0.08)); border-radius: 30px; border: 2px solid var(--accent-1); position: relative; overflow: hidden;">
-          <div style="position: absolute; top: 0; left: 0; right: 0; padding: 1rem; background: linear-gradient(90deg, #ff6b6b, #ffd700);">
-            <p style="color: #012232; font-weight: 800; margin: 0; font-size: 1rem;">⏰ ACİLE ETMEDEN KARAR VERİN: Şubat'a özel %30 indirim!</p>
-          </div>
-
-          <div style="margin-top: 3.5rem;">
-            <h2 class="section-title" style="font-size: 3rem; margin-bottom: 1.5rem;">
-              Her Gün Beklemek =<br>
-              <span style="color: #ff6b6b;">Kayıp Para 💸</span>
-            </h2>
-
-            <p style="color: var(--white); max-width: 700px; margin: 0 auto 2rem; font-size: 1.3rem; line-height: 1.7;">
-              Rakipleriniz şu an müşteri kazanıyor.<br>
-              <strong style="color: var(--accent-1);">Siz hâlâ düşünüyorsunuz mu?</strong>
-            </p>
-
-            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 16px; margin: 2rem auto; max-width: 600px;">
-              <p style="color: var(--white); font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem;">🎁 BUGÜN ARAYANLARA ÖZEL:</p>
-              <ul style="list-style: none; padding: 0; margin: 0; color: var(--white); text-align: left;">
-                <li style="padding: 0.5rem 0;">✅ <strong>Ücretsiz</strong> 30 dakika strateji danışmanlığı</li>
-                <li style="padding: 0.5rem 0;">✅ Rakip analizi raporu (<strong style="color: #ffd700;">₺2.500</strong> değerinde)</li>
-                <li style="padding: 0.5rem 0;">✅ İlk aya özel <strong style="color: #ffd700;">%30 indirim</strong></li>
-                <li style="padding: 0.5rem 0;">✅ Kurulum ücreti <strong>bizden!</strong></li>
-              </ul>
-            </div>
-
-            <a href="https://wa.me/905541386827?text=Merhaba! Artık beklemek istemiyorum. Ücretsiz danışmanlık ve %30 indirim için aradım!" class="btn btn-primary" style="font-size: 1.3rem; padding: 1.3rem 3rem; box-shadow: 0 10px 40px rgba(79,158,243,0.4);">
-              💰 EVET, HEMEN BAŞLAMAK İSTİYORUM!
-            </a>
-
-            <p style="color: var(--muted); margin-top: 2rem; font-size: 0.95rem;">
-              ⚡ Son 48 saatte 15 işletme aramıza katıldı<br>
-              📞 2 dakika içinde yanıt | <a href="tel:+905541386827" style="color: var(--accent-1); text-decoration: none; font-weight: 700;">+90 554 138 6827</a>
-            </p>
-          </div>
-        </div>
+      <div class="ornek">
+        <p>Bir katalogda ürün türü alanında <span class="sayi">71</span> farklı değer vardı:
+          “Yüzük 8”, “Bileklik 15”, “Kolye-5”. Sayılar gramaj değil, sıra numarasıydı.</p>
+        <p>Google Shopping eşleştirmesi bu yüzden tutmuyordu, mağazanın kendi filtresi de
+          onlarca sahte kategori üretiyordu. <span class="sayi">6</span> kategoriye indirdik.
+          Eski değerleri silmeden önce geri dönüş için ayrı bir alana yazdık.</p>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer class="site-footer" role="contentinfo">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <div class="brand">M.Fehmi TOKTAY</div>
-        <p>Dijital Pazarlama Uzmanı</p>
+  <section aria-labelledby="markalar-h">
+    <div class="sarmal">
+      <h2 class="bolum-basligi" id="markalar-h">Birlikte çalıştığım markalar</h2>
+      <div class="markalar">
+        <a class="marka" href="https://blackborkusa.com/" target="_blank" rel="noopener">BlackBörk USA</a>
+        <a class="marka" href="https://blackbork.com.tr/" target="_blank" rel="noopener">BlackBörk TR</a>
+        <a class="marka" href="https://omerhaskuyumculuk.com/" target="_blank" rel="noopener">Ömerhas Kuyumculuk</a>
+        <a class="marka" href="https://nevamkuyumculuk.com/" target="_blank" rel="noopener">Nevam Kuyumculuk</a>
+        <a class="marka" href="https://askinconcept.com.tr/" target="_blank" rel="noopener">Aşkın Concept</a>
+        <a class="marka" href="https://numtexco.com/" target="_blank" rel="noopener">Numtex</a>
+        <a class="marka" href="https://ahenkkuruyemis.com.tr/" target="_blank" rel="noopener">Ahenk Kuruyemiş</a>
+        <a class="marka" href="https://armadateknoloji.com.tr/" target="_blank" rel="noopener">Armada Teknoloji</a>
+        <a class="marka" href="https://modaneslie.com" target="_blank" rel="noopener">Moda Neslie</a>
+        <a class="marka" href="https://variteks.com/" target="_blank" rel="noopener">Variteks</a>
+        <a class="marka" href="https://moonbutik.com/" target="_blank" rel="noopener">Moon Butik</a>
+        <a class="marka" href="https://www.bodyhack.com.tr/" target="_blank" rel="noopener">BodyHack</a>
+        <a class="marka" href="http://www.tuncantekstil.com/" target="_blank" rel="noopener">Tuncan Tekstil</a>
       </div>
-      
-      <div class="footer-links">
-        <div class="footer-col">
-          <h4>Hizmetler</h4>
-          <a href="#services">Sosyal Medya Yönetimi</a>
-          <a href="#services">Reklam Yönetimi</a>
-          <a href="hizmetler.html">Fiyatlandırma</a>
+    </div>
+  </section>
+
+  <section aria-labelledby="taftri-h">
+    <div class="sarmal">
+      <h2 class="bolum-basligi" id="taftri-h">Ajans işleri</h2>
+      <div class="taftri">
+        <h3>Taftri</h3>
+        <p>Ekip gerektiren işler — sürekli reklam yönetimi, içerik üretimi, uzun soluklu
+          mağaza operasyonu — <a href="https://taftri.com/" rel="noopener">taftri.com</a>
+          üzerinden yürüyor. Hizmet kapsamı ve teklif orada.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="iletisim-h">
+    <div class="sarmal">
+      <h2 class="bolum-basligi" id="iletisim-h">İletişim</h2>
+      <div class="iletisim-satir">
+        <div>
+          <span>WhatsApp</span>
+          <a href="https://wa.me/905541386827" target="_blank" rel="noopener">+90 554 138 68 27</a>
         </div>
-        <div class="footer-col">
-          <h4>Kurumsal</h4>
-          <a href="iletisim.html">İletişim</a>
-          <a href="kvkk.html">KVKK</a>
-          <a href="gizlilik.html">Gizlilik Politikası</a>
-          <a href="iade.html">İade Politikası</a>
-        </div>
-        <div class="footer-col">
-          <h4>İletişim</h4>
-          <a href="tel:+905541386827">+90 554 138 6827</a>
-          <a href="https://wa.me/905541386827" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="https://www.instagram.com/m.fehmitoktay" target="_blank" rel="noopener">Instagram</a>
+        <div>
+          <span>Telefon</span>
+          <a href="tel:+905541386827">+90 554 138 68 27</a>
         </div>
       </div>
     </div>
-    
-    <div class="container payment-icons">
-      <p style="color: var(--muted); font-size: 0.85rem; margin-bottom: 0.75rem;">Güvenli Ödeme Altyapısı</p>
-      <img src="logo_band_white@1X.png" alt="Ödeme Altyapısı Simgeleri" style="max-width: 320px; width: 100%; height: auto; opacity: 0.85;">
-    </div>
-    <div class="container footer-bottom">
-      <div>© <span id="year"></span> M.Fehmi TOKTAY – Tüm hakları saklıdır.</div>
-      <div class="social">
-        <a class="social-pill" href="https://www.instagram.com/m.fehmitoktay" target="_blank" rel="noopener">Instagram</a>
-        <a class="social-pill" href="https://wa.me/905541386827" target="_blank" rel="noopener">WhatsApp</a>
-      </div>
-    </div>
-  </footer>
+  </section>
+</main>
 
-  <a class="whatsapp-btn" href="https://wa.me/905541386827" target="_blank" rel="noopener" aria-label="WhatsApp ile iletişime geç">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/>
-    </svg>
-  </a>
+<footer>
+  <div class="sarmal">
+    <div>&copy; <span id="yil">2026</span> M. Fehmi Toktay</div>
+    <div>
+      <a href="/kvkk.html">KVKK</a> &middot;
+      <a href="/gizlilik.html">Gizlilik</a>
+    </div>
+  </div>
+</footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const navToggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('.nav');
-    navToggle.addEventListener('click', () => nav.classList.toggle('open'));
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.header-inner')) nav.classList.remove('open');
-    });
-  </script>
+<script>
+  document.getElementById('yil').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
