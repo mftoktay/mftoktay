@@ -34,7 +34,7 @@ SITE = "https://mftoktay.com"
 BUGUN = date.today().isoformat()
 
 AD = "M. Fehmi Toktay"
-ROL = "Yazılım geliştirici"
+ROL = "Yazılım ve Shopify geliştiricisi"
 TELEFON = "+905541386827"
 TELEFON_YAZI = "+90 554 138 68 27"
 INDEXNOW_ANAHTAR = "a4d17f2c9b6e485fa03c71d8e6b25904"
@@ -1313,7 +1313,7 @@ def yuzey_bolumu(beyaz=False):
 
 
 def ana_sayfa():
-    baslik = "%s — Yazılım geliştirici" % AD
+    baslik = "%s — Yazılım ve Shopify geliştiricisi" % AD
     aciklama = ("Web siteleri ve uygulamalar, işe özel yazılım, entegrasyon ve otomasyon "
                 "geliştiriyorum. E-ticaret tarafında Shopify uygulama ve tema geliştirme.")
 
@@ -1321,7 +1321,7 @@ def ana_sayfa():
   <div class="sarmal sarmal--genis">
     <header class="hero">
       <div>
-        <p class="rol">Yazılım geliştirici</p>
+        <p class="rol">Yazılım ve Shopify geliştiricisi</p>
         <h1 class="ad">Yazılım geliştiriyorum</h1>
         <p>Web siteleri ve uygulamalar, işe özel araçlar, entegrasyonlar ve otomasyon.
           Bir kısmı e-ticaret tarafında — Shopify'da uygulama ve tema geliştiriyorum —
