@@ -512,6 +512,9 @@ HIZMETLER = [
 
 HIZMET_SLUG = {h["slug"]: h for h in HIZMETLER}
 
+# Alt bilgide "Shopify" basligi altinda listelenecek alanlar.
+SHOPIFY_ALANLARI = {"uygulama-gelistirme", "ozel-yazilim", "tema-gelistirme"}
+
 MARKALAR = [
     ("BlackBörk USA", "https://blackborkusa.com/"),
     ("BlackBörk TR", "https://blackbork.com.tr/"),
@@ -693,36 +696,43 @@ def ust(aktif):
 
 
 def alt():
-    hizmet_ler = "".join('<li><a href="/%s/">%s</a></li>' % (h["slug"], kacir(h["ad"]))
-                         for h in HIZMETLER)
-    site_ler = []
+    def satir(yol, ad):
+        return '<li><a href="%s">%s</a></li>' % (yol, kacir(ad))
+
+    web_ler = [satir("/%s/" % h["slug"], h["ad"])
+               for h in HIZMETLER if h["slug"] not in SHOPIFY_ALANLARI]
+    shopify_ler = [satir("/%s/" % h["slug"], h["ad"])
+                   for h in HIZMETLER if h["slug"] in SHOPIFY_ALANLARI]
     if UYGULAMALAR:
-        site_ler.append('<li><a href="/uygulamalar/">Uygulamalar</a></li>')
+        shopify_ler.append(satir("/uygulamalar/", "App Store uygulamalarım"))
     if ISLER:
-        site_ler.append('<li><a href="/isler/">İşler</a></li>')
-    site_ler += ['<li><a href="/teknik/">Teknik yaklaşım</a></li>',
-                 '<li><a href="/yontem/">Yöntem</a></li>',
-                 '<li><a href="/iletisim/">İletişim</a></li>']
+        web_ler.append(satir("/isler/", "Yapılmış işler"))
+    web_ler.append(satir("/yontem/", "Yöntem"))
+    shopify_ler.append(satir("/teknik/", "Teknik yaklaşım"))
+
     return """<footer class="alt">
   <div class="sarmal sarmal--genis">
     <div class="alt__izgara">
       <div class="alt__sutun alt__sutun--ilk">
         <p class="alt__ad">%(ad)s</p>
-        <p class="alt__metin">Yazılım geliştiriyorum: web siteleri ve uygulamalar, işe özel
-          araçlar, entegrasyon ve otomasyon. E-ticaret tarafında Shopify uygulama ve tema.</p>
-        <p class="alt__mono">Python · JavaScript · HTML/CSS · Admin GraphQL API · Liquid</p>
+        <p class="alt__rol">%(rol)s</p>
+        <p class="alt__metin">Web siteleri ve uygulamalar, işe özel araçlar, entegrasyon ve
+          otomasyon geliştiriyorum. <strong>Shopify</strong> tarafında App Store uygulaması,
+          mağazaya özel uygulama ve tema geliştirme.</p>
+        <p class="alt__mono">Python · JavaScript · HTML/CSS · Shopify Admin GraphQL API · Liquid</p>
       </div>
       <div class="alt__sutun">
-        <p class="alt__baslik">Geliştirme</p>
-        <ul>%(hizmetler)s</ul>
+        <p class="alt__baslik">Web ve yazılım</p>
+        <ul>%(webler)s</ul>
       </div>
       <div class="alt__sutun">
-        <p class="alt__baslik">Site</p>
-        <ul>%(siteler)s</ul>
+        <p class="alt__baslik">Shopify</p>
+        <ul>%(shopifyler)s</ul>
       </div>
       <div class="alt__sutun">
         <p class="alt__baslik">İletişim</p>
         <ul>
+          <li><a href="/iletisim/">İletişim sayfası</a></li>
           <li><a href="https://wa.me/%(t)s" target="_blank" rel="noopener">WhatsApp</a></li>
           <li><a href="tel:%(tp)s">%(ty)s</a></li>
           <li><a href="https://taftri.com/" target="_blank" rel="noopener">Taftri — ajans işleri</a></li>
@@ -730,11 +740,12 @@ def alt():
       </div>
     </div>
     <div class="alt__satir">
-      <div>&copy; <span id="yil">%(yil)s</span> %(ad)s</div>
+      <div>&copy; <span id="yil">%(yil)s</span> %(ad)s · %(rol)s</div>
       <div><a href="/kvkk.html">KVKK</a> &middot; <a href="/gizlilik.html">Gizlilik</a></div>
     </div>
   </div>
-</footer>""" % {"ad": AD, "hizmetler": hizmet_ler, "siteler": "".join(site_ler),
+</footer>""" % {"ad": AD, "rol": ROL, "webler": "".join(web_ler),
+                "shopifyler": "".join(shopify_ler),
                 "t": TELEFON.lstrip("+"), "tp": TELEFON, "ty": TELEFON_YAZI,
                 "yil": BUGUN[:4]}
 
@@ -1199,10 +1210,20 @@ a.marka:hover{color:var(--yesil);border-color:var(--yesil-2);background:var(--ye
 
 /* ---------- alt ---------- */
 .alt{flex-shrink:0;padding:52px 0 40px;border-top:1px solid var(--cizgi);background:var(--kagit-2);color:var(--murekkep-3);font-size:15px}
-.alt__izgara{display:grid;gap:30px 32px;grid-template-columns:repeat(auto-fit,minmax(178px,1fr))}
-.alt__sutun--ilk{grid-column:span 2;min-width:240px}
+.alt__izgara{display:grid;gap:30px 32px;grid-template-columns:1fr}
+.alt__sutun--ilk{min-width:0}
+@media (min-width:620px){
+  .alt__izgara{grid-template-columns:repeat(2,1fr)}
+  .alt__sutun--ilk{grid-column:span 2}
+}
+@media (min-width:920px){
+  .alt__izgara{grid-template-columns:1.75fr 1fr 1fr 1.05fr}
+  .alt__sutun--ilk{grid-column:auto}
+}
 .alt__ad{font-family:'Newsreader',Georgia,serif;font-size:18px;font-weight:600;color:var(--murekkep)}
-.alt__metin{margin-top:8px;max-width:44ch;line-height:1.6}
+.alt__rol{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--yesil);margin-top:3px}
+.alt__metin{margin-top:12px;max-width:44ch;line-height:1.6}
+.alt__metin strong{color:var(--murekkep);font-weight:600}
 .alt__mono{margin-top:14px;font-family:var(--mono);font-size:11.5px;color:var(--murekkep-3);line-height:1.9}
 .alt__baslik{font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--murekkep-2);margin-bottom:6px}
 .alt__sutun ul{list-style:none}
@@ -1213,7 +1234,6 @@ a.marka:hover{color:var(--yesil);border-color:var(--yesil-2);background:var(--ye
 .alt__satir{display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:space-between;align-items:center;margin-top:36px;padding-top:18px;border-top:1px solid var(--cizgi);font-size:14px}
 .alt__satir a{display:inline-flex;align-items:center;min-height:32px;padding:4px 0}
 
-@media (max-width:700px){.alt__sutun--ilk{grid-column:span 2}}
 @media (max-width:600px){
   body{font-size:16px}
   .giris{padding-top:34px}
@@ -1228,7 +1248,6 @@ a.marka:hover{color:var(--yesil);border-color:var(--yesil-2);background:var(--ye
   .konsol code{font-size:12.5px}
   .adim{gap:14px}
   .alt__izgara{gap:26px 24px}
-  .alt__sutun--ilk{grid-column:span 1}
 }
 """
 

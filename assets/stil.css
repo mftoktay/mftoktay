@@ -268,10 +268,20 @@ a.marka:hover{color:var(--yesil);border-color:var(--yesil-2);background:var(--ye
 
 /* ---------- alt ---------- */
 .alt{flex-shrink:0;padding:52px 0 40px;border-top:1px solid var(--cizgi);background:var(--kagit-2);color:var(--murekkep-3);font-size:15px}
-.alt__izgara{display:grid;gap:30px 32px;grid-template-columns:repeat(auto-fit,minmax(178px,1fr))}
-.alt__sutun--ilk{grid-column:span 2;min-width:240px}
+.alt__izgara{display:grid;gap:30px 32px;grid-template-columns:1fr}
+.alt__sutun--ilk{min-width:0}
+@media (min-width:620px){
+  .alt__izgara{grid-template-columns:repeat(2,1fr)}
+  .alt__sutun--ilk{grid-column:span 2}
+}
+@media (min-width:920px){
+  .alt__izgara{grid-template-columns:1.75fr 1fr 1fr 1.05fr}
+  .alt__sutun--ilk{grid-column:auto}
+}
 .alt__ad{font-family:'Newsreader',Georgia,serif;font-size:18px;font-weight:600;color:var(--murekkep)}
-.alt__metin{margin-top:8px;max-width:44ch;line-height:1.6}
+.alt__rol{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--yesil);margin-top:3px}
+.alt__metin{margin-top:12px;max-width:44ch;line-height:1.6}
+.alt__metin strong{color:var(--murekkep);font-weight:600}
 .alt__mono{margin-top:14px;font-family:var(--mono);font-size:11.5px;color:var(--murekkep-3);line-height:1.9}
 .alt__baslik{font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--murekkep-2);margin-bottom:6px}
 .alt__sutun ul{list-style:none}
@@ -282,7 +292,6 @@ a.marka:hover{color:var(--yesil);border-color:var(--yesil-2);background:var(--ye
 .alt__satir{display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:space-between;align-items:center;margin-top:36px;padding-top:18px;border-top:1px solid var(--cizgi);font-size:14px}
 .alt__satir a{display:inline-flex;align-items:center;min-height:32px;padding:4px 0}
 
-@media (max-width:700px){.alt__sutun--ilk{grid-column:span 2}}
 @media (max-width:600px){
   body{font-size:16px}
   .giris{padding-top:34px}
@@ -297,7 +306,6 @@ a.marka:hover{color:var(--yesil);border-color:var(--yesil-2);background:var(--ye
   .konsol code{font-size:12.5px}
   .adim{gap:14px}
   .alt__izgara{gap:26px 24px}
-  .alt__sutun--ilk{grid-column:span 1}
 }
 
 .vakalar{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
