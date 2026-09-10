@@ -6,6 +6,7 @@
 <title>Shopify App Store uygulaması geliştirme — M. Fehmi Toktay</title>
 <meta name="description" content="Shopify App Store için uygulama geliştirme: OAuth, gömülü arayüz, Admin GraphQL API, webhook, faturalama ve inceleme süreci." />
 <link rel="canonical" href="https://mftoktay.com/uygulama-gelistirme/" />
+<meta name="theme-color" content="#2F4F3E" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://mftoktay.com/uygulama-gelistirme/" />
 <meta property="og:title" content="Shopify App Store uygulaması geliştirme — M. Fehmi Toktay" />
@@ -26,20 +27,25 @@
 <header class="ust">
   <div class="sarmal sarmal--genis ust__ic">
     <a class="ust__ad" href="/">M. Fehmi Toktay<span class="ust__rol">Shopify uygulama geliştiricisi</span></a>
-    <nav class="ust__menu" aria-label="Ana menü"><a href="/">Ana sayfa</a><a href="/gelistirme/" aria-current="page">Geliştirme</a><a href="/teknik/">Teknik</a><a href="/yontem/">Yöntem</a><a href="/iletisim/">İletişim</a></nav>
+    <button class="menu-dugme" type="button" aria-expanded="false" aria-controls="ana-menu">
+      <span class="menu-dugme__cizgi"></span>
+      <span class="menu-dugme__yazi">Menü</span>
+    </button>
+    <nav class="ust__menu" id="ana-menu" aria-label="Ana menü"><a href="/">Ana sayfa</a><a href="/gelistirme/" aria-current="page">Geliştirme</a><a href="/teknik/">Teknik</a><a href="/yontem/">Yöntem</a><a href="/iletisim/">İletişim</a></nav>
   </div>
 </header>
 <main id="icerik">
 
-  <div class="sarmal"><nav aria-label="Neredesiniz"><ol class="crumbs"><li><a href="/">Ana sayfa</a></li><li><a href="/gelistirme/">Geliştirme</a></li><li aria-current="page">App Store uygulaması</li></ol></nav>
+  <div class="sarmal sarmal--genis"><nav aria-label="Neredesiniz"><ol class="crumbs"><li><a href="/">Ana sayfa</a></li><li><a href="/gelistirme/">Geliştirme</a></li><li aria-current="page">App Store uygulaması</li></ol></nav>
     <header class="giris giris--ic">
       <p class="rol">Geliştirme</p>
       <h1 class="ad ad--ic">Shopify App Store uygulaması geliştirme</h1>
       <p>App Store uygulaması tek bir mağazaya değil bütün mağazalara yazılır. İşin zor kısmı özellikte değil çerçevede: kurulum, yetkilendirme, faturalama ve zorunlu veri uçları Shopify'ın kendi kurallarına uymak zorunda.</p><p>Aynı ihtiyaç birden çok mağazada varsa ve bunu satmayı düşünüyorsanız doğru yol budur. Tek mağazaya özel bir işse <a href="/ozel-yazilim/">özel yazılım</a> hem daha hızlı hem daha ucuz olur.</p>
+      <nav class="sayfa-ici" aria-label="Bu sayfada"><span class="sayfa-ici__etiket">Bu sayfada</span><a href="#kapsam-h">Neleri kapsıyor</a><a href="#kod-h">Kod</a><a href="#surec-h">Nasıl yürüyor</a><a href="#sss-h">Sık sorulanlar</a></nav>
     </header>
   </div>
 
-  <section aria-labelledby="kapsam-h">
+  <section class="bolum" aria-labelledby="kapsam-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="kapsam-h">Neleri kapsıyor</h2>
       <div class="alan"><h3>Yetkilendirme ve oturum</h3><p>OAuth akışı, erişim kapsamlarının dar tutulması, oturum saklama ve yenileme. Geniş kapsam isteyen uygulama hem inceleme aşamasında geri döner hem mağaza sahibini tedirgin eder — istenen her kapsamın kullanıldığı yer gösterilebilmeli.</p></div><div class="alan"><h3>Gömülü arayüz</h3><p>Yönetim panelinin içinde açılan arayüz. Panelin kendi görsel diliyle yazılır, oturum belirteci akışı App Bridge üzerinden yürür; müşteri uygulamadan çıktığını hissetmez.</p></div><div class="alan"><h3>Admin API ve toplu işlemler</h3><p>Ürün, varyant, sipariş ve metafield okuma-yazma. Binlerce kayıtlık işler tek tek istekle değil toplu işlem uçlarıyla yürür; sorgu maliyeti ve hız limiti yönetimi ile kaldığı yerden devam etme baştan kurulur.</p></div><div class="alan"><h3>Webhook ve zorunlu uçlar</h3><p>Sipariş, ürün ve uygulama kaldırma olayları için webhook; ayrıca üç zorunlu veri ucu: müşteri verisi talebi, müşteri verisi silme, mağaza verisi silme. Bu üçü olmadan uygulama yayına alınmıyor.</p></div><div class="alan"><h3>Faturalama</h3><p>Abonelik ya da kullanım bazlı ücretlendirme Shopify'ın kendi faturalama API'si üzerinden kurulur; deneme süresi ve plan değişimi dahil. Dışarıdan ödeme almak kural ihlali.</p></div><div class="alan"><h3>Listeleme ve inceleme</h3><p>Uygulama sayfasının metni, görselleri, kurulum akışının test edilmesi ve incelemeden dönen geri bildirimlerin kapatılması.</p></div>
@@ -47,14 +53,18 @@
     </div>
   </section>
 
-  <section class="kod-bolum" aria-labelledby="kod-h">
+  <section class="bolum bolum--beyaz" aria-labelledby="kod-h">
     <div class="sarmal sarmal--genis">
-      <h2 class="bolum-basligi" id="kod-h">Binlerce ürünü tek istekle çekmek — toplu işlem</h2>
-      <figure class="kod">
-        <figcaption class="kod__ust"><span class="kod__dil">graphql</span></figcaption>
+      <h2 class="bolum-basligi" id="kod-h">Binlerce ürünü tek istekle çekmek</h2>
+      <figure class="konsol">
+        <figcaption class="konsol__ust">
+          <span class="konsol__noktalar"><i></i><i></i><i></i></span>
+          <span class="konsol__ad">uygulama-gelistirme</span>
+          <span class="konsol__dil">graphql</span>
+        </figcaption>
         <pre><code>mutation {
   bulkOperationRunQuery(
-    query: &quot;&quot;&quot;
+    query: <span class="k-dize">&quot;&quot;</span><span class="k-dize">&quot;
     {
       products {
         edges {
@@ -66,7 +76,7 @@
         }
       }
     }
-    &quot;&quot;&quot;
+    &quot;</span><span class="k-dize">&quot;&quot;</span>
   ) {
     bulkOperation { id status }
     userErrors { field message }
@@ -76,48 +86,56 @@
       <p class="kod__not">Toplu işlem sonucu JSONL dosyası olarak indirilir. Aynı veriyi sayfa sayfa çekmek hem hız limitini yakar hem yarıda kalırsa nereden devam edeceğini bilemezsin.</p>
     </div>
   </section>
-  <section aria-labelledby="surec-h">
+  <section class="bolum" aria-labelledby="surec-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="surec-h">Nasıl yürüyor</h2>
-      <div class="alan"><h3>Ne olduğunu ölçerim</h3><p>İlk iş mevcut durumu rakamla tespit etmek. Hangi sayfada, hangi adımda, kaç kayıtta sorun var — bu bilinmeden yazılacak kod tahmine dayanır.</p></div><div class="alan"><h3>Kapsamı yazılı veririm</h3><p>Ne yapılacağı, neyin dışarıda kaldığı ve teslim biçimi baştan yazılır. Sonradan büyüyen iş ikimize de pahalıya patlar.</p></div><div class="alan"><h3>Ayrı temada / geliştirme mağazasında geliştiririm</h3><p>Tema işleri yayınlanmamış bir kopyada yazılır, önizleme adresiyle doğrulanır, sonra canlıya alınır. Uygulama işlerinde geliştirme mağazası kullanılır.</p></div><div class="alan"><h3>Ölçerek teslim ederim</h3><p>Teslimde “yapıldı” demek yetmez; öncesi ve sonrası aynı yöntemle ölçülür. Toplu veri işlerinde eski değerlerin yedeği ve geri alma script'i bırakılır.</p></div>
-      <p class="devam"><a href="/teknik/">Teknik yaklaşım</a> &middot;
-        <a href="/yontem/">ölçüm örnekleri</a></p>
+      <ol class="adimlar"><li class="adim"><span class="adim__no">01</span><div class="adim__ic"><h3>Ne olduğunu ölçerim</h3><p>İlk iş mevcut durumu rakamla tespit etmek. Hangi sayfada, hangi adımda, kaç kayıtta sorun var — bu bilinmeden yazılacak kod tahmine dayanır.</p></div></li><li class="adim"><span class="adim__no">02</span><div class="adim__ic"><h3>Kapsamı yazılı veririm</h3><p>Ne yapılacağı, neyin dışarıda kaldığı ve teslim biçimi baştan yazılır. Sonradan büyüyen iş ikimize de pahalıya patlar.</p></div></li><li class="adim"><span class="adim__no">03</span><div class="adim__ic"><h3>Ayrı temada geliştiririm</h3><p>Tema işleri yayınlanmamış bir kopyada yazılır, önizleme adresiyle doğrulanır, sonra canlıya alınır. Uygulama işlerinde geliştirme mağazası kullanılır.</p></div></li><li class="adim"><span class="adim__no">04</span><div class="adim__ic"><h3>Ölçerek teslim ederim</h3><p>Teslimde “yapıldı” demek yetmez; öncesi ve sonrası aynı yöntemle ölçülür. Toplu veri işlerinde eski değerlerin yedeği ve geri alma script'i bırakılır.</p></div></li></ol>
+      <p class="devam"><a href="/teknik/">Teknik yaklaşım →</a></p>
     </div>
   </section>
 
-  <section aria-labelledby="sss-h">
+  <section class="bolum bolum--beyaz" aria-labelledby="sss-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="sss-h">Sık sorulanlar</h2>
-      <div class="sss"><h3>Uygulama ne kadar sürede yayına girer?</h3><p>Geliştirme süresi kapsama göre değişir. Yayın tarafında Shopify'ın kendi inceleme süreci var; süresi başvuruya göre değişiyor ve kimse tarafından garanti edilemez. Vakit kaybettiren şey genelde inceleme değil, incelemeden dönen eksikler oluyor.</p></div><div class="sss"><h3>Gömülü mü olmalı?</h3><p>Yönetim paneli içinde çalışan uygulamalar hem daha çok kuruluyor hem listelemede avantajlı. Panelin dışında çalışmasını gerektiren özel bir durum yoksa gömülü yazıyorum.</p></div><div class="sss"><h3>Uygulama kaldırılınca veriye ne oluyor?</h3><p>Kaldırma olayı webhook ile yakalanır, mağazanın verisi zorunlu süre içinde silinir. Bu hem kural gereği hem müşteriye açıkça söylenmesi gereken bir şey.</p></div><div class="sss"><h3>Kaynak kod kimde kalıyor?</h3><p>App Store uygulamalarında kaynak bende kalır, siz aboneliği kullanırsınız. Kaynağın size geçmesi gereken işler mağazaya özel uygulama olarak yürür.</p></div>
+      <div class="sss-liste"><details class="sss"><summary>Uygulama ne kadar sürede yayına girer?</summary><p>Geliştirme süresi kapsama göre değişir. Yayın tarafında Shopify'ın kendi inceleme süreci var; süresi başvuruya göre değişiyor ve kimse tarafından garanti edilemez. Vakit kaybettiren şey genelde inceleme değil, incelemeden dönen eksikler oluyor.</p></details><details class="sss"><summary>Gömülü mü olmalı?</summary><p>Yönetim paneli içinde çalışan uygulamalar hem daha çok kuruluyor hem listelemede avantajlı. Panelin dışında çalışmasını gerektiren özel bir durum yoksa gömülü yazıyorum.</p></details><details class="sss"><summary>Uygulama kaldırılınca veriye ne oluyor?</summary><p>Kaldırma olayı webhook ile yakalanır, mağazanın verisi zorunlu süre içinde silinir. Bu hem kural gereği hem müşteriye açıkça söylenmesi gereken bir şey.</p></details><details class="sss"><summary>Kaynak kod kimde kalıyor?</summary><p>App Store uygulamalarında kaynak bende kalır, siz aboneliği kullanırsınız. Kaynağın size geçmesi gereken işler mağazaya özel uygulama olarak yürür.</p></details></div>
     </div>
   </section>
-  <section aria-labelledby="diger-h">
+  <section class="bolum" aria-labelledby="diger-h">
     <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="diger-h">Diğer geliştirme alanları</h2>
       <div class="kartlar"><a class="kart" href="/ozel-yazilim/">
+          <span class="kart__ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2.8l8.2 4.1v10.2L12 21.2l-8.2-4.1V6.9z"/><path d="M3.8 6.9L12 11l8.2-4.1M12 11v10.2"/></svg></span>
           <span class="kart__ust">Geliştirme</span>
           <span class="kart__baslik">Mağazaya özel uygulama</span>
           <span class="kart__ozet">App Store'a çıkmayan, tek mağaza için yazılan uygulama.</span>
+          <span class="kart__ok" aria-hidden="true">→</span>
         </a><a class="kart" href="/tema-gelistirme/">
+          <span class="kart__ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.8" y="4.2" width="18.4" height="15.6" rx="2.2"/><path d="M2.8 9.2h18.4"/><path d="M6.2 6.7h.01M9.1 6.7h.01"/></svg></span>
           <span class="kart__ust">Geliştirme</span>
           <span class="kart__baslik">Tema geliştirme</span>
           <span class="kart__ozet">Liquid tarafında bölüm ve blok yazımı, mevcut temaya özellik ekleme.</span>
+          <span class="kart__ok" aria-hidden="true">→</span>
         </a><a class="kart" href="/entegrasyon/">
+          <span class="kart__ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="5.6" cy="12" r="2.6"/><circle cx="18.4" cy="12" r="2.6"/><path d="M8.2 12h7.6"/><path d="M13.2 9.2l2.8 2.8-2.8 2.8"/></svg></span>
           <span class="kart__ust">Geliştirme</span>
           <span class="kart__baslik">Entegrasyon ve otomasyon</span>
           <span class="kart__ozet">Admin API üzerinden dış sistem bağlantısı ve toplu veri işleri.</span>
+          <span class="kart__ok" aria-hidden="true">→</span>
         </a></div>
     </div>
   </section>
 
   <section class="cta" aria-labelledby="cta-h">
     <div class="sarmal sarmal--genis">
-      <div class="cta__kutu">
+      <div class="cta__ic">
         <div>
           <h2 id="cta-h">Bu işin sizdeki karşılığı ne?</h2>
           <p>Mevcut durumu anlatın; ölçüp ne gerektiğini söyleyeyim.</p>
         </div>
-        <a class="btn" href="/iletisim/">İletişime geç</a>
+        <div class="cta__butonlar">
+          <a class="btn" href="/iletisim/">İletişime geç</a>
+          <a class="btn btn--sade" href="https://wa.me/905541386827" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
       </div>
     </div>
   </section>
@@ -154,6 +172,6 @@
     </div>
   </div>
 </footer>
-<script>document.getElementById('yil').textContent=new Date().getFullYear();</script>
+<script src="/assets/site.js" defer></script>
 </body>
 </html>

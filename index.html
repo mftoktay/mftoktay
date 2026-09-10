@@ -6,6 +6,7 @@
 <title>M. Fehmi Toktay — Shopify uygulama geliştiricisi</title>
 <meta name="description" content="Shopify için yazılım geliştiriyorum: App Store uygulamaları, mağazaya özel uygulamalar, Liquid tema geliştirme ve Admin API entegrasyonları." />
 <link rel="canonical" href="https://mftoktay.com/" />
+<meta name="theme-color" content="#2F4F3E" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://mftoktay.com/" />
 <meta property="og:title" content="M. Fehmi Toktay — Shopify uygulama geliştiricisi" />
@@ -25,60 +26,105 @@
 <header class="ust">
   <div class="sarmal sarmal--genis ust__ic">
     <a class="ust__ad" href="/">M. Fehmi Toktay<span class="ust__rol">Shopify uygulama geliştiricisi</span></a>
-    <nav class="ust__menu" aria-label="Ana menü"><a href="/" aria-current="page">Ana sayfa</a><a href="/gelistirme/">Geliştirme</a><a href="/teknik/">Teknik</a><a href="/yontem/">Yöntem</a><a href="/iletisim/">İletişim</a></nav>
+    <button class="menu-dugme" type="button" aria-expanded="false" aria-controls="ana-menu">
+      <span class="menu-dugme__cizgi"></span>
+      <span class="menu-dugme__yazi">Menü</span>
+    </button>
+    <nav class="ust__menu" id="ana-menu" aria-label="Ana menü"><a href="/" aria-current="page">Ana sayfa</a><a href="/gelistirme/">Geliştirme</a><a href="/teknik/">Teknik</a><a href="/yontem/">Yöntem</a><a href="/iletisim/">İletişim</a></nav>
   </div>
 </header>
 <main id="icerik">
 
-  <div class="sarmal">
-    <header class="giris">
-      <p class="rol">Shopify · Admin GraphQL API · Liquid</p>
-      <h1 class="ad">Shopify için yazılım geliştiriyorum</h1>
-      <p>Bir kısmı App Store'da herkese açık uygulama olarak çıkıyor, bir kısmı tek bir
-        mağaza için yazılıp orada kalıyor. Tema ve entegrasyon işleri de aynı elden.</p>
-      <p>İkisinin ortak yanı şu: iş yeni bir şey icat etmekle değil,
-        <strong>ölçmekle</strong> başlıyor. Bir butonun sayfanın kaçıncı pikselinde
-        durduğunu bilmeden onu yukarı almanın anlamı yok.</p>
+  <div class="sarmal sarmal--genis">
+    <header class="hero">
+      <div>
+        <p class="rol">Shopify uygulama geliştiricisi</p>
+        <h1 class="ad">Shopify için yazılım geliştiriyorum</h1>
+        <p>Bir kısmı App Store'da herkese açık uygulama olarak çıkıyor, bir kısmı tek bir
+          mağaza için yazılıp orada kalıyor. Tema ve entegrasyon işleri de aynı elden.</p>
+        <p>İkisinin ortak yanı şu: iş yeni bir şey icat etmekle değil,
+          <strong>ölçmekle</strong> başlıyor.</p>
+        <div class="hero__butonlar">
+          <a class="btn" href="/gelistirme/">Ne geliştiriyorum</a>
+          <a class="btn btn--sade" href="/iletisim/">İletişime geç</a>
+        </div>
+      </div>
+      <figure class="konsol">
+        <figcaption class="konsol__ust">
+          <span class="konsol__noktalar"><i></i><i></i><i></i></span>
+          <span class="konsol__ad">admin-api</span>
+          <span class="konsol__dil">graphql</span>
+        </figcaption>
+        <pre><code>query VaryantDurumu($id: ID!) {
+  productVariant(id: $id) {
+    sku
+    inventoryQuantity
+    price
+    product {
+      title
+      vendor
+    }
+  }
+}</code></pre>
+      </figure>
     </header>
   </div>
-
-  <section aria-labelledby="alanlar-h">
+  <section class="serit" aria-label="Ölçülmüş sonuçlar">
+    <div class="sarmal sarmal--genis">
+      <div class="serit__izgara"><div class="serit__oge"><span class="serit__sayi">1147 → 948</span><span class="serit__birim">px</span><span class="serit__not">satın alma butonu mobilde yukarı taşındı</span></div><div class="serit__oge"><span class="serit__sayi">1811 → 1064</span><span class="serit__birim">px</span><span class="serit__not">detay paneli kapalı başlatılınca</span></div><div class="serit__oge"><span class="serit__sayi">71 → 6</span><span class="serit__birim">kategori</span><span class="serit__not">ürün türü alanı sadeleştirildi</span></div><div class="serit__oge"><span class="serit__sayi">13</span><span class="serit__birim">marka</span><span class="serit__not">birlikte çalışılan mağaza</span></div></div>
+      <p class="serit__kaynak">Hepsi gerçek mağazalarda ölçüldü ·
+        <a href="/yontem/">nasıl ölçüldüğü</a></p>
+    </div>
+  </section>
+  <section class="bolum" aria-labelledby="alanlar-h">
     <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="alanlar-h">Ne geliştiriyorum</h2>
       <div class="kartlar"><a class="kart" href="/uygulama-gelistirme/">
+          <span class="kart__ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/><path d="M17.25 13.9v6.7M13.9 17.25h6.7"/></svg></span>
           <span class="kart__ust">Geliştirme</span>
           <span class="kart__baslik">App Store uygulaması</span>
           <span class="kart__ozet">Herkese açık, mağazaya kurulup abonelikle kullanılan uygulama.</span>
+          <span class="kart__ok" aria-hidden="true">→</span>
         </a><a class="kart" href="/ozel-yazilim/">
+          <span class="kart__ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2.8l8.2 4.1v10.2L12 21.2l-8.2-4.1V6.9z"/><path d="M3.8 6.9L12 11l8.2-4.1M12 11v10.2"/></svg></span>
           <span class="kart__ust">Geliştirme</span>
           <span class="kart__baslik">Mağazaya özel uygulama</span>
           <span class="kart__ozet">App Store'a çıkmayan, tek mağaza için yazılan uygulama.</span>
+          <span class="kart__ok" aria-hidden="true">→</span>
         </a><a class="kart" href="/tema-gelistirme/">
+          <span class="kart__ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.8" y="4.2" width="18.4" height="15.6" rx="2.2"/><path d="M2.8 9.2h18.4"/><path d="M6.2 6.7h.01M9.1 6.7h.01"/></svg></span>
           <span class="kart__ust">Geliştirme</span>
           <span class="kart__baslik">Tema geliştirme</span>
           <span class="kart__ozet">Liquid tarafında bölüm ve blok yazımı, mevcut temaya özellik ekleme.</span>
+          <span class="kart__ok" aria-hidden="true">→</span>
         </a><a class="kart" href="/entegrasyon/">
+          <span class="kart__ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="5.6" cy="12" r="2.6"/><circle cx="18.4" cy="12" r="2.6"/><path d="M8.2 12h7.6"/><path d="M13.2 9.2l2.8 2.8-2.8 2.8"/></svg></span>
           <span class="kart__ust">Geliştirme</span>
           <span class="kart__baslik">Entegrasyon ve otomasyon</span>
           <span class="kart__ozet">Admin API üzerinden dış sistem bağlantısı ve toplu veri işleri.</span>
+          <span class="kart__ok" aria-hidden="true">→</span>
         </a></div>
-      <p class="devam"><a href="/gelistirme/">Geliştirme alanlarının tamamı</a></p>
+      <p class="devam"><a href="/gelistirme/">Geliştirme alanlarının tamamı →</a></p>
     </div>
   </section>
-  <section aria-labelledby="yuzey-h">
+  <section class="bolum bolum--beyaz" aria-labelledby="yuzey-h">
     <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="yuzey-h">Çalıştığım platform yüzeyleri</h2>
-      <div class="yuzeyler"><div class="yuzey"><span class="yuzey__ad">Admin GraphQL API</span><span class="yuzey__not">ürün, varyant, sipariş, metafield okuma ve yazma</span></div><div class="yuzey"><span class="yuzey__ad">Bulk Operations</span><span class="yuzey__not">binlerce kayıtlık iş; sonuç JSONL olarak indirilir</span></div><div class="yuzey"><span class="yuzey__ad">Webhooks</span><span class="yuzey__not">olay yakalama, HMAC doğrulama, idempotent işleme</span></div><div class="yuzey"><span class="yuzey__ad">OAuth ve Billing API</span><span class="yuzey__not">kurulum akışı, kapsam yönetimi, abonelik ücretlendirmesi</span></div><div class="yuzey"><span class="yuzey__ad">App Bridge ve Polaris</span><span class="yuzey__not">yönetim paneli içinde açılan gömülü arayüz</span></div><div class="yuzey"><span class="yuzey__ad">Liquid / Online Store 2.0</span><span class="yuzey__not">bölüm ve blok yazımı, tema editöründen yönetim</span></div><div class="yuzey"><span class="yuzey__ad">Storefront ve Ajax API</span><span class="yuzey__not">sepet işlemleri, tema içi dinamik davranış</span></div><div class="yuzey"><span class="yuzey__ad">Metafield ve Metaobject</span><span class="yuzey__not">ürün künyesi ve yapılandırılmış veri</span></div><div class="yuzey"><span class="yuzey__ad">URL Redirect</span><span class="yuzey__not">geçişlerde yönlendirme haritası</span></div><div class="yuzey"><span class="yuzey__ad">Theme CLI</span><span class="yuzey__not">yayınlanmamış temada geliştirme, önizleme, canlıya alma</span></div></div>
+      <div class="yuzeyler"><div class="yuzey"><span class="yuzey__ad">Admin GraphQL API</span><span class="yuzey__not">ürün, varyant, sipariş, metafield okuma ve yazma</span></div><div class="yuzey"><span class="yuzey__ad">Bulk Operations</span><span class="yuzey__not">binlerce kayıtlık iş; sonuç JSONL olarak indirilir</span></div><div class="yuzey"><span class="yuzey__ad">Webhooks</span><span class="yuzey__not">olay yakalama, HMAC doğrulama, idempotent işleme</span></div><div class="yuzey"><span class="yuzey__ad">OAuth · Billing API</span><span class="yuzey__not">kurulum akışı, kapsam yönetimi, abonelik ücretlendirmesi</span></div><div class="yuzey"><span class="yuzey__ad">App Bridge · Polaris</span><span class="yuzey__not">yönetim paneli içinde açılan gömülü arayüz</span></div><div class="yuzey"><span class="yuzey__ad">Liquid · Online Store 2.0</span><span class="yuzey__not">bölüm ve blok yazımı, tema editöründen yönetim</span></div><div class="yuzey"><span class="yuzey__ad">Storefront · Ajax API</span><span class="yuzey__not">sepet işlemleri, tema içi dinamik davranış</span></div><div class="yuzey"><span class="yuzey__ad">Metafield · Metaobject</span><span class="yuzey__not">ürün künyesi ve yapılandırılmış veri</span></div><div class="yuzey"><span class="yuzey__ad">URL Redirect</span><span class="yuzey__not">geçişlerde yönlendirme haritası</span></div><div class="yuzey"><span class="yuzey__ad">Theme CLI</span><span class="yuzey__not">yayınlanmamış temada geliştirme, önizleme, canlıya alma</span></div></div>
     </div>
   </section>
-  <section class="kod-bolum" aria-labelledby="kod-h">
+  <section class="bolum bolum--beyaz" aria-labelledby="kod-h">
     <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="kod-h">Binlerce kayıtlık iş nasıl yürür</h2>
-      <figure class="kod">
-        <figcaption class="kod__ust"><span class="kod__dil">graphql</span></figcaption>
+      <figure class="konsol">
+        <figcaption class="konsol__ust">
+          <span class="konsol__noktalar"><i></i><i></i><i></i></span>
+          <span class="konsol__ad">bulk-operation</span>
+          <span class="konsol__dil">graphql</span>
+        </figcaption>
         <pre><code>mutation {
   bulkOperationRunQuery(
-    query: &quot;&quot;&quot;
+    query: <span class="k-dize">&quot;&quot;</span><span class="k-dize">&quot;
     {
       products {
         edges {
@@ -90,7 +136,7 @@
         }
       }
     }
-    &quot;&quot;&quot;
+    &quot;</span><span class="k-dize">&quot;&quot;</span>
   ) {
     bulkOperation { id status }
     userErrors { field message }
@@ -100,39 +146,38 @@
       <p class="kod__not">Toplu işlem sonucu JSONL dosyası olarak indirilir. Aynı veriyi sayfa sayfa çekmek hem hız limitini yakar hem yarıda kalırsa nereden devam edeceğini bilemezsin.</p>
     </div>
   </section>
-  <section aria-labelledby="yontem-h">
+  <section class="bolum" aria-labelledby="yontem-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="yontem-h">Nasıl çalışıyorum</h2>
-      <div class="ornek"><p>Bir kuyum mağazasında “Sepete Ekle” butonu mobilde <span class="sayi">1147.</span> pikseldeydi. Müşteri bir buçuk ekran boyunca hiçbir satın alma tetikleyicisi görmüyordu.</p><p>Fiyat kırılımı ve ürün künyesi karar öncesi değil, karar sonrası bilgi. İkisini de butonun altına aldık; buton <span class="sayi">948.</span> piksele çıktı.</p></div>
-      <p class="devam"><a href="/yontem/">Ölçüm örneklerinin tamamı</a> &middot;
-        <a href="/teknik/">teknik yaklaşım</a></p>
+      <ol class="adimlar"><li class="adim"><span class="adim__no">01</span><div class="adim__ic"><h3>Ne olduğunu ölçerim</h3><p>İlk iş mevcut durumu rakamla tespit etmek. Hangi sayfada, hangi adımda, kaç kayıtta sorun var — bu bilinmeden yazılacak kod tahmine dayanır.</p></div></li><li class="adim"><span class="adim__no">02</span><div class="adim__ic"><h3>Kapsamı yazılı veririm</h3><p>Ne yapılacağı, neyin dışarıda kaldığı ve teslim biçimi baştan yazılır. Sonradan büyüyen iş ikimize de pahalıya patlar.</p></div></li><li class="adim"><span class="adim__no">03</span><div class="adim__ic"><h3>Ayrı temada geliştiririm</h3><p>Tema işleri yayınlanmamış bir kopyada yazılır, önizleme adresiyle doğrulanır, sonra canlıya alınır. Uygulama işlerinde geliştirme mağazası kullanılır.</p></div></li><li class="adim"><span class="adim__no">04</span><div class="adim__ic"><h3>Ölçerek teslim ederim</h3><p>Teslimde “yapıldı” demek yetmez; öncesi ve sonrası aynı yöntemle ölçülür. Toplu veri işlerinde eski değerlerin yedeği ve geri alma script'i bırakılır.</p></div></li></ol>
+      <p class="devam"><a href="/yontem/">Ölçüm örneklerinin tamamı →</a></p>
     </div>
   </section>
-  <section aria-labelledby="markalar-h">
+  <section class="bolum bolum--beyaz" aria-labelledby="markalar-h">
     <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="markalar-h">Birlikte çalıştığım markalar</h2>
       <div class="markalar"><a class="marka" href="https://blackborkusa.com/" target="_blank" rel="noopener">BlackBörk USA</a><a class="marka" href="https://blackbork.com.tr/" target="_blank" rel="noopener">BlackBörk TR</a><a class="marka" href="https://omerhaskuyumculuk.com/" target="_blank" rel="noopener">Ömerhas Kuyumculuk</a><a class="marka" href="https://nevamkuyumculuk.com/" target="_blank" rel="noopener">Nevam Kuyumculuk</a><a class="marka" href="https://askinconcept.com.tr/" target="_blank" rel="noopener">Aşkın Concept</a><a class="marka" href="https://numtexco.com/" target="_blank" rel="noopener">Numtex</a><a class="marka" href="https://ahenkkuruyemis.com.tr/" target="_blank" rel="noopener">Ahenk Kuruyemiş</a><a class="marka" href="https://armadateknoloji.com.tr/" target="_blank" rel="noopener">Armada Teknoloji</a><a class="marka" href="https://modaneslie.com" target="_blank" rel="noopener">Moda Neslie</a><a class="marka" href="https://variteks.com/" target="_blank" rel="noopener">Variteks</a><a class="marka" href="https://moonbutik.com/" target="_blank" rel="noopener">Moon Butik</a><a class="marka" href="https://www.bodyhack.com.tr/" target="_blank" rel="noopener">BodyHack</a><a class="marka" href="http://www.tuncantekstil.com/" target="_blank" rel="noopener">Tuncan Tekstil</a></div>
-    </div>
-  </section>
-  <section aria-labelledby="taftri-h">
-    <div class="sarmal">
-      <h2 class="bolum-basligi" id="taftri-h">Ajans işleri</h2>
-      <div class="taftri">
-        <h3>Taftri</h3>
-        <p>Ekip gerektiren işler — sürekli reklam yönetimi, içerik üretimi, uzun soluklu
-          mağaza operasyonu — <a href="https://taftri.com/" rel="noopener">taftri.com</a>
-          üzerinden yürüyor. Hizmet kapsamı ve teklif orada.</p>
+      <div class="taftri" style="margin-top:34px">
+        <div>
+          <h3>Ajans işleri Taftri üzerinden</h3>
+          <p>Ekip gerektiren işler — sürekli reklam yönetimi, içerik üretimi, uzun soluklu
+            mağaza operasyonu.</p>
+        </div>
+        <a class="btn btn--sade" href="https://taftri.com/" rel="noopener">taftri.com</a>
       </div>
     </div>
   </section>
   <section class="cta" aria-labelledby="cta-h">
     <div class="sarmal sarmal--genis">
-      <div class="cta__kutu">
+      <div class="cta__ic">
         <div>
           <h2 id="cta-h">Aklınızda bir şey var mı?</h2>
           <p>Ne yapılması gerektiğini söylemek çoğu zaman kısa sürüyor.</p>
         </div>
-        <a class="btn" href="/iletisim/">İletişime geç</a>
+        <div class="cta__butonlar">
+          <a class="btn" href="/iletisim/">İletişime geç</a>
+          <a class="btn btn--sade" href="https://wa.me/905541386827" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
       </div>
     </div>
   </section>
@@ -169,6 +214,6 @@
     </div>
   </div>
 </footer>
-<script>document.getElementById('yil').textContent=new Date().getFullYear();</script>
+<script src="/assets/site.js" defer></script>
 </body>
 </html>

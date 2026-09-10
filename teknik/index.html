@@ -6,6 +6,7 @@
 <title>Teknik yaklaşım — Shopify geliştirme</title>
 <meta name="description" content="API sürüm yönetimi, hız limiti, webhook imza doğrulama, idempotent işleme, geri alınabilir toplu iş ve doğrulama disiplini." />
 <link rel="canonical" href="https://mftoktay.com/teknik/" />
+<meta name="theme-color" content="#2F4F3E" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://mftoktay.com/teknik/" />
 <meta property="og:title" content="Teknik yaklaşım — Shopify geliştirme" />
@@ -24,7 +25,11 @@
 <header class="ust">
   <div class="sarmal sarmal--genis ust__ic">
     <a class="ust__ad" href="/">M. Fehmi Toktay<span class="ust__rol">Shopify uygulama geliştiricisi</span></a>
-    <nav class="ust__menu" aria-label="Ana menü"><a href="/">Ana sayfa</a><a href="/gelistirme/">Geliştirme</a><a href="/teknik/" aria-current="page">Teknik</a><a href="/yontem/">Yöntem</a><a href="/iletisim/">İletişim</a></nav>
+    <button class="menu-dugme" type="button" aria-expanded="false" aria-controls="ana-menu">
+      <span class="menu-dugme__cizgi"></span>
+      <span class="menu-dugme__yazi">Menü</span>
+    </button>
+    <nav class="ust__menu" id="ana-menu" aria-label="Ana menü"><a href="/">Ana sayfa</a><a href="/gelistirme/">Geliştirme</a><a href="/teknik/" aria-current="page">Teknik</a><a href="/yontem/">Yöntem</a><a href="/iletisim/">İletişim</a></nav>
   </div>
 </header>
 <main id="icerik">
@@ -33,54 +38,64 @@
     <header class="giris giris--ic">
       <p class="rol">Teknik yaklaşım</p>
       <h1 class="ad ad--ic">Nasıl yazıyorum</h1>
-      <p>Aşağıdakiler tercih değil, sahada bir kere kaybedip öğrenilmiş kurallar.
-        Hepsi bir hataya mal olmuş; bu yüzden istisnasız uygulanıyor.</p>
+      <p>Aşağıdakiler tercih değil, sahada bir kere kaybedip öğrenilmiş kurallar. Hepsi bir
+        hataya mal olmuş; bu yüzden istisnasız uygulanıyor.</p>
+      <nav class="sayfa-ici" aria-label="Bu sayfada"><span class="sayfa-ici__etiket">Bu sayfada</span><a href="#ilke-h">İlkeler</a><a href="#kod-h">Kod</a><a href="#yuzey-h">Platform yüzeyleri</a></nav>
     </header>
   </div>
 
-  <section aria-labelledby="ilke-h">
+  <section class="bolum" aria-labelledby="ilke-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="ilke-h">İlkeler</h2>
-      <div class="alan"><h3>API sürümü koda gömülü kalmaz</h3><p>Shopify API'si dönemsel sürümler yayınlıyor ve her sürüm sınırlı süre destekleniyor. Uygulama bir sürüme kilitlenir, yükseltme planlı yapılır. Sürüm adı kodun içine dağılmışsa bir gün sessizce kırılır — tek yerden yönetilir.</p></div><div class="alan"><h3>Hız limiti baştan hesaba katılır</h3><p>Admin GraphQL API sorgu maliyeti hesaplayıp bütçeye göre sınırlıyor. Toplu işlerde sayfa sayfa gezmek yerine toplu işlem uçları kullanılır; sınıra yaklaşıldığında geri çekilme ve yeniden deneme mantığı kurulur.</p></div><div class="alan"><h3>Her webhook doğrulanır, her işlem idempotent yazılır</h3><p>Gelen isteğin imzası uygulama gizli anahtarıyla doğrulanmadan hiçbir şey işlenmez. Aynı olay birden çok kez gelebilir; ikinci işlem bir şey değiştirmemeli.</p></div><div class="alan"><h3>Kapsam dar istenir</h3><p>İstenen her erişim kapsamının kullanıldığı yer gösterilebilmeli. Geniş kapsam hem incelemede geri döner hem mağaza sahibini tedirgin eder. Yeni kapsam gerektiğinde yeniden yetkilendirme istenir.</p></div><div class="alan"><h3>Toplu iş loglanır ve geri alınabilir</h3><p>İş gruplar hâlinde yürür, her adım satır satır log dosyasına yazılır, yarıda kalırsa kaldığı yerden devam eder. Değişen alanların eski değerleri kimlikleriyle saklanır.</p></div><div class="alan"><h3>Doğrulama kaynağın kendisinden yapılır</h3><p>Başarı çıktısına güvenilmez: yazılan değişiklik geri çekilip aranır. Sayfa önbelleği kaynakla aynı değildir; doğrulama panelden ya da API'den yapılır, tarayıcıdan değil.</p></div><div class="alan"><h3>Silmeden önce yönlendirme kurulur</h3><p>Koleksiyon, sayfa ya da ürün silinecekse önce 301 kurulur, sonra silinir, sonra yönlendirmenin çalıştığı doğrulanır. Sıra bu değilse adres bir süre 404 verir.</p></div><div class="alan"><h3>Ölçüm CSS okuyarak değil, tarayıcıdan yapılır</h3><p>Hangi kuralın kazandığı özgüllük yarışıyla belirlenir; kaynağa bakarak tahmin etmek yanıltır. Konum ve boyut değerleri çalışan sayfadan okunur.</p></div>
+      <div class="alan" style="display:grid;grid-template-columns:auto 1fr;gap:16px"><span class="kart__ikon" style="margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6.6 4.2v10.1M6.6 21.1a2.9 2.9 0 1 0 0-5.8 2.9 2.9 0 0 0 0 5.8z"/><path d="M17.4 8.6a2.9 2.9 0 1 0 0-5.8 2.9 2.9 0 0 0 0 5.8z"/><path d="M17.4 8.6v3.1c0 2-1.6 3.6-3.6 3.6h-3"/></svg></span><div><h3>API sürümü koda gömülü kalmaz</h3><p>Shopify API'si dönemsel sürümler yayınlıyor ve her sürüm sınırlı süre destekleniyor. Uygulama bir sürüme kilitlenir, yükseltme planlı yapılır. Sürüm adı kodun içine dağılmışsa bir gün sessizce kırılır — tek yerden yönetilir.</p></div></div><div class="alan" style="display:grid;grid-template-columns:auto 1fr;gap:16px"><span class="kart__ikon" style="margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 20.5V9.8M9.8 20.5V4.4M16.1 20.5v-7.3M22 20.5H2"/></svg></span><div><h3>Hız limiti baştan hesaba katılır</h3><p>Admin GraphQL API sorgu maliyeti hesaplayıp bütçeye göre sınırlıyor. Toplu işlerde sayfa sayfa gezmek yerine toplu işlem uçları kullanılır; sınıra yaklaşıldığında geri çekilme ve yeniden deneme mantığı kurulur.</p></div></div><div class="alan" style="display:grid;grid-template-columns:auto 1fr;gap:16px"><span class="kart__ikon" style="margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2.9l7.4 2.9v5.6c0 4.4-3 8.1-7.4 9.7-4.4-1.6-7.4-5.3-7.4-9.7V5.8z"/><path d="M9.1 12.1l2 2 3.8-3.9"/></svg></span><div><h3>Her webhook doğrulanır, her işlem idempotent yazılır</h3><p>Gelen isteğin imzası uygulama gizli anahtarıyla doğrulanmadan hiçbir şey işlenmez. Aynı olay birden çok kez gelebilir; ikinci işlem bir şey değiştirmemeli.</p></div></div><div class="alan" style="display:grid;grid-template-columns:auto 1fr;gap:16px"><span class="kart__ikon" style="margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2.9l7.4 2.9v5.6c0 4.4-3 8.1-7.4 9.7-4.4-1.6-7.4-5.3-7.4-9.7V5.8z"/><path d="M9.1 12.1l2 2 3.8-3.9"/></svg></span><div><h3>Kapsam dar istenir</h3><p>İstenen her erişim kapsamının kullanıldığı yer gösterilebilmeli. Geniş kapsam hem incelemede geri döner hem mağaza sahibini tedirgin eder. Yeni kapsam gerektiğinde yeniden yetkilendirme istenir.</p></div></div><div class="alan" style="display:grid;grid-template-columns:auto 1fr;gap:16px"><span class="kart__ikon" style="margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 8.6h6.1V2.5"/><path d="M4.6 15.2a8.3 8.3 0 1 0 .6-6"/></svg></span><div><h3>Toplu iş loglanır ve geri alınabilir</h3><p>İş gruplar hâlinde yürür, her adım satır satır log dosyasına yazılır, yarıda kalırsa kaldığı yerden devam eder. Değişen alanların eski değerleri kimlikleriyle saklanır.</p></div></div><div class="alan" style="display:grid;grid-template-columns:auto 1fr;gap:16px"><span class="kart__ikon" style="margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 20.5V9.8M9.8 20.5V4.4M16.1 20.5v-7.3M22 20.5H2"/></svg></span><div><h3>Doğrulama kaynağın kendisinden yapılır</h3><p>Başarı çıktısına güvenilmez: yazılan değişiklik geri çekilip aranır. Sayfa önbelleği kaynakla aynı değildir; doğrulama panelden ya da API'den yapılır, tarayıcıdan değil.</p></div></div><div class="alan" style="display:grid;grid-template-columns:auto 1fr;gap:16px"><span class="kart__ikon" style="margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 8.6h6.1V2.5"/><path d="M4.6 15.2a8.3 8.3 0 1 0 .6-6"/></svg></span><div><h3>Silmeden önce yönlendirme kurulur</h3><p>Koleksiyon, sayfa ya da ürün silinecekse önce 301 kurulur, sonra silinir, sonra yönlendirmenin çalıştığı doğrulanır. Sıra bu değilse adres bir süre 404 verir.</p></div></div><div class="alan" style="display:grid;grid-template-columns:auto 1fr;gap:16px"><span class="kart__ikon" style="margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.5 20.5V9.8M9.8 20.5V4.4M16.1 20.5v-7.3M22 20.5H2"/></svg></span><div><h3>Ölçüm CSS okuyarak değil, tarayıcıdan yapılır</h3><p>Hangi kuralın kazandığı özgüllük yarışıyla belirlenir; kaynağa bakarak tahmin etmek yanıltır. Konum ve boyut değerleri çalışan sayfadan okunur.</p></div></div>
     </div>
   </section>
 
-  <section class="kod-bolum" aria-labelledby="kod-h">
+  <section class="bolum bolum--beyaz" aria-labelledby="kod-h">
     <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="kod-h">Webhook imzası doğrulanmadan hiçbir şey işlenmez</h2>
-      <figure class="kod">
-        <figcaption class="kod__ust"><span class="kod__dil">js</span></figcaption>
-        <pre><code>const gelen = req.get('X-Shopify-Hmac-Sha256') || '';
+      <figure class="konsol">
+        <figcaption class="konsol__ust">
+          <span class="konsol__noktalar"><i></i><i></i><i></i></span>
+          <span class="konsol__ad">webhook.js</span>
+          <span class="konsol__dil">js</span>
+        </figcaption>
+        <pre><code>const gelen = req.get(<span class="k-dize">'X-Shopify-Hmac-Sha256'</span>) || <span class="k-dize">''</span>;
 const hesaplanan = crypto
-  .createHmac('sha256', process.env.SHOPIFY_API_SECRET)
-  .update(hamGovde, 'utf8')
-  .digest('base64');
+  .createHmac(<span class="k-dize">'sha256'</span>, process.env.SHOPIFY_API_SECRET)
+  .update(hamGovde, <span class="k-dize">'utf8'</span>)
+  .digest(<span class="k-dize">'base64'</span>);
 
-const a = Buffer.from(hesaplanan, 'base64');
-const b = Buffer.from(gelen, 'base64');
+const a = Buffer.from(hesaplanan, <span class="k-dize">'base64'</span>);
+const b = Buffer.from(gelen, <span class="k-dize">'base64'</span>);
 
+<span class="k-yorum">// uzunluk farkliysa timingSafeEqual firlatir, once onu ele</span>
 if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) {
-  return res.status(401).send();   // imza tutmuyor, istek Shopify'dan gelmiyor
+  return res.status(401).send();
 }</code></pre>
       </figure>
       <p class="kod__not">İmza doğrulaması olmayan bir webhook ucu, herkesin veri yazabildiği açık bir kapıdır.</p>
     </div>
   </section>
 
-  <section class="kod-bolum" aria-labelledby="kod-h">
+  <section class="bolum bolum--beyaz" aria-labelledby="kod-h">
     <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="kod-h">Boş render eden blok bırakmamak</h2>
-      <figure class="kod">
-        <figcaption class="kod__ust"><span class="kod__dil">liquid</span></figcaption>
-        <pre><code>{%- comment -%}
+      <figure class="konsol">
+        <figcaption class="konsol__ust">
+          <span class="konsol__noktalar"><i></i><i></i><i></i></span>
+          <span class="konsol__ad">hediye-kutu.liquid</span>
+          <span class="konsol__dil">liquid</span>
+        </figcaption>
+        <pre><code><span class="k-yorum">{%- comment -%}
   Isaret ettigi kayit yoksa blok hic basilmaz.
   Bos render eden blok aylarca fark edilmez.
-{%- endcomment -%}
+{%- endcomment -%}</span>
 
 {%- assign hediye = all_products[section.settings.hediye_handle] -%}
 
 {%- if hediye != blank and hediye.available -%}
-  &lt;div class=&quot;hediye&quot; data-esik=&quot;{{ section.settings.esik }}&quot;&gt;
+  &lt;div class=<span class="k-dize">&quot;hediye&quot;</span> data-esik=<span class="k-dize">&quot;{{ section.settings.esik }}&quot;</span>&gt;
     &lt;p&gt;{{ section.settings.mesaj }}&lt;/p&gt;
   &lt;/div&gt;
 {%- endif -%}</code></pre>
@@ -89,21 +104,24 @@ if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) {
     </div>
   </section>
 
-  <section aria-labelledby="yuzey-h">
+  <section class="bolum" aria-labelledby="yuzey-h">
     <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="yuzey-h">Çalıştığım platform yüzeyleri</h2>
-      <div class="yuzeyler"><div class="yuzey"><span class="yuzey__ad">Admin GraphQL API</span><span class="yuzey__not">ürün, varyant, sipariş, metafield okuma ve yazma</span></div><div class="yuzey"><span class="yuzey__ad">Bulk Operations</span><span class="yuzey__not">binlerce kayıtlık iş; sonuç JSONL olarak indirilir</span></div><div class="yuzey"><span class="yuzey__ad">Webhooks</span><span class="yuzey__not">olay yakalama, HMAC doğrulama, idempotent işleme</span></div><div class="yuzey"><span class="yuzey__ad">OAuth ve Billing API</span><span class="yuzey__not">kurulum akışı, kapsam yönetimi, abonelik ücretlendirmesi</span></div><div class="yuzey"><span class="yuzey__ad">App Bridge ve Polaris</span><span class="yuzey__not">yönetim paneli içinde açılan gömülü arayüz</span></div><div class="yuzey"><span class="yuzey__ad">Liquid / Online Store 2.0</span><span class="yuzey__not">bölüm ve blok yazımı, tema editöründen yönetim</span></div><div class="yuzey"><span class="yuzey__ad">Storefront ve Ajax API</span><span class="yuzey__not">sepet işlemleri, tema içi dinamik davranış</span></div><div class="yuzey"><span class="yuzey__ad">Metafield ve Metaobject</span><span class="yuzey__not">ürün künyesi ve yapılandırılmış veri</span></div><div class="yuzey"><span class="yuzey__ad">URL Redirect</span><span class="yuzey__not">geçişlerde yönlendirme haritası</span></div><div class="yuzey"><span class="yuzey__ad">Theme CLI</span><span class="yuzey__not">yayınlanmamış temada geliştirme, önizleme, canlıya alma</span></div></div>
+      <div class="yuzeyler"><div class="yuzey"><span class="yuzey__ad">Admin GraphQL API</span><span class="yuzey__not">ürün, varyant, sipariş, metafield okuma ve yazma</span></div><div class="yuzey"><span class="yuzey__ad">Bulk Operations</span><span class="yuzey__not">binlerce kayıtlık iş; sonuç JSONL olarak indirilir</span></div><div class="yuzey"><span class="yuzey__ad">Webhooks</span><span class="yuzey__not">olay yakalama, HMAC doğrulama, idempotent işleme</span></div><div class="yuzey"><span class="yuzey__ad">OAuth · Billing API</span><span class="yuzey__not">kurulum akışı, kapsam yönetimi, abonelik ücretlendirmesi</span></div><div class="yuzey"><span class="yuzey__ad">App Bridge · Polaris</span><span class="yuzey__not">yönetim paneli içinde açılan gömülü arayüz</span></div><div class="yuzey"><span class="yuzey__ad">Liquid · Online Store 2.0</span><span class="yuzey__not">bölüm ve blok yazımı, tema editöründen yönetim</span></div><div class="yuzey"><span class="yuzey__ad">Storefront · Ajax API</span><span class="yuzey__not">sepet işlemleri, tema içi dinamik davranış</span></div><div class="yuzey"><span class="yuzey__ad">Metafield · Metaobject</span><span class="yuzey__not">ürün künyesi ve yapılandırılmış veri</span></div><div class="yuzey"><span class="yuzey__ad">URL Redirect</span><span class="yuzey__not">geçişlerde yönlendirme haritası</span></div><div class="yuzey"><span class="yuzey__ad">Theme CLI</span><span class="yuzey__not">yayınlanmamış temada geliştirme, önizleme, canlıya alma</span></div></div>
     </div>
   </section>
 
   <section class="cta" aria-labelledby="cta-h">
     <div class="sarmal sarmal--genis">
-      <div class="cta__kutu">
+      <div class="cta__ic">
         <div>
           <h2 id="cta-h">Mevcut kurulumunuz bu ölçütleri karşılıyor mu?</h2>
           <p>Bakıp ne gördüğümü yazayım — mağazanın adresi yeterli.</p>
         </div>
-        <a class="btn" href="/iletisim/">İletişime geç</a>
+        <div class="cta__butonlar">
+          <a class="btn" href="/iletisim/">İletişime geç</a>
+          <a class="btn btn--sade" href="https://wa.me/905541386827" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
       </div>
     </div>
   </section>
@@ -140,6 +158,6 @@ if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) {
     </div>
   </div>
 </footer>
-<script>document.getElementById('yil').textContent=new Date().getFullYear();</script>
+<script src="/assets/site.js" defer></script>
 </body>
 </html>

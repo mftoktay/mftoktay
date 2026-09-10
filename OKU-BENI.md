@@ -104,6 +104,9 @@ Dil etiketi serbest metin: `graphql`, `js`, `liquid`, `bash`, `json`.
 | `VAKALAR` | `/yontem/` sayfasındaki ölçüm örnekleri |
 | `YAPMADIKLARIM` | `/yontem/` sayfasındaki kırmızı çizgiler |
 | `MARKALAR` | ana sayfadaki marka şeridi |
+| `SERIT` | ana sayfadaki koyu ölçüm şeridi (sayı, birim, açıklama) |
+| `IKON` / `HIZMET_IKON` | kart ve ilke ikonları (24×24 SVG, stroke 1.5) |
+| `KOD_*` | kod bloğu içerikleri |
 
 ## Üretilen dosyalar
 

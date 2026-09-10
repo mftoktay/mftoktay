@@ -6,6 +6,7 @@
 <title>İletişim — M. Fehmi Toktay</title>
 <meta name="description" content="Shopify uygulama, tema ve entegrasyon işleri için iletişim. WhatsApp ve telefon; ajans işleri Taftri üzerinden." />
 <link rel="canonical" href="https://mftoktay.com/iletisim/" />
+<meta name="theme-color" content="#2F4F3E" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://mftoktay.com/iletisim/" />
 <meta property="og:title" content="İletişim — M. Fehmi Toktay" />
@@ -25,12 +26,16 @@
 <header class="ust">
   <div class="sarmal sarmal--genis ust__ic">
     <a class="ust__ad" href="/">M. Fehmi Toktay<span class="ust__rol">Shopify uygulama geliştiricisi</span></a>
-    <nav class="ust__menu" aria-label="Ana menü"><a href="/">Ana sayfa</a><a href="/gelistirme/">Geliştirme</a><a href="/teknik/">Teknik</a><a href="/yontem/">Yöntem</a><a href="/iletisim/" aria-current="page">İletişim</a></nav>
+    <button class="menu-dugme" type="button" aria-expanded="false" aria-controls="ana-menu">
+      <span class="menu-dugme__cizgi"></span>
+      <span class="menu-dugme__yazi">Menü</span>
+    </button>
+    <nav class="ust__menu" id="ana-menu" aria-label="Ana menü"><a href="/">Ana sayfa</a><a href="/gelistirme/">Geliştirme</a><a href="/teknik/">Teknik</a><a href="/yontem/">Yöntem</a><a href="/iletisim/" aria-current="page">İletişim</a></nav>
   </div>
 </header>
 <main id="icerik">
 
-  <div class="sarmal"><nav aria-label="Neredesiniz"><ol class="crumbs"><li><a href="/">Ana sayfa</a></li><li aria-current="page">İletişim</li></ol></nav>
+  <div class="sarmal sarmal--genis"><nav aria-label="Neredesiniz"><ol class="crumbs"><li><a href="/">Ana sayfa</a></li><li aria-current="page">İletişim</li></ol></nav>
     <header class="giris giris--ic">
       <p class="rol">İletişim</p>
       <h1 class="ad ad--ic">Yazın, bakalım</h1>
@@ -39,37 +44,58 @@
     </header>
   </div>
 
-  <section aria-labelledby="kanal-h">
-    <div class="sarmal">
+  <section class="bolum" aria-labelledby="kanal-h">
+    <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="kanal-h">Doğrudan</h2>
-      <div class="iletisim-satir">
-        <div>
-          <span>WhatsApp</span>
-          <a href="https://wa.me/905541386827" target="_blank" rel="noopener">+90 554 138 68 27</a>
-        </div>
-        <div>
-          <span>Telefon</span>
-          <a href="tel:+905541386827">+90 554 138 68 27</a>
-        </div>
+      <div class="iletisim-izgara">
+        <a class="iletisim-kart" href="https://wa.me/905541386827" target="_blank" rel="noopener">
+          <span>WhatsApp</span><b>+90 554 138 68 27</b>
+        </a>
+        <a class="iletisim-kart" href="tel:+905541386827">
+          <span>Telefon</span><b>+90 554 138 68 27</b>
+        </a>
+        <a class="iletisim-kart" href="https://taftri.com/" target="_blank" rel="noopener">
+          <span>Ajans işleri</span><b>taftri.com</b>
+        </a>
       </div>
     </div>
   </section>
 
-  <section aria-labelledby="ne-h">
+  <section class="bolum bolum--beyaz" aria-labelledby="ne-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="ne-h">Yazarken şunlar işi hızlandırır</h2>
       <ul class="maddeler"><li>Mağazanın adresi.</li><li>Ne olmasını istediğiniz — teknik terim gerekmiyor, düz anlatım yeterli.</li><li>Şu an ne olduğu; varsa ekran görüntüsü.</li><li>Hazır uygulama denediyseniz hangisi ve neden yetmediği.</li><li>Aceleyse ne zamana kadar gerektiği.</li></ul>
     </div>
   </section>
 
-  <section aria-labelledby="taftri-h">
-    <div class="sarmal">
-      <h2 class="bolum-basligi" id="taftri-h">Ajans işleri</h2>
-      <div class="taftri">
-        <h3>Taftri</h3>
-        <p>Sürekli reklam yönetimi, içerik üretimi ve uzun soluklu mağaza operasyonu
-          <a href="https://taftri.com/" rel="noopener">taftri.com</a> üzerinden yürüyor.</p>
-      </div>
+  <section class="bolum" aria-labelledby="alan-h">
+    <div class="sarmal sarmal--genis">
+      <h2 class="bolum-basligi" id="alan-h">Hangi konuda</h2>
+      <div class="kartlar"><a class="kart" href="/uygulama-gelistirme/">
+          <span class="kart__ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/><path d="M17.25 13.9v6.7M13.9 17.25h6.7"/></svg></span>
+          <span class="kart__ust">Geliştirme</span>
+          <span class="kart__baslik">App Store uygulaması</span>
+          <span class="kart__ozet">Herkese açık, mağazaya kurulup abonelikle kullanılan uygulama.</span>
+          <span class="kart__ok" aria-hidden="true">→</span>
+        </a><a class="kart" href="/ozel-yazilim/">
+          <span class="kart__ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2.8l8.2 4.1v10.2L12 21.2l-8.2-4.1V6.9z"/><path d="M3.8 6.9L12 11l8.2-4.1M12 11v10.2"/></svg></span>
+          <span class="kart__ust">Geliştirme</span>
+          <span class="kart__baslik">Mağazaya özel uygulama</span>
+          <span class="kart__ozet">App Store'a çıkmayan, tek mağaza için yazılan uygulama.</span>
+          <span class="kart__ok" aria-hidden="true">→</span>
+        </a><a class="kart" href="/tema-gelistirme/">
+          <span class="kart__ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.8" y="4.2" width="18.4" height="15.6" rx="2.2"/><path d="M2.8 9.2h18.4"/><path d="M6.2 6.7h.01M9.1 6.7h.01"/></svg></span>
+          <span class="kart__ust">Geliştirme</span>
+          <span class="kart__baslik">Tema geliştirme</span>
+          <span class="kart__ozet">Liquid tarafında bölüm ve blok yazımı, mevcut temaya özellik ekleme.</span>
+          <span class="kart__ok" aria-hidden="true">→</span>
+        </a><a class="kart" href="/entegrasyon/">
+          <span class="kart__ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="5.6" cy="12" r="2.6"/><circle cx="18.4" cy="12" r="2.6"/><path d="M8.2 12h7.6"/><path d="M13.2 9.2l2.8 2.8-2.8 2.8"/></svg></span>
+          <span class="kart__ust">Geliştirme</span>
+          <span class="kart__baslik">Entegrasyon ve otomasyon</span>
+          <span class="kart__ozet">Admin API üzerinden dış sistem bağlantısı ve toplu veri işleri.</span>
+          <span class="kart__ok" aria-hidden="true">→</span>
+        </a></div>
     </div>
   </section>
 </main>
@@ -105,6 +131,6 @@
     </div>
   </div>
 </footer>
-<script>document.getElementById('yil').textContent=new Date().getFullYear();</script>
+<script src="/assets/site.js" defer></script>
 </body>
 </html>

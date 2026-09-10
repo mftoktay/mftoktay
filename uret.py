@@ -7,7 +7,7 @@ Kullanim:  python uret.py
 Bu dosya sitenin TEK kaynagidir. Uretilen .html dosyalarini elle duzenleme —
 bir sonraki calistirmada uzerine yazilir. Icerik degisikligi burada yapilir.
 
-Yapi (her sayfada ust menu + tam alt bilgi; tek sayfa yigini yok):
+Yapi (her sayfada yapiskan ust menu + tam alt bilgi):
 
   /                       ana sayfa
   /gelistirme/            gelistirme alanlari — dort sayfaya dagitir
@@ -15,15 +15,13 @@ Yapi (her sayfada ust menu + tam alt bilgi; tek sayfa yigini yok):
   /ozel-yazilim/          magazaya ozel uygulama
   /tema-gelistirme/       Liquid tema
   /entegrasyon/           Admin API, toplu veri, dis sistem
-  /teknik/                teknik yaklasim — API surumu, hiz limiti, webhook, geri alma
+  /teknik/                teknik yaklasim
   /yontem/                surec ve olcum ornekleri
   /iletisim/              iletisim
   /uygulamalar/[slug]/    UYGULAMALAR listesi doluysa
   /isler/[slug]/          ISLER listesi doluysa
 
-Ornek eklemek:
-  * App Store uygulamasi  -> UYGULAMALAR listesine bir sozluk ekle
-  * Yapilmis is / vaka    -> ISLER listesine bir sozluk ekle
+Ornek eklemek: UYGULAMALAR / ISLER listesine bir sozluk ekle (sema asagida).
 Liste bosken ilgili bolum, liste sayfasi ve menu ogesi hic uretilmez.
 """
 
@@ -40,6 +38,45 @@ ROL = "Shopify uygulama geliştiricisi"
 TELEFON = "+905541386827"
 TELEFON_YAZI = "+90 554 138 68 27"
 INDEXNOW_ANAHTAR = "a4d17f2c9b6e485fa03c71d8e6b25904"
+
+
+# ---------------------------------------------------------------------------
+# IKONLAR — 24x24, stroke 1.5, currentColor
+# ---------------------------------------------------------------------------
+
+def _svg(ic):
+    return ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+            'stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" '
+            'aria-hidden="true" focusable="false">%s</svg>' % ic)
+
+
+IKON = {
+    "app": _svg('<rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/>'
+                '<rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/>'
+                '<rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/>'
+                '<path d="M17.25 13.9v6.7M13.9 17.25h6.7"/>'),
+    "kutu": _svg('<path d="M12 2.8l8.2 4.1v10.2L12 21.2l-8.2-4.1V6.9z"/>'
+                 '<path d="M3.8 6.9L12 11l8.2-4.1M12 11v10.2"/>'),
+    "pencere": _svg('<rect x="2.8" y="4.2" width="18.4" height="15.6" rx="2.2"/>'
+                    '<path d="M2.8 9.2h18.4"/><path d="M6.2 6.7h.01M9.1 6.7h.01"/>'),
+    "baglanti": _svg('<circle cx="5.6" cy="12" r="2.6"/><circle cx="18.4" cy="12" r="2.6"/>'
+                     '<path d="M8.2 12h7.6"/><path d="M13.2 9.2l2.8 2.8-2.8 2.8"/>'),
+    "olcum": _svg('<path d="M3.5 20.5V9.8M9.8 20.5V4.4M16.1 20.5v-7.3M22 20.5H2"/>'),
+    "kalkan": _svg('<path d="M12 2.9l7.4 2.9v5.6c0 4.4-3 8.1-7.4 9.7-4.4-1.6-7.4-5.3-7.4-9.7V5.8z"/>'
+                   '<path d="M9.1 12.1l2 2 3.8-3.9"/>'),
+    "geri": _svg('<path d="M3.5 8.6h6.1V2.5"/>'
+                 '<path d="M4.6 15.2a8.3 8.3 0 1 0 .6-6"/>'),
+    "surum": _svg('<path d="M6.6 4.2v10.1M6.6 21.1a2.9 2.9 0 1 0 0-5.8 2.9 2.9 0 0 0 0 5.8z"/>'
+                  '<path d="M17.4 8.6a2.9 2.9 0 1 0 0-5.8 2.9 2.9 0 0 0 0 5.8z"/>'
+                  '<path d="M17.4 8.6v3.1c0 2-1.6 3.6-3.6 3.6h-3"/>'),
+}
+
+HIZMET_IKON = {
+    "uygulama-gelistirme": "app",
+    "ozel-yazilim": "kutu",
+    "tema-gelistirme": "pencere",
+    "entegrasyon": "baglanti",
+}
 
 
 # ---------------------------------------------------------------------------
@@ -60,6 +97,7 @@ INDEXNOW_ANAHTAR = "a4d17f2c9b6e485fa03c71d8e6b25904"
 #   "cozum":       ["Ne yapiyor", "..."],          # * madde listesi
 #   "teknik":      ["Admin GraphQL API", "..."],   #   rozet listesi
 #   "kod":         ("Baslik", "graphql", "..."),   #   kod ornegi; bossa basilmaz
+#   "kod_not":     "Kodun altina dusen aciklama.", #   opsiyonel
 #   "gorsel":      "/assets/uygulama-slug.png",    #   bossa gorsel basilmaz
 #   "gorsel_alt":  "Ekran goruntusu: ...",         #   gorsel varsa zorunlu
 #   "sss":         [("Soru?", "Cevap.")],          #   bossa SSS bolumu basilmaz
@@ -80,7 +118,7 @@ UYGULAMALAR = []
 #   "yapilan":     ["Ne yapildi", "..."],          # * madde listesi
 #   "sonuc":       ["1147 px -> 948 px", "..."],   #   olculmus sonuc; yoksa basilmaz
 #   "teknik":      ["Liquid", "Admin API"],        #   rozet listesi
-#   "kod":         ("Baslik", "js", "..."),        #   kod ornegi; bossa basilmaz
+#   "kod":         ("Baslik", "js", "..."),        #   opsiyonel
 # }
 ISLER = []
 
@@ -99,6 +137,19 @@ DURUM_ADI = {
 
 
 # ---------------------------------------------------------------------------
+# VERI — OLCULMUS SAYILAR (serit)
+# ---------------------------------------------------------------------------
+
+# Hepsi gercek magazalarda olculdu. Uydurma sayi eklenmez.
+SERIT = [
+    ("1147 → 948", "px", "satın alma butonu mobilde yukarı taşındı"),
+    ("1811 → 1064", "px", "detay paneli kapalı başlatılınca"),
+    ("71 → 6", "kategori", "ürün türü alanı sadeleştirildi"),
+    ("13", "marka", "birlikte çalışılan mağaza"),
+]
+
+
+# ---------------------------------------------------------------------------
 # VERI — CALISILAN PLATFORM YUZEYLERI
 # ---------------------------------------------------------------------------
 
@@ -106,19 +157,31 @@ YUZEYLER = [
     ("Admin GraphQL API", "ürün, varyant, sipariş, metafield okuma ve yazma"),
     ("Bulk Operations", "binlerce kayıtlık iş; sonuç JSONL olarak indirilir"),
     ("Webhooks", "olay yakalama, HMAC doğrulama, idempotent işleme"),
-    ("OAuth ve Billing API", "kurulum akışı, kapsam yönetimi, abonelik ücretlendirmesi"),
-    ("App Bridge ve Polaris", "yönetim paneli içinde açılan gömülü arayüz"),
-    ("Liquid / Online Store 2.0", "bölüm ve blok yazımı, tema editöründen yönetim"),
-    ("Storefront ve Ajax API", "sepet işlemleri, tema içi dinamik davranış"),
-    ("Metafield ve Metaobject", "ürün künyesi ve yapılandırılmış veri"),
+    ("OAuth · Billing API", "kurulum akışı, kapsam yönetimi, abonelik ücretlendirmesi"),
+    ("App Bridge · Polaris", "yönetim paneli içinde açılan gömülü arayüz"),
+    ("Liquid · Online Store 2.0", "bölüm ve blok yazımı, tema editöründen yönetim"),
+    ("Storefront · Ajax API", "sepet işlemleri, tema içi dinamik davranış"),
+    ("Metafield · Metaobject", "ürün künyesi ve yapılandırılmış veri"),
     ("URL Redirect", "geçişlerde yönlendirme haritası"),
     ("Theme CLI", "yayınlanmamış temada geliştirme, önizleme, canlıya alma"),
 ]
 
 
 # ---------------------------------------------------------------------------
-# VERI — GELISTIRME SAYFALARI
+# KOD ORNEKLERI
 # ---------------------------------------------------------------------------
+
+KOD_HERO = """query VaryantDurumu($id: ID!) {
+  productVariant(id: $id) {
+    sku
+    inventoryQuantity
+    price
+    product {
+      title
+      vendor
+    }
+  }
+}"""
 
 KOD_BULK = """mutation {
   bulkOperationRunQuery(
@@ -150,8 +213,9 @@ const hesaplanan = crypto
 const a = Buffer.from(hesaplanan, 'base64');
 const b = Buffer.from(gelen, 'base64');
 
+// uzunluk farkliysa timingSafeEqual firlatir, once onu ele
 if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) {
-  return res.status(401).send();   // imza tutmuyor, istek Shopify'dan gelmiyor
+  return res.status(401).send();
 }"""
 
 KOD_BOLUM = """{%- comment -%}
@@ -167,6 +231,11 @@ KOD_BOLUM = """{%- comment -%}
   </div>
 {%- endif -%}"""
 
+
+# ---------------------------------------------------------------------------
+# VERI — GELISTIRME SAYFALARI
+# ---------------------------------------------------------------------------
+
 HIZMETLER = [
     {
         "slug": "uygulama-gelistirme",
@@ -177,8 +246,8 @@ HIZMETLER = [
         "ozet": "Herkese açık, mağazaya kurulup abonelikle kullanılan uygulama.",
         "giris": [
             "App Store uygulaması tek bir mağazaya değil bütün mağazalara yazılır. "
-            "İşin zor kısmı özellikte değil çerçevede: kurulum, yetkilendirme, "
-            "faturalama ve zorunlu veri uçları Shopify'ın kendi kurallarına uymak zorunda.",
+            "İşin zor kısmı özellikte değil çerçevede: kurulum, yetkilendirme, faturalama "
+            "ve zorunlu veri uçları Shopify'ın kendi kurallarına uymak zorunda.",
             "Aynı ihtiyaç birden çok mağazada varsa ve bunu satmayı düşünüyorsanız doğru "
             "yol budur. Tek mağazaya özel bir işse "
             "<a href=\"/ozel-yazilim/\">özel yazılım</a> hem daha hızlı hem daha ucuz olur.",
@@ -211,10 +280,10 @@ HIZMETLER = [
         ],
         "teknik": ["Admin GraphQL API", "Bulk Operations", "OAuth", "App Bridge",
                    "Polaris", "Billing API", "Webhook"],
-        "kod": ("Binlerce ürünü tek istekle çekmek — toplu işlem", "graphql", KOD_BULK),
-        "kod_not": ("Toplu işlem sonucu JSONL dosyası olarak indirilir. Aynı veriyi "
-                    "sayfa sayfa çekmek hem hız limitini yakar hem yarıda kalırsa "
-                    "nereden devam edeceğini bilemezsin."),
+        "kod": ("Binlerce ürünü tek istekle çekmek", "graphql", KOD_BULK),
+        "kod_not": ("Toplu işlem sonucu JSONL dosyası olarak indirilir. Aynı veriyi sayfa "
+                    "sayfa çekmek hem hız limitini yakar hem yarıda kalırsa nereden devam "
+                    "edeceğini bilemezsin."),
         "sss": [
             ("Uygulama ne kadar sürede yayına girer?",
              "Geliştirme süresi kapsama göre değişir. Yayın tarafında Shopify'ın kendi "
@@ -223,8 +292,8 @@ HIZMETLER = [
              "dönen eksikler oluyor."),
             ("Gömülü mü olmalı?",
              "Yönetim paneli içinde çalışan uygulamalar hem daha çok kuruluyor hem "
-             "listelemede avantajlı. Panelin dışında çalışmasını gerektiren özel bir "
-             "durum yoksa gömülü yazıyorum."),
+             "listelemede avantajlı. Panelin dışında çalışmasını gerektiren özel bir durum "
+             "yoksa gömülü yazıyorum."),
             ("Uygulama kaldırılınca veriye ne oluyor?",
              "Kaldırma olayı webhook ile yakalanır, mağazanın verisi zorunlu süre içinde "
              "silinir. Bu hem kural gereği hem müşteriye açıkça söylenmesi gereken bir şey."),
@@ -250,8 +319,8 @@ HIZMETLER = [
         "kapsam": [
             ("Özel iş akışları",
              "Sipariş sonrası otomatik adımlar, onay zincirleri, koşullu etiketleme, iç "
-             "bildirimler. Mağazanın kendi çalışma biçimine göre yazılır — hazır uygulamaların "
-             "yapamadığı kısım genelde burasıdır."),
+             "bildirimler. Mağazanın kendi çalışma biçimine göre yazılır — hazır "
+             "uygulamaların yapamadığı kısım genelde burasıdır."),
             ("Bayi ve toptan paneli",
              "Müşteri grubuna göre fiyat, minimum adet, cari bakiye görünümü, kuruma özel "
              "katalog ve sipariş formu."),
@@ -276,16 +345,16 @@ HIZMETLER = [
              "Mağazaya özel işlerde kod sizindir. Kaynak, kurulum belgesi ve gerekli erişim "
              "bilgileri teslim edilir."),
             ("Uygulamayı sonra App Store'a taşıyabilir miyiz?",
-             "Taşınabilir, ama baştan öyle yazılmadıysa çerçeve kısmı yeniden kurulur. Böyle "
-             "bir ihtimal varsa başlarken söyleyin; yapı ona göre kurulsun."),
+             "Taşınabilir, ama baştan öyle yazılmadıysa çerçeve kısmı yeniden kurulur. "
+             "Böyle bir ihtimal varsa başlarken söyleyin; yapı ona göre kurulsun."),
         ],
     },
     {
         "slug": "tema-gelistirme",
         "ad": "Tema geliştirme",
         "baslik": "Shopify tema geliştirme — Liquid",
-        "aciklama": ("Shopify temasına özellik ekleme, bölüm ve blok yazımı, hız ve "
-                     "dönüşüm düzeltmeleri. Tema editöründen yönetilebilir kurulum."),
+        "aciklama": ("Shopify temasına özellik ekleme, bölüm ve blok yazımı, hız ve dönüşüm "
+                     "düzeltmeleri. Tema editöründen yönetilebilir kurulum."),
         "ozet": "Liquid tarafında bölüm ve blok yazımı, mevcut temaya özellik ekleme.",
         "giris": [
             "Mağazanın görünen tarafı. Uygulama kurmadan çözülebilecek işlerin çoğu burada "
@@ -314,8 +383,8 @@ HIZMETLER = [
         "teknik": ["Liquid", "Online Store 2.0", "Ajax API", "Theme CLI", "JSON şablon"],
         "kod": ("Boş render eden blok bırakmamak", "liquid", KOD_BOLUM),
         "kod_not": ("Bir mağazada silinmiş bir ürüne işaret eden hediye bloğu aylarca "
-                    "sessizce boş basmıştı. Koşul olmadan yazılan her referanslı blok "
-                    "aynı riski taşır."),
+                    "sessizce boş basmıştı. Koşul olmadan yazılan her referanslı blok aynı "
+                    "riski taşır."),
         "sss": [
             ("Tema güncellenince yaptıklarınız kaybolur mu?",
              "Temanın kendi dosyalarına yapılan yamalar güncellemede gider. Bu yüzden eklenen "
@@ -342,11 +411,11 @@ HIZMETLER = [
         "ozet": "Admin API üzerinden dış sistem bağlantısı ve toplu veri işleri.",
         "giris": [
             "Mağazanın dışarıyla konuştuğu taraf. Muhasebe, kargo, ERP ve pazaryeri "
-            "bağlantıları; bir de kimsenin görmediği ama katalog kalitesini belirleyen "
-            "toplu veri işleri.",
+            "bağlantıları; bir de kimsenin görmediği ama katalog kalitesini belirleyen toplu "
+            "veri işleri.",
             "Buradaki asıl risk hata değil, <strong>sessiz hata</strong>: bir alan yanlış "
-            "yazılır, kimse fark etmez, aylar sonra Google eşleştirmesi tutmaz. Bu yüzden "
-            "her toplu iş loglanır ve geri alınabilir kurulur.",
+            "yazılır, kimse fark etmez, aylar sonra Google eşleştirmesi tutmaz. Bu yüzden her "
+            "toplu iş loglanır ve geri alınabilir kurulur.",
         ],
         "kapsam_basligi": "Neleri kapsıyor",
         "kapsam": [
@@ -363,8 +432,8 @@ HIZMETLER = [
             ("Katalog ve veri düzeni",
              "Ürün türü, kategori, etiket ve koleksiyon kuralları. Kopya içerik üreten "
              "koleksiyonların temizlenmesi, görsel alt metinleri, ürün künyesinin metaveriye "
-             "bağlanması. Bir katalogda ürün türü alanında 71 farklı değer bulmuştum; "
-             "sayılar gramaj değil sıra numarasıydı ve katalog eşleştirmesini kırıyordu."),
+             "bağlanması. Bir katalogda ürün türü alanında 71 farklı değer bulmuştum; sayılar "
+             "gramaj değil sıra numarasıydı ve katalog eşleştirmesini kırıyordu."),
         ],
         "teknik": ["Admin GraphQL API", "Bulk Operations", "Webhook", "URL Redirect",
                    "Metafield", "CSV / feed"],
@@ -415,7 +484,7 @@ SUREC = [
     ("Kapsamı yazılı veririm",
      "Ne yapılacağı, neyin dışarıda kaldığı ve teslim biçimi baştan yazılır. Sonradan "
      "büyüyen iş ikimize de pahalıya patlar."),
-    ("Ayrı temada / geliştirme mağazasında geliştiririm",
+    ("Ayrı temada geliştiririm",
      "Tema işleri yayınlanmamış bir kopyada yazılır, önizleme adresiyle doğrulanır, sonra "
      "canlıya alınır. Uygulama işlerinde geliştirme mağazası kullanılır."),
     ("Ölçerek teslim ederim",
@@ -424,66 +493,70 @@ SUREC = [
 ]
 
 TEKNIK_ILKELER = [
-    ("API sürümü koda gömülü kalmaz",
+    ("surum", "API sürümü koda gömülü kalmaz",
      "Shopify API'si dönemsel sürümler yayınlıyor ve her sürüm sınırlı süre destekleniyor. "
      "Uygulama bir sürüme kilitlenir, yükseltme planlı yapılır. Sürüm adı kodun içine "
      "dağılmışsa bir gün sessizce kırılır — tek yerden yönetilir."),
-    ("Hız limiti baştan hesaba katılır",
+    ("olcum", "Hız limiti baştan hesaba katılır",
      "Admin GraphQL API sorgu maliyeti hesaplayıp bütçeye göre sınırlıyor. Toplu işlerde "
-     "sayfa sayfa gezmek yerine toplu işlem uçları kullanılır; sınıra yaklaşıldığında "
-     "geri çekilme ve yeniden deneme mantığı kurulur."),
-    ("Her webhook doğrulanır, her işlem idempotent yazılır",
+     "sayfa sayfa gezmek yerine toplu işlem uçları kullanılır; sınıra yaklaşıldığında geri "
+     "çekilme ve yeniden deneme mantığı kurulur."),
+    ("kalkan", "Her webhook doğrulanır, her işlem idempotent yazılır",
      "Gelen isteğin imzası uygulama gizli anahtarıyla doğrulanmadan hiçbir şey işlenmez. "
      "Aynı olay birden çok kez gelebilir; ikinci işlem bir şey değiştirmemeli."),
-    ("Kapsam dar istenir",
+    ("kalkan", "Kapsam dar istenir",
      "İstenen her erişim kapsamının kullanıldığı yer gösterilebilmeli. Geniş kapsam hem "
      "incelemede geri döner hem mağaza sahibini tedirgin eder. Yeni kapsam gerektiğinde "
      "yeniden yetkilendirme istenir."),
-    ("Toplu iş loglanır ve geri alınabilir",
+    ("geri", "Toplu iş loglanır ve geri alınabilir",
      "İş gruplar hâlinde yürür, her adım satır satır log dosyasına yazılır, yarıda kalırsa "
      "kaldığı yerden devam eder. Değişen alanların eski değerleri kimlikleriyle saklanır."),
-    ("Doğrulama kaynağın kendisinden yapılır",
+    ("olcum", "Doğrulama kaynağın kendisinden yapılır",
      "Başarı çıktısına güvenilmez: yazılan değişiklik geri çekilip aranır. Sayfa önbelleği "
      "kaynakla aynı değildir; doğrulama panelden ya da API'den yapılır, tarayıcıdan değil."),
-    ("Silmeden önce yönlendirme kurulur",
+    ("geri", "Silmeden önce yönlendirme kurulur",
      "Koleksiyon, sayfa ya da ürün silinecekse önce 301 kurulur, sonra silinir, sonra "
      "yönlendirmenin çalıştığı doğrulanır. Sıra bu değilse adres bir süre 404 verir."),
-    ("Ölçüm CSS okuyarak değil, tarayıcıdan yapılır",
+    ("olcum", "Ölçüm CSS okuyarak değil, tarayıcıdan yapılır",
      "Hangi kuralın kazandığı özgüllük yarışıyla belirlenir; kaynağa bakarak tahmin etmek "
      "yanıltır. Konum ve boyut değerleri çalışan sayfadan okunur."),
 ]
 
-# Olculmus, gercek vakalar.
+# Olculmus, gercek vakalar. (baslik, [paragraflar], (onceki, sonraki, birim))
 VAKALAR = [
-    ["Bir kuyum mağazasında “Sepete Ekle” butonu mobilde <span class=\"sayi\">1147.</span> "
-     "pikseldeydi. Müşteri bir buçuk ekran boyunca hiçbir satın alma tetikleyicisi görmüyordu.",
-     "Fiyat kırılımı ve ürün künyesi karar öncesi değil, karar sonrası bilgi. İkisini de "
-     "butonun altına aldık; buton <span class=\"sayi\">948.</span> piksele çıktı."],
-    ["Aynı mağazada sabit sepet çubuğu, varyant kimliğini sayfa yüklenirken okuyup "
-     "sabitliyordu. Müşteri harf kolyede “Ç” seçiyor, çubuk sepete “A” ekliyordu; ölçülen "
-     "kanıt formda <span class=\"sayi\">49143197565147</span>, çubukta "
-     "<span class=\"sayi\">48748885934299</span>.",
-     "Kimliği asıl ürün formundan tıklama anında okuyacak şekilde değiştirdik. Böyle bir hata "
-     "sipariş gelene kadar kimseye görünmüyor — kod okuyarak değil, formdaki değerle çubuğun "
-     "gönderdiği değeri karşılaştırarak bulunuyor."],
-    ["Bir şapka markasında ürün sayfasındaki “Detaylar” paneli mobilde açık başlıyordu. Tek "
-     "başına <span class=\"sayi\">845</span> piksel yer kaplıyor, satın alma butonunu "
-     "<span class=\"sayi\">1811.</span> piksele itiyordu.",
-     "Kapalı başlatınca buton <span class=\"sayi\">1064.</span> piksele geldi, "
-     "<span class=\"sayi\">747</span> piksel kazanç. Masaüstünde eski davranışı bozmadık; "
-     "orada yer sıkıntısı yoktu."],
-    ["Bir katalogda ürün türü alanında <span class=\"sayi\">71</span> farklı değer vardı: "
-     "“Yüzük 8”, “Bileklik 15”, “Kolye-5”. Sayılar gramaj değil, sıra numarasıydı.",
-     "Google Shopping eşleştirmesi bu yüzden tutmuyor, mağazanın kendi filtresi onlarca sahte "
-     "kategori üretiyordu. <span class=\"sayi\">6</span> kategoriye indirdik; eski değerleri "
-     "silmeden önce geri dönüş için ayrı bir metafield'a yazdık."],
-    ["Bir sepet çekmecesinde sabit bloklar ürün listesinden yer çalıyordu: özet "
-     "<span class=\"sayi\">234</span> + başlık <span class=\"sayi\">66</span> + çapraz satış "
-     "<span class=\"sayi\">243</span> + alt bölüm <span class=\"sayi\">228</span> piksel. "
-     "Ürün satırına <span class=\"sayi\">39</span> piksel kalıyordu.",
-     "Ürün satırı <span class=\"sayi\">159</span> piksel olduğu için taşıp çapraz satış "
-     "şeridinin altında kayboluyordu. Sabit kalması gereken bloklar dışındaki her şey "
-     "kaydırılabilir alanın içine alındı."],
+    ("Satın alma butonu bir buçuk ekran aşağıdaydı",
+     ["Bir kuyum mağazasında “Sepete Ekle” butonu mobilde <b>1147.</b> pikseldeydi. Müşteri "
+      "bir buçuk ekran boyunca hiçbir satın alma tetikleyicisi görmüyordu.",
+      "Fiyat kırılımı ve ürün künyesi karar öncesi değil, karar sonrası bilgi. İkisini de "
+      "butonun altına aldık."],
+     ("1147", "948", "px")),
+    ("Sabit çubuk sepete yanlış varyantı atıyordu",
+     ["Sabit sepet çubuğu varyant kimliğini sayfa yüklenirken okuyup sabitliyordu. Müşteri "
+      "harf kolyede “Ç” seçiyor, çubuk sepete “A” ekliyordu; ölçülen kanıt formda "
+      "<b>49143197565147</b>, çubukta <b>48748885934299</b>.",
+      "Kimliği asıl ürün formundan tıklama anında okuyacak şekilde değiştirdik. Böyle bir "
+      "hata sipariş gelene kadar kimseye görünmüyor — kod okuyarak değil, formdaki değerle "
+      "çubuğun gönderdiği değeri karşılaştırarak bulunuyor."],
+     None),
+    ("Açık başlayan panel butonu aşağı itiyordu",
+     ["Bir şapka markasında ürün sayfasındaki “Detaylar” paneli mobilde açık başlıyordu. Tek "
+      "başına <b>845</b> piksel yer kaplıyor, satın alma butonunu <b>1811.</b> piksele itiyordu.",
+      "Kapalı başlatınca <b>747</b> piksel kazanıldı. Masaüstünde eski davranışı bozmadık; "
+      "orada yer sıkıntısı yoktu."],
+     ("1811", "1064", "px")),
+    ("Ürün türü alanı 71 sahte kategori üretiyordu",
+     ["Bir katalogda ürün türü alanında <b>71</b> farklı değer vardı: “Yüzük 8”, “Bileklik 15”, "
+      "“Kolye-5”. Sayılar gramaj değil, sıra numarasıydı.",
+      "Google Shopping eşleştirmesi bu yüzden tutmuyor, mağazanın kendi filtresi onlarca "
+      "sahte kategori üretiyordu. Eski değerleri silmeden önce geri dönüş için ayrı bir "
+      "metafield'a yazdık."],
+     ("71", "6", "kategori")),
+    ("Sepet çekmecesinde ürüne 39 piksel kalıyordu",
+     ["Sabit bloklar ürün listesinden yer çalıyordu: özet <b>234</b> + başlık <b>66</b> + "
+      "çapraz satış <b>243</b> + alt bölüm <b>228</b> piksel.",
+      "Ürün satırı <b>159</b> piksel olduğu için taşıp çapraz satış şeridinin altında "
+      "kayboluyordu. Sabit kalması gerekmeyen her blok kaydırılabilir alanın içine alındı."],
+     ("39", "406", "px")),
 ]
 
 YAPMADIKLARIM = [
@@ -520,12 +593,25 @@ def kacir(s):
 
 
 def duz(s):
-    """HTML etiketlerini soker — meta description ve JSON-LD icin."""
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", s)).strip()
 
 
 def json_kacir(s):
     return duz(s).replace("\\", "\\\\").replace('"', '\\"')
+
+
+def kod_boya(kacirilmis):
+    """Kacirilmis kod metninde yorum satirlarini ve dizeleri renklendirir.
+
+    Sadece yorum ve dize desenleri sarilir; baska hicbir sey degistirilmez,
+    boylece kod metni bozulmaz."""
+    s = kacirilmis
+    s = re.sub(r"(&quot;[^&]*?&quot;|&#39;[^&]*?&#39;|'[^'\n]*')",
+               r'<span class="k-dize">\1</span>', s)
+    s = re.sub(r"(?m)(//[^\n]*)", r'<span class="k-yorum">\1</span>', s)
+    s = re.sub(r"(?s)(\{%- comment -%\}.*?\{%- endcomment -%\})",
+               r'<span class="k-yorum">\1</span>', s)
+    return s
 
 
 def menu_ogeleri():
@@ -546,7 +632,11 @@ def ust(aktif):
     return """<header class="ust">
   <div class="sarmal sarmal--genis ust__ic">
     <a class="ust__ad" href="/">%s<span class="ust__rol">%s</span></a>
-    <nav class="ust__menu" aria-label="Ana menü">%s</nav>
+    <button class="menu-dugme" type="button" aria-expanded="false" aria-controls="ana-menu">
+      <span class="menu-dugme__cizgi"></span>
+      <span class="menu-dugme__yazi">Menü</span>
+    </button>
+    <nav class="ust__menu" id="ana-menu" aria-label="Ana menü">%s</nav>
   </div>
 </header>""" % (AD, ROL, "".join(satirlar))
 
@@ -622,8 +712,9 @@ def rozetler(liste):
             % "".join('<span class="rozet">%s</span>' % kacir(t) for t in liste))
 
 
-def maddeler(liste):
-    return '<ul class="maddeler">%s</ul>' % "".join("<li>%s</li>" % m for m in liste)
+def maddeler(liste, ikonlu=False):
+    sinif = "maddeler maddeler--isaret" if ikonlu else "maddeler"
+    return '<ul class="%s">%s</ul>' % (sinif, "".join("<li>%s</li>" % m for m in liste))
 
 
 def alanlar(ciftler):
@@ -631,62 +722,117 @@ def alanlar(ciftler):
                    for b, m in ciftler)
 
 
-def kod_blok(baslik, dil, kod, not_metni=""):
+def adimlar(ciftler):
+    ic = []
+    for n, (b, m) in enumerate(ciftler, 1):
+        ic.append('<li class="adim"><span class="adim__no">%02d</span>'
+                  '<div class="adim__ic"><h3>%s</h3><p>%s</p></div></li>'
+                  % (n, kacir(b), kacir(m)))
+    return '<ol class="adimlar">%s</ol>' % "".join(ic)
+
+
+def konsol(dil, kod, ad=""):
+    return """<figure class="konsol">
+        <figcaption class="konsol__ust">
+          <span class="konsol__noktalar"><i></i><i></i><i></i></span>
+          <span class="konsol__ad">%s</span>
+          <span class="konsol__dil">%s</span>
+        </figcaption>
+        <pre><code>%s</code></pre>
+      </figure>""" % (kacir(ad), kacir(dil), kod_boya(kacir(kod)))
+
+
+def kod_blok(baslik, dil, kod, not_metni="", ad=""):
     return """
-  <section class="kod-bolum" aria-labelledby="kod-h">
+  <section class="bolum bolum--beyaz" aria-labelledby="kod-h">
     <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="kod-h">%(baslik)s</h2>
-      <figure class="kod">
-        <figcaption class="kod__ust"><span class="kod__dil">%(dil)s</span></figcaption>
-        <pre><code>%(kod)s</code></pre>
-      </figure>
+      %(konsol)s
       %(not)s
     </div>
-  </section>""" % {"baslik": kacir(baslik), "dil": kacir(dil), "kod": kacir(kod),
+  </section>""" % {"baslik": kacir(baslik), "konsol": konsol(dil, kod, ad),
                    "not": ('<p class="kod__not">%s</p>' % kacir(not_metni)) if not_metni else ""}
 
 
-def sss_blok(ciftler, baslik_id="sss-h"):
+def serit_bolumu():
+    ic = "".join('<div class="serit__oge"><span class="serit__sayi">%s</span>'
+                 '<span class="serit__birim">%s</span>'
+                 '<span class="serit__not">%s</span></div>'
+                 % (kacir(s), kacir(b), kacir(n)) for s, b, n in SERIT)
+    return """
+  <section class="serit" aria-label="Ölçülmüş sonuçlar">
+    <div class="sarmal sarmal--genis">
+      <div class="serit__izgara">%s</div>
+      <p class="serit__kaynak">Hepsi gerçek mağazalarda ölçüldü ·
+        <a href="/yontem/">nasıl ölçüldüğü</a></p>
+    </div>
+  </section>""" % ic
+
+
+def sss_blok(ciftler, baslik_id="sss-h", beyaz=False):
     if not ciftler:
         return "", None
-    govde = "".join('<div class="sss"><h3>%s</h3><p>%s</p></div>' % (kacir(s), c)
-                    for s, c in ciftler)
+    govde = "".join('<details class="sss"><summary>%s</summary><p>%s</p></details>'
+                    % (kacir(s), c) for s, c in ciftler)
     ld = ('{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[%s]}'
           % ",".join('{"@type":"Question","name":"%s","acceptedAnswer":'
                      '{"@type":"Answer","text":"%s"}}' % (json_kacir(s), json_kacir(c))
                      for s, c in ciftler))
     html = """
-  <section aria-labelledby="%s">
+  <section class="bolum%s" aria-labelledby="%s">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="%s">Sık sorulanlar</h2>
-      %s
+      <div class="sss-liste">%s</div>
     </div>
-  </section>""" % (baslik_id, baslik_id, govde)
+  </section>""" % (" bolum--beyaz" if beyaz else "", baslik_id, baslik_id, govde)
     return html, ld
 
 
-def kart(url, ust_yazi, baslik, ozet, alt_yazi=""):
+def kart(url, ust_yazi, baslik, ozet, alt_yazi="", ikon=""):
     return """<a class="kart" href="%s">
+          %s
           <span class="kart__ust">%s</span>
           <span class="kart__baslik">%s</span>
           <span class="kart__ozet">%s</span>%s
-        </a>""" % (url, kacir(ust_yazi), kacir(baslik), kacir(ozet),
-                   ('<span class="kart__alt">%s</span>' % kacir(alt_yazi)) if alt_yazi else "")
+          <span class="kart__ok" aria-hidden="true">→</span>
+        </a>""" % (
+        url,
+        ('<span class="kart__ikon">%s</span>' % IKON[ikon]) if ikon else "",
+        kacir(ust_yazi), kacir(baslik), kacir(ozet),
+        ('<span class="kart__alt">%s</span>' % kacir(alt_yazi)) if alt_yazi else "")
+
+
+def hizmet_kartlari():
+    return "".join(kart("/%s/" % h["slug"], "Geliştirme", h["ad"], h["ozet"],
+                        ikon=HIZMET_IKON.get(h["slug"], ""))
+                   for h in HIZMETLER)
 
 
 def cta(baslik, metin, buton="İletişime geç", hedef="/iletisim/"):
     return """
   <section class="cta" aria-labelledby="cta-h">
     <div class="sarmal sarmal--genis">
-      <div class="cta__kutu">
+      <div class="cta__ic">
         <div>
           <h2 id="cta-h">%s</h2>
           <p>%s</p>
         </div>
-        <a class="btn" href="%s">%s</a>
+        <div class="cta__butonlar">
+          <a class="btn" href="%s">%s</a>
+          <a class="btn btn--sade" href="https://wa.me/%s" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
       </div>
     </div>
-  </section>""" % (kacir(baslik), kacir(metin), hedef, kacir(buton))
+  </section>""" % (kacir(baslik), kacir(metin), hedef, kacir(buton), TELEFON.lstrip("+"))
+
+
+def sayfa_ici(baglar):
+    """baglar: [(id, ad)] — sayfa ici hizli gecis seridi."""
+    if not baglar:
+        return ""
+    ler = "".join('<a href="#%s">%s</a>' % (i, kacir(a)) for i, a in baglar)
+    return ('<nav class="sayfa-ici" aria-label="Bu sayfada">'
+            '<span class="sayfa-ici__etiket">Bu sayfada</span>%s</nav>' % ler)
 
 
 def sayfa(baslik, aciklama, kanonik, aktif_menu, govde, ld_bloklari=(), robots=None):
@@ -701,6 +847,7 @@ def sayfa(baslik, aciklama, kanonik, aktif_menu, govde, ld_bloklari=(), robots=N
 <title>%(baslik)s</title>
 <meta name="description" content="%(aciklama)s" />
 <link rel="canonical" href="%(kanonik)s" />%(rb)s
+<meta name="theme-color" content="#2F4F3E" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="%(kanonik)s" />
 <meta property="og:title" content="%(baslik)s" />
@@ -720,7 +867,7 @@ def sayfa(baslik, aciklama, kanonik, aktif_menu, govde, ld_bloklari=(), robots=N
 %(govde)s
 </main>
 %(alt)s
-<script>document.getElementById('yil').textContent=new Date().getFullYear();</script>
+<script src="/assets/site.js" defer></script>
 </body>
 </html>
 """ % {"baslik": kacir(baslik), "aciklama": kacir(aciklama), "kanonik": kanonik,
@@ -732,22 +879,25 @@ def sayfa(baslik, aciklama, kanonik, aktif_menu, govde, ld_bloklari=(), robots=N
 # ---------------------------------------------------------------------------
 
 STIL = """:root{
-  --kagit:#F6F4EF;
+  --kagit:#F4F2EC;
   --kagit-2:#FFFFFF;
-  --murekkep:#1E201B;
-  --murekkep-2:#4F5249;
-  --murekkep-3:#6C6F64;
-  --cizgi:#E0DCD1;
-  --cizgi-2:#CFCABB;
+  --murekkep:#1B1D18;
+  --murekkep-2:#4B4E45;
+  --murekkep-3:#666A5F;
+  --cizgi:#E1DCD0;
+  --cizgi-2:#CCC6B6;
   --yesil:#2F4F3E;
-  --yesil-2:#456A56;
-  --yesil-yumusak:#E5EDE6;
-  --kod-zemin:#1A1C18;
-  --kod-metin:#DCE3D6;
-  --kod-soluk:#8B9384;
+  --yesil-2:#3F6650;
+  --yesil-yumusak:#E4EDE5;
+  --koyu:#17190F;
+  --koyu-2:#20231A;
+  --koyu-metin:#E8EBE1;
+  --koyu-soluk:#9BA292;
+  --vurgu:#C9A227;
   --genislik:700px;
-  --genislik-genis:980px;
+  --genislik-genis:1060px;
   --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --gecis:.2s cubic-bezier(.22,.61,.36,1);
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -758,173 +908,310 @@ html{scroll-behavior:smooth}
 }
 
 body{
-  background:var(--kagit);
-  color:var(--murekkep);
+  background:var(--kagit);color:var(--murekkep);
   font-family:'Karla',ui-sans-serif,system-ui,'Segoe UI',sans-serif;
-  font-size:17px;
-  line-height:1.65;
-  -webkit-font-smoothing:antialiased;
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
   display:flex;flex-direction:column;min-height:100vh;
 }
 main{flex:1 0 auto}
+:target{scroll-margin-top:88px}
 
 .sarmal{max-width:var(--genislik);margin:0 auto;padding:0 24px;width:100%}
 .sarmal--genis{max-width:var(--genislik-genis)}
 
-a{
-  color:var(--yesil);text-decoration:none;
-  border-bottom:1px solid rgba(47,79,62,.28);
-  transition:border-color .18s ease,color .18s ease;
-}
+a{color:var(--yesil);text-decoration:none;border-bottom:1px solid rgba(47,79,62,.26);transition:border-color var(--gecis),color var(--gecis)}
 a:hover{color:var(--yesil-2);border-bottom-color:var(--yesil-2)}
 a:focus-visible{outline:2px solid var(--yesil);outline-offset:3px;border-radius:2px}
 
-.atla{position:absolute;left:-9999px;top:0;z-index:20;padding:10px 16px;background:var(--yesil);color:#fff;border-bottom:0}
+.atla{position:absolute;left:-9999px;top:0;z-index:30;padding:12px 18px;background:var(--yesil);color:#fff;border-bottom:0}
 .atla:focus{left:8px;top:8px;color:#fff}
 
-/* ---- ust ---- */
-.ust{border-bottom:1px solid var(--cizgi);background:var(--kagit-2)}
-.ust__ic{display:flex;align-items:center;justify-content:space-between;gap:10px 28px;flex-wrap:wrap;padding-top:15px;padding-bottom:15px}
-.ust__ad{font-family:'Newsreader',Georgia,serif;font-size:18px;font-weight:600;color:var(--murekkep);border-bottom:0;letter-spacing:-.01em;line-height:1.2}
+/* ---------- ust ---------- */
+.ust{
+  position:sticky;top:0;z-index:20;
+  border-bottom:1px solid var(--cizgi);
+  background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(8px);
+}
+.ust__ic{display:flex;align-items:center;justify-content:space-between;gap:10px 28px;padding-top:12px;padding-bottom:12px}
+.ust__ad{font-family:'Newsreader',Georgia,serif;font-size:18px;font-weight:600;color:var(--murekkep);border-bottom:0;letter-spacing:-.01em;line-height:1.2;padding:4px 0}
 .ust__ad:hover{color:var(--yesil)}
-.ust__rol{display:block;font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--murekkep-3);margin-top:3px}
-.ust__menu{display:flex;flex-wrap:wrap;gap:4px 20px;font-size:15px}
-.ust__menu a{color:var(--murekkep-2);border-bottom:2px solid transparent;padding-bottom:2px}
-.ust__menu a:hover{color:var(--yesil);border-bottom-color:var(--yesil-yumusak)}
-.ust__menu a[aria-current="page"]{color:var(--murekkep);font-weight:600;border-bottom-color:var(--yesil)}
+.ust__rol{display:block;font-family:var(--mono);font-size:10.5px;font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--murekkep-3);margin-top:3px}
+.ust__menu{display:flex;flex-wrap:wrap;gap:2px 4px;font-size:15px}
+.ust__menu a{
+  color:var(--murekkep-2);border-bottom:0;border-radius:6px;
+  padding:8px 11px;min-height:40px;display:inline-flex;align-items:center;
+  transition:background var(--gecis),color var(--gecis);
+}
+.ust__menu a:hover{color:var(--murekkep);background:var(--kagit)}
+.ust__menu a[aria-current="page"]{color:var(--yesil);background:var(--yesil-yumusak);font-weight:600}
 
-/* ---- kirinti ---- */
-.crumbs{list-style:none;display:flex;flex-wrap:wrap;gap:4px 8px;font-family:var(--mono);font-size:12.5px;color:var(--murekkep-3);padding:24px 0 0}
-.crumbs li+li::before{content:"/";margin-right:8px;color:var(--cizgi-2)}
-.crumbs a{color:var(--murekkep-3);border-bottom-color:transparent}
+.menu-dugme{
+  display:none;align-items:center;gap:9px;
+  font-family:var(--mono);font-size:13px;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--murekkep);background:var(--kagit-2);
+  border:1px solid var(--cizgi-2);border-radius:7px;
+  padding:0 14px;min-height:44px;cursor:pointer;
+}
+.menu-dugme__cizgi,.menu-dugme__cizgi::before,.menu-dugme__cizgi::after{
+  display:block;width:16px;height:1.5px;background:var(--murekkep);
+  transition:transform var(--gecis),opacity var(--gecis);
+}
+.menu-dugme__cizgi{position:relative}
+.menu-dugme__cizgi::before,.menu-dugme__cizgi::after{content:"";position:absolute;left:0}
+.menu-dugme__cizgi::before{top:-5px}
+.menu-dugme__cizgi::after{top:5px}
+.menu-dugme[aria-expanded="true"] .menu-dugme__cizgi{background:transparent}
+.menu-dugme[aria-expanded="true"] .menu-dugme__cizgi::before{transform:translateY(5px) rotate(45deg)}
+.menu-dugme[aria-expanded="true"] .menu-dugme__cizgi::after{transform:translateY(-5px) rotate(-45deg)}
+
+@media (max-width:900px){
+  .menu-dugme{display:inline-flex}
+  .ust__menu{
+    display:none;order:3;width:100%;flex-direction:column;gap:2px;
+    padding:8px 0 12px;border-top:1px solid var(--cizgi);margin-top:12px;
+  }
+  .ust__menu.acik{display:flex}
+  .ust__menu a{width:100%;min-height:46px;font-size:16px}
+}
+
+/* ---------- kirinti ---------- */
+.crumbs{list-style:none;display:flex;flex-wrap:wrap;gap:2px 6px;font-family:var(--mono);font-size:12.5px;color:var(--murekkep-3);padding:22px 0 0}
+.crumbs li{display:inline-flex;align-items:center;min-height:26px}
+.crumbs li+li::before{content:"/";margin-right:6px;color:var(--cizgi-2)}
+.crumbs a{color:var(--murekkep-3);border-bottom-color:transparent;padding:2px 0}
 .crumbs a:hover{color:var(--yesil);border-bottom-color:var(--yesil)}
 
-/* ---- giris ---- */
-.giris{padding:64px 0 0}
-.giris--ic{padding:22px 0 0}
-.ad{font-family:'Newsreader',Georgia,serif;font-size:clamp(32px,5.4vw,45px);font-weight:500;letter-spacing:-.017em;line-height:1.13}
-.ad--ic{font-size:clamp(28px,4.6vw,37px)}
-.rol{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--murekkep-3);margin-bottom:12px}
-.giris p:not(.rol){margin-top:24px;font-size:19px;line-height:1.7;color:var(--murekkep-2);max-width:58ch}
-.giris p:not(.rol)+p{margin-top:16px}
-.giris strong{font-weight:700;color:var(--murekkep)}
-
-section{padding:54px 0}
-section:first-of-type{padding-top:50px}
-.bolum-basligi{
-  font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.09em;
-  text-transform:uppercase;color:var(--murekkep-3);
-  padding-bottom:12px;border-bottom:1px solid var(--cizgi);margin-bottom:28px;
+/* ---------- giris ---------- */
+.giris{padding:56px 0 0}
+.giris--ic{padding:16px 0 0}
+.hero{display:grid;gap:38px 48px;grid-template-columns:1fr;align-items:center;padding:56px 0 8px}
+@media (min-width:900px){.hero{grid-template-columns:1.05fr .95fr;padding:66px 0 10px}}
+.ad{font-family:'Newsreader',Georgia,serif;font-size:clamp(33px,5.4vw,47px);font-weight:500;letter-spacing:-.018em;line-height:1.12}
+.ad--ic{font-size:clamp(28px,4.6vw,38px)}
+.rol{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--yesil);background:var(--yesil-yumusak);
+  padding:5px 12px;border-radius:999px;margin-bottom:16px;
 }
+.rol::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--yesil);flex:none}
+.hero p,.giris p:not(.rol){margin-top:22px;font-size:19px;line-height:1.7;color:var(--murekkep-2);max-width:56ch}
+.hero p+p,.giris p:not(.rol)+p{margin-top:15px}
+.giris strong,.hero strong{font-weight:700;color:var(--murekkep)}
+.hero__butonlar{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+
+/* ---------- bolumler ---------- */
+.bolum{padding:58px 0}
+.bolum--beyaz{background:var(--kagit-2);border-top:1px solid var(--cizgi);border-bottom:1px solid var(--cizgi)}
+.bolum--beyaz+.bolum--beyaz{border-top:0}
+.bolum-basligi{
+  display:flex;align-items:center;gap:12px;
+  font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--murekkep-3);margin-bottom:26px;
+}
+.bolum-basligi::after{content:"";flex:1;height:1px;background:var(--cizgi)}
 .bolum-giris{color:var(--murekkep-2);max-width:62ch;margin-bottom:26px}
 
 .alan{padding:22px 0;border-bottom:1px solid var(--cizgi)}
 .alan:last-child{border-bottom:0;padding-bottom:0}
 .alan h3{font-family:'Newsreader',Georgia,serif;font-size:21px;font-weight:500;letter-spacing:-.01em;margin-bottom:6px}
 .alan p{color:var(--murekkep-2);max-width:64ch}
+.bolum--beyaz .alan{border-color:var(--cizgi)}
 
-.ornek{padding:26px 0;border-bottom:1px solid var(--cizgi)}
-.ornek:last-child{border-bottom:0;padding-bottom:0}
-.ornek p{color:var(--murekkep-2);max-width:64ch}
-.ornek p+p{margin-top:12px}
-.sayi{font-family:var(--mono);font-size:.94em;font-weight:500;color:var(--murekkep);white-space:nowrap}
+/* ---------- adimlar ---------- */
+.adimlar{list-style:none;counter-reset:adim;display:grid;gap:2px}
+.adim{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--cizgi)}
+.adim:last-child{border-bottom:0}
+.adim__no{font-family:var(--mono);font-size:13px;color:var(--yesil);background:var(--yesil-yumusak);border-radius:6px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;flex:none}
+.adim__ic h3{font-family:'Newsreader',Georgia,serif;font-size:20px;font-weight:500;margin-bottom:4px}
+.adim__ic p{color:var(--murekkep-2);max-width:62ch}
 
-/* ---- kod ---- */
-.kod-bolum{padding-top:44px;padding-bottom:44px}
-.kod{margin-top:2px;border-radius:8px;overflow:hidden;border:1px solid var(--kod-zemin);background:var(--kod-zemin)}
-.kod__ust{display:flex;align-items:center;gap:8px;padding:9px 16px;border-bottom:1px solid rgba(220,227,214,.12)}
-.kod__dil{font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--kod-soluk)}
-.kod pre{margin:0;padding:18px 16px 20px;overflow-x:auto}
-.kod code{font-family:var(--mono);font-size:13.5px;line-height:1.66;color:var(--kod-metin);white-space:pre;display:block}
-.kod__not{margin-top:16px;color:var(--murekkep-2);max-width:64ch;font-size:16px}
+/* ---------- serit ---------- */
+.serit{background:var(--koyu);color:var(--koyu-metin);padding:44px 0 40px}
+.serit__izgara{display:grid;gap:26px 20px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.serit__oge{border-left:2px solid rgba(232,235,225,.16);padding-left:16px}
+.serit__sayi{display:block;font-family:var(--mono);font-size:clamp(21px,2.6vw,26px);font-weight:500;color:#fff;letter-spacing:-.01em}
+.serit__birim{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--vurgu);margin-top:5px}
+.serit__not{display:block;font-size:14.5px;color:var(--koyu-soluk);margin-top:9px;line-height:1.5}
+.serit__kaynak{margin-top:30px;font-size:14px;color:var(--koyu-soluk)}
+.serit__kaynak a{color:var(--koyu-metin);border-bottom-color:rgba(232,235,225,.3);padding:4px 0;display:inline-block}
+.serit__kaynak a:hover{color:#fff;border-bottom-color:#fff}
 
-/* ---- yuzeyler ---- */
-.yuzeyler{display:grid;gap:0;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));border-top:1px solid var(--cizgi)}
-.yuzey{padding:15px 0;border-bottom:1px solid var(--cizgi)}
-.yuzey__ad{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--murekkep);display:block}
-.yuzey__not{font-size:15px;color:var(--murekkep-3);margin-top:2px;max-width:40ch}
-@media (min-width:760px){
-  .yuzeyler{column-gap:36px}
+/* ---------- konsol / kod ---------- */
+.konsol{border-radius:10px;overflow:hidden;background:var(--koyu-2);border:1px solid rgba(232,235,225,.1);box-shadow:0 14px 40px -22px rgba(23,25,15,.5)}
+.konsol__ust{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--koyu);border-bottom:1px solid rgba(232,235,225,.09)}
+.konsol__noktalar{display:flex;gap:6px}
+.konsol__noktalar i{width:9px;height:9px;border-radius:50%;background:rgba(232,235,225,.2)}
+.konsol__ad{font-family:var(--mono);font-size:11.5px;color:var(--koyu-soluk);flex:1}
+.konsol__dil{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--vurgu)}
+.konsol pre{margin:0;padding:18px 16px 20px;overflow-x:auto}
+.konsol code{font-family:var(--mono);font-size:13.5px;line-height:1.68;color:var(--koyu-metin);white-space:pre;display:block}
+.k-yorum{color:var(--koyu-soluk);font-style:italic}
+.k-dize{color:#B7CDA8}
+.kod__not{margin-top:18px;color:var(--murekkep-2);max-width:64ch;font-size:16px}
+
+/* ---------- yuzeyler ---------- */
+.yuzeyler{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(268px,1fr))}
+.yuzey{padding:14px 16px;background:var(--kagit-2);border:1px solid var(--cizgi);border-radius:8px;transition:border-color var(--gecis),transform var(--gecis)}
+.yuzey:hover{border-color:var(--cizgi-2);transform:translateY(-1px)}
+.bolum--beyaz .yuzey{background:var(--kagit)}
+.yuzey__ad{font-family:var(--mono);font-size:13.5px;font-weight:500;color:var(--murekkep);display:block}
+.yuzey__not{font-size:14.5px;color:var(--murekkep-3);margin-top:3px;display:block;line-height:1.5}
+
+/* ---------- kartlar ---------- */
+.kartlar{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(252px,1fr))}
+.kart{
+  position:relative;display:flex;flex-direction:column;gap:6px;
+  padding:24px 24px 46px;background:var(--kagit-2);
+  border:1px solid var(--cizgi);border-radius:10px;color:inherit;
+  transition:border-color var(--gecis),box-shadow var(--gecis),transform var(--gecis);
 }
-
-/* ---- kartlar ---- */
-.kartlar{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(258px,1fr))}
-.kart{display:flex;flex-direction:column;gap:6px;padding:22px 24px;background:var(--kagit-2);border:1px solid var(--cizgi);border-radius:8px;color:inherit;transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease}
-.kart:hover{border-color:var(--yesil-2);box-shadow:0 2px 14px rgba(30,32,27,.07);transform:translateY(-1px)}
-.kart__ust{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--murekkep-3)}
+.bolum--beyaz .kart{background:var(--kagit)}
+.kart:hover{border-color:var(--yesil-2);box-shadow:0 12px 30px -18px rgba(27,29,24,.4);transform:translateY(-2px)}
+.kart__ikon{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:9px;background:var(--yesil-yumusak);color:var(--yesil);margin-bottom:12px}
+.kart__ikon svg{width:21px;height:21px}
+.kart__ust{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--murekkep-3)}
 .kart__baslik{font-family:'Newsreader',Georgia,serif;font-size:20px;font-weight:500;line-height:1.25;color:var(--murekkep)}
 .kart__ozet{color:var(--murekkep-2);font-size:16px;line-height:1.6}
 .kart__alt{margin-top:4px;font-family:var(--mono);font-size:12.5px;color:var(--murekkep-3)}
+.kart__ok{position:absolute;left:24px;bottom:20px;color:var(--yesil);font-size:17px;transition:transform var(--gecis)}
+.kart:hover .kart__ok{transform:translateX(5px)}
 
-.rozetler{display:flex;flex-wrap:wrap;gap:8px 9px;margin-top:22px}
-.rozet{font-family:var(--mono);font-size:12.5px;padding:5px 11px;border:1px solid var(--cizgi-2);border-radius:5px;color:var(--murekkep-2);background:var(--kagit-2)}
+.rozetler{display:flex;flex-wrap:wrap;gap:8px 9px;margin-top:24px}
+.rozet{font-family:var(--mono);font-size:12.5px;padding:6px 11px;border:1px solid var(--cizgi-2);border-radius:6px;color:var(--murekkep-2);background:var(--kagit-2)}
+.bolum--beyaz .rozet{background:var(--kagit)}
 
-.markalar{display:flex;flex-wrap:wrap;gap:8px 10px}
-.marka{font-size:15px;padding:7px 14px;border:1px solid var(--cizgi);border-radius:999px;color:var(--murekkep-2);background:var(--kagit-2);transition:border-color .18s ease,color .18s ease,background .18s ease}
-a.marka:hover{color:var(--yesil);border-color:var(--yesil-2);background:var(--yesil-yumusak)}
+.markalar{display:flex;flex-wrap:wrap;gap:9px 10px}
+.marka{display:inline-flex;align-items:center;min-height:38px;font-size:15px;padding:6px 15px;border:1px solid var(--cizgi);border-radius:999px;color:var(--murekkep-2);background:var(--kagit-2);transition:border-color var(--gecis),color var(--gecis),background var(--gecis),transform var(--gecis)}
+a.marka:hover{color:var(--yesil);border-color:var(--yesil-2);background:var(--yesil-yumusak);transform:translateY(-1px)}
 
 .maddeler{list-style:none;margin-top:4px}
-.maddeler li{position:relative;padding-left:20px;color:var(--murekkep-2);max-width:64ch;margin-top:8px}
-.maddeler li::before{content:"";position:absolute;left:2px;top:12px;width:7px;height:1px;background:var(--yesil)}
+.maddeler li{position:relative;padding-left:22px;color:var(--murekkep-2);max-width:64ch;margin-top:10px}
+.maddeler li::before{content:"";position:absolute;left:2px;top:11px;width:8px;height:1.5px;background:var(--yesil);border-radius:2px}
+.maddeler--isaret li::before{content:"✕";width:auto;height:auto;background:none;top:0;color:var(--yesil);font-size:12px}
 
-.durum{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;padding:4px 11px;border-radius:5px;background:var(--yesil-yumusak);color:var(--yesil);margin-top:14px}
+.durum{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;padding:5px 12px;border-radius:6px;background:var(--yesil-yumusak);color:var(--yesil);margin-top:14px}
+.durum::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--yesil)}
 
-.btn{display:inline-block;padding:11px 22px;border-radius:6px;background:var(--yesil);color:#fff;font-weight:600;font-size:16px;border-bottom:0;transition:background .18s ease;white-space:nowrap}
-.btn:hover{background:var(--yesil-2);color:#fff;border-bottom:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 24px;border-radius:7px;background:var(--yesil);color:#fff;font-weight:600;font-size:16px;border-bottom:0;transition:background var(--gecis),transform var(--gecis);white-space:nowrap}
+.btn:hover{background:var(--yesil-2);color:#fff;border-bottom:0;transform:translateY(-1px)}
+.btn--sade{background:transparent;color:var(--yesil);border:1px solid var(--cizgi-2)}
+.btn--sade:hover{background:var(--yesil-yumusak);color:var(--yesil);border-color:var(--yesil-2)}
 
-.gorsel{margin-top:24px;width:100%;height:auto;border:1px solid var(--cizgi);border-radius:8px}
+.gorsel{margin-top:24px;width:100%;height:auto;border:1px solid var(--cizgi);border-radius:10px}
 
-.sss{padding:20px 0;border-bottom:1px solid var(--cizgi)}
-.sss:last-child{border-bottom:0;padding-bottom:0}
-.sss h3{font-family:'Newsreader',Georgia,serif;font-size:19px;font-weight:500;margin-bottom:6px}
-.sss p{color:var(--murekkep-2);max-width:64ch}
+/* ---------- sss ---------- */
+.sss-liste{border-top:1px solid var(--cizgi)}
+.sss{border-bottom:1px solid var(--cizgi)}
+.sss summary{
+  display:flex;align-items:flex-start;gap:12px;
+  list-style:none;cursor:pointer;padding:17px 0;min-height:48px;
+  font-family:'Newsreader',Georgia,serif;font-size:19px;font-weight:500;
+  color:var(--murekkep);transition:color var(--gecis);
+}
+.sss summary::-webkit-details-marker{display:none}
+.sss summary::before{content:"+";font-family:var(--mono);font-size:17px;color:var(--yesil);line-height:1.5;flex:none;transition:transform var(--gecis)}
+.sss[open] summary::before{content:"−"}
+.sss summary:hover{color:var(--yesil)}
+.sss p{color:var(--murekkep-2);max-width:64ch;padding:0 0 20px 27px}
 
-.taftri{padding:26px 28px;background:var(--yesil-yumusak);border-left:2px solid var(--yesil);border-radius:0 6px 6px 0}
-.taftri h3{font-family:'Newsreader',Georgia,serif;font-size:20px;font-weight:500;margin-bottom:8px}
-.taftri p{color:var(--murekkep-2);max-width:56ch}
-.taftri a{font-weight:500}
+/* ---------- sayfa ici gecis ---------- */
+.sayfa-ici{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:26px}
+.sayfa-ici__etiket{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--murekkep-3);margin-right:2px}
+.sayfa-ici a{display:inline-flex;align-items:center;min-height:34px;padding:5px 13px;border:1px solid var(--cizgi);border-radius:999px;background:var(--kagit-2);color:var(--murekkep-2);font-size:14.5px;transition:border-color var(--gecis),color var(--gecis),background var(--gecis)}
+.sayfa-ici a:hover{color:var(--yesil);border-color:var(--yesil-2);background:var(--yesil-yumusak)}
 
-.cta{padding-top:14px}
-.cta__kutu{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px;padding:30px 32px;background:var(--kagit-2);border:1px solid var(--cizgi);border-radius:10px}
-.cta__kutu h2{font-family:'Newsreader',Georgia,serif;font-size:23px;font-weight:500;letter-spacing:-.01em}
-.cta__kutu p{color:var(--murekkep-2);max-width:52ch;margin-top:6px}
+/* ---------- taftri ---------- */
+.taftri{display:flex;flex-wrap:wrap;gap:16px 26px;align-items:center;justify-content:space-between;padding:26px 30px;background:var(--yesil-yumusak);border-left:3px solid var(--yesil);border-radius:0 10px 10px 0}
+.taftri h3{font-family:'Newsreader',Georgia,serif;font-size:20px;font-weight:500;margin-bottom:6px}
+.taftri p{color:var(--murekkep-2);max-width:52ch}
 
-.iletisim-satir{display:flex;flex-wrap:wrap;gap:18px 40px;font-size:18px;margin-top:4px}
-.iletisim-satir span{font-family:var(--mono);color:var(--murekkep-3);font-size:12px;display:block;margin-bottom:3px;letter-spacing:.06em;text-transform:uppercase}
-.devam{margin-top:22px;margin-bottom:0}
+/* ---------- cta ---------- */
+.cta{background:var(--koyu);color:var(--koyu-metin);padding:52px 0}
+.cta__ic{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 40px}
+.cta__ic h2{font-family:'Newsreader',Georgia,serif;font-size:clamp(23px,3vw,29px);font-weight:500;letter-spacing:-.01em;color:#fff}
+.cta__ic p{color:var(--koyu-soluk);max-width:50ch;margin-top:8px}
+.cta__butonlar{display:flex;flex-wrap:wrap;gap:12px}
+.cta .btn{background:var(--vurgu);color:var(--koyu)}
+.cta .btn:hover{background:#DCB63D;color:var(--koyu)}
+.cta .btn--sade{background:transparent;color:var(--koyu-metin);border-color:rgba(232,235,225,.28)}
+.cta .btn--sade:hover{background:rgba(232,235,225,.08);color:#fff;border-color:rgba(232,235,225,.5)}
 
-/* ---- alt ---- */
-.alt{flex-shrink:0;margin-top:30px;padding:48px 0 40px;border-top:1px solid var(--cizgi);background:var(--kagit-2);color:var(--murekkep-3);font-size:15px}
+/* ---------- iletisim ---------- */
+.iletisim-izgara{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.iletisim-kart{display:flex;flex-direction:column;gap:4px;padding:22px 24px;background:var(--kagit-2);border:1px solid var(--cizgi);border-radius:10px;color:inherit;min-height:104px;justify-content:center;transition:border-color var(--gecis),transform var(--gecis)}
+.iletisim-kart:hover{border-color:var(--yesil-2);transform:translateY(-2px)}
+.iletisim-kart span{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--murekkep-3)}
+.iletisim-kart b{font-size:19px;font-weight:600;color:var(--murekkep)}
+.devam{margin-top:24px;margin-bottom:0}
+.devam a{display:inline-flex;align-items:center;gap:6px;min-height:32px}
+
+/* ---------- alt ---------- */
+.alt{flex-shrink:0;padding:52px 0 40px;border-top:1px solid var(--cizgi);background:var(--kagit-2);color:var(--murekkep-3);font-size:15px}
 .alt__izgara{display:grid;gap:30px 32px;grid-template-columns:repeat(auto-fit,minmax(178px,1fr))}
 .alt__sutun--ilk{grid-column:span 2;min-width:240px}
 .alt__ad{font-family:'Newsreader',Georgia,serif;font-size:18px;font-weight:600;color:var(--murekkep)}
 .alt__metin{margin-top:8px;max-width:44ch;line-height:1.6}
-.alt__mono{margin-top:12px;font-family:var(--mono);font-size:12px;color:var(--murekkep-3);line-height:1.8}
-.alt__baslik{font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--murekkep-2);margin-bottom:10px}
+.alt__mono{margin-top:14px;font-family:var(--mono);font-size:11.5px;color:var(--murekkep-3);line-height:1.9}
+.alt__baslik{font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--murekkep-2);margin-bottom:6px}
 .alt__sutun ul{list-style:none}
-.alt__sutun li{margin-top:7px;line-height:1.45}
+.alt__sutun li{line-height:1.4}
+.alt__sutun li a{display:inline-flex;align-items:center;min-height:32px;padding:4px 0}
 .alt a{color:var(--murekkep-3);border-bottom-color:transparent}
 .alt a:hover{color:var(--yesil);border-bottom-color:var(--yesil)}
-.alt__satir{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;margin-top:38px;padding-top:20px;border-top:1px solid var(--cizgi);font-size:14px}
+.alt__satir{display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:space-between;align-items:center;margin-top:36px;padding-top:18px;border-top:1px solid var(--cizgi);font-size:14px}
+.alt__satir a{display:inline-flex;align-items:center;min-height:32px;padding:4px 0}
 
-@media (max-width:700px){
-  .alt__sutun--ilk{grid-column:span 2}
-}
+@media (max-width:700px){.alt__sutun--ilk{grid-column:span 2}}
 @media (max-width:600px){
   body{font-size:16px}
-  .ust__ic{padding-top:14px;padding-bottom:14px}
-  .ust__menu{gap:4px 15px;font-size:14.5px}
-  .giris{padding-top:40px}
-  .giris p:not(.rol){font-size:17.5px}
-  section{padding:38px 0}
-  section:first-of-type{padding-top:36px}
+  .giris{padding-top:34px}
+  .hero{padding-top:34px;gap:30px}
+  .hero p,.giris p:not(.rol){font-size:17.5px}
+  .bolum{padding:42px 0}
+  .serit{padding:36px 0 32px}
+  .cta{padding:40px 0}
   .taftri{padding:22px 20px}
-  .kart{padding:20px}
-  .cta__kutu{padding:24px 22px}
-  .kod code{font-size:12.5px}
+  .kart{padding:20px 20px 44px}
+  .kart__ok{left:20px}
+  .konsol code{font-size:12.5px}
+  .adim{gap:14px}
   .alt__izgara{gap:26px 24px}
   .alt__sutun--ilk{grid-column:span 1}
 }
+"""
+
+BETIK = """(function () {
+  var y = document.getElementById('yil');
+  if (y) y.textContent = new Date().getFullYear();
+
+  var dugme = document.querySelector('.menu-dugme');
+  var menu = document.getElementById('ana-menu');
+  if (!dugme || !menu) return;
+
+  function kapat() {
+    menu.classList.remove('acik');
+    dugme.setAttribute('aria-expanded', 'false');
+  }
+
+  dugme.addEventListener('click', function () {
+    var acik = menu.classList.toggle('acik');
+    dugme.setAttribute('aria-expanded', acik ? 'true' : 'false');
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu.classList.contains('acik')) {
+      kapat();
+      dugme.focus();
+    }
+  });
+
+  // genis ekrana gecince acik menu kalintisi kalmasin
+  var sorgu = window.matchMedia('(min-width: 901px)');
+  var dinle = function (e) { if (e.matches) kapat(); };
+  if (sorgu.addEventListener) sorgu.addEventListener('change', dinle);
+  else if (sorgu.addListener) sorgu.addListener(dinle);
+})();
 """
 
 
@@ -960,116 +1247,117 @@ def ld_hizmet(h):
 # SAYFALAR
 # ---------------------------------------------------------------------------
 
-def yuzey_bolumu():
+def yuzey_bolumu(beyaz=False):
     ler = "".join('<div class="yuzey"><span class="yuzey__ad">%s</span>'
                   '<span class="yuzey__not">%s</span></div>'
                   % (kacir(a), kacir(n)) for a, n in YUZEYLER)
     return """
-  <section aria-labelledby="yuzey-h">
+  <section class="bolum%s" aria-labelledby="yuzey-h">
     <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="yuzey-h">Çalıştığım platform yüzeyleri</h2>
       <div class="yuzeyler">%s</div>
     </div>
-  </section>""" % ler
+  </section>""" % (" bolum--beyaz" if beyaz else "", ler)
 
 
 def ana_sayfa():
     baslik = "%s — Shopify uygulama geliştiricisi" % AD
-    aciklama = ("Shopify için yazılım geliştiriyorum: App Store uygulamaları, mağazaya "
-                "özel uygulamalar, Liquid tema geliştirme ve Admin API entegrasyonları.")
-
-    hizmet_kartlari = "".join(
-        kart("/%s/" % h["slug"], "Geliştirme", h["ad"], h["ozet"]) for h in HIZMETLER)
+    aciklama = ("Shopify için yazılım geliştiriyorum: App Store uygulamaları, mağazaya özel "
+                "uygulamalar, Liquid tema geliştirme ve Admin API entegrasyonları.")
 
     parcalar = ["""
-  <div class="sarmal">
-    <header class="giris">
-      <p class="rol">Shopify · Admin GraphQL API · Liquid</p>
-      <h1 class="ad">Shopify için yazılım geliştiriyorum</h1>
-      <p>Bir kısmı App Store'da herkese açık uygulama olarak çıkıyor, bir kısmı tek bir
-        mağaza için yazılıp orada kalıyor. Tema ve entegrasyon işleri de aynı elden.</p>
-      <p>İkisinin ortak yanı şu: iş yeni bir şey icat etmekle değil,
-        <strong>ölçmekle</strong> başlıyor. Bir butonun sayfanın kaçıncı pikselinde
-        durduğunu bilmeden onu yukarı almanın anlamı yok.</p>
+  <div class="sarmal sarmal--genis">
+    <header class="hero">
+      <div>
+        <p class="rol">Shopify uygulama geliştiricisi</p>
+        <h1 class="ad">Shopify için yazılım geliştiriyorum</h1>
+        <p>Bir kısmı App Store'da herkese açık uygulama olarak çıkıyor, bir kısmı tek bir
+          mağaza için yazılıp orada kalıyor. Tema ve entegrasyon işleri de aynı elden.</p>
+        <p>İkisinin ortak yanı şu: iş yeni bir şey icat etmekle değil,
+          <strong>ölçmekle</strong> başlıyor.</p>
+        <div class="hero__butonlar">
+          <a class="btn" href="/gelistirme/">Ne geliştiriyorum</a>
+          <a class="btn btn--sade" href="/iletisim/">İletişime geç</a>
+        </div>
+      </div>
+      %s
     </header>
-  </div>
+  </div>""" % konsol("graphql", KOD_HERO, "admin-api")]
 
-  <section aria-labelledby="alanlar-h">
+    parcalar.append(serit_bolumu())
+
+    parcalar.append("""
+  <section class="bolum" aria-labelledby="alanlar-h">
     <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="alanlar-h">Ne geliştiriyorum</h2>
       <div class="kartlar">%s</div>
-      <p class="devam"><a href="/gelistirme/">Geliştirme alanlarının tamamı</a></p>
+      <p class="devam"><a href="/gelistirme/">Geliştirme alanlarının tamamı →</a></p>
     </div>
-  </section>""" % hizmet_kartlari]
+  </section>""" % hizmet_kartlari())
 
-    parcalar.append(yuzey_bolumu())
+    parcalar.append(yuzey_bolumu(beyaz=True))
 
     if UYGULAMALAR:
         kartlar = "".join(
             kart("/uygulamalar/%s/" % u["slug"],
                  DURUM_ADI.get(u.get("durum", ""), "Uygulama"),
-                 u["ad"], u["ozet"], u.get("fiyat", ""))
+                 u["ad"], u["ozet"], u.get("fiyat", ""), ikon="app")
             for u in UYGULAMALAR[:3])
         parcalar.append("""
-  <section aria-labelledby="uygulamalar-h">
+  <section class="bolum" aria-labelledby="uygulamalar-h">
     <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="uygulamalar-h">Uygulamalar</h2>
       <div class="kartlar">%s</div>
-      <p class="devam"><a href="/uygulamalar/">Tüm uygulamalar</a></p>
+      <p class="devam"><a href="/uygulamalar/">Tüm uygulamalar →</a></p>
     </div>
   </section>""" % kartlar)
 
     if ISLER:
         kartlar = "".join(
             kart("/isler/%s/" % i["slug"], TUR_ADI.get(i.get("tur", ""), "İş"),
-                 i["baslik"], i["ozet"], i.get("musteri", ""))
+                 i["baslik"], i["ozet"], i.get("musteri", ""), ikon="olcum")
             for i in ISLER[:3])
         parcalar.append("""
-  <section aria-labelledby="isler-h">
+  <section class="bolum" aria-labelledby="isler-h">
     <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="isler-h">Yapılmış işler</h2>
       <div class="kartlar">%s</div>
-      <p class="devam"><a href="/isler/">Tüm işler</a></p>
+      <p class="devam"><a href="/isler/">Tüm işler →</a></p>
     </div>
   </section>""" % kartlar)
 
     parcalar.append(kod_blok("Binlerce kayıtlık iş nasıl yürür", "graphql", KOD_BULK,
-                             "Toplu işlem sonucu JSONL dosyası olarak indirilir. Aynı "
-                             "veriyi sayfa sayfa çekmek hem hız limitini yakar hem yarıda "
-                             "kalırsa nereden devam edeceğini bilemezsin."))
+                             "Toplu işlem sonucu JSONL dosyası olarak indirilir. Aynı veriyi "
+                             "sayfa sayfa çekmek hem hız limitini yakar hem yarıda kalırsa "
+                             "nereden devam edeceğini bilemezsin.", "bulk-operation"))
 
+    b, paragraflar, _ = VAKALAR[0]
     parcalar.append("""
-  <section aria-labelledby="yontem-h">
+  <section class="bolum" aria-labelledby="yontem-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="yontem-h">Nasıl çalışıyorum</h2>
-      <div class="ornek">%s</div>
-      <p class="devam"><a href="/yontem/">Ölçüm örneklerinin tamamı</a> &middot;
-        <a href="/teknik/">teknik yaklaşım</a></p>
+      %s
+      <p class="devam"><a href="/yontem/">Ölçüm örneklerinin tamamı →</a></p>
     </div>
-  </section>""" % "".join("<p>%s</p>" % p for p in VAKALAR[0]))
+  </section>""" % adimlar(SUREC))
 
     marka_html = "".join('<a class="marka" href="%s" target="_blank" rel="noopener">%s</a>'
                          % (u, kacir(a)) for a, u in MARKALAR)
     parcalar.append("""
-  <section aria-labelledby="markalar-h">
+  <section class="bolum bolum--beyaz" aria-labelledby="markalar-h">
     <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="markalar-h">Birlikte çalıştığım markalar</h2>
       <div class="markalar">%s</div>
-    </div>
-  </section>""" % marka_html)
-
-    parcalar.append("""
-  <section aria-labelledby="taftri-h">
-    <div class="sarmal">
-      <h2 class="bolum-basligi" id="taftri-h">Ajans işleri</h2>
-      <div class="taftri">
-        <h3>Taftri</h3>
-        <p>Ekip gerektiren işler — sürekli reklam yönetimi, içerik üretimi, uzun soluklu
-          mağaza operasyonu — <a href="https://taftri.com/" rel="noopener">taftri.com</a>
-          üzerinden yürüyor. Hizmet kapsamı ve teklif orada.</p>
+      <div class="taftri" style="margin-top:34px">
+        <div>
+          <h3>Ajans işleri Taftri üzerinden</h3>
+          <p>Ekip gerektiren işler — sürekli reklam yönetimi, içerik üretimi, uzun soluklu
+            mağaza operasyonu.</p>
+        </div>
+        <a class="btn btn--sade" href="https://taftri.com/" rel="noopener">taftri.com</a>
       </div>
     </div>
-  </section>""")
+  </section>""" % marka_html)
 
     parcalar.append(cta("Aklınızda bir şey var mı?",
                         "Ne yapılması gerektiğini söylemek çoğu zaman kısa sürüyor."))
@@ -1083,8 +1371,6 @@ def gelistirme_hub():
     aciklama = ("Shopify App Store uygulaması, mağazaya özel uygulama, Liquid tema "
                 "geliştirme ve Admin API entegrasyonu. Hangisi hangi işe uygun.")
     kb, kld = kirinti([("Ana sayfa", "/"), ("Geliştirme", None)])
-    kartlar = "".join(kart("/%s/" % h["slug"], "Geliştirme", h["ad"], h["ozet"])
-                      for h in HIZMETLER)
     liste_ld = ('{"@context":"https://schema.org","@type":"ItemList",'
                 '"itemListElement":[%s]}' % ",".join(
                     '{"@type":"ListItem","position":%d,"name":"%s","url":"%s/%s/"}'
@@ -1101,11 +1387,11 @@ def gelistirme_hub():
     </header>
   </div>
 
-  <section aria-label="Geliştirme alanları">
+  <section class="bolum" aria-label="Geliştirme alanları">
     <div class="sarmal sarmal--genis"><div class="kartlar">%(kartlar)s</div></div>
   </section>
 
-  <section aria-labelledby="hangisi-h">
+  <section class="bolum bolum--beyaz" aria-labelledby="hangisi-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="hangisi-h">Hangisi size uygun</h2>
       %(karar)s
@@ -1113,7 +1399,7 @@ def gelistirme_hub():
   </section>
 %(yuzey)s
 %(cta)s""" % {
-        "kb": kb, "kartlar": kartlar, "yuzey": yuzey_bolumu(),
+        "kb": kb, "kartlar": hizmet_kartlari(), "yuzey": yuzey_bolumu(),
         "karar": alanlar([
             ("Aynı ihtiyaç birçok mağazada varsa",
              'Satılabilir bir ürün var demektir; <a href="/uygulama-gelistirme/">App Store '
@@ -1144,23 +1430,30 @@ def hizmet_sayfasi(h):
     kb, kld = kirinti([("Ana sayfa", "/"), ("Geliştirme", "/gelistirme/"), (h["ad"], None)])
 
     digerleri = [d for d in HIZMETLER if d["slug"] != h["slug"]]
-    diger_kartlar = "".join(kart("/%s/" % d["slug"], "Geliştirme", d["ad"], d["ozet"])
+    diger_kartlar = "".join(kart("/%s/" % d["slug"], "Geliştirme", d["ad"], d["ozet"],
+                                 ikon=HIZMET_IKON.get(d["slug"], ""))
                             for d in digerleri)
-    sss_html, sss_ld = sss_blok(h.get("sss", []))
+    sss_html, sss_ld = sss_blok(h.get("sss", []), beyaz=True)
     kod_html = ""
+    baglar = [("kapsam-h", h["kapsam_basligi"]), ("surec-h", "Nasıl yürüyor")]
     if h.get("kod"):
-        kod_html = kod_blok(h["kod"][0], h["kod"][1], h["kod"][2], h.get("kod_not", ""))
+        kod_html = kod_blok(h["kod"][0], h["kod"][1], h["kod"][2], h.get("kod_not", ""),
+                            h["slug"])
+        baglar.insert(1, ("kod-h", "Kod"))
+    if h.get("sss"):
+        baglar.append(("sss-h", "Sık sorulanlar"))
 
     govde = """
-  <div class="sarmal">%(kb)s
+  <div class="sarmal sarmal--genis">%(kb)s
     <header class="giris giris--ic">
       <p class="rol">Geliştirme</p>
       <h1 class="ad ad--ic">%(h1)s</h1>
       %(giris)s
+      %(ici)s
     </header>
   </div>
 
-  <section aria-labelledby="kapsam-h">
+  <section class="bolum" aria-labelledby="kapsam-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="kapsam-h">%(kapsam_basligi)s</h2>
       %(kapsam)s
@@ -1168,16 +1461,15 @@ def hizmet_sayfasi(h):
     </div>
   </section>
 %(kod)s
-  <section aria-labelledby="surec-h">
+  <section class="bolum" aria-labelledby="surec-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="surec-h">Nasıl yürüyor</h2>
       %(surec)s
-      <p class="devam"><a href="/teknik/">Teknik yaklaşım</a> &middot;
-        <a href="/yontem/">ölçüm örnekleri</a></p>
+      <p class="devam"><a href="/teknik/">Teknik yaklaşım →</a></p>
     </div>
   </section>
 %(sss)s
-  <section aria-labelledby="diger-h">
+  <section class="bolum" aria-labelledby="diger-h">
     <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="diger-h">Diğer geliştirme alanları</h2>
       <div class="kartlar">%(diger)s</div>
@@ -1186,11 +1478,12 @@ def hizmet_sayfasi(h):
 %(cta)s""" % {
         "kb": kb, "h1": kacir(h["baslik"]),
         "giris": "".join("<p>%s</p>" % p for p in h["giris"]),
+        "ici": sayfa_ici(baglar),
         "kapsam_basligi": kacir(h["kapsam_basligi"]),
         "kapsam": alanlar(h["kapsam"]),
         "rozet": rozetler(h.get("teknik", [])),
         "kod": kod_html,
-        "surec": alanlar(SUREC),
+        "surec": adimlar(SUREC),
         "sss": sss_html,
         "diger": diger_kartlar,
         "cta": cta("Bu işin sizdeki karşılığı ne?",
@@ -1205,20 +1498,26 @@ def hizmet_sayfasi(h):
 
 def teknik_sayfasi():
     baslik = "Teknik yaklaşım — Shopify geliştirme"
-    aciklama = ("API sürüm yönetimi, hız limiti, webhook imza doğrulama, idempotent "
-                "işleme, geri alınabilir toplu iş ve doğrulama disiplini.")
+    aciklama = ("API sürüm yönetimi, hız limiti, webhook imza doğrulama, idempotent işleme, "
+                "geri alınabilir toplu iş ve doğrulama disiplini.")
     kb, kld = kirinti([("Ana sayfa", "/"), ("Teknik", None)])
+    ilke_html = "".join(
+        '<div class="alan" style="display:grid;grid-template-columns:auto 1fr;gap:16px">'
+        '<span class="kart__ikon" style="margin:0">%s</span>'
+        '<div><h3>%s</h3><p>%s</p></div></div>' % (IKON[ik], kacir(b), kacir(m))
+        for ik, b, m in TEKNIK_ILKELER)
     govde = """
   <div class="sarmal sarmal--genis">%(kb)s
     <header class="giris giris--ic">
       <p class="rol">Teknik yaklaşım</p>
       <h1 class="ad ad--ic">Nasıl yazıyorum</h1>
-      <p>Aşağıdakiler tercih değil, sahada bir kere kaybedip öğrenilmiş kurallar.
-        Hepsi bir hataya mal olmuş; bu yüzden istisnasız uygulanıyor.</p>
+      <p>Aşağıdakiler tercih değil, sahada bir kere kaybedip öğrenilmiş kurallar. Hepsi bir
+        hataya mal olmuş; bu yüzden istisnasız uygulanıyor.</p>
+      %(ici)s
     </header>
   </div>
 
-  <section aria-labelledby="ilke-h">
+  <section class="bolum" aria-labelledby="ilke-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="ilke-h">İlkeler</h2>
       %(ilkeler)s
@@ -1228,15 +1527,16 @@ def teknik_sayfasi():
 %(kod2)s
 %(yuzey)s
 %(cta)s""" % {
-        "kb": kb,
-        "ilkeler": alanlar(TEKNIK_ILKELER),
+        "kb": kb, "ilkeler": ilke_html,
+        "ici": sayfa_ici([("ilke-h", "İlkeler"), ("kod-h", "Kod"),
+                          ("yuzey-h", "Platform yüzeyleri")]),
         "kod1": kod_blok("Webhook imzası doğrulanmadan hiçbir şey işlenmez", "js", KOD_HMAC,
-                         "İmza doğrulaması olmayan bir webhook ucu, herkesin veri "
-                         "yazabildiği açık bir kapıdır."),
+                         "İmza doğrulaması olmayan bir webhook ucu, herkesin veri yazabildiği "
+                         "açık bir kapıdır.", "webhook.js"),
         "kod2": kod_blok("Boş render eden blok bırakmamak", "liquid", KOD_BOLUM,
-                         "Bir mağazada silinmiş bir ürüne işaret eden hediye bloğu "
-                         "aylarca sessizce boş basmıştı. Koşul olmadan yazılan her "
-                         "referanslı blok aynı riski taşır."),
+                         "Bir mağazada silinmiş bir ürüne işaret eden hediye bloğu aylarca "
+                         "sessizce boş basmıştı. Koşul olmadan yazılan her referanslı blok "
+                         "aynı riski taşır.", "hediye-kutu.liquid"),
         "yuzey": yuzey_bolumu(),
         "cta": cta("Mevcut kurulumunuz bu ölçütleri karşılıyor mu?",
                    "Bakıp ne gördüğümü yazayım — mağazanın adresi yeterli."),
@@ -1246,46 +1546,60 @@ def teknik_sayfasi():
 
 def yontem_sayfasi():
     baslik = "Nasıl çalışıyorum — %s" % AD
-    aciklama = ("Ölçerek teşhis, yazılı kapsam, ayrı temada geliştirme ve ölçülmüş "
-                "teslim. Sahadan beş ölçüm örneği.")
+    aciklama = ("Ölçerek teşhis, yazılı kapsam, ayrı temada geliştirme ve ölçülmüş teslim. "
+                "Sahadan beş ölçüm örneği.")
     kb, kld = kirinti([("Ana sayfa", "/"), ("Yöntem", None)])
-    vaka_html = "".join('<div class="ornek">%s</div>' % "".join("<p>%s</p>" % p for p in v)
-                        for v in VAKALAR)
+
+    vaka_html = []
+    for b, paragraflar, olcum in VAKALAR:
+        rakam = ""
+        if olcum:
+            rakam = ('<div class="vaka__olcum"><span class="vaka__once">%s</span>'
+                     '<span class="vaka__ok">→</span>'
+                     '<span class="vaka__sonra">%s</span>'
+                     '<span class="vaka__birim">%s</span></div>'
+                     % (kacir(olcum[0]), kacir(olcum[1]), kacir(olcum[2])))
+        vaka_html.append('<article class="vaka"><h3>%s</h3>%s%s</article>'
+                         % (kacir(b), rakam, "".join("<p>%s</p>" % p for p in paragraflar)))
+
     govde = """
-  <div class="sarmal">%(kb)s
+  <div class="sarmal sarmal--genis">%(kb)s
     <header class="giris giris--ic">
       <p class="rol">Yöntem</p>
       <h1 class="ad ad--ic">Nasıl çalışıyorum</h1>
       <p>İşin büyük kısmı yeni bir şey icat etmekle değil, hâlihazırda para kaybettiren
         yeri bulmakla geçiyor. Bunun tek yolu <strong>ölçmek</strong>.</p>
+      %(ici)s
     </header>
   </div>
 
-  <section aria-labelledby="surec-h">
+  <section class="bolum" aria-labelledby="surec-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="surec-h">Süreç</h2>
       %(surec)s
     </div>
   </section>
 
-  <section aria-labelledby="vaka-h">
-    <div class="sarmal">
+  <section class="bolum bolum--beyaz" aria-labelledby="vaka-h">
+    <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="vaka-h">Ölçüm örnekleri</h2>
       <p class="bolum-giris">Hepsi gerçek mağazalarda ölçüldü. Rakamlar tahmin değil,
         çalışan sayfadan okunan değerler.</p>
-      %(vakalar)s
+      <div class="vakalar">%(vakalar)s</div>
     </div>
   </section>
 
-  <section aria-labelledby="yapmam-h">
+  <section class="bolum" aria-labelledby="yapmam-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="yapmam-h">Yapmadıklarım</h2>
       %(yapmam)s
-      <p class="devam"><a href="/teknik/">Teknik ilkelerin tamamı</a></p>
+      <p class="devam"><a href="/teknik/">Teknik ilkelerin tamamı →</a></p>
     </div>
   </section>
-%(cta)s""" % {"kb": kb, "surec": alanlar(SUREC), "vakalar": vaka_html,
-              "yapmam": maddeler([kacir(m) for m in YAPMADIKLARIM]),
+%(cta)s""" % {"kb": kb, "surec": adimlar(SUREC), "vakalar": "".join(vaka_html),
+              "ici": sayfa_ici([("surec-h", "Süreç"), ("vaka-h", "Ölçüm örnekleri"),
+                                ("yapmam-h", "Yapmadıklarım")]),
+              "yapmam": maddeler([kacir(m) for m in YAPMADIKLARIM], ikonlu=True),
               "cta": cta("Sizde ne ölçülmeli?",
                          "Mağazanın adresini yollayın; bakıp ne gördüğümü yazayım.")}
     return sayfa(baslik, aciklama, SITE + "/yontem/", "/yontem/", govde, [kld])
@@ -1297,7 +1611,7 @@ def iletisim_sayfasi():
                 "telefon; ajans işleri Taftri üzerinden.")
     kb, kld = kirinti([("Ana sayfa", "/"), ("İletişim", None)])
     govde = """
-  <div class="sarmal">%(kb)s
+  <div class="sarmal sarmal--genis">%(kb)s
     <header class="giris giris--ic">
       <p class="rol">İletişim</p>
       <h1 class="ad ad--ic">Yazın, bakalım</h1>
@@ -1306,40 +1620,38 @@ def iletisim_sayfasi():
     </header>
   </div>
 
-  <section aria-labelledby="kanal-h">
-    <div class="sarmal">
+  <section class="bolum" aria-labelledby="kanal-h">
+    <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="kanal-h">Doğrudan</h2>
-      <div class="iletisim-satir">
-        <div>
-          <span>WhatsApp</span>
-          <a href="https://wa.me/%(t)s" target="_blank" rel="noopener">%(ty)s</a>
-        </div>
-        <div>
-          <span>Telefon</span>
-          <a href="tel:%(tp)s">%(ty)s</a>
-        </div>
+      <div class="iletisim-izgara">
+        <a class="iletisim-kart" href="https://wa.me/%(t)s" target="_blank" rel="noopener">
+          <span>WhatsApp</span><b>%(ty)s</b>
+        </a>
+        <a class="iletisim-kart" href="tel:%(tp)s">
+          <span>Telefon</span><b>%(ty)s</b>
+        </a>
+        <a class="iletisim-kart" href="https://taftri.com/" target="_blank" rel="noopener">
+          <span>Ajans işleri</span><b>taftri.com</b>
+        </a>
       </div>
     </div>
   </section>
 
-  <section aria-labelledby="ne-h">
+  <section class="bolum bolum--beyaz" aria-labelledby="ne-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="ne-h">Yazarken şunlar işi hızlandırır</h2>
       %(ne)s
     </div>
   </section>
 
-  <section aria-labelledby="taftri-h">
-    <div class="sarmal">
-      <h2 class="bolum-basligi" id="taftri-h">Ajans işleri</h2>
-      <div class="taftri">
-        <h3>Taftri</h3>
-        <p>Sürekli reklam yönetimi, içerik üretimi ve uzun soluklu mağaza operasyonu
-          <a href="https://taftri.com/" rel="noopener">taftri.com</a> üzerinden yürüyor.</p>
-      </div>
+  <section class="bolum" aria-labelledby="alan-h">
+    <div class="sarmal sarmal--genis">
+      <h2 class="bolum-basligi" id="alan-h">Hangi konuda</h2>
+      <div class="kartlar">%(kartlar)s</div>
     </div>
   </section>""" % {
         "kb": kb, "t": TELEFON.lstrip("+"), "tp": TELEFON, "ty": TELEFON_YAZI,
+        "kartlar": hizmet_kartlari(),
         "ne": maddeler([
             "Mağazanın adresi.",
             "Ne olmasını istediğiniz — teknik terim gerekmiyor, düz anlatım yeterli.",
@@ -1364,7 +1676,7 @@ def uygulama_listesi():
     kartlar = "".join(
         kart("/uygulamalar/%s/" % u["slug"],
              DURUM_ADI.get(u.get("durum", ""), "Uygulama"),
-             u["ad"], u["ozet"], u.get("fiyat", ""))
+             u["ad"], u["ozet"], u.get("fiyat", ""), ikon="app")
         for u in UYGULAMALAR)
     liste_ld = ('{"@context":"https://schema.org","@type":"ItemList",'
                 '"itemListElement":[%s]}' % ",".join(
@@ -1376,16 +1688,16 @@ def uygulama_listesi():
     <header class="giris giris--ic">
       <p class="rol">Uygulamalar</p>
       <h1 class="ad ad--ic">Shopify App Store uygulamaları</h1>
-      <p>Her birinin sayfasında hangi sorunu çözdüğü, ne yaptığı ve hangi platform
-        uçlarını kullandığı yazılı.</p>
+      <p>Her birinin sayfasında hangi sorunu çözdüğü, ne yaptığı ve hangi platform uçlarını
+        kullandığı yazılı.</p>
     </header>
   </div>
-  <section aria-label="Uygulama listesi">
+  <section class="bolum" aria-label="Uygulama listesi">
     <div class="sarmal sarmal--genis"><div class="kartlar">%s</div></div>
   </section>
 %s""" % (kb, kartlar, cta("Benzer bir uygulama mı gerekiyor?",
-                          "Aynı ihtiyaç sizde de varsa yazın; mevcut uygulama işinizi "
-                          "görüyor mu bakalım."))
+                          "Aynı ihtiyaç sizde de varsa yazın; mevcut uygulama işinizi görüyor "
+                          "mu bakalım."))
     return sayfa(baslik, aciklama, SITE + "/uygulamalar/", "/uygulamalar/",
                  govde, [kld, liste_ld])
 
@@ -1398,7 +1710,7 @@ def uygulama_sayfasi(u):
 
     durum = DURUM_ADI.get(u.get("durum", ""))
     parcalar = ["""
-  <div class="sarmal">%s
+  <div class="sarmal sarmal--genis">%s
     <header class="giris giris--ic">
       <p class="rol">Uygulama</p>
       <h1 class="ad ad--ic">%s</h1>
@@ -1410,8 +1722,8 @@ def uygulama_sayfasi(u):
         kb, kacir(u["ad"]),
         ('<p class="durum">%s</p>' % durum) if durum else "",
         kacir(u["ozet"]),
-        ('<p style="margin-top:20px"><a class="btn" href="%s" target="_blank" '
-         'rel="noopener">App Store\'da aç</a></p>' % u["app_store"])
+        ('<div class="hero__butonlar"><a class="btn" href="%s" target="_blank" '
+         'rel="noopener">App Store\'da aç</a></div>' % u["app_store"])
         if u.get("app_store") else "")]
 
     if u.get("gorsel"):
@@ -1420,7 +1732,7 @@ def uygulama_sayfasi(u):
                         % (u["gorsel"], kacir(u.get("gorsel_alt", u["ad"]))))
 
     parcalar.append("""
-  <section aria-labelledby="sorun-h">
+  <section class="bolum" aria-labelledby="sorun-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="sorun-h">Hangi sorunu çözüyor</h2>
       <p class="bolum-giris" style="margin-bottom:0">%s</p>
@@ -1428,7 +1740,7 @@ def uygulama_sayfasi(u):
   </section>""" % kacir(u["sorun"]))
 
     parcalar.append("""
-  <section aria-labelledby="cozum-h">
+  <section class="bolum bolum--beyaz" aria-labelledby="cozum-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="cozum-h">Ne yapıyor</h2>
       %s
@@ -1442,7 +1754,8 @@ def uygulama_sayfasi(u):
          % kacir(u["fiyat"])) if u.get("fiyat") else ""))
 
     if u.get("kod"):
-        parcalar.append(kod_blok(u["kod"][0], u["kod"][1], u["kod"][2], u.get("kod_not", "")))
+        parcalar.append(kod_blok(u["kod"][0], u["kod"][1], u["kod"][2],
+                                 u.get("kod_not", ""), u["slug"]))
 
     sss_html, sss_ld = sss_blok(u.get("sss", []))
     if sss_html:
@@ -1469,7 +1782,7 @@ def is_listesi():
     kb, kld = kirinti([("Ana sayfa", "/"), ("İşler", None)])
     kartlar = "".join(
         kart("/isler/%s/" % i["slug"], TUR_ADI.get(i.get("tur", ""), "İş"),
-             i["baslik"], i["ozet"], i.get("musteri", ""))
+             i["baslik"], i["ozet"], i.get("musteri", ""), ikon="olcum")
         for i in ISLER)
     liste_ld = ('{"@context":"https://schema.org","@type":"ItemList",'
                 '"itemListElement":[%s]}' % ",".join(
@@ -1485,7 +1798,7 @@ def is_listesi():
         sonucu yazılı. Rakam yoksa rakam yazılmıyor.</p>
     </header>
   </div>
-  <section aria-label="İş listesi">
+  <section class="bolum" aria-label="İş listesi">
     <div class="sarmal sarmal--genis"><div class="kartlar">%s</div></div>
   </section>
 %s""" % (kb, kartlar, cta("Benzer bir işiniz mi var?",
@@ -1507,7 +1820,7 @@ def is_sayfasi(i):
                         % (i["musteri_url"], musteri_html))
 
     parcalar = ["""
-  <div class="sarmal">%s
+  <div class="sarmal sarmal--genis">%s
     <header class="giris giris--ic">
       <p class="rol">%s</p>
       <h1 class="ad ad--ic">%s</h1>
@@ -1518,7 +1831,7 @@ def is_sayfasi(i):
                kacir(i["ozet"]), musteri_html)]
 
     parcalar.append("""
-  <section aria-labelledby="durum-h">
+  <section class="bolum" aria-labelledby="durum-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="durum-h">Başlangıç durumu</h2>
       <p class="bolum-giris" style="margin-bottom:0">%s</p>
@@ -1526,7 +1839,7 @@ def is_sayfasi(i):
   </section>""" % kacir(i["sorun"]))
 
     parcalar.append("""
-  <section aria-labelledby="yapilan-h">
+  <section class="bolum bolum--beyaz" aria-labelledby="yapilan-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="yapilan-h">Yapılan</h2>
       %s
@@ -1536,11 +1849,12 @@ def is_sayfasi(i):
                    rozetler(i.get("teknik", []))))
 
     if i.get("kod"):
-        parcalar.append(kod_blok(i["kod"][0], i["kod"][1], i["kod"][2], i.get("kod_not", "")))
+        parcalar.append(kod_blok(i["kod"][0], i["kod"][1], i["kod"][2],
+                                 i.get("kod_not", ""), i["slug"]))
 
     if i.get("sonuc"):
         parcalar.append("""
-  <section aria-labelledby="sonuc-h">
+  <section class="bolum" aria-labelledby="sonuc-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="sonuc-h">Sonuç</h2>
       %s
@@ -1561,10 +1875,8 @@ def is_sayfasi(i):
 
 
 def dort_yuz_dort():
-    kartlar = "".join(kart("/%s/" % h["slug"], "Geliştirme", h["ad"], h["ozet"])
-                      for h in HIZMETLER)
     govde = """
-  <div class="sarmal">
+  <div class="sarmal sarmal--genis">
     <header class="giris">
       <p class="rol">404</p>
       <h1 class="ad">Sayfa bulunamadı</h1>
@@ -1572,15 +1884,14 @@ def dort_yuz_dort():
         yerinde duruyor:</p>
     </header>
   </div>
-  <section aria-label="Geliştirme alanları">
+  <section class="bolum" aria-label="Geliştirme alanları">
     <div class="sarmal sarmal--genis"><div class="kartlar">%s</div></div>
-  </section>""" % kartlar
+  </section>""" % hizmet_kartlari()
     return sayfa("Sayfa bulunamadı — %s" % AD, "Aradığınız sayfa bulunamadı.",
                  SITE + "/404.html", "", govde, (), robots="noindex, follow")
 
 
 def yonlendirme(baslik, metin, hedef):
-    """Eski .html adresleri icin istemci tarafi yonlendirme sayfasi."""
     return """<!doctype html>
 <html lang="tr">
 <head>
@@ -1592,11 +1903,11 @@ def yonlendirme(baslik, metin, hedef):
 <meta http-equiv="refresh" content="0; url=%(hedef)s" />
 <style>
   body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
-    background:#F6F4EF;color:#1E201B;font-family:ui-sans-serif,system-ui,'Segoe UI',sans-serif;
+    background:#F4F2EC;color:#1B1D18;font-family:ui-sans-serif,system-ui,'Segoe UI',sans-serif;
     line-height:1.6;padding:24px}
   .kutu{max-width:420px;text-align:center}
   h1{font-family:Georgia,serif;font-size:22px;font-weight:500;margin:0 0 10px}
-  p{margin:0 0 18px;color:#4F5249;font-size:16px}
+  p{margin:0 0 18px;color:#4B4E45;font-size:16px}
   a{color:#2F4F3E;font-weight:500}
   a:focus-visible{outline:2px solid #2F4F3E;outline-offset:3px}
 </style>
@@ -1659,7 +1970,7 @@ def llms():
         "",
         "## Sayfalar",
         "",
-        "- [Ana sayfa](%s/): ne geliştirdiği, çalıştığı platform yüzeyleri, markalar." % SITE,
+        "- [Ana sayfa](%s/): ne geliştirdiği, ölçülmüş sonuçlar, platform yüzeyleri, markalar." % SITE,
         "- [Geliştirme](%s/gelistirme/): dört geliştirme alanı ve hangisinin hangi işe uygun olduğu." % SITE,
     ]
     for h in HIZMETLER:
@@ -1691,9 +2002,28 @@ def llms():
 
 def favicon():
     return ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">'
-            '<rect width="64" height="64" rx="12" fill="#2F4F3E"/>'
+            '<rect width="64" height="64" rx="13" fill="#2F4F3E"/>'
             '<text x="32" y="43" font-family="Georgia,serif" font-size="28" '
-            'font-weight="600" fill="#F6F4EF" text-anchor="middle">MF</text></svg>\n')
+            'font-weight="600" fill="#F4F2EC" text-anchor="middle">MF</text></svg>\n')
+
+
+# ---------------------------------------------------------------------------
+# EK STIL — vakalar
+# ---------------------------------------------------------------------------
+
+STIL += """
+.vakalar{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.vaka{padding:26px 26px 24px;background:var(--kagit);border:1px solid var(--cizgi);border-radius:10px}
+.bolum--beyaz .vaka{background:var(--kagit)}
+.vaka h3{font-family:'Newsreader',Georgia,serif;font-size:21px;font-weight:500;line-height:1.28;letter-spacing:-.01em}
+.vaka p{color:var(--murekkep-2);font-size:16px;margin-top:12px}
+.vaka b{font-family:var(--mono);font-size:.92em;font-weight:500;color:var(--murekkep)}
+.vaka__olcum{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;margin-top:16px;padding:12px 16px;background:var(--koyu);border-radius:8px}
+.vaka__once{font-family:var(--mono);font-size:18px;color:var(--koyu-soluk);text-decoration:line-through}
+.vaka__ok{color:var(--koyu-soluk);font-size:14px}
+.vaka__sonra{font-family:var(--mono);font-size:20px;color:#fff;font-weight:500}
+.vaka__birim{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--vurgu)}
+"""
 
 
 # ---------------------------------------------------------------------------
@@ -1702,6 +2032,7 @@ def favicon():
 
 def main():
     yaz("assets/stil.css", STIL)
+    yaz("assets/site.js", BETIK)
     yaz("favicon.svg", favicon())
 
     yaz("index.html", ana_sayfa())

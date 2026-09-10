@@ -6,6 +6,7 @@
 <title>Geliştirme alanları — M. Fehmi Toktay</title>
 <meta name="description" content="Shopify App Store uygulaması, mağazaya özel uygulama, Liquid tema geliştirme ve Admin API entegrasyonu. Hangisi hangi işe uygun." />
 <link rel="canonical" href="https://mftoktay.com/gelistirme/" />
+<meta name="theme-color" content="#2F4F3E" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://mftoktay.com/gelistirme/" />
 <meta property="og:title" content="Geliştirme alanları — M. Fehmi Toktay" />
@@ -25,7 +26,11 @@
 <header class="ust">
   <div class="sarmal sarmal--genis ust__ic">
     <a class="ust__ad" href="/">M. Fehmi Toktay<span class="ust__rol">Shopify uygulama geliştiricisi</span></a>
-    <nav class="ust__menu" aria-label="Ana menü"><a href="/">Ana sayfa</a><a href="/gelistirme/" aria-current="page">Geliştirme</a><a href="/teknik/">Teknik</a><a href="/yontem/">Yöntem</a><a href="/iletisim/">İletişim</a></nav>
+    <button class="menu-dugme" type="button" aria-expanded="false" aria-controls="ana-menu">
+      <span class="menu-dugme__cizgi"></span>
+      <span class="menu-dugme__yazi">Menü</span>
+    </button>
+    <nav class="ust__menu" id="ana-menu" aria-label="Ana menü"><a href="/">Ana sayfa</a><a href="/gelistirme/" aria-current="page">Geliştirme</a><a href="/teknik/">Teknik</a><a href="/yontem/">Yöntem</a><a href="/iletisim/">İletişim</a></nav>
   </div>
 </header>
 <main id="icerik">
@@ -40,48 +45,59 @@
     </header>
   </div>
 
-  <section aria-label="Geliştirme alanları">
+  <section class="bolum" aria-label="Geliştirme alanları">
     <div class="sarmal sarmal--genis"><div class="kartlar"><a class="kart" href="/uygulama-gelistirme/">
+          <span class="kart__ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/><path d="M17.25 13.9v6.7M13.9 17.25h6.7"/></svg></span>
           <span class="kart__ust">Geliştirme</span>
           <span class="kart__baslik">App Store uygulaması</span>
           <span class="kart__ozet">Herkese açık, mağazaya kurulup abonelikle kullanılan uygulama.</span>
+          <span class="kart__ok" aria-hidden="true">→</span>
         </a><a class="kart" href="/ozel-yazilim/">
+          <span class="kart__ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2.8l8.2 4.1v10.2L12 21.2l-8.2-4.1V6.9z"/><path d="M3.8 6.9L12 11l8.2-4.1M12 11v10.2"/></svg></span>
           <span class="kart__ust">Geliştirme</span>
           <span class="kart__baslik">Mağazaya özel uygulama</span>
           <span class="kart__ozet">App Store'a çıkmayan, tek mağaza için yazılan uygulama.</span>
+          <span class="kart__ok" aria-hidden="true">→</span>
         </a><a class="kart" href="/tema-gelistirme/">
+          <span class="kart__ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.8" y="4.2" width="18.4" height="15.6" rx="2.2"/><path d="M2.8 9.2h18.4"/><path d="M6.2 6.7h.01M9.1 6.7h.01"/></svg></span>
           <span class="kart__ust">Geliştirme</span>
           <span class="kart__baslik">Tema geliştirme</span>
           <span class="kart__ozet">Liquid tarafında bölüm ve blok yazımı, mevcut temaya özellik ekleme.</span>
+          <span class="kart__ok" aria-hidden="true">→</span>
         </a><a class="kart" href="/entegrasyon/">
+          <span class="kart__ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="5.6" cy="12" r="2.6"/><circle cx="18.4" cy="12" r="2.6"/><path d="M8.2 12h7.6"/><path d="M13.2 9.2l2.8 2.8-2.8 2.8"/></svg></span>
           <span class="kart__ust">Geliştirme</span>
           <span class="kart__baslik">Entegrasyon ve otomasyon</span>
           <span class="kart__ozet">Admin API üzerinden dış sistem bağlantısı ve toplu veri işleri.</span>
+          <span class="kart__ok" aria-hidden="true">→</span>
         </a></div></div>
   </section>
 
-  <section aria-labelledby="hangisi-h">
+  <section class="bolum bolum--beyaz" aria-labelledby="hangisi-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="hangisi-h">Hangisi size uygun</h2>
       <div class="alan"><h3>Aynı ihtiyaç birçok mağazada varsa</h3><p>Satılabilir bir ürün var demektir; <a href="/uygulama-gelistirme/">App Store uygulaması</a> doğru yol. Çerçeve işi — kurulum, faturalama, zorunlu uçlar — baştan doğru kurulmalı.</p></div><div class="alan"><h3>İhtiyaç sadece sizin iş akışınıza özelse</h3><p><a href="/ozel-yazilim/">Mağazaya özel uygulama</a> daha hızlı ve ucuz. İnceleme süreci yok, kod sizde kalıyor.</p></div><div class="alan"><h3>Sorun mağazanın görünen tarafındaysa</h3><p>Çoğu istek uygulama kurmadan <a href="/tema-gelistirme/">tema içinde</a> çözülüyor. Uygulama, mağazaya kalıcı bir bağımlılık ekler.</p></div><div class="alan"><h3>Sorun dışarıyla veri alışverişindeyse</h3><p><a href="/entegrasyon/">Entegrasyon ve toplu veri</a> tarafı. Muhasebe, kargo, ERP, pazaryeri ve binlerce kayıtlık düzeltme işleri.</p></div>
     </div>
   </section>
 
-  <section aria-labelledby="yuzey-h">
+  <section class="bolum" aria-labelledby="yuzey-h">
     <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="yuzey-h">Çalıştığım platform yüzeyleri</h2>
-      <div class="yuzeyler"><div class="yuzey"><span class="yuzey__ad">Admin GraphQL API</span><span class="yuzey__not">ürün, varyant, sipariş, metafield okuma ve yazma</span></div><div class="yuzey"><span class="yuzey__ad">Bulk Operations</span><span class="yuzey__not">binlerce kayıtlık iş; sonuç JSONL olarak indirilir</span></div><div class="yuzey"><span class="yuzey__ad">Webhooks</span><span class="yuzey__not">olay yakalama, HMAC doğrulama, idempotent işleme</span></div><div class="yuzey"><span class="yuzey__ad">OAuth ve Billing API</span><span class="yuzey__not">kurulum akışı, kapsam yönetimi, abonelik ücretlendirmesi</span></div><div class="yuzey"><span class="yuzey__ad">App Bridge ve Polaris</span><span class="yuzey__not">yönetim paneli içinde açılan gömülü arayüz</span></div><div class="yuzey"><span class="yuzey__ad">Liquid / Online Store 2.0</span><span class="yuzey__not">bölüm ve blok yazımı, tema editöründen yönetim</span></div><div class="yuzey"><span class="yuzey__ad">Storefront ve Ajax API</span><span class="yuzey__not">sepet işlemleri, tema içi dinamik davranış</span></div><div class="yuzey"><span class="yuzey__ad">Metafield ve Metaobject</span><span class="yuzey__not">ürün künyesi ve yapılandırılmış veri</span></div><div class="yuzey"><span class="yuzey__ad">URL Redirect</span><span class="yuzey__not">geçişlerde yönlendirme haritası</span></div><div class="yuzey"><span class="yuzey__ad">Theme CLI</span><span class="yuzey__not">yayınlanmamış temada geliştirme, önizleme, canlıya alma</span></div></div>
+      <div class="yuzeyler"><div class="yuzey"><span class="yuzey__ad">Admin GraphQL API</span><span class="yuzey__not">ürün, varyant, sipariş, metafield okuma ve yazma</span></div><div class="yuzey"><span class="yuzey__ad">Bulk Operations</span><span class="yuzey__not">binlerce kayıtlık iş; sonuç JSONL olarak indirilir</span></div><div class="yuzey"><span class="yuzey__ad">Webhooks</span><span class="yuzey__not">olay yakalama, HMAC doğrulama, idempotent işleme</span></div><div class="yuzey"><span class="yuzey__ad">OAuth · Billing API</span><span class="yuzey__not">kurulum akışı, kapsam yönetimi, abonelik ücretlendirmesi</span></div><div class="yuzey"><span class="yuzey__ad">App Bridge · Polaris</span><span class="yuzey__not">yönetim paneli içinde açılan gömülü arayüz</span></div><div class="yuzey"><span class="yuzey__ad">Liquid · Online Store 2.0</span><span class="yuzey__not">bölüm ve blok yazımı, tema editöründen yönetim</span></div><div class="yuzey"><span class="yuzey__ad">Storefront · Ajax API</span><span class="yuzey__not">sepet işlemleri, tema içi dinamik davranış</span></div><div class="yuzey"><span class="yuzey__ad">Metafield · Metaobject</span><span class="yuzey__not">ürün künyesi ve yapılandırılmış veri</span></div><div class="yuzey"><span class="yuzey__ad">URL Redirect</span><span class="yuzey__not">geçişlerde yönlendirme haritası</span></div><div class="yuzey"><span class="yuzey__ad">Theme CLI</span><span class="yuzey__not">yayınlanmamış temada geliştirme, önizleme, canlıya alma</span></div></div>
     </div>
   </section>
 
   <section class="cta" aria-labelledby="cta-h">
     <div class="sarmal sarmal--genis">
-      <div class="cta__kutu">
+      <div class="cta__ic">
         <div>
           <h2 id="cta-h">Hangisi olduğundan emin değilseniz</h2>
           <p>Durumu anlatın; hangi yolun daha az iş ve daha az bağımlılık getirdiğini söyleyeyim.</p>
         </div>
-        <a class="btn" href="/iletisim/">İletişime geç</a>
+        <div class="cta__butonlar">
+          <a class="btn" href="/iletisim/">İletişime geç</a>
+          <a class="btn btn--sade" href="https://wa.me/905541386827" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
       </div>
     </div>
   </section>
@@ -118,6 +134,6 @@
     </div>
   </div>
 </footer>
-<script>document.getElementById('yil').textContent=new Date().getFullYear();</script>
+<script src="/assets/site.js" defer></script>
 </body>
 </html>
