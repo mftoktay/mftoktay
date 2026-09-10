@@ -3,277 +3,64 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>M. Fehmi Toktay — E-ticaret altyapısı ve performans pazarlaması</title>
-<meta name="description" content="Shopify mağazaları kuruyorum, reklam hesaplarını yönetiyorum. Tahmin yerine ölçümle çalışırım. Ajans işleri Taftri üzerinden yürüyor." />
+<title>M. Fehmi Toktay — Shopify uygulama geliştiricisi</title>
+<meta name="description" content="Shopify için yazılım geliştiriyorum: App Store uygulamaları, mağazaya özel uygulamalar, Liquid tema geliştirme ve Admin API entegrasyonları." />
 <link rel="canonical" href="https://mftoktay.com/" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://mftoktay.com/" />
-<meta property="og:title" content="M. Fehmi Toktay — E-ticaret altyapısı ve performans pazarlaması" />
-<meta property="og:description" content="Shopify mağazaları kuruyorum, reklam hesaplarını yönetiyorum. Tahmin yerine ölçümle çalışırım." />
+<meta property="og:title" content="M. Fehmi Toktay — Shopify uygulama geliştiricisi" />
+<meta property="og:description" content="Shopify için yazılım geliştiriyorum: App Store uygulamaları, mağazaya özel uygulamalar, Liquid tema geliştirme ve Admin API entegrasyonları." />
 <meta property="og:locale" content="tr_TR" />
 <meta name="twitter:card" content="summary" />
-
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Karla:wght@400;500;600&display=swap" />
-
-<style>
-:root{
-  --kagit:#F7F5F0;
-  --kagit-2:#FFFFFF;
-  --murekkep:#23241F;
-  --murekkep-2:#565851;
-  --murekkep-3:#6A6C62;
-  --cizgi:#E2DED3;
-  --yesil:#3D5A4A;
-  --yesil-2:#527060;
-  --yesil-yumusak:#E7EDE7;
-  --genislik:680px;
-}
-
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
-}
-
-body{
-  background:var(--kagit);
-  color:var(--murekkep);
-  font-family:'Karla',ui-sans-serif,system-ui,'Segoe UI',sans-serif;
-  font-size:17px;
-  line-height:1.65;
-  -webkit-font-smoothing:antialiased;
-}
-
-.sarmal{max-width:var(--genislik);margin:0 auto;padding:0 24px}
-
-a{
-  color:var(--yesil);
-  text-decoration:none;
-  border-bottom:1px solid rgba(61,90,74,.3);
-  transition:border-color .2s ease,color .2s ease;
-}
-a:hover{color:var(--yesil-2);border-bottom-color:var(--yesil-2)}
-a:focus-visible{outline:2px solid var(--yesil);outline-offset:3px;border-radius:2px}
-
-.giris{padding:88px 0 0}
-.ad{
-  font-family:'Newsreader',Georgia,serif;
-  font-size:clamp(34px,6vw,46px);
-  font-weight:500;
-  letter-spacing:-.015em;
-  line-height:1.12;
-}
-.rol{
-  margin-top:10px;
-  font-size:14px;
-  letter-spacing:.07em;
-  text-transform:uppercase;
-  color:var(--murekkep-3);
-  font-weight:600;
-}
-.giris p:not(.rol){
-  margin-top:28px;
-  font-size:19px;
-  line-height:1.7;
-  color:var(--murekkep-2);
-  max-width:56ch;
-}
-.giris p:not(.rol) + p{margin-top:16px}
-.giris strong{font-weight:600;color:var(--murekkep)}
-
-section{padding:64px 0}
-.bolum-basligi{
-  font-family:'Newsreader',Georgia,serif;
-  font-size:14px;
-  font-weight:600;
-  letter-spacing:.13em;
-  text-transform:uppercase;
-  color:var(--murekkep-3);
-  padding-bottom:12px;
-  border-bottom:1px solid var(--cizgi);
-  margin-bottom:30px;
-}
-
-.alan{padding:22px 0;border-bottom:1px solid var(--cizgi)}
-.alan:last-child{border-bottom:0;padding-bottom:0}
-.alan h3{
-  font-family:'Newsreader',Georgia,serif;
-  font-size:21px;
-  font-weight:500;
-  letter-spacing:-.01em;
-  margin-bottom:6px;
-}
-.alan p{color:var(--murekkep-2);max-width:60ch}
-
-.ornek{padding:26px 0;border-bottom:1px solid var(--cizgi)}
-.ornek:last-child{border-bottom:0;padding-bottom:0}
-.ornek p{color:var(--murekkep-2);max-width:62ch}
-.ornek p + p{margin-top:12px}
-.sayi{
-  font-family:'Newsreader',Georgia,serif;
-  font-variant-numeric:tabular-nums;
-  font-weight:600;
-  color:var(--murekkep);
-  white-space:nowrap;
-}
-
-.markalar{display:flex;flex-wrap:wrap;gap:8px 10px}
-.marka{
-  font-size:15px;
-  padding:7px 14px;
-  border:1px solid var(--cizgi);
-  border-radius:999px;
-  color:var(--murekkep-2);
-  background:var(--kagit-2);
-  transition:border-color .2s ease,color .2s ease,background .2s ease;
-}
-a.marka:hover{color:var(--yesil);border-color:var(--yesil-2);background:var(--yesil-yumusak)}
-
-.taftri{
-  padding:28px 30px;
-  background:var(--yesil-yumusak);
-  border-left:2px solid var(--yesil);
-  border-radius:0 6px 6px 0;
-}
-.taftri h3{
-  font-family:'Newsreader',Georgia,serif;
-  font-size:20px;
-  font-weight:500;
-  margin-bottom:8px;
-}
-.taftri p{color:var(--murekkep-2);max-width:56ch}
-.taftri a{font-weight:500}
-
-.iletisim-satir{display:flex;flex-wrap:wrap;gap:14px 32px;font-size:17px}
-.iletisim-satir span{
-  color:var(--murekkep-3);
-  font-size:13px;
-  display:block;
-  margin-bottom:2px;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  font-weight:600;
-}
-
-footer{
-  padding:40px 0 56px;
-  border-top:1px solid var(--cizgi);
-  color:var(--murekkep-3);
-  font-size:14px;
-}
-footer .sarmal{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
-footer a{color:var(--murekkep-3);border-bottom-color:transparent}
-footer a:hover{color:var(--yesil);border-bottom-color:var(--yesil)}
-
-@media (max-width:600px){
-  body{font-size:16px}
-  .giris{padding-top:56px}
-  .giris p:not(.rol){font-size:17.5px}
-  section{padding:48px 0}
-  .taftri{padding:24px 22px}
-}
-</style>
+<link rel="stylesheet" href="/assets/stil.css" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"M. Fehmi Toktay","jobTitle":"Shopify uygulama geliştiricisi","url":"https://mftoktay.com/","telephone":"+905541386827","knowsAbout":["Shopify uygulama geliştirme","Shopify App Store","Shopify Admin API","Liquid tema geliştirme","E-ticaret entegrasyonu","Katalog ve veri düzeni"],"sameAs":["https://taftri.com/"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"M. Fehmi Toktay","url":"https://mftoktay.com/","inLanguage":"tr-TR"}</script>
 </head>
 <body>
-
+<nav class="ust" aria-label="Ana menü"><div class="sarmal"><a class="ust__ad" href="/">M. Fehmi Toktay</a><div class="ust__ler"><a href="/" aria-current="page">Ana sayfa</a><a href="/ozel-yazilim/">Özel yazılım</a></div></div></nav>
 <main>
   <header class="giris">
     <div class="sarmal">
       <h1 class="ad">M. Fehmi Toktay</h1>
-      <p class="rol">E-ticaret altyapısı ve performans pazarlaması</p>
-      <p>Shopify mağazaları kuruyorum, reklam hesaplarını yönetiyorum. İşin büyük kısmı yeni
-        bir şey icat etmekle değil, hâlihazırda para kaybettiren yerleri bulmakla geçiyor.</p>
-      <p>Bunun tek yolu <strong>ölçmek</strong>. Bir butonun sayfanın kaçıncı pikselinde
+      <p class="rol">Shopify uygulama geliştiricisi</p>
+      <p>Shopify için yazılım geliştiriyorum. Bir kısmı App Store'da herkese açık
+        uygulama olarak çıkıyor, bir kısmı tek bir mağaza için yazılıp orada kalıyor.</p>
+      <p>İkisinin ortak yanı şu: iş yeni bir şey icat etmekle değil,
+        <strong>ölçmekle</strong> başlıyor. Bir butonun sayfanın kaçıncı pikselinde
         durduğunu bilmeden onu yukarı almanın anlamı yok.</p>
     </div>
   </header>
 
   <section aria-labelledby="alanlar-h">
     <div class="sarmal">
-      <h2 class="bolum-basligi" id="alanlar-h">Çalıştığım alanlar</h2>
-
-      <div class="alan">
-        <h3>Mağaza kurulumu ve geçiş</h3>
-        <p>Shopify üzerinde sıfırdan kurulum, başka platformdan taşıma, tema geliştirme.
-          Geçişlerde asıl mesele veri değil, yönlendirme haritası — eski adresler yenisine
-          bağlanmazsa arama sıralaması gider.</p>
-      </div>
-
-      <div class="alan">
-        <h3>Reklam yönetimi</h3>
-        <p>Meta ve Google tarafında kampanya kurulumu, piksel ve dönüşüm ölçümü. Çoğu
-          hesapta sorun bütçede değil, ölçümün yanlış kurulmuş olmasında çıkıyor.</p>
-      </div>
-
-      <div class="alan">
-        <h3>Pazaryeri</h3>
-        <p>Amazon hesap açılışı, listeleme kalitesi, FBA ile kendi kargon arasındaki karar.
-          Sırayı bozmak süreci uzatıyor; marka kaydı satışa başlamadan önce açılmalı, çünkü
-          tescil ülkeye göre aylar sürebiliyor.</p>
-      </div>
-
-      <div class="alan">
-        <h3>Katalog ve veri düzeni</h3>
-        <p>Ürün başlıkları, kategori yapısı, görsel alt metinleri. Kimsenin bakmadığı ama
-          Google Shopping ve Meta katalog eşleştirmesini doğrudan belirleyen kısım.</p>
-      </div>
+      <h2 class="bolum-basligi" id="alanlar-h">Ne geliştiriyorum</h2>
+      <div class="alan"><h3>Shopify App Store uygulamaları</h3><p>Herkese açık, mağazaya kurulup abonelikle kullanılan uygulamalar. Yetkilendirme, faturalama, webhook ve zorunlu veri uçları Shopify'ın kendi kurallarına göre yazılır — inceleme aşamasında en çok bu kısımlar geri döner.</p></div><div class="alan"><h3>Mağazaya özel uygulama</h3><p>App Store'a çıkmadan, tek mağaza için kurulan uygulama. Herkese uyması gerekmediği için çok daha dar ve hızlı olur; mağazanın kendi iş akışına göre yazılır.</p></div><div class="alan"><h3>Tema geliştirme</h3><p>Liquid tarafında bölüm ve blok yazımı, mevcut temaya özellik ekleme. Tema editöründen yönetilebilir olması şart — kod bilmeyen biri ayarı değiştiremiyorsa iş yarım kalmıştır.</p></div><div class="alan"><h3>Entegrasyon ve otomasyon</h3><p>Admin API üzerinden muhasebe, kargo, ERP ve pazaryeri bağlantıları; toplu ürün, fiyat ve stok işleri. Binlerce kayıtlık işler kaldığı yerden devam edebilen, loglayan script'lerle yürür.</p></div>
     </div>
   </section>
-
   <section aria-labelledby="nasil-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="nasil-h">Nasıl çalışıyorum</h2>
-
-      <div class="ornek">
-        <p>Bir kuyum mağazasında “Sepete Ekle” butonu mobilde <span class="sayi">1147.</span>
-          pikseldeydi. Müşteri bir buçuk ekran boyunca hiçbir satın alma tetikleyicisi
-          görmüyordu.</p>
-        <p>Fiyat kırılımı ve ürün künyesi karar öncesi değil, karar sonrası bilgi. İkisini de
-          butonun altına aldık; buton <span class="sayi">948.</span> piksele çıktı.</p>
-      </div>
-
-      <div class="ornek">
-        <p>Bir şapka markasında ürün sayfasındaki “Detaylar” paneli mobilde açık başlıyordu.
-          Tek başına <span class="sayi">845</span> piksel yer kaplıyor, satın alma butonunu
-          <span class="sayi">1811.</span> piksele itiyordu.</p>
-        <p>Kapalı başlatınca buton <span class="sayi">1064.</span> piksele geldi. Masaüstünde
-          eski davranışı bozmadık; orada yer sıkıntısı yoktu.</p>
-      </div>
-
-      <div class="ornek">
-        <p>Bir katalogda ürün türü alanında <span class="sayi">71</span> farklı değer vardı:
-          “Yüzük 8”, “Bileklik 15”, “Kolye-5”. Sayılar gramaj değil, sıra numarasıydı.</p>
-        <p>Google Shopping eşleştirmesi bu yüzden tutmuyordu, mağazanın kendi filtresi de
-          onlarca sahte kategori üretiyordu. <span class="sayi">6</span> kategoriye indirdik.
-          Eski değerleri silmeden önce geri dönüş için ayrı bir alana yazdık.</p>
-      </div>
+      <div class="ornek"><p>Bir kuyum mağazasında “Sepete Ekle” butonu mobilde <span class="sayi">1147.</span> pikseldeydi. Müşteri bir buçuk ekran boyunca hiçbir satın alma tetikleyicisi görmüyordu.</p><p>Fiyat kırılımı ve ürün künyesi karar öncesi değil, karar sonrası bilgi. İkisini de butonun altına aldık; buton <span class="sayi">948.</span> piksele çıktı.</p></div><div class="ornek"><p>Aynı mağazada sabit sepet çubuğu, varyant kimliğini sayfa yüklenirken okuyup sabitliyordu. Müşteri harf kolyede “Ç” seçiyor, çubuk sepete “A” ekliyordu.</p><p>Kimliği asıl ürün formundan tıklama anında okuyacak şekilde değiştirdik. Böyle bir hata sipariş gelene kadar kimseye görünmüyor — kod okuyarak değil, formdaki değerle çubuğun gönderdiği değeri karşılaştırarak bulunuyor.</p></div><div class="ornek"><p>Bir katalogda ürün türü alanında <span class="sayi">71</span> farklı değer vardı: “Yüzük 8”, “Bileklik 15”, “Kolye-5”. Sayılar gramaj değil, sıra numarasıydı.</p><p>Google Shopping eşleştirmesi bu yüzden tutmuyordu. <span class="sayi">6</span> kategoriye indirdik; eski değerleri silmeden önce geri dönüş için ayrı bir metafield'a yazdık.</p></div>
     </div>
   </section>
-
+  <section aria-labelledby="ozel-h">
+    <div class="sarmal">
+      <h2 class="bolum-basligi" id="ozel-h">Özel geliştirme</h2>
+      <p class="bolum-giris">App Store'a çıkmayan, tek mağaza için yazılan işler ayrı
+        yürüyor. Kapsam, süreç ve teslim biçimi ayrı sayfada.</p>
+      <p style="margin:0"><a href="/ozel-yazilim/">Özel yazılım sayfasına git</a></p>
+    </div>
+  </section>
   <section aria-labelledby="markalar-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="markalar-h">Birlikte çalıştığım markalar</h2>
-      <div class="markalar">
-        <a class="marka" href="https://blackborkusa.com/" target="_blank" rel="noopener">BlackBörk USA</a>
-        <a class="marka" href="https://blackbork.com.tr/" target="_blank" rel="noopener">BlackBörk TR</a>
-        <a class="marka" href="https://omerhaskuyumculuk.com/" target="_blank" rel="noopener">Ömerhas Kuyumculuk</a>
-        <a class="marka" href="https://nevamkuyumculuk.com/" target="_blank" rel="noopener">Nevam Kuyumculuk</a>
-        <a class="marka" href="https://askinconcept.com.tr/" target="_blank" rel="noopener">Aşkın Concept</a>
-        <a class="marka" href="https://numtexco.com/" target="_blank" rel="noopener">Numtex</a>
-        <a class="marka" href="https://ahenkkuruyemis.com.tr/" target="_blank" rel="noopener">Ahenk Kuruyemiş</a>
-        <a class="marka" href="https://armadateknoloji.com.tr/" target="_blank" rel="noopener">Armada Teknoloji</a>
-        <a class="marka" href="https://modaneslie.com" target="_blank" rel="noopener">Moda Neslie</a>
-        <a class="marka" href="https://variteks.com/" target="_blank" rel="noopener">Variteks</a>
-        <a class="marka" href="https://moonbutik.com/" target="_blank" rel="noopener">Moon Butik</a>
-        <a class="marka" href="https://www.bodyhack.com.tr/" target="_blank" rel="noopener">BodyHack</a>
-        <a class="marka" href="http://www.tuncantekstil.com/" target="_blank" rel="noopener">Tuncan Tekstil</a>
-      </div>
+      <div class="markalar"><a class="marka" href="https://blackborkusa.com/" target="_blank" rel="noopener">BlackBörk USA</a><a class="marka" href="https://blackbork.com.tr/" target="_blank" rel="noopener">BlackBörk TR</a><a class="marka" href="https://omerhaskuyumculuk.com/" target="_blank" rel="noopener">Ömerhas Kuyumculuk</a><a class="marka" href="https://nevamkuyumculuk.com/" target="_blank" rel="noopener">Nevam Kuyumculuk</a><a class="marka" href="https://askinconcept.com.tr/" target="_blank" rel="noopener">Aşkın Concept</a><a class="marka" href="https://numtexco.com/" target="_blank" rel="noopener">Numtex</a><a class="marka" href="https://ahenkkuruyemis.com.tr/" target="_blank" rel="noopener">Ahenk Kuruyemiş</a><a class="marka" href="https://armadateknoloji.com.tr/" target="_blank" rel="noopener">Armada Teknoloji</a><a class="marka" href="https://modaneslie.com" target="_blank" rel="noopener">Moda Neslie</a><a class="marka" href="https://variteks.com/" target="_blank" rel="noopener">Variteks</a><a class="marka" href="https://moonbutik.com/" target="_blank" rel="noopener">Moon Butik</a><a class="marka" href="https://www.bodyhack.com.tr/" target="_blank" rel="noopener">BodyHack</a><a class="marka" href="http://www.tuncantekstil.com/" target="_blank" rel="noopener">Tuncan Tekstil</a></div>
     </div>
   </section>
-
   <section aria-labelledby="taftri-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="taftri-h">Ajans işleri</h2>
@@ -285,10 +72,11 @@ footer a:hover{color:var(--yesil);border-bottom-color:var(--yesil)}
       </div>
     </div>
   </section>
-
   <section aria-labelledby="iletisim-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="iletisim-h">İletişim</h2>
+      <p class="bolum-giris">Bir fikir ya da tıkanmış bir iş varsa yazın. Yapılması
+        gerekenin ne olduğunu söylemek çoğu zaman kısa sürüyor.</p>
       <div class="iletisim-satir">
         <div>
           <span>WhatsApp</span>
@@ -302,7 +90,6 @@ footer a:hover{color:var(--yesil);border-bottom-color:var(--yesil)}
     </div>
   </section>
 </main>
-
 <footer>
   <div class="sarmal">
     <div>&copy; <span id="yil">2026</span> M. Fehmi Toktay</div>
@@ -312,9 +99,6 @@ footer a:hover{color:var(--yesil);border-bottom-color:var(--yesil)}
     </div>
   </div>
 </footer>
-
-<script>
-  document.getElementById('yil').textContent = new Date().getFullYear();
-</script>
+<script>document.getElementById('yil').textContent=new Date().getFullYear();</script>
 </body>
 </html>

@@ -1,0 +1,14 @@
+# M. Fehmi Toktay
+
+> Shopify için yazılım geliştiricisi. App Store uygulamaları, mağazaya özel
+> uygulamalar, Liquid tema geliştirme ve Admin API entegrasyonları.
+
+## Sayfalar
+
+- [Ana sayfa](https://mftoktay.com/): kim, ne geliştiriyor, çalışma yöntemi, markalar.
+- [Özel yazılım](https://mftoktay.com/ozel-yazilim/): tek mağaza için geliştirme; kapsam, süreç, sık sorulanlar.
+
+## İletişim
+
+- WhatsApp / telefon: +90 554 138 68 27
+- Ajans işleri: https://taftri.com/
