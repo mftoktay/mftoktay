@@ -123,7 +123,104 @@ UYGULAMALAR = []
 #   "teknik":      ["Liquid", "Admin API"],        #   rozet listesi
 #   "kod":         ("Baslik", "js", "..."),        #   opsiyonel
 # }
-ISLER = []
+ISLER = [
+    {
+        "slug": "blackbork-sapka-tasarim-kurucusu",
+        "baslik": "Tarayıcıda çalışan şapka tasarım kurucusu",
+        "musteri": "BlackBörk USA",
+        "musteri_url": "https://blackborkusa.com/pages/make-your-cap",
+        "tur": "tema",
+        "ozet": ("Müşteri şapkayı ve patch'i seçiyor; önizleme patch'i cırt cırt pedinin "
+                 "üstüne perspektifle oturtuyor."),
+        "sorun": ("Türkiye mağazasındaki tasarım aracı bir Shopify uygulamasıydı ve ABD "
+                  "mağazasında kurulu değildi; uygulama kurulumu API üzerinden yapılamıyor. "
+                  "İlk denemede patch tek bir sabit yüzdeyle basılıyordu — şapka fotoğrafları "
+                  "3/4 açıdan çekildiği için ön panel ekranda dikdörtgen değil, perspektifte "
+                  "bir yamuk. Düz basılan patch pedin üstüne oturmuyordu."),
+        "yapilan": [
+            "Uygulama yerine tema içinde çalışan bir kurucu yazıldı; mağazada aylık ücretli "
+            "uygulama bağımlılığı yok.",
+            "Kurucudaki 112 şapka fotoğrafının her birinde cırt cırt pedinin dört köşesi "
+            "ölçülüp ayrı bir veri dosyasına yazıldı; tarayıcı bu dörtgene homografi kurup "
+            "patch'i matrix3d ile basıyor.",
+            "Ölçüm için üç yöntem denenip elendi: boş/patch'li fotoğraf farkı (çiftler aynı "
+            "çekim değil), serbest hizalama (dörtgeni bozup patch'i şapkanın dışına taşıyor) "
+            "ve serbest şekil araması (32 fotoğrafta yanlış şekil kazandı). Çalışan yöntem "
+            "şekli kilitleyip yalnız kaydırma ve ölçek aramak oldu.",
+            "Patch fotoğrafları beyaz fonda geliyor; tarayıcıda kanvasla beyaz saydamlaştırılıp "
+            "içeriğe kırpılıyor, kanvas reddedilirse sabit kırpma yedeğine düşüyor.",
+            "Ürün sayfasındaki “tasarla” butonu sessizce ölüydü: koleksiyon eşlemeleri başka "
+            "mağazanın adreslerini taşıyordu, URL alanları boştu ve adresin tamamı URL "
+            "kodlandığı için JS yüklenmeden tıklanınca 404 veriyordu.",
+            "Tek seçimli panelde ilk seçimden sonra bütün kartların artı butonu kilitleniyordu; "
+            "müşteri seçimi değiştirmek için önce eskisini elle çıkarmak zorundaydı.",
+        ],
+        "sonuc": [
+            "Önizlemede eski patch'in ekranda kaldığı süre 192 ms'den 0–16 ms'ye indi "
+            "(masaüstü ve 375 px mobil).",
+            "Izgara her tıkta baştan yazılmak yerine yerinde güncelleniyor; tıklamanın "
+            "senkron maliyeti 65–69 ms.",
+            "Patch kesimi ~39 ms sürüyor ve karta imleç gelince önceden yapılıp önbelleğe alınıyor.",
+            "Kurucu tema dosyası olarak çalışıyor: dış uygulama, aylık ücret ve veri "
+            "bağımlılığı yok.",
+        ],
+        "teknik": ["Liquid", "JavaScript", "Canvas", "matrix3d", "Shopify CDN"],
+    },
+    {
+        "slug": "omerhas-urun-sayfasi-ve-katalog",
+        "baslik": "Ürün sayfası, sepet çekmecesi ve katalog düzeni",
+        "musteri": "Ömer Has Kuyumculuk",
+        "musteri_url": "https://omerhaskuyumculuk.com/",
+        "tur": "tema",
+        "ozet": ("Satın alma butonu yukarı taşındı, sabit çubuğun yanlış varyant hatası "
+                 "kapandı, katalog düzeni sadeleşti."),
+        "sorun": ("Mobilde “Sepete Ekle” butonu 1147. pikseldeydi; müşteri bir buçuk ekran "
+                  "boyunca hiçbir satın alma tetikleyicisi görmüyordu. Sabit sepet çubuğu "
+                  "varyant kimliğini sayfa yüklenirken okuyup sabitliyordu, harf kolyede "
+                  "müşteri “Ç” seçince sepete “A” giriyordu. Katalog tarafında ürün türü "
+                  "alanında 71 farklı değer vardı ve sayılar gramaj değil sıra numarasıydı."),
+        "yapilan": [
+            "Fiyat kırılımı ve ürün künyesi bloklarının yeri değişti: bunlar karar öncesi "
+            "değil karar sonrası bilgi, satın alma butonunun altına alındı.",
+            "Sabit çubuk varyant kimliğini tıklama anında asıl ürün formundan okuyacak "
+            "şekilde yeniden yazıldı; fiyat, varyant adı ve stok durumu da asıl alandan aynalanıyor.",
+            "Sepet çekmecesinde sabit bloklar ürün listesinden yer çalıyordu; sabit kalması "
+            "gerekmeyen her şey kaydırılabilir alanın içine alındı.",
+            "95 ürünün tamamında gizli bir ikinci başlık vardı — ürünün kendi adresine link "
+            "veren, yüksekliği sıfır bir <h2 class=\"h1\">. Kaldırıldı, sayfada tek H1 bırakıldı.",
+            "Görünür kırıntı yolu ve BreadcrumbList birlikte kuruldu; ikisi aynı yolu gösteriyor.",
+            "Ürün türü alanı 6 temiz kategoriye indirildi; eski değerler silinmeden önce geri "
+            "dönüş için ayrı bir metafield'a yazıldı.",
+            "Birebir aynı ürün kümesini gösteren altı kopya koleksiyon kapatıldı: önce 301 "
+            "yönlendirmesi kuruldu, sonra silindi, sonra yönlendirmeler doğrulandı.",
+            "Tasarım tarafında iki harfli monogram favicon, güven şeridi, eşikli hediye "
+            "mekaniği ve kaynağın kendi panelini gömen canlı altın fiyat bölümü yapıldı.",
+        ],
+        "sonuc": [
+            "Mobilde satın alma butonu 1147. pikselden 948. piksele çıktı.",
+            "Çapraz satış bölümü 6749. pikselden 2552. piksele (masaüstünde 1733) taşındı.",
+            "Ürün türü 71 farklı değerden 6 kategoriye indi; Google Shopping ve Meta katalog "
+            "eşleştirmesi düzeldi.",
+            "Menüdeki 32 linkin 11'i sıfır ürün döndürüyordu; boş kategoriler menüden çıkarıldı.",
+            "95 ürüne SEO başlık ve açıklaması, 340 görsele alt metin yazıldı.",
+        ],
+        "teknik": ["Liquid", "JavaScript", "Admin GraphQL API", "Metafield",
+                   "URL Redirect", "JSON-LD"],
+        "kod": ("Sabit çubuk varyant kimliğini tıklama anında okur", "js",
+                """// Kimlik sayfa yuklenirken sabitlenirse, musteri varyant
+// degistirdiginde sepete ESKI varyant gider. Olculen kanit:
+// formda 49143197565147, cubukta 48748885934299.
+const form = document.querySelector('product-form form [name="id"]');
+
+dugme.addEventListener('click', function () {
+  const varyantId = form && form.value;
+  if (!varyantId) return;              // form yoksa hic denemeyelim
+  sepeteEkle(varyantId, adetAlani.value);
+});"""),
+        "kod_not": ("Bu hata sipariş gelene kadar kimseye görünmüyor. Kod okuyarak değil, "
+                    "formdaki değerle çubuğun gönderdiği değeri karşılaştırarak bulunuyor."),
+    },
+]
 
 TUR_ADI = {
     "ozel-uygulama": "Mağazaya özel uygulama",
