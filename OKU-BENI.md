@@ -30,7 +30,7 @@ Her sayfanın kendi üst menüsü ve tam alt bilgisi var; tek sayfa yığını y
 /yontem/                süreç ve ölçüm örnekleri
 /iletisim/              iletişim
 /uygulamalar/<slug>/    UYGULAMALAR listesi doluysa
-/isler/<slug>/          ISLER listesi doluysa
+/projeler/<slug>/       PROJELER listesi doluysa
 ```
 
 ## Örnek eklemek
@@ -63,9 +63,9 @@ kendiliğinden belirir.
 },
 ```
 
-### Yapılmış iş / vaka
+### Proje / vaka
 
-`ISLER` listesine ekle:
+`PROJELER` listesine ekle:
 
 ```python
 {
@@ -103,7 +103,7 @@ Dil etiketi serbest metin: `graphql`, `js`, `liquid`, `bash`, `json`.
 | `SUREC` | her geliştirme sayfasındaki "Nasıl yürüyor" adımları |
 | `VAKALAR` | `/yontem/` sayfasındaki ölçüm örnekleri |
 | `YAPMADIKLARIM` | `/yontem/` sayfasındaki kırmızı çizgiler |
-| `MARKALAR` | ana sayfadaki marka şeridi |
+| `MARKALAR` | ana sayfadaki marka kartları — (ad, adres, sektör, monogram) |
 | `SERIT` | ana sayfadaki koyu ölçüm şeridi (sayı, birim, açıklama) |
 | `IKON` / `HIZMET_IKON` | kart ve ilke ikonları (24×24 SVG, stroke 1.5) |
 | `KOD_*` | kod bloğu içerikleri |

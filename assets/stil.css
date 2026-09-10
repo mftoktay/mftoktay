@@ -201,9 +201,25 @@ a:focus-visible{outline:2px solid var(--yesil);outline-offset:3px;border-radius:
 .rozet{font-family:var(--mono);font-size:12.5px;padding:6px 11px;border:1px solid var(--cizgi-2);border-radius:6px;color:var(--murekkep-2);background:var(--kagit-2)}
 .bolum--beyaz .rozet{background:var(--kagit)}
 
-.markalar{display:flex;flex-wrap:wrap;gap:9px 10px}
-.marka{display:inline-flex;align-items:center;min-height:38px;font-size:15px;padding:6px 15px;border:1px solid var(--cizgi);border-radius:999px;color:var(--murekkep-2);background:var(--kagit-2);transition:border-color var(--gecis),color var(--gecis),background var(--gecis),transform var(--gecis)}
-a.marka:hover{color:var(--yesil);border-color:var(--yesil-2);background:var(--yesil-yumusak);transform:translateY(-1px)}
+.markalar{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(232px,1fr))}
+.marka{
+  display:flex;align-items:center;gap:13px;min-height:66px;padding:12px 14px;
+  border:1px solid var(--cizgi);border-radius:10px;background:var(--kagit-2);
+  color:inherit;
+  transition:border-color var(--gecis),box-shadow var(--gecis),transform var(--gecis);
+}
+.bolum--beyaz .marka{background:var(--kagit)}
+a.marka:hover{border-color:var(--yesil-2);box-shadow:0 10px 26px -18px rgba(27,29,24,.5);transform:translateY(-2px)}
+.marka__mono{
+  flex:none;display:flex;align-items:center;justify-content:center;
+  width:42px;height:42px;border-radius:9px;background:var(--yesil);color:#fff;
+  font-family:var(--mono);font-size:14px;font-weight:500;
+  transition:background var(--gecis);
+}
+a.marka:hover .marka__mono{background:var(--yesil-2)}
+.marka__govde{display:flex;flex-direction:column;gap:2px;min-width:0}
+.marka__ad{font-family:'Newsreader',Georgia,serif;font-size:17px;font-weight:500;color:var(--murekkep);line-height:1.25}
+.marka__sektor{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--murekkep-3)}
 
 .maddeler{list-style:none;margin-top:4px}
 .maddeler li{position:relative;padding-left:22px;color:var(--murekkep-2);max-width:64ch;margin-top:10px}

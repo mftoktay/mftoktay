@@ -19,9 +19,9 @@ Yapi (her sayfada yapiskan ust menu + tam alt bilgi):
   /yontem/                surec ve olcum ornekleri
   /iletisim/              iletisim
   /uygulamalar/[slug]/    UYGULAMALAR listesi doluysa
-  /isler/[slug]/          ISLER listesi doluysa
+  /projeler/[slug]/       PROJELER listesi doluysa
 
-Ornek eklemek: UYGULAMALAR / ISLER listesine bir sozluk ekle (sema asagida).
+Ornek eklemek: UYGULAMALAR / PROJELER listesine bir sozluk ekle (sema asagida).
 Liste bosken ilgili bolum, liste sayfasi ve menu ogesi hic uretilmez.
 """
 
@@ -107,7 +107,7 @@ HIZMET_IKON = {
 # }
 UYGULAMALAR = []
 
-# Yapilmis isler / vaka ornekleri.
+# Projeler / vaka ornekleri.
 #
 # Sema:
 # {
@@ -123,7 +123,7 @@ UYGULAMALAR = []
 #   "teknik":      ["Liquid", "Admin API"],        #   rozet listesi
 #   "kod":         ("Baslik", "js", "..."),        #   opsiyonel
 # }
-ISLER = [
+PROJELER = [
     {
         "slug": "blackbork-sapka-tasarim-kurucusu",
         "baslik": "Tarayıcıda çalışan şapka tasarım kurucusu",
@@ -612,20 +612,21 @@ HIZMET_SLUG = {h["slug"]: h for h in HIZMETLER}
 # Alt bilgide "Shopify" basligi altinda listelenecek alanlar.
 SHOPIFY_ALANLARI = {"uygulama-gelistirme", "ozel-yazilim", "tema-gelistirme"}
 
+# (ad, adres, sektor, monogram) — sektorler markalarin kendi sitelerinden okundu.
 MARKALAR = [
-    ("BlackBörk USA", "https://blackborkusa.com/"),
-    ("BlackBörk TR", "https://blackbork.com.tr/"),
-    ("Ömerhas Kuyumculuk", "https://omerhaskuyumculuk.com/"),
-    ("Nevam Kuyumculuk", "https://nevamkuyumculuk.com/"),
-    ("Aşkın Concept", "https://askinconcept.com.tr/"),
-    ("Numtex", "https://numtexco.com/"),
-    ("Ahenk Kuruyemiş", "https://ahenkkuruyemis.com.tr/"),
-    ("Armada Teknoloji", "https://armadateknoloji.com.tr/"),
-    ("Moda Neslie", "https://modaneslie.com"),
-    ("Variteks", "https://variteks.com/"),
-    ("Moon Butik", "https://moonbutik.com/"),
-    ("BodyHack", "https://www.bodyhack.com.tr/"),
-    ("Tuncan Tekstil", "http://www.tuncantekstil.com/"),
+    ("BlackBörk USA", "https://blackborkusa.com/", "Şapka · ABD", "BB"),
+    ("BlackBörk TR", "https://blackbork.com.tr/", "Şapka · Türkiye", "BB"),
+    ("Ömer Has Kuyumculuk", "https://omerhaskuyumculuk.com/", "Kuyum", "ÖH"),
+    ("Nevam Kuyumculuk", "https://nevamkuyumculuk.com/", "Kişiye özel takı", "NV"),
+    ("Aşkın Concept", "https://askinconcept.com.tr/", "Parti konsepti", "AC"),
+    ("Numtex", "https://numtexco.com/", "Baskılı tekstil", "NX"),
+    ("Ahenk Kuruyemiş", "https://ahenkkuruyemis.com.tr/", "Kuruyemiş ve bitki çayı", "AK"),
+    ("Armada Teknoloji", "https://armadateknoloji.com.tr/", "Bilgisayar ve güvenlik", "AT"),
+    ("Moda Neslie", "https://modaneslie.com/", "Deri aksesuar", "MN"),
+    ("Variteks", "https://variteks.com/", "Ortopedi", "VT"),
+    ("Moon Butik", "https://moonbutik.com/", "Kadın giyim", "MB"),
+    ("BodyHack", "https://www.bodyhack.com.tr/", "Spor salonu", "BH"),
+    ("Tuncan Tekstil", "http://www.tuncantekstil.com/", "Paracord ve kordon", "TT"),
 ]
 
 SUREC = [
@@ -769,8 +770,8 @@ def menu_ogeleri():
     ogeler = [("/", "Ana sayfa"), ("/gelistirme/", "Geliştirme")]
     if UYGULAMALAR:
         ogeler.append(("/uygulamalar/", "Uygulamalar"))
-    if ISLER:
-        ogeler.append(("/isler/", "İşler"))
+    if PROJELER:
+        ogeler.append(("/projeler/", "Projeler"))
     ogeler += [("/teknik/", "Teknik"), ("/yontem/", "Yöntem"), ("/iletisim/", "İletişim")]
     return ogeler
 
@@ -802,8 +803,8 @@ def alt():
                    for h in HIZMETLER if h["slug"] in SHOPIFY_ALANLARI]
     if UYGULAMALAR:
         shopify_ler.append(satir("/uygulamalar/", "App Store uygulamalarım"))
-    if ISLER:
-        web_ler.append(satir("/isler/", "Yapılmış işler"))
+    if PROJELER:
+        web_ler.append(satir("/projeler/", "Projeler"))
     web_ler.append(satir("/yontem/", "Yöntem"))
     shopify_ler.append(satir("/teknik/", "Teknik yaklaşım"))
 
@@ -965,6 +966,19 @@ def hizmet_kartlari():
     return "".join(kart("/%s/" % h["slug"], "Geliştirme", h["ad"], h["ozet"],
                         ikon=HIZMET_IKON.get(h["slug"], ""))
                    for h in HIZMETLER)
+
+
+def marka_izgarasi():
+    ler = []
+    for ad, url, sektor, mono in MARKALAR:
+        ler.append("""<a class="marka" href="%s" target="_blank" rel="noopener">
+          <span class="marka__mono" aria-hidden="true">%s</span>
+          <span class="marka__govde">
+            <span class="marka__ad">%s</span>
+            <span class="marka__sektor">%s</span>
+          </span>
+        </a>""" % (url, kacir(mono), kacir(ad), kacir(sektor)))
+    return '<div class="markalar">%s</div>' % "".join(ler)
 
 
 def cta(baslik, metin, buton="İletişime geç", hedef="/iletisim/"):
@@ -1240,9 +1254,25 @@ a:focus-visible{outline:2px solid var(--yesil);outline-offset:3px;border-radius:
 .rozet{font-family:var(--mono);font-size:12.5px;padding:6px 11px;border:1px solid var(--cizgi-2);border-radius:6px;color:var(--murekkep-2);background:var(--kagit-2)}
 .bolum--beyaz .rozet{background:var(--kagit)}
 
-.markalar{display:flex;flex-wrap:wrap;gap:9px 10px}
-.marka{display:inline-flex;align-items:center;min-height:38px;font-size:15px;padding:6px 15px;border:1px solid var(--cizgi);border-radius:999px;color:var(--murekkep-2);background:var(--kagit-2);transition:border-color var(--gecis),color var(--gecis),background var(--gecis),transform var(--gecis)}
-a.marka:hover{color:var(--yesil);border-color:var(--yesil-2);background:var(--yesil-yumusak);transform:translateY(-1px)}
+.markalar{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(232px,1fr))}
+.marka{
+  display:flex;align-items:center;gap:13px;min-height:66px;padding:12px 14px;
+  border:1px solid var(--cizgi);border-radius:10px;background:var(--kagit-2);
+  color:inherit;
+  transition:border-color var(--gecis),box-shadow var(--gecis),transform var(--gecis);
+}
+.bolum--beyaz .marka{background:var(--kagit)}
+a.marka:hover{border-color:var(--yesil-2);box-shadow:0 10px 26px -18px rgba(27,29,24,.5);transform:translateY(-2px)}
+.marka__mono{
+  flex:none;display:flex;align-items:center;justify-content:center;
+  width:42px;height:42px;border-radius:9px;background:var(--yesil);color:#fff;
+  font-family:var(--mono);font-size:14px;font-weight:500;
+  transition:background var(--gecis);
+}
+a.marka:hover .marka__mono{background:var(--yesil-2)}
+.marka__govde{display:flex;flex-direction:column;gap:2px;min-width:0}
+.marka__ad{font-family:'Newsreader',Georgia,serif;font-size:17px;font-weight:500;color:var(--murekkep);line-height:1.25}
+.marka__sektor{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--murekkep-3)}
 
 .maddeler{list-style:none;margin-top:4px}
 .maddeler li{position:relative;padding-left:22px;color:var(--murekkep-2);max-width:64ch;margin-top:10px}
@@ -1481,17 +1511,17 @@ def ana_sayfa():
     </div>
   </section>""" % kartlar)
 
-    if ISLER:
+    if PROJELER:
         kartlar = "".join(
-            kart("/isler/%s/" % i["slug"], TUR_ADI.get(i.get("tur", ""), "İş"),
+            kart("/projeler/%s/" % i["slug"], TUR_ADI.get(i.get("tur", ""), "Proje"),
                  i["baslik"], i["ozet"], i.get("musteri", ""), ikon="olcum")
-            for i in ISLER[:3])
+            for i in PROJELER[:3])
         parcalar.append("""
-  <section class="bolum" aria-labelledby="isler-h">
+  <section class="bolum" aria-labelledby="projeler-h">
     <div class="sarmal sarmal--genis">
-      <h2 class="bolum-basligi" id="isler-h">Yapılmış işler</h2>
+      <h2 class="bolum-basligi" id="projeler-h">Projeler</h2>
       <div class="kartlar">%s</div>
-      <p class="devam"><a href="/isler/">Tüm işler →</a></p>
+      <p class="devam"><a href="/projeler/">Tüm projeler →</a></p>
     </div>
   </section>""" % kartlar)
 
@@ -1510,13 +1540,13 @@ def ana_sayfa():
     </div>
   </section>""" % adimlar(SUREC))
 
-    marka_html = "".join('<a class="marka" href="%s" target="_blank" rel="noopener">%s</a>'
-                         % (u, kacir(a)) for a, u in MARKALAR)
     parcalar.append("""
   <section class="bolum bolum--beyaz" aria-labelledby="markalar-h">
     <div class="sarmal sarmal--genis">
       <h2 class="bolum-basligi" id="markalar-h">Birlikte çalıştığım markalar</h2>
-      <div class="markalar">%s</div>
+      <p class="bolum-giris">%d marka, %d ayrı sektör. Şapkadan kuyuma, ortopediden
+        kuruyemişe — ortak nokta ürün değil, aynı teknik sorunlar.</p>
+      %s
       <div class="taftri" style="margin-top:34px">
         <div>
           <h3>Ajans işleri Taftri üzerinden</h3>
@@ -1526,7 +1556,8 @@ def ana_sayfa():
         <a class="btn btn--sade" href="https://taftri.com/" rel="noopener">taftri.com</a>
       </div>
     </div>
-  </section>""" % marka_html)
+  </section>""" % (len(MARKALAR), len({m[2].split(" · ")[0] for m in MARKALAR}),
+                   marka_izgarasi()))
 
     parcalar.append(cta("Aklınızda bir şey var mı?",
                         "Ne yapılması gerektiğini söylemek çoğu zaman kısa sürüyor."))
@@ -1948,44 +1979,46 @@ def uygulama_sayfasi(u):
     return sayfa(baslik, aciklama, SITE + yol, "/uygulamalar/", "".join(parcalar), ldler)
 
 
-def is_listesi():
-    baslik = "Yapılmış işler — %s" % AD
+def proje_listesi():
+    baslik = "Projeler — %s" % AD
     aciklama = ("Shopify mağazaları için yazdığım özel uygulamalar, tema özellikleri ve "
                 "entegrasyonlar; başlangıç durumu ve ölçülmüş sonuçlarıyla.")
-    kb, kld = kirinti([("Ana sayfa", "/"), ("İşler", None)])
+    kb, kld = kirinti([("Ana sayfa", "/"), ("Projeler", None)])
     kartlar = "".join(
-        kart("/isler/%s/" % i["slug"], TUR_ADI.get(i.get("tur", ""), "İş"),
+        kart("/projeler/%s/" % i["slug"], TUR_ADI.get(i.get("tur", ""), "Proje"),
              i["baslik"], i["ozet"], i.get("musteri", ""), ikon="olcum")
-        for i in ISLER)
+        for i in PROJELER)
     liste_ld = ('{"@context":"https://schema.org","@type":"ItemList",'
                 '"itemListElement":[%s]}' % ",".join(
-                    '{"@type":"ListItem","position":%d,"name":"%s","url":"%s/isler/%s/"}'
+                    '{"@type":"ListItem","position":%d,"name":"%s","url":"%s/projeler/%s/"}'
                     % (n + 1, json_kacir(i["baslik"]), SITE, i["slug"])
-                    for n, i in enumerate(ISLER)))
+                    for n, i in enumerate(PROJELER)))
     govde = """
   <div class="sarmal sarmal--genis">%s
     <header class="giris giris--ic">
-      <p class="rol">İşler</p>
-      <h1 class="ad ad--ic">Yapılmış işler</h1>
+      <p class="rol">Projeler</p>
+      <h1 class="ad ad--ic">Projeler</h1>
       <p>Her kayıtta işin başlangıç durumu, ne yapıldığı ve mümkün olduğunda ölçülmüş
         sonucu yazılı. Rakam yoksa rakam yazılmıyor.</p>
     </header>
   </div>
-  <section class="bolum" aria-label="İş listesi">
+  <section class="bolum" aria-label="Proje listesi">
     <div class="sarmal sarmal--genis"><div class="kartlar">%s</div></div>
   </section>
-%s""" % (kb, kartlar, cta("Benzer bir işiniz mi var?",
+%s""" % (kb, kartlar, cta("Benzer bir projeniz mi var?",
                          "Durumu anlatın; ölçüp ne gerektiğini söyleyeyim."))
-    return sayfa(baslik, aciklama, SITE + "/isler/", "/isler/", govde, [kld, liste_ld])
+    return sayfa(baslik, aciklama, SITE + "/projeler/", "/projeler/", govde,
+                 [kld, liste_ld])
 
 
-def is_sayfasi(i):
+def proje_sayfasi(i):
     baslik = "%s — %s" % (i["baslik"], i["musteri"])
     if len(baslik) > 65:
         baslik = i["baslik"]
     aciklama = duz(i["ozet"])[:155]
-    yol = "/isler/%s/" % i["slug"]
-    kb, kld = kirinti([("Ana sayfa", "/"), ("İşler", "/isler/"), (i["baslik"], None)])
+    yol = "/projeler/%s/" % i["slug"]
+    kb, kld = kirinti([("Ana sayfa", "/"), ("Projeler", "/projeler/"),
+                       (i["baslik"], None)])
 
     musteri_html = kacir(i["musteri"])
     if i.get("musteri_url"):
@@ -2000,7 +2033,7 @@ def is_sayfasi(i):
       <p>%s</p>
       <p style="font-size:16px">Müşteri: %s</p>
     </header>
-  </div>""" % (kb, kacir(TUR_ADI.get(i.get("tur", ""), "İş")), kacir(i["baslik"]),
+  </div>""" % (kb, kacir(TUR_ADI.get(i.get("tur", ""), "Proje")), kacir(i["baslik"]),
                kacir(i["ozet"]), musteri_html)]
 
     parcalar.append("""
@@ -2037,14 +2070,15 @@ def is_sayfasi(i):
     parcalar.append(cta("Sizde de benzer bir durum mu var?",
                         "Mağazanın adresini yollayın; bakıp ne gördüğümü yazayım."))
 
-    is_ld = ('{"@context":"https://schema.org","@type":"CreativeWork",'
+    proje_ld = ('{"@context":"https://schema.org","@type":"CreativeWork",'
              '"name":"%s","description":"%s","inLanguage":"tr-TR",'
              '"creator":{"@type":"Person","name":"%s"},'
              '"about":{"@type":"Organization","name":"%s"%s}}'
              % (json_kacir(i["baslik"]), json_kacir(i["ozet"]), AD,
                 json_kacir(i["musteri"]),
                 (',"url":"%s"' % i["musteri_url"]) if i.get("musteri_url") else ""))
-    return sayfa(baslik, aciklama, SITE + yol, "/isler/", "".join(parcalar), [kld, is_ld])
+    return sayfa(baslik, aciklama, SITE + yol, "/projeler/", "".join(parcalar),
+                 [kld, proje_ld])
 
 
 def dort_yuz_dort():
@@ -2108,9 +2142,9 @@ def adresler():
     if UYGULAMALAR:
         yollar.append("/uygulamalar/")
         yollar += ["/uygulamalar/%s/" % u["slug"] for u in UYGULAMALAR]
-    if ISLER:
-        yollar.append("/isler/")
-        yollar += ["/isler/%s/" % i["slug"] for i in ISLER]
+    if PROJELER:
+        yollar.append("/projeler/")
+        yollar += ["/projeler/%s/" % i["slug"] for i in PROJELER]
     return yollar
 
 
@@ -2159,10 +2193,10 @@ def llms():
         for u in UYGULAMALAR:
             satirlar.append("  - [%s](%s/uygulamalar/%s/): %s"
                             % (u["ad"], SITE, u["slug"], duz(u["ozet"])))
-    if ISLER:
-        satirlar.append("- [İşler](%s/isler/): yapılmış işler ve ölçülmüş sonuçları." % SITE)
-        for i in ISLER:
-            satirlar.append("  - [%s](%s/isler/%s/): %s — %s"
+    if PROJELER:
+        satirlar.append("- [Projeler](%s/projeler/): projeler ve ölçülmüş sonuçları." % SITE)
+        for i in PROJELER:
+            satirlar.append("  - [%s](%s/projeler/%s/): %s — %s"
                             % (i["baslik"], SITE, i["slug"], i["musteri"], duz(i["ozet"])))
     satirlar += ["",
                  "## İletişim",
@@ -2221,10 +2255,21 @@ def main():
         for u in UYGULAMALAR:
             yaz("uygulamalar/%s/index.html" % u["slug"], uygulama_sayfasi(u))
 
-    if ISLER:
-        yaz("isler/index.html", is_listesi())
-        for i in ISLER:
-            yaz("isler/%s/index.html" % i["slug"], is_sayfasi(i))
+    if PROJELER:
+        yaz("projeler/index.html", proje_listesi())
+        for i in PROJELER:
+            yaz("projeler/%s/index.html" % i["slug"], proje_sayfasi(i))
+
+        # eski /isler/ adresleri icin yonlendirme
+        yaz("isler/index.html", yonlendirme(
+            "Bu sayfa Projeler oldu",
+            "Yapılmış işler artık /projeler/ adresinde. Yönlendiriliyorsunuz.",
+            "https://mftoktay.com/projeler/"))
+        for i in PROJELER:
+            yaz("isler/%s/index.html" % i["slug"], yonlendirme(
+                "Bu sayfa taşındı",
+                "Proje sayfası /projeler/ altına taşındı. Yönlendiriliyorsunuz.",
+                "https://mftoktay.com/projeler/%s/" % i["slug"]))
 
     yaz("404.html", dort_yuz_dort())
 
@@ -2250,7 +2295,7 @@ def main():
     for y in URETILEN:
         print("  " + y)
     print("Sitemap adresi : %d" % len(adresler()))
-    print("Uygulama: %d   Is: %d" % (len(UYGULAMALAR), len(ISLER)))
+    print("Uygulama: %d   Is: %d" % (len(UYGULAMALAR), len(PROJELER)))
 
 
 if __name__ == "__main__":
