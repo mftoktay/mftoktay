@@ -5,8 +5,15 @@
 
 ## Sayfalar
 
-- [Ana sayfa](https://mftoktay.com/): kim, ne geliştiriyor, çalışma yöntemi, markalar.
-- [Özel yazılım](https://mftoktay.com/ozel-yazilim/): tek mağaza için geliştirme; kapsam, süreç, sık sorulanlar.
+- [Ana sayfa](https://mftoktay.com/): ne geliştirdiği, çalıştığı platform yüzeyleri, markalar.
+- [Geliştirme](https://mftoktay.com/gelistirme/): dört geliştirme alanı ve hangisinin hangi işe uygun olduğu.
+  - [App Store uygulaması](https://mftoktay.com/uygulama-gelistirme/): Herkese açık, mağazaya kurulup abonelikle kullanılan uygulama.
+  - [Mağazaya özel uygulama](https://mftoktay.com/ozel-yazilim/): App Store'a çıkmayan, tek mağaza için yazılan uygulama.
+  - [Tema geliştirme](https://mftoktay.com/tema-gelistirme/): Liquid tarafında bölüm ve blok yazımı, mevcut temaya özellik ekleme.
+  - [Entegrasyon ve otomasyon](https://mftoktay.com/entegrasyon/): Admin API üzerinden dış sistem bağlantısı ve toplu veri işleri.
+- [Teknik yaklaşım](https://mftoktay.com/teknik/): API sürümü, hız limiti, webhook doğrulama, idempotent işleme, geri alınabilir toplu iş.
+- [Yöntem](https://mftoktay.com/yontem/): süreç, sahadan ölçüm örnekleri, yapmadıkları.
+- [İletişim](https://mftoktay.com/iletisim/): WhatsApp ve telefon.
 
 ## İletişim
 

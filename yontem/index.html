@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nasıl çalışıyorum — M. Fehmi Toktay</title>
+<meta name="description" content="Ölçerek teşhis, yazılı kapsam, ayrı temada geliştirme ve ölçülmüş teslim. Sahadan beş ölçüm örneği." />
+<link rel="canonical" href="https://mftoktay.com/yontem/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mftoktay.com/yontem/" />
+<meta property="og:title" content="Nasıl çalışıyorum — M. Fehmi Toktay" />
+<meta property="og:description" content="Ölçerek teşhis, yazılı kapsam, ayrı temada geliştirme ve ölçülmüş teslim. Sahadan beş ölçüm örneği." />
+<meta property="og:locale" content="tr_TR" />
+<meta name="twitter:card" content="summary" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Karla:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="/assets/stil.css" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ana sayfa","item":"https://mftoktay.com/"},{"@type":"ListItem","position":2,"name":"Yöntem"}]}</script>
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe atla</a>
+<header class="ust">
+  <div class="sarmal sarmal--genis ust__ic">
+    <a class="ust__ad" href="/">M. Fehmi Toktay<span class="ust__rol">Shopify uygulama geliştiricisi</span></a>
+    <nav class="ust__menu" aria-label="Ana menü"><a href="/">Ana sayfa</a><a href="/gelistirme/">Geliştirme</a><a href="/teknik/">Teknik</a><a href="/yontem/" aria-current="page">Yöntem</a><a href="/iletisim/">İletişim</a></nav>
+  </div>
+</header>
+<main id="icerik">
+
+  <div class="sarmal"><nav aria-label="Neredesiniz"><ol class="crumbs"><li><a href="/">Ana sayfa</a></li><li aria-current="page">Yöntem</li></ol></nav>
+    <header class="giris giris--ic">
+      <p class="rol">Yöntem</p>
+      <h1 class="ad ad--ic">Nasıl çalışıyorum</h1>
+      <p>İşin büyük kısmı yeni bir şey icat etmekle değil, hâlihazırda para kaybettiren
+        yeri bulmakla geçiyor. Bunun tek yolu <strong>ölçmek</strong>.</p>
+    </header>
+  </div>
+
+  <section aria-labelledby="surec-h">
+    <div class="sarmal">
+      <h2 class="bolum-basligi" id="surec-h">Süreç</h2>
+      <div class="alan"><h3>Ne olduğunu ölçerim</h3><p>İlk iş mevcut durumu rakamla tespit etmek. Hangi sayfada, hangi adımda, kaç kayıtta sorun var — bu bilinmeden yazılacak kod tahmine dayanır.</p></div><div class="alan"><h3>Kapsamı yazılı veririm</h3><p>Ne yapılacağı, neyin dışarıda kaldığı ve teslim biçimi baştan yazılır. Sonradan büyüyen iş ikimize de pahalıya patlar.</p></div><div class="alan"><h3>Ayrı temada / geliştirme mağazasında geliştiririm</h3><p>Tema işleri yayınlanmamış bir kopyada yazılır, önizleme adresiyle doğrulanır, sonra canlıya alınır. Uygulama işlerinde geliştirme mağazası kullanılır.</p></div><div class="alan"><h3>Ölçerek teslim ederim</h3><p>Teslimde “yapıldı” demek yetmez; öncesi ve sonrası aynı yöntemle ölçülür. Toplu veri işlerinde eski değerlerin yedeği ve geri alma script'i bırakılır.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="vaka-h">
+    <div class="sarmal">
+      <h2 class="bolum-basligi" id="vaka-h">Ölçüm örnekleri</h2>
+      <p class="bolum-giris">Hepsi gerçek mağazalarda ölçüldü. Rakamlar tahmin değil,
+        çalışan sayfadan okunan değerler.</p>
+      <div class="ornek"><p>Bir kuyum mağazasında “Sepete Ekle” butonu mobilde <span class="sayi">1147.</span> pikseldeydi. Müşteri bir buçuk ekran boyunca hiçbir satın alma tetikleyicisi görmüyordu.</p><p>Fiyat kırılımı ve ürün künyesi karar öncesi değil, karar sonrası bilgi. İkisini de butonun altına aldık; buton <span class="sayi">948.</span> piksele çıktı.</p></div><div class="ornek"><p>Aynı mağazada sabit sepet çubuğu, varyant kimliğini sayfa yüklenirken okuyup sabitliyordu. Müşteri harf kolyede “Ç” seçiyor, çubuk sepete “A” ekliyordu; ölçülen kanıt formda <span class="sayi">49143197565147</span>, çubukta <span class="sayi">48748885934299</span>.</p><p>Kimliği asıl ürün formundan tıklama anında okuyacak şekilde değiştirdik. Böyle bir hata sipariş gelene kadar kimseye görünmüyor — kod okuyarak değil, formdaki değerle çubuğun gönderdiği değeri karşılaştırarak bulunuyor.</p></div><div class="ornek"><p>Bir şapka markasında ürün sayfasındaki “Detaylar” paneli mobilde açık başlıyordu. Tek başına <span class="sayi">845</span> piksel yer kaplıyor, satın alma butonunu <span class="sayi">1811.</span> piksele itiyordu.</p><p>Kapalı başlatınca buton <span class="sayi">1064.</span> piksele geldi, <span class="sayi">747</span> piksel kazanç. Masaüstünde eski davranışı bozmadık; orada yer sıkıntısı yoktu.</p></div><div class="ornek"><p>Bir katalogda ürün türü alanında <span class="sayi">71</span> farklı değer vardı: “Yüzük 8”, “Bileklik 15”, “Kolye-5”. Sayılar gramaj değil, sıra numarasıydı.</p><p>Google Shopping eşleştirmesi bu yüzden tutmuyor, mağazanın kendi filtresi onlarca sahte kategori üretiyordu. <span class="sayi">6</span> kategoriye indirdik; eski değerleri silmeden önce geri dönüş için ayrı bir metafield'a yazdık.</p></div><div class="ornek"><p>Bir sepet çekmecesinde sabit bloklar ürün listesinden yer çalıyordu: özet <span class="sayi">234</span> + başlık <span class="sayi">66</span> + çapraz satış <span class="sayi">243</span> + alt bölüm <span class="sayi">228</span> piksel. Ürün satırına <span class="sayi">39</span> piksel kalıyordu.</p><p>Ürün satırı <span class="sayi">159</span> piksel olduğu için taşıp çapraz satış şeridinin altında kayboluyordu. Sabit kalması gereken bloklar dışındaki her şey kaydırılabilir alanın içine alındı.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="yapmam-h">
+    <div class="sarmal">
+      <h2 class="bolum-basligi" id="yapmam-h">Yapmadıklarım</h2>
+      <ul class="maddeler"><li>Uygulama kurmadan çözülebilecek bir işe uygulama yazmam.</li><li>Ölçmediğim bir iyileştirmeyi “iyileşti” diye teslim etmem.</li><li>Yedek almadan toplu veri işlemi başlatmam.</li><li>Yönlendirme kurmadan koleksiyon, sayfa veya ürün silmem.</li><li>İmza doğrulaması olmayan webhook ucu bırakmam.</li><li>Uydurma rakam, sahte yorum ve doğrulanmamış rozet koymam.</li></ul>
+      <p class="devam"><a href="/teknik/">Teknik ilkelerin tamamı</a></p>
+    </div>
+  </section>
+
+  <section class="cta" aria-labelledby="cta-h">
+    <div class="sarmal sarmal--genis">
+      <div class="cta__kutu">
+        <div>
+          <h2 id="cta-h">Sizde ne ölçülmeli?</h2>
+          <p>Mağazanın adresini yollayın; bakıp ne gördüğümü yazayım.</p>
+        </div>
+        <a class="btn" href="/iletisim/">İletişime geç</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="alt">
+  <div class="sarmal sarmal--genis">
+    <div class="alt__izgara">
+      <div class="alt__sutun alt__sutun--ilk">
+        <p class="alt__ad">M. Fehmi Toktay</p>
+        <p class="alt__metin">Shopify için yazılım geliştiriyorum: App Store uygulamaları,
+          mağazaya özel uygulamalar, Liquid tema ve Admin API entegrasyonları.</p>
+        <p class="alt__mono">Admin GraphQL API · Liquid · Bulk Operations · Webhook</p>
+      </div>
+      <div class="alt__sutun">
+        <p class="alt__baslik">Geliştirme</p>
+        <ul><li><a href="/uygulama-gelistirme/">App Store uygulaması</a></li><li><a href="/ozel-yazilim/">Mağazaya özel uygulama</a></li><li><a href="/tema-gelistirme/">Tema geliştirme</a></li><li><a href="/entegrasyon/">Entegrasyon ve otomasyon</a></li></ul>
+      </div>
+      <div class="alt__sutun">
+        <p class="alt__baslik">Site</p>
+        <ul><li><a href="/teknik/">Teknik yaklaşım</a></li><li><a href="/yontem/">Yöntem</a></li><li><a href="/iletisim/">İletişim</a></li></ul>
+      </div>
+      <div class="alt__sutun">
+        <p class="alt__baslik">İletişim</p>
+        <ul>
+          <li><a href="https://wa.me/905541386827" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="tel:+905541386827">+90 554 138 68 27</a></li>
+          <li><a href="https://taftri.com/" target="_blank" rel="noopener">Taftri — ajans işleri</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="alt__satir">
+      <div>&copy; <span id="yil">2026</span> M. Fehmi Toktay</div>
+      <div><a href="/kvkk.html">KVKK</a> &middot; <a href="/gizlilik.html">Gizlilik</a></div>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('yil').textContent=new Date().getFullYear();</script>
+</body>
+</html>

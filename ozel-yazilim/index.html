@@ -4,80 +4,124 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Shopify özel yazılım geliştirme — M. Fehmi Toktay</title>
-<meta name="description" content="Tek mağaza için Shopify uygulaması, tema özelliği, Admin API entegrasyonu ve toplu veri işleri. Kapsam, süreç ve teslim biçimi." />
+<meta name="description" content="Tek mağaza için Shopify uygulaması: özel iş akışları, bayi paneli, fiyat ve stok senkronu. Kaynak kod teslim edilir." />
 <link rel="canonical" href="https://mftoktay.com/ozel-yazilim/" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://mftoktay.com/ozel-yazilim/" />
 <meta property="og:title" content="Shopify özel yazılım geliştirme — M. Fehmi Toktay" />
-<meta property="og:description" content="Tek mağaza için Shopify uygulaması, tema özelliği, Admin API entegrasyonu ve toplu veri işleri. Kapsam, süreç ve teslim biçimi." />
+<meta property="og:description" content="Tek mağaza için Shopify uygulaması: özel iş akışları, bayi paneli, fiyat ve stok senkronu. Kaynak kod teslim edilir." />
 <meta property="og:locale" content="tr_TR" />
 <meta name="twitter:card" content="summary" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Karla:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Karla:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
 <link rel="stylesheet" href="/assets/stil.css" />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ana sayfa","item":"https://mftoktay.com/"},{"@type":"ListItem","position":2,"name":"Özel yazılım"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Shopify özel yazılım geliştirme","serviceType":"Shopify uygulama ve tema geliştirme","provider":{"@type":"Person","name":"M. Fehmi Toktay","url":"https://mftoktay.com/"},"areaServed":"TR","description":"Tek mağaza için Shopify uygulaması, tema özelliği, Admin API entegrasyonu ve toplu veri işleri. Kapsam, süreç ve teslim biçimi."}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"App Store uygulaması mı, mağazaya özel uygulama mı gerekiyor?","acceptedAnswer":{"@type":"Answer","text":"Aynı ihtiyaç birden çok mağazada varsa ve satmayı düşünüyorsanız App Store. Sadece sizin iş akışınıza özel bir şeyse mağazaya özel uygulama hem daha hızlı hem daha ucuz olur; inceleme süreci de yoktur."}},{"@type":"Question","name":"İş uygulama gerektirmiyorsa ne olur?","acceptedAnswer":{"@type":"Answer","text":"Çoğu istek tema içinde çözülebiliyor. Uygulama kurmadan çözülebilecek bir işe uygulama yazmam; her uygulama mağazaya kalıcı bir bağımlılık ekler."}},{"@type":"Question","name":"Canlı mağazada mı çalışıyorsunuz?","acceptedAnswer":{"@type":"Answer","text":"Hayır. Tema işleri yayınlanmamış bir kopyada geliştirilir, önizleme adresinden doğrulanır, sonra canlıya alınır. Uygulama tarafında geliştirme mağazası kullanılır."}},{"@type":"Question","name":"Toplu veri işlerinde geri dönüş var mı?","acceptedAnswer":{"@type":"Answer","text":"Var. Değiştirilen alanların eski değerleri kimlikleriyle birlikte dosyaya yazılır ve geri yükleme script'i teslim edilir."}},{"@type":"Question","name":"Kodun sahibi kim?","acceptedAnswer":{"@type":"Answer","text":"Mağazaya özel işlerde kod sizindir; tema dosyaları ve uygulama kaynağı teslim edilir. App Store uygulamalarında kaynak bende kalır, siz aboneliği kullanırsınız."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ana sayfa","item":"https://mftoktay.com/"},{"@type":"ListItem","position":2,"name":"Geliştirme","item":"https://mftoktay.com/gelistirme/"},{"@type":"ListItem","position":3,"name":"Mağazaya özel uygulama"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Shopify özel yazılım geliştirme","serviceType":"Mağazaya özel uygulama","provider":{"@type":"Person","name":"M. Fehmi Toktay","url":"https://mftoktay.com/"},"areaServed":"TR","url":"https://mftoktay.com/ozel-yazilim/","description":"Tek mağaza için Shopify uygulaması: özel iş akışları, bayi paneli, fiyat ve stok senkronu. Kaynak kod teslim edilir."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"App Store uygulaması mı, mağazaya özel mi gerekiyor?","acceptedAnswer":{"@type":"Answer","text":"Aynı ihtiyaç birden çok mağazada varsa ve satmayı düşünüyorsanız App Store. Sadece sizin iş akışınıza özel bir şeyse mağazaya özel uygulama hem daha hızlı hem daha ucuz olur; inceleme süreci de yoktur."}},{"@type":"Question","name":"İş uygulama gerektirmiyorsa ne olur?","acceptedAnswer":{"@type":"Answer","text":"Çoğu istek tema içinde çözülebiliyor. Uygulama kurmadan çözülebilecek bir işe uygulama yazmam; her uygulama mağazaya kalıcı bir bağımlılık ekler."}},{"@type":"Question","name":"Kodun sahibi kim?","acceptedAnswer":{"@type":"Answer","text":"Mağazaya özel işlerde kod sizindir. Kaynak, kurulum belgesi ve gerekli erişim bilgileri teslim edilir."}},{"@type":"Question","name":"Uygulamayı sonra App Store'a taşıyabilir miyiz?","acceptedAnswer":{"@type":"Answer","text":"Taşınabilir, ama baştan öyle yazılmadıysa çerçeve kısmı yeniden kurulur. Böyle bir ihtimal varsa başlarken söyleyin; yapı ona göre kurulsun."}}]}</script>
 </head>
 <body>
-<nav class="ust" aria-label="Ana menü"><div class="sarmal"><a class="ust__ad" href="/">M. Fehmi Toktay</a><div class="ust__ler"><a href="/">Ana sayfa</a><a href="/ozel-yazilim/" aria-current="page">Özel yazılım</a></div></div></nav>
-<main>
-  <div class="sarmal"><nav aria-label="Neredesiniz"><ol class="crumbs"><li><a href="/">Ana sayfa</a></li><li aria-current="page">Özel yazılım</li></ol></nav></div>
-  <header class="giris giris--ic">
-    <div class="sarmal">
-      <h1 class="ad ad--ic">Özel yazılım</h1>
-      <p>App Store'a çıkmayan, tek bir mağaza için yazılan işler. Herkese uyması
-        gerekmediği için kapsam dar tutulur, iş hızlı biter.</p>
-    </div>
-  </header>
+<a class="atla" href="#icerik">İçeriğe atla</a>
+<header class="ust">
+  <div class="sarmal sarmal--genis ust__ic">
+    <a class="ust__ad" href="/">M. Fehmi Toktay<span class="ust__rol">Shopify uygulama geliştiricisi</span></a>
+    <nav class="ust__menu" aria-label="Ana menü"><a href="/">Ana sayfa</a><a href="/gelistirme/" aria-current="page">Geliştirme</a><a href="/teknik/">Teknik</a><a href="/yontem/">Yöntem</a><a href="/iletisim/">İletişim</a></nav>
+  </div>
+</header>
+<main id="icerik">
+
+  <div class="sarmal"><nav aria-label="Neredesiniz"><ol class="crumbs"><li><a href="/">Ana sayfa</a></li><li><a href="/gelistirme/">Geliştirme</a></li><li aria-current="page">Mağazaya özel uygulama</li></ol></nav>
+    <header class="giris giris--ic">
+      <p class="rol">Geliştirme</p>
+      <h1 class="ad ad--ic">Shopify özel yazılım geliştirme</h1>
+      <p>App Store'a çıkmayan, tek bir mağaza için yazılan uygulama. Herkese uyması gerekmediği için kapsam dar tutulur, inceleme süreci yoktur, iş hızlı biter.</p><p>Kod sizindir: kaynak, kurulum belgesi ve hangi kapsamların neden istendiği yazılı olarak teslim edilir.</p>
+    </header>
+  </div>
 
   <section aria-labelledby="kapsam-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="kapsam-h">Ne tür işler</h2>
-      <div class="alan"><h3>Mağazaya özel uygulama</h3><p>Tek mağaza için kurulan, App Store'a çıkmayan uygulama. Sipariş sonrası iş akışları, özel fiyatlandırma, bayi paneli, stok ve fiyat senkronu gibi işler.</p></div><div class="alan"><h3>Tema özelliği</h3><p>Sabit sepet çubuğu, ürün künyesi, çapraz satış şeridi, eşikli hediye mekaniği, favoriler — uygulama kurmadan tema içinde çözülebilen özellikler.</p></div><div class="alan"><h3>Veri ve katalog işleri</h3><p>Toplu ürün, varyant, fiyat ve metafield güncellemeleri; başka platformdan aktarım; kategori ve etiket düzeni; yönlendirme haritası.</p></div><div class="alan"><h3>Dış sistem bağlantısı</h3><p>Muhasebe, kargo, ERP ve pazaryeri entegrasyonları. Webhook kurulumu, hata durumunda tekrar deneme ve log.</p></div>
+      <div class="alan"><h3>Özel iş akışları</h3><p>Sipariş sonrası otomatik adımlar, onay zincirleri, koşullu etiketleme, iç bildirimler. Mağazanın kendi çalışma biçimine göre yazılır — hazır uygulamaların yapamadığı kısım genelde burasıdır.</p></div><div class="alan"><h3>Bayi ve toptan paneli</h3><p>Müşteri grubuna göre fiyat, minimum adet, cari bakiye görünümü, kuruma özel katalog ve sipariş formu.</p></div><div class="alan"><h3>Fiyat ve stok senkronu</h3><p>Dış bir kaynaktan gelen fiyat ve stok verisinin düzenli aktarımı. Çakışma, kısmi başarısızlık ve yeniden deneme durumları baştan tanımlanır.</p></div><div class="alan"><h3>Panel içi araçlar</h3><p>Yönetim panelinden çalıştırılan toplu düzenleme, rapor ve kontrol araçları. Her seferinde geliştirici çağırmadan iş görülebilsin diye.</p></div>
+      <div class="rozetler"><span class="rozet">Admin GraphQL API</span><span class="rozet">Webhook</span><span class="rozet">Metafield</span><span class="rozet">Bulk Operations</span><span class="rozet">Custom App</span></div>
     </div>
   </section>
 
   <section aria-labelledby="surec-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="surec-h">Nasıl yürüyor</h2>
-      <div class="alan"><h3>Ne olduğunu ölçerim</h3><p>İlk iş mevcut durumu rakamla tespit etmek. Hangi sayfada, hangi adımda, kaç kayıtta sorun var — bu bilinmeden yazılacak kod tahmine dayanır.</p></div><div class="alan"><h3>Kapsamı yazılı veririm</h3><p>Ne yapılacağı, neyin dışarıda kaldığı ve teslim biçimi baştan yazılır. Sonradan büyüyen iş ikimize de pahalıya patlar.</p></div><div class="alan"><h3>Ayrı temada geliştiririm</h3><p>Tema işleri yayınlanmamış bir kopyada yazılır, önizleme adresiyle doğrulanır, sonra canlıya alınır. Uygulama işlerinde geliştirme mağazası kullanılır.</p></div><div class="alan"><h3>Ölçerek teslim ederim</h3><p>Teslimde “yapıldı” demek yetmez; öncesi ve sonrası aynı yöntemle ölçülür. Toplu veri işlerinde eski değerlerin yedeği ve geri alma script'i bırakılır.</p></div>
+      <div class="alan"><h3>Ne olduğunu ölçerim</h3><p>İlk iş mevcut durumu rakamla tespit etmek. Hangi sayfada, hangi adımda, kaç kayıtta sorun var — bu bilinmeden yazılacak kod tahmine dayanır.</p></div><div class="alan"><h3>Kapsamı yazılı veririm</h3><p>Ne yapılacağı, neyin dışarıda kaldığı ve teslim biçimi baştan yazılır. Sonradan büyüyen iş ikimize de pahalıya patlar.</p></div><div class="alan"><h3>Ayrı temada / geliştirme mağazasında geliştiririm</h3><p>Tema işleri yayınlanmamış bir kopyada yazılır, önizleme adresiyle doğrulanır, sonra canlıya alınır. Uygulama işlerinde geliştirme mağazası kullanılır.</p></div><div class="alan"><h3>Ölçerek teslim ederim</h3><p>Teslimde “yapıldı” demek yetmez; öncesi ve sonrası aynı yöntemle ölçülür. Toplu veri işlerinde eski değerlerin yedeği ve geri alma script'i bırakılır.</p></div>
+      <p class="devam"><a href="/teknik/">Teknik yaklaşım</a> &middot;
+        <a href="/yontem/">ölçüm örnekleri</a></p>
     </div>
   </section>
 
   <section aria-labelledby="sss-h">
     <div class="sarmal">
       <h2 class="bolum-basligi" id="sss-h">Sık sorulanlar</h2>
-      <div class="sss"><h3>App Store uygulaması mı, mağazaya özel uygulama mı gerekiyor?</h3><p>Aynı ihtiyaç birden çok mağazada varsa ve satmayı düşünüyorsanız App Store. Sadece sizin iş akışınıza özel bir şeyse mağazaya özel uygulama hem daha hızlı hem daha ucuz olur; inceleme süreci de yoktur.</p></div><div class="sss"><h3>İş uygulama gerektirmiyorsa ne olur?</h3><p>Çoğu istek tema içinde çözülebiliyor. Uygulama kurmadan çözülebilecek bir işe uygulama yazmam; her uygulama mağazaya kalıcı bir bağımlılık ekler.</p></div><div class="sss"><h3>Canlı mağazada mı çalışıyorsunuz?</h3><p>Hayır. Tema işleri yayınlanmamış bir kopyada geliştirilir, önizleme adresinden doğrulanır, sonra canlıya alınır. Uygulama tarafında geliştirme mağazası kullanılır.</p></div><div class="sss"><h3>Toplu veri işlerinde geri dönüş var mı?</h3><p>Var. Değiştirilen alanların eski değerleri kimlikleriyle birlikte dosyaya yazılır ve geri yükleme script'i teslim edilir.</p></div><div class="sss"><h3>Kodun sahibi kim?</h3><p>Mağazaya özel işlerde kod sizindir; tema dosyaları ve uygulama kaynağı teslim edilir. App Store uygulamalarında kaynak bende kalır, siz aboneliği kullanırsınız.</p></div>
+      <div class="sss"><h3>App Store uygulaması mı, mağazaya özel mi gerekiyor?</h3><p>Aynı ihtiyaç birden çok mağazada varsa ve satmayı düşünüyorsanız App Store. Sadece sizin iş akışınıza özel bir şeyse mağazaya özel uygulama hem daha hızlı hem daha ucuz olur; inceleme süreci de yoktur.</p></div><div class="sss"><h3>İş uygulama gerektirmiyorsa ne olur?</h3><p>Çoğu istek tema içinde çözülebiliyor. Uygulama kurmadan çözülebilecek bir işe uygulama yazmam; her uygulama mağazaya kalıcı bir bağımlılık ekler.</p></div><div class="sss"><h3>Kodun sahibi kim?</h3><p>Mağazaya özel işlerde kod sizindir. Kaynak, kurulum belgesi ve gerekli erişim bilgileri teslim edilir.</p></div><div class="sss"><h3>Uygulamayı sonra App Store'a taşıyabilir miyiz?</h3><p>Taşınabilir, ama baştan öyle yazılmadıysa çerçeve kısmı yeniden kurulur. Böyle bir ihtimal varsa başlarken söyleyin; yapı ona göre kurulsun.</p></div>
+    </div>
+  </section>
+  <section aria-labelledby="diger-h">
+    <div class="sarmal sarmal--genis">
+      <h2 class="bolum-basligi" id="diger-h">Diğer geliştirme alanları</h2>
+      <div class="kartlar"><a class="kart" href="/uygulama-gelistirme/">
+          <span class="kart__ust">Geliştirme</span>
+          <span class="kart__baslik">App Store uygulaması</span>
+          <span class="kart__ozet">Herkese açık, mağazaya kurulup abonelikle kullanılan uygulama.</span>
+        </a><a class="kart" href="/tema-gelistirme/">
+          <span class="kart__ust">Geliştirme</span>
+          <span class="kart__baslik">Tema geliştirme</span>
+          <span class="kart__ozet">Liquid tarafında bölüm ve blok yazımı, mevcut temaya özellik ekleme.</span>
+        </a><a class="kart" href="/entegrasyon/">
+          <span class="kart__ust">Geliştirme</span>
+          <span class="kart__baslik">Entegrasyon ve otomasyon</span>
+          <span class="kart__ozet">Admin API üzerinden dış sistem bağlantısı ve toplu veri işleri.</span>
+        </a></div>
     </div>
   </section>
 
-  <section aria-labelledby="iletisim-h">
-    <div class="sarmal">
-      <h2 class="bolum-basligi" id="iletisim-h">İletişim</h2>
-      <p class="bolum-giris">Bir fikir ya da tıkanmış bir iş varsa yazın. Yapılması
-        gerekenin ne olduğunu söylemek çoğu zaman kısa sürüyor.</p>
-      <div class="iletisim-satir">
+  <section class="cta" aria-labelledby="cta-h">
+    <div class="sarmal sarmal--genis">
+      <div class="cta__kutu">
         <div>
-          <span>WhatsApp</span>
-          <a href="https://wa.me/905541386827" target="_blank" rel="noopener">+90 554 138 68 27</a>
+          <h2 id="cta-h">Bu işin sizdeki karşılığı ne?</h2>
+          <p>Mevcut durumu anlatın; ölçüp ne gerektiğini söyleyeyim.</p>
         </div>
-        <div>
-          <span>Telefon</span>
-          <a href="tel:+905541386827">+90 554 138 68 27</a>
-        </div>
+        <a class="btn" href="/iletisim/">İletişime geç</a>
       </div>
     </div>
   </section>
 </main>
-<footer>
-  <div class="sarmal">
-    <div>&copy; <span id="yil">2026</span> M. Fehmi Toktay</div>
-    <div>
-      <a href="/kvkk.html">KVKK</a> &middot;
-      <a href="/gizlilik.html">Gizlilik</a>
+<footer class="alt">
+  <div class="sarmal sarmal--genis">
+    <div class="alt__izgara">
+      <div class="alt__sutun alt__sutun--ilk">
+        <p class="alt__ad">M. Fehmi Toktay</p>
+        <p class="alt__metin">Shopify için yazılım geliştiriyorum: App Store uygulamaları,
+          mağazaya özel uygulamalar, Liquid tema ve Admin API entegrasyonları.</p>
+        <p class="alt__mono">Admin GraphQL API · Liquid · Bulk Operations · Webhook</p>
+      </div>
+      <div class="alt__sutun">
+        <p class="alt__baslik">Geliştirme</p>
+        <ul><li><a href="/uygulama-gelistirme/">App Store uygulaması</a></li><li><a href="/ozel-yazilim/">Mağazaya özel uygulama</a></li><li><a href="/tema-gelistirme/">Tema geliştirme</a></li><li><a href="/entegrasyon/">Entegrasyon ve otomasyon</a></li></ul>
+      </div>
+      <div class="alt__sutun">
+        <p class="alt__baslik">Site</p>
+        <ul><li><a href="/teknik/">Teknik yaklaşım</a></li><li><a href="/yontem/">Yöntem</a></li><li><a href="/iletisim/">İletişim</a></li></ul>
+      </div>
+      <div class="alt__sutun">
+        <p class="alt__baslik">İletişim</p>
+        <ul>
+          <li><a href="https://wa.me/905541386827" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="tel:+905541386827">+90 554 138 68 27</a></li>
+          <li><a href="https://taftri.com/" target="_blank" rel="noopener">Taftri — ajans işleri</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="alt__satir">
+      <div>&copy; <span id="yil">2026</span> M. Fehmi Toktay</div>
+      <div><a href="/kvkk.html">KVKK</a> &middot; <a href="/gizlilik.html">Gizlilik</a></div>
     </div>
   </div>
 </footer>

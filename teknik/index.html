@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Teknik yaklaşım — Shopify geliştirme</title>
+<meta name="description" content="API sürüm yönetimi, hız limiti, webhook imza doğrulama, idempotent işleme, geri alınabilir toplu iş ve doğrulama disiplini." />
+<link rel="canonical" href="https://mftoktay.com/teknik/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mftoktay.com/teknik/" />
+<meta property="og:title" content="Teknik yaklaşım — Shopify geliştirme" />
+<meta property="og:description" content="API sürüm yönetimi, hız limiti, webhook imza doğrulama, idempotent işleme, geri alınabilir toplu iş ve doğrulama disiplini." />
+<meta property="og:locale" content="tr_TR" />
+<meta name="twitter:card" content="summary" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Karla:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="/assets/stil.css" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ana sayfa","item":"https://mftoktay.com/"},{"@type":"ListItem","position":2,"name":"Teknik"}]}</script>
+</head>
+<body>
+<a class="atla" href="#icerik">İçeriğe atla</a>
+<header class="ust">
+  <div class="sarmal sarmal--genis ust__ic">
+    <a class="ust__ad" href="/">M. Fehmi Toktay<span class="ust__rol">Shopify uygulama geliştiricisi</span></a>
+    <nav class="ust__menu" aria-label="Ana menü"><a href="/">Ana sayfa</a><a href="/gelistirme/">Geliştirme</a><a href="/teknik/" aria-current="page">Teknik</a><a href="/yontem/">Yöntem</a><a href="/iletisim/">İletişim</a></nav>
+  </div>
+</header>
+<main id="icerik">
+
+  <div class="sarmal sarmal--genis"><nav aria-label="Neredesiniz"><ol class="crumbs"><li><a href="/">Ana sayfa</a></li><li aria-current="page">Teknik</li></ol></nav>
+    <header class="giris giris--ic">
+      <p class="rol">Teknik yaklaşım</p>
+      <h1 class="ad ad--ic">Nasıl yazıyorum</h1>
+      <p>Aşağıdakiler tercih değil, sahada bir kere kaybedip öğrenilmiş kurallar.
+        Hepsi bir hataya mal olmuş; bu yüzden istisnasız uygulanıyor.</p>
+    </header>
+  </div>
+
+  <section aria-labelledby="ilke-h">
+    <div class="sarmal">
+      <h2 class="bolum-basligi" id="ilke-h">İlkeler</h2>
+      <div class="alan"><h3>API sürümü koda gömülü kalmaz</h3><p>Shopify API'si dönemsel sürümler yayınlıyor ve her sürüm sınırlı süre destekleniyor. Uygulama bir sürüme kilitlenir, yükseltme planlı yapılır. Sürüm adı kodun içine dağılmışsa bir gün sessizce kırılır — tek yerden yönetilir.</p></div><div class="alan"><h3>Hız limiti baştan hesaba katılır</h3><p>Admin GraphQL API sorgu maliyeti hesaplayıp bütçeye göre sınırlıyor. Toplu işlerde sayfa sayfa gezmek yerine toplu işlem uçları kullanılır; sınıra yaklaşıldığında geri çekilme ve yeniden deneme mantığı kurulur.</p></div><div class="alan"><h3>Her webhook doğrulanır, her işlem idempotent yazılır</h3><p>Gelen isteğin imzası uygulama gizli anahtarıyla doğrulanmadan hiçbir şey işlenmez. Aynı olay birden çok kez gelebilir; ikinci işlem bir şey değiştirmemeli.</p></div><div class="alan"><h3>Kapsam dar istenir</h3><p>İstenen her erişim kapsamının kullanıldığı yer gösterilebilmeli. Geniş kapsam hem incelemede geri döner hem mağaza sahibini tedirgin eder. Yeni kapsam gerektiğinde yeniden yetkilendirme istenir.</p></div><div class="alan"><h3>Toplu iş loglanır ve geri alınabilir</h3><p>İş gruplar hâlinde yürür, her adım satır satır log dosyasına yazılır, yarıda kalırsa kaldığı yerden devam eder. Değişen alanların eski değerleri kimlikleriyle saklanır.</p></div><div class="alan"><h3>Doğrulama kaynağın kendisinden yapılır</h3><p>Başarı çıktısına güvenilmez: yazılan değişiklik geri çekilip aranır. Sayfa önbelleği kaynakla aynı değildir; doğrulama panelden ya da API'den yapılır, tarayıcıdan değil.</p></div><div class="alan"><h3>Silmeden önce yönlendirme kurulur</h3><p>Koleksiyon, sayfa ya da ürün silinecekse önce 301 kurulur, sonra silinir, sonra yönlendirmenin çalıştığı doğrulanır. Sıra bu değilse adres bir süre 404 verir.</p></div><div class="alan"><h3>Ölçüm CSS okuyarak değil, tarayıcıdan yapılır</h3><p>Hangi kuralın kazandığı özgüllük yarışıyla belirlenir; kaynağa bakarak tahmin etmek yanıltır. Konum ve boyut değerleri çalışan sayfadan okunur.</p></div>
+    </div>
+  </section>
+
+  <section class="kod-bolum" aria-labelledby="kod-h">
+    <div class="sarmal sarmal--genis">
+      <h2 class="bolum-basligi" id="kod-h">Webhook imzası doğrulanmadan hiçbir şey işlenmez</h2>
+      <figure class="kod">
+        <figcaption class="kod__ust"><span class="kod__dil">js</span></figcaption>
+        <pre><code>const gelen = req.get('X-Shopify-Hmac-Sha256') || '';
+const hesaplanan = crypto
+  .createHmac('sha256', process.env.SHOPIFY_API_SECRET)
+  .update(hamGovde, 'utf8')
+  .digest('base64');
+
+const a = Buffer.from(hesaplanan, 'base64');
+const b = Buffer.from(gelen, 'base64');
+
+if (a.length !== b.length || !crypto.timingSafeEqual(a, b)) {
+  return res.status(401).send();   // imza tutmuyor, istek Shopify'dan gelmiyor
+}</code></pre>
+      </figure>
+      <p class="kod__not">İmza doğrulaması olmayan bir webhook ucu, herkesin veri yazabildiği açık bir kapıdır.</p>
+    </div>
+  </section>
+
+  <section class="kod-bolum" aria-labelledby="kod-h">
+    <div class="sarmal sarmal--genis">
+      <h2 class="bolum-basligi" id="kod-h">Boş render eden blok bırakmamak</h2>
+      <figure class="kod">
+        <figcaption class="kod__ust"><span class="kod__dil">liquid</span></figcaption>
+        <pre><code>{%- comment -%}
+  Isaret ettigi kayit yoksa blok hic basilmaz.
+  Bos render eden blok aylarca fark edilmez.
+{%- endcomment -%}
+
+{%- assign hediye = all_products[section.settings.hediye_handle] -%}
+
+{%- if hediye != blank and hediye.available -%}
+  &lt;div class=&quot;hediye&quot; data-esik=&quot;{{ section.settings.esik }}&quot;&gt;
+    &lt;p&gt;{{ section.settings.mesaj }}&lt;/p&gt;
+  &lt;/div&gt;
+{%- endif -%}</code></pre>
+      </figure>
+      <p class="kod__not">Bir mağazada silinmiş bir ürüne işaret eden hediye bloğu aylarca sessizce boş basmıştı. Koşul olmadan yazılan her referanslı blok aynı riski taşır.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="yuzey-h">
+    <div class="sarmal sarmal--genis">
+      <h2 class="bolum-basligi" id="yuzey-h">Çalıştığım platform yüzeyleri</h2>
+      <div class="yuzeyler"><div class="yuzey"><span class="yuzey__ad">Admin GraphQL API</span><span class="yuzey__not">ürün, varyant, sipariş, metafield okuma ve yazma</span></div><div class="yuzey"><span class="yuzey__ad">Bulk Operations</span><span class="yuzey__not">binlerce kayıtlık iş; sonuç JSONL olarak indirilir</span></div><div class="yuzey"><span class="yuzey__ad">Webhooks</span><span class="yuzey__not">olay yakalama, HMAC doğrulama, idempotent işleme</span></div><div class="yuzey"><span class="yuzey__ad">OAuth ve Billing API</span><span class="yuzey__not">kurulum akışı, kapsam yönetimi, abonelik ücretlendirmesi</span></div><div class="yuzey"><span class="yuzey__ad">App Bridge ve Polaris</span><span class="yuzey__not">yönetim paneli içinde açılan gömülü arayüz</span></div><div class="yuzey"><span class="yuzey__ad">Liquid / Online Store 2.0</span><span class="yuzey__not">bölüm ve blok yazımı, tema editöründen yönetim</span></div><div class="yuzey"><span class="yuzey__ad">Storefront ve Ajax API</span><span class="yuzey__not">sepet işlemleri, tema içi dinamik davranış</span></div><div class="yuzey"><span class="yuzey__ad">Metafield ve Metaobject</span><span class="yuzey__not">ürün künyesi ve yapılandırılmış veri</span></div><div class="yuzey"><span class="yuzey__ad">URL Redirect</span><span class="yuzey__not">geçişlerde yönlendirme haritası</span></div><div class="yuzey"><span class="yuzey__ad">Theme CLI</span><span class="yuzey__not">yayınlanmamış temada geliştirme, önizleme, canlıya alma</span></div></div>
+    </div>
+  </section>
+
+  <section class="cta" aria-labelledby="cta-h">
+    <div class="sarmal sarmal--genis">
+      <div class="cta__kutu">
+        <div>
+          <h2 id="cta-h">Mevcut kurulumunuz bu ölçütleri karşılıyor mu?</h2>
+          <p>Bakıp ne gördüğümü yazayım — mağazanın adresi yeterli.</p>
+        </div>
+        <a class="btn" href="/iletisim/">İletişime geç</a>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="alt">
+  <div class="sarmal sarmal--genis">
+    <div class="alt__izgara">
+      <div class="alt__sutun alt__sutun--ilk">
+        <p class="alt__ad">M. Fehmi Toktay</p>
+        <p class="alt__metin">Shopify için yazılım geliştiriyorum: App Store uygulamaları,
+          mağazaya özel uygulamalar, Liquid tema ve Admin API entegrasyonları.</p>
+        <p class="alt__mono">Admin GraphQL API · Liquid · Bulk Operations · Webhook</p>
+      </div>
+      <div class="alt__sutun">
+        <p class="alt__baslik">Geliştirme</p>
+        <ul><li><a href="/uygulama-gelistirme/">App Store uygulaması</a></li><li><a href="/ozel-yazilim/">Mağazaya özel uygulama</a></li><li><a href="/tema-gelistirme/">Tema geliştirme</a></li><li><a href="/entegrasyon/">Entegrasyon ve otomasyon</a></li></ul>
+      </div>
+      <div class="alt__sutun">
+        <p class="alt__baslik">Site</p>
+        <ul><li><a href="/teknik/">Teknik yaklaşım</a></li><li><a href="/yontem/">Yöntem</a></li><li><a href="/iletisim/">İletişim</a></li></ul>
+      </div>
+      <div class="alt__sutun">
+        <p class="alt__baslik">İletişim</p>
+        <ul>
+          <li><a href="https://wa.me/905541386827" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="tel:+905541386827">+90 554 138 68 27</a></li>
+          <li><a href="https://taftri.com/" target="_blank" rel="noopener">Taftri — ajans işleri</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="alt__satir">
+      <div>&copy; <span id="yil">2026</span> M. Fehmi Toktay</div>
+      <div><a href="/kvkk.html">KVKK</a> &middot; <a href="/gizlilik.html">Gizlilik</a></div>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('yil').textContent=new Date().getFullYear();</script>
+</body>
+</html>
