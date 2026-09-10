@@ -34,7 +34,7 @@ SITE = "https://mftoktay.com"
 BUGUN = date.today().isoformat()
 
 AD = "M. Fehmi Toktay"
-ROL = "Shopify uygulama geliştiricisi"
+ROL = "Yazılım geliştirici"
 TELEFON = "+905541386827"
 TELEFON_YAZI = "+90 554 138 68 27"
 INDEXNOW_ANAHTAR = "a4d17f2c9b6e485fa03c71d8e6b25904"
@@ -69,12 +69,15 @@ IKON = {
     "surum": _svg('<path d="M6.6 4.2v10.1M6.6 21.1a2.9 2.9 0 1 0 0-5.8 2.9 2.9 0 0 0 0 5.8z"/>'
                   '<path d="M17.4 8.6a2.9 2.9 0 1 0 0-5.8 2.9 2.9 0 0 0 0 5.8z"/>'
                   '<path d="M17.4 8.6v3.1c0 2-1.6 3.6-3.6 3.6h-3"/>'),
+    "katman": _svg('<path d="M12 2.9l9 4.6-9 4.6-9-4.6z"/>'
+                   '<path d="M3 12.4l9 4.6 9-4.6M3 16.9l9 4.6 9-4.6"/>'),
 }
 
 HIZMET_IKON = {
+    "web-gelistirme": "pencere",
     "uygulama-gelistirme": "app",
     "ozel-yazilim": "kutu",
-    "tema-gelistirme": "pencere",
+    "tema-gelistirme": "katman",
     "entegrasyon": "baglanti",
 }
 
@@ -237,6 +240,54 @@ KOD_BOLUM = """{%- comment -%}
 # ---------------------------------------------------------------------------
 
 HIZMETLER = [
+    {
+        "slug": "web-gelistirme",
+        "ad": "Web sitesi ve uygulaması",
+        "baslik": "Web sitesi ve web uygulaması geliştirme",
+        "aciklama": ("Kurumsal site, açılış sayfası, panel ve iç araçlar. Arama motoru "
+                     "altyapısı kurulu teslim edilir; içerik tek kaynaktan üretilir."),
+        "ozet": "Kurumsal site, açılış sayfası, panel ve iç araçlar.",
+        "giris": [
+            "E-ticaret dışında kalan işler. Kurumsal site, açılış sayfası, iç kullanım için "
+            "panel ve araçlar; bir de bunların arkasındaki içerik üretim düzeni.",
+            "Site teslim edildiğinde arama motorunun ihtiyaç duyduğu her şey yerinde olur: "
+            "site haritası, robots, yapısal veri, kırıntı yolu, özel 404 ve yeni sayfaları "
+            "arama motorlarına anında bildiren <strong>IndexNow</strong> bağlantısı.",
+        ],
+        "kapsam_basligi": "Neleri kapsıyor",
+        "kapsam": [
+            ("Kurumsal site ve açılış sayfası",
+             "Hızlı, mobil öncelikli, erişilebilir sayfalar. Dokunma hedefleri, kontrast "
+             "oranları ve satır uzunlukları tahmine değil ölçüme göre ayarlanır."),
+            ("Panel ve iç araçlar",
+             "Ekibin her seferinde geliştirici çağırmadan iş görebildiği yönetim ekranları, "
+             "raporlar ve toplu düzenleme araçları."),
+            ("Arama motoru altyapısı",
+             "Site haritası, robots, kanonik adres, JSON-LD yapısal veri, kırıntı yolu, özel "
+             "404 sayfası ve IndexNow bildirimi. Bunlar sonradan eklenen süs değil, kurulumun "
+             "parçası."),
+            ("İçerik üretim düzeni",
+             "Sayfalar tek kaynaktan üretilir; yeni bir kayıt eklendiğinde menü, liste sayfası, "
+             "detay sayfası, site haritası ve makine okunur içerik dosyası kendiliğinden "
+             "güncellenir. Elle bakım gerekmez."),
+        ],
+        "teknik": ["HTML · CSS · JavaScript", "Python", "JSON-LD", "Sitemap · robots",
+                   "IndexNow", "Git"],
+        "sss": [
+            ("Hazır bir tema ya da site kurucusu kullanıyor musunuz?",
+             "Hayır. Kurucuların ürettiği sayfalar hem ağır oluyor hem kontrol sizde olmuyor. "
+             "Sayfalar tek kaynaktan üretiliyor ve kaynak sizde kalıyor."),
+            ("Siteyi sonra kendim güncelleyebilir miyim?",
+             "Evet. İçerik tek bir kaynak dosyada durur; oraya bir kayıt eklemek yeterli, "
+             "gerisi kendiliğinden üretilir. Nasıl yapılacağı yazılı teslim edilir."),
+            ("Nerede barındırılıyor?",
+             "Statik sitelerde barındırma maliyeti pratikte sıfıra iniyor. Mevcut altyapınız "
+             "varsa oraya kurulur; yoksa uygun olanı birlikte seçeriz."),
+            ("Arama motoruna ne zaman girer?",
+             "Yayına alındığı gün site haritası gönderilir ve IndexNow bildirimi yapılır. "
+             "Sonrası arama motorunun kendi takvimi; kimse gün veremez."),
+        ],
+    },
     {
         "slug": "uygulama-gelistirme",
         "ad": "App Store uygulaması",
@@ -657,9 +708,9 @@ def alt():
     <div class="alt__izgara">
       <div class="alt__sutun alt__sutun--ilk">
         <p class="alt__ad">%(ad)s</p>
-        <p class="alt__metin">Shopify için yazılım geliştiriyorum: App Store uygulamaları,
-          mağazaya özel uygulamalar, Liquid tema ve Admin API entegrasyonları.</p>
-        <p class="alt__mono">Admin GraphQL API · Liquid · Bulk Operations · Webhook</p>
+        <p class="alt__metin">Yazılım geliştiriyorum: web siteleri ve uygulamalar, işe özel
+          araçlar, entegrasyon ve otomasyon. E-ticaret tarafında Shopify uygulama ve tema.</p>
+        <p class="alt__mono">Python · JavaScript · HTML/CSS · Admin GraphQL API · Liquid</p>
       </div>
       <div class="alt__sutun">
         <p class="alt__baslik">Geliştirme</p>
@@ -1221,11 +1272,12 @@ BETIK = """(function () {
 
 def ld_kisi():
     return ('{"@context":"https://schema.org","@type":"Person",'
-            '"name":"%s","jobTitle":"Shopify uygulama geliştiricisi",'
+            '"name":"%s","jobTitle":"Yazılım geliştirici",'
             '"url":"%s/","telephone":"%s",'
-            '"knowsAbout":["Shopify uygulama geliştirme","Shopify App Store",'
-            '"Shopify Admin GraphQL API","Liquid tema geliştirme","Webhook",'
-            '"E-ticaret entegrasyonu","Katalog ve veri düzeni"],'
+            '"knowsAbout":["Yazılım geliştirme","Web geliştirme","Web uygulaması",'
+            '"Otomasyon","API entegrasyonu","Python","JavaScript",'
+            '"Shopify uygulama geliştirme","Shopify Admin GraphQL API",'
+            '"Liquid tema geliştirme","E-ticaret entegrasyonu"],'
             '"sameAs":["https://taftri.com/"]}' % (AD, SITE, TELEFON))
 
 
@@ -1254,26 +1306,27 @@ def yuzey_bolumu(beyaz=False):
     return """
   <section class="bolum%s" aria-labelledby="yuzey-h">
     <div class="sarmal sarmal--genis">
-      <h2 class="bolum-basligi" id="yuzey-h">Çalıştığım platform yüzeyleri</h2>
+      <h2 class="bolum-basligi" id="yuzey-h">Shopify tarafında çalıştığım yüzeyler</h2>
       <div class="yuzeyler">%s</div>
     </div>
   </section>""" % (" bolum--beyaz" if beyaz else "", ler)
 
 
 def ana_sayfa():
-    baslik = "%s — Shopify uygulama geliştiricisi" % AD
-    aciklama = ("Shopify için yazılım geliştiriyorum: App Store uygulamaları, mağazaya özel "
-                "uygulamalar, Liquid tema geliştirme ve Admin API entegrasyonları.")
+    baslik = "%s — Yazılım geliştirici" % AD
+    aciklama = ("Web siteleri ve uygulamalar, işe özel yazılım, entegrasyon ve otomasyon "
+                "geliştiriyorum. E-ticaret tarafında Shopify uygulama ve tema geliştirme.")
 
     parcalar = ["""
   <div class="sarmal sarmal--genis">
     <header class="hero">
       <div>
-        <p class="rol">Shopify uygulama geliştiricisi</p>
-        <h1 class="ad">Shopify için yazılım geliştiriyorum</h1>
-        <p>Bir kısmı App Store'da herkese açık uygulama olarak çıkıyor, bir kısmı tek bir
-          mağaza için yazılıp orada kalıyor. Tema ve entegrasyon işleri de aynı elden.</p>
-        <p>İkisinin ortak yanı şu: iş yeni bir şey icat etmekle değil,
+        <p class="rol">Yazılım geliştirici</p>
+        <h1 class="ad">Yazılım geliştiriyorum</h1>
+        <p>Web siteleri ve uygulamalar, işe özel araçlar, entegrasyonlar ve otomasyon.
+          Bir kısmı e-ticaret tarafında — Shopify'da uygulama ve tema geliştiriyorum —
+          ama tek yaptığım bu değil.</p>
+        <p>Hepsinin ortak yanı şu: iş yeni bir şey icat etmekle değil,
           <strong>ölçmekle</strong> başlıyor.</p>
         <div class="hero__butonlar">
           <a class="btn" href="/gelistirme/">Ne geliştiriyorum</a>
@@ -1368,8 +1421,8 @@ def ana_sayfa():
 
 def gelistirme_hub():
     baslik = "Geliştirme alanları — %s" % AD
-    aciklama = ("Shopify App Store uygulaması, mağazaya özel uygulama, Liquid tema "
-                "geliştirme ve Admin API entegrasyonu. Hangisi hangi işe uygun.")
+    aciklama = ("Web sitesi ve uygulaması, Shopify App Store uygulaması, mağazaya özel "
+                "yazılım, tema geliştirme ve entegrasyon. Hangisi hangi işe uygun.")
     kb, kld = kirinti([("Ana sayfa", "/"), ("Geliştirme", None)])
     liste_ld = ('{"@context":"https://schema.org","@type":"ItemList",'
                 '"itemListElement":[%s]}' % ",".join(
@@ -1381,7 +1434,7 @@ def gelistirme_hub():
     <header class="giris giris--ic">
       <p class="rol">Geliştirme</p>
       <h1 class="ad ad--ic">Geliştirme alanları</h1>
-      <p>Dört ayrı iş kolu. Hangisinin gerektiği çoğu zaman baştan belli olmuyor — aynı
+      <p>Beş ayrı iş kolu. Hangisinin gerektiği çoğu zaman baştan belli olmuyor — aynı
         istek bazen tema içinde, bazen uygulamayla çözülüyor. Kararı ölçtükten sonra
         veriyorum; genelde daha az bağımlılık getiren yol kazanıyor.</p>
     </header>
@@ -1401,6 +1454,10 @@ def gelistirme_hub():
 %(cta)s""" % {
         "kb": kb, "kartlar": hizmet_kartlari(), "yuzey": yuzey_bolumu(),
         "karar": alanlar([
+            ("İşiniz e-ticaretle ilgili değilse",
+             'Site, açılış sayfası, panel ya da iç araç — '
+             '<a href="/web-gelistirme/">web tarafı</a>. Shopify bir uzmanlık alanı, '
+             'tek çalıştığım yer değil.'),
             ("Aynı ihtiyaç birçok mağazada varsa",
              'Satılabilir bir ürün var demektir; <a href="/uygulama-gelistirme/">App Store '
              'uygulaması</a> doğru yol. Çerçeve işi — kurulum, faturalama, zorunlu uçlar — '
@@ -1529,7 +1586,7 @@ def teknik_sayfasi():
 %(cta)s""" % {
         "kb": kb, "ilkeler": ilke_html,
         "ici": sayfa_ici([("ilke-h", "İlkeler"), ("kod-h", "Kod"),
-                          ("yuzey-h", "Platform yüzeyleri")]),
+                          ("yuzey-h", "Shopify yüzeyleri")]),
         "kod1": kod_blok("Webhook imzası doğrulanmadan hiçbir şey işlenmez", "js", KOD_HMAC,
                          "İmza doğrulaması olmayan bir webhook ucu, herkesin veri yazabildiği "
                          "açık bir kapıdır.", "webhook.js"),
@@ -1965,13 +2022,13 @@ def llms():
     satirlar = [
         "# %s" % AD,
         "",
-        "> Shopify için yazılım geliştiricisi. App Store uygulamaları, mağazaya özel",
-        "> uygulamalar, Liquid tema geliştirme ve Admin API entegrasyonları.",
+        "> Yazılım geliştirici. Web siteleri ve uygulamalar, işe özel araçlar,",
+        "> entegrasyon ve otomasyon. E-ticaret tarafında Shopify uygulama ve tema.",
         "",
         "## Sayfalar",
         "",
-        "- [Ana sayfa](%s/): ne geliştirdiği, ölçülmüş sonuçlar, platform yüzeyleri, markalar." % SITE,
-        "- [Geliştirme](%s/gelistirme/): dört geliştirme alanı ve hangisinin hangi işe uygun olduğu." % SITE,
+        "- [Ana sayfa](%s/): ne geliştirdiği, ölçülmüş sonuçlar, markalar." % SITE,
+        "- [Geliştirme](%s/gelistirme/): beş geliştirme alanı ve hangisinin hangi işe uygun olduğu." % SITE,
     ]
     for h in HIZMETLER:
         satirlar.append("  - [%s](%s/%s/): %s" % (h["ad"], SITE, h["slug"], duz(h["ozet"])))
