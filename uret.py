@@ -220,6 +220,37 @@ dugme.addEventListener('click', function () {
         "kod_not": ("Bu hata sipariş gelene kadar kimseye görünmüyor. Kod okuyarak değil, "
                     "formdaki değerle çubuğun gönderdiği değeri karşılaştırarak bulunuyor."),
     },
+    {
+        "slug": "modaneslie-renk-varyanti-gorselleri",
+        "baslik": "Renk varyantlarının ürün sayfasında ayrı görünmesi",
+        "musteri": "Moda Neslie",
+        "musteri_url": "https://modaneslie.com/",
+        "tur": "tema",
+        "ozet": ("Müşteri rengi seçince galeri o rengin fotoğrafına geçiyor; 22 fotoğraf "
+                 "arasında gezinmiyor."),
+        "sorun": ("Deri cüzdan ve kartlıklar tek üründe sekiz renk varyantıyla satılıyor, "
+                  "ama her rengin kendi çekimi var. Bütün fotoğraflar tek galeride arka "
+                  "arkaya sıralanıyordu: müşteri “Haki” seçiyor, ekranda siyah cüzdan "
+                  "duruyordu. Doğru fotoğrafı görmek için yirmiden fazla görsel arasında "
+                  "gezinmesi gerekiyordu — mobilde bu, satın alma öncesindeki en büyük "
+                  "tereddüt kaynağı."),
+        "yapilan": [
+            "Her renk için öncü fotoğraf belirlendi ve doğrudan o renk varyantına bağlandı; "
+            "renk seçildiği anda galeri o fotoğrafa geçiyor.",
+            "Galerideki sıra renk gruplarına göre düzenlendi: her rengin öncü karesi kendi "
+            "grubunun başında duruyor, detay çekimleri arkasından geliyor.",
+            "Renk adları varyant başlığıyla birebir eşleştirildi; “Siyah / Bordo” gibi çift "
+            "renkler ayrı varyant olarak kaldı, tek renge indirgenmedi.",
+            "Bağlama Admin API üzerinden yapıldı — panelden tek tek sürükleme yerine kayıtla, "
+            "böylece aynı düzen diğer ürünlere tekrarlanabiliyor.",
+        ],
+        "sonuc": [
+            "Sekiz rengin sekizi de kendi fotoğrafına bağlandı; renk seçimi galeriyi anında "
+            "değiştiriyor.",
+            "Müşteri doğru rengi görmek için 22 fotoğrafın içinde gezinmiyor.",
+        ],
+        "teknik": ["Shopify Admin API", "Liquid", "Varyant medyası"],
+    },
 ]
 
 TUR_ADI = {

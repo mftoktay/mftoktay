@@ -18,6 +18,7 @@
 - [Projeler](https://mftoktay.com/projeler/): projeler ve ölçülmüş sonuçları.
   - [Tarayıcıda çalışan şapka tasarım kurucusu](https://mftoktay.com/projeler/blackbork-sapka-tasarim-kurucusu/): BlackBörk USA — Müşteri şapkayı ve patch'i seçiyor; önizleme patch'i cırt cırt pedinin üstüne perspektifle oturtuyor.
   - [Ürün sayfası, sepet çekmecesi ve katalog düzeni](https://mftoktay.com/projeler/omerhas-urun-sayfasi-ve-katalog/): Ömer Has Kuyumculuk — Satın alma butonu yukarı taşındı, sabit çubuğun yanlış varyant hatası kapandı, katalog düzeni sadeleşti.
+  - [Renk varyantlarının ürün sayfasında ayrı görünmesi](https://mftoktay.com/projeler/modaneslie-renk-varyanti-gorselleri/): Moda Neslie — Müşteri rengi seçince galeri o rengin fotoğrafına geçiyor; 22 fotoğraf arasında gezinmiyor.
 
 ## İletişim
 
