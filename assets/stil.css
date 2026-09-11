@@ -137,11 +137,19 @@ a:focus-visible{outline:2px solid var(--yesil);outline-offset:3px;border-radius:
 .alan h3{font-family:'Newsreader',Georgia,serif;font-size:21px;font-weight:500;letter-spacing:-.01em;margin-bottom:6px}
 .alan p{color:var(--murekkep-2);max-width:64ch}
 .bolum--beyaz .alan{border-color:var(--cizgi)}
-.eklentiler{display:grid;gap:0 44px;grid-template-columns:1fr}
-.eklentiler .alan{border-bottom:1px solid var(--cizgi)}
-.eklentiler .alan .rozet{margin-bottom:10px;display:inline-block}
-@media(min-width:820px){.eklentiler{grid-template-columns:1fr 1fr}
-  .eklentiler .alan:nth-last-child(-n+2){border-bottom:0}}
+.eklentiler{display:grid;gap:18px;grid-template-columns:1fr;margin-top:8px}
+.eklenti{padding:24px 26px;border:1px solid var(--cizgi);border-radius:14px;
+  background:var(--kagit);transition:border-color .18s ease,transform .18s ease}
+.eklenti:hover{border-color:var(--murekkep-2);transform:translateY(-2px)}
+.eklenti .rozet{margin-bottom:12px;display:inline-block}
+.eklenti h3{font-family:'Newsreader',Georgia,serif;font-size:22px;font-weight:500;
+  letter-spacing:-.01em;margin-bottom:10px}
+.eklenti__sorun{font-family:'Newsreader',Georgia,serif;font-size:18px;line-height:1.5;
+  margin-bottom:10px;padding-left:14px;border-left:2px solid var(--vurgu)}
+.eklenti__cozum{color:var(--murekkep-2);font-size:15px}
+.eklenti__hero{font-family:'Newsreader',Georgia,serif;font-size:21px;line-height:1.55}
+@media(min-width:760px){.eklentiler{grid-template-columns:1fr 1fr;gap:20px}}
+@media(min-width:1120px){.eklentiler{grid-template-columns:repeat(3,1fr)}}
 
 /* ---------- adimlar ---------- */
 .adimlar{list-style:none;counter-reset:adim;display:grid;gap:2px}
