@@ -253,6 +253,139 @@ dugme.addEventListener('click', function () {
     },
 ]
 
+# ---------------------------------------------------------------------------
+# Tema eklentileri — lisansla satilan, tema icine kopyalanmayan kucuk urunler
+# ---------------------------------------------------------------------------
+# Kod musterinin temasinda durmaz; lisans sunucusunda kalir ve tek satirlik
+# yukleyiciyle servis edilir. Fiyat alani BILEREK yok: uydurma rakam yazmamak
+# icin vitrinde "talep uzerine" gorunuyor.
+
+EKLENTI_ADRES = "https://lisans.mftoktay.com/urunler"
+
+EKLENTILER = [
+    {
+        "kod": "yapiskan-sepet",
+        "ad": "Yapışkan Sepet Çubuğu",
+        "nerede": "Ürün sayfası",
+        "ozet": "Sepete Ekle düğmesi ekrandan çıkınca alt kenarda ürün adı, "
+                "fiyatı ve satın alma düğmesiyle bir çubuk belirir.",
+        "ozellikler": [
+            "Temanın kendi Sepete Ekle düğmesini kullanır — varyant seçimi ve "
+            "sepet çekmecesi aynen çalışır",
+            "Varyant kimliği tıklama anında okunur; müşteri varyant değiştirse "
+            "de doğru ürün eklenir",
+            "Tükenmiş varyantta düğme kendini kapatır",
+            "Sayfa sonundaki imza bloğuna yaklaşınca gizlenir, üstünü örtmez",
+        ],
+    },
+    {
+        "kod": "favoriler",
+        "ad": "Favoriler",
+        "nerede": "Tüm site",
+        "ozet": "Müşteri beğendiği ürünleri kalp simgesiyle işaretler, tek "
+                "düğmeyle listesini açar. Uygulama, hesap ve veritabanı gerekmez.",
+        "ozellikler": [
+            "Kalpler ürün kartlarına kendiliğinden basılır, temaya dokunulmaz",
+            "Liste ziyaretçinin tarayıcısında durur; sunucuya veri gitmez",
+            "Başlıkta adet rozeti",
+            "Silinmiş ürünler listeden kendiliğinden düşer",
+        ],
+    },
+    {
+        "kod": "kargo-esigi",
+        "ad": "Ücretsiz Kargo Eşiği Çubuğu",
+        "nerede": "Tüm site",
+        "ozet": "Sepet tutarına bakıp «X TL daha ekleyin, kargo bizden» der; "
+                "eşik aşılınca teyit mesajına döner.",
+        "ozellikler": [
+            "Sepet her değiştiğinde kendini günceller",
+            "İlerleme çubuğuyla eşiğe ne kadar kaldığını gösterir",
+            "Para birimi ve biçim mağazadan okunur",
+            "Boş sepette görünmez",
+        ],
+    },
+    {
+        "kod": "varyant-zorunlu",
+        "ad": "Varyant Seçimi Zorunlu",
+        "nerede": "Ürün sayfası",
+        "ozet": "Müşteri beden ya da renk seçmeden sepete ekleyemez. Düğme "
+                "«Beden seçin» der, sayfa ilgili seçeneğe kayar.",
+        "ozellikler": [
+            "Shopify varsayılanı ilk varyantı seçili sayar; bu davranış yanlış "
+            "beden siparişlerinin başlıca kaynağıdır",
+            "Temanın kendi düğmesi kullanılır, stok kontrolü bozulmaz",
+            "Adreste ?variant= varsa seçim yapılmış sayılır",
+            "Varyantsız ürünlerde hiç devreye girmez",
+        ],
+    },
+    {
+        "kod": "whatsapp-butonu",
+        "ad": "WhatsApp Destek Butonu",
+        "nerede": "Tüm site",
+        "ozet": "Ekranın köşesinde sabit duran WhatsApp düğmesi. Ürün "
+                "sayfasından yazan müşterinin mesajına ürün adı ve adres eklenir.",
+        "ozellikler": [
+            "Müşteri «hangi ürün?» sorusuna cevap yazmak zorunda kalmaz",
+            "Mesaj şablonu düzenlenebilir",
+            "Sabit sepet çubuğu ekrana girince kendini gizler",
+            "Mobilde daire simgeye küçülür",
+        ],
+    },
+    {
+        "kod": "daha-fazla-yukle",
+        "ad": "Daha Fazla Yükle",
+        "nerede": "Koleksiyon sayfası",
+        "ozet": "Sayfa numaralarını tek düğmeyle değiştirir. Sonraki ürünler "
+                "mevcut listenin sonuna eklenir, sayfa yenilenmez.",
+        "ozellikler": [
+            "Sayfa numaralarına tıklamak müşteriyi listenin başına atar; bu onu engeller",
+            "Filtre ve sıralama değişince kendini yeniden kurar",
+            "İstek başarısız olursa sayfalama geri gelir, müşteri mahsur kalmaz",
+            "Ekran okuyucuya kaç ürün eklendiği bildirilir",
+        ],
+    },
+    {
+        "kod": "renk-galerisi",
+        "ad": "Renge Göre Görsel Süzme",
+        "nerede": "Ürün sayfası",
+        "ozet": "Müşteri bir renk seçince galeri yalnızca o rengin görsellerini "
+                "gösterir. Eşleşme görsel alt metninden yapılır.",
+        "ozellikler": [
+            "Çok renkli üründe müşteri 20 fotoğrafın içinde gezinmez",
+            "Eşleşme alt metinden yapılır — dosya adları çoğu mağazada güvenilmez",
+            "Seçili renge ait görsel yoksa hiçbiri gizlenmez, galeri boş kalmaz",
+            "Tema galeriyi yeniden bassa da süzme korunur",
+        ],
+    },
+    {
+        "kod": "geri-sayim",
+        "ad": "Kampanya Geri Sayımı",
+        "nerede": "Üst şerit veya ürün sayfası",
+        "ozet": "Kampanyanın bitmesine kalan süreyi gün, saat, dakika ve saniye "
+                "olarak sayar.",
+        "ozellikler": [
+            "Tarih saat dilimiyle verilir; yurt dışındaki müşteri de doğru süreyi görür",
+            "Süre dolunca blok kendini kaldırır — «00:00:00» gösteren ölü sayaç kalmaz",
+            "Geçmiş tarih verilirse hiç basılmaz",
+            "Sekme arka plana atılıp geri gelince kayma olmaz",
+        ],
+    },
+    {
+        "kod": "kaydirma-animasyonu",
+        "ad": "Kaydırmada Beliriş",
+        "nerede": "Tüm site",
+        "ozet": "Sayfa bölümleri ekrana girdikçe yumuşakça belirir. Temaya sınıf "
+                "eklemek gerekmez.",
+        "ozellikler": [
+            "Hareket azaltma tercihi açık ziyaretçide hiç çalışmaz",
+            "İlk ekranda görünen bloklara dokunmaz; sayfa açılışta boş görünmez",
+            "Güvenlik ağı: 1,2 saniye sonra her şey görünür yapılır",
+            "Geri tuşuyla dönüşte içerik anında görünür",
+        ],
+    },
+]
+
+
 TUR_ADI = {
     "ozel-uygulama": "Mağazaya özel uygulama",
     "tema": "Tema geliştirme",
@@ -803,6 +936,8 @@ def menu_ogeleri():
         ogeler.append(("/uygulamalar/", "Uygulamalar"))
     if PROJELER:
         ogeler.append(("/projeler/", "Projeler"))
+    if EKLENTILER:
+        ogeler.append(("/tema-eklentileri/", "Eklentiler"))
     ogeler += [("/teknik/", "Teknik"), ("/yontem/", "Yöntem"), ("/iletisim/", "İletişim")]
     return ogeler
 
@@ -834,6 +969,8 @@ def alt():
                    for h in HIZMETLER if h["slug"] in SHOPIFY_ALANLARI]
     if UYGULAMALAR:
         shopify_ler.append(satir("/uygulamalar/", "App Store uygulamalarım"))
+    if EKLENTILER:
+        shopify_ler.append(satir("/tema-eklentileri/", "Tema eklentileri"))
     if PROJELER:
         web_ler.append(satir("/projeler/", "Projeler"))
     web_ler.append(satir("/yontem/", "Yöntem"))
@@ -1221,6 +1358,11 @@ a:focus-visible{outline:2px solid var(--yesil);outline-offset:3px;border-radius:
 .alan h3{font-family:'Newsreader',Georgia,serif;font-size:21px;font-weight:500;letter-spacing:-.01em;margin-bottom:6px}
 .alan p{color:var(--murekkep-2);max-width:64ch}
 .bolum--beyaz .alan{border-color:var(--cizgi)}
+.eklentiler{display:grid;gap:0 44px;grid-template-columns:1fr}
+.eklentiler .alan{border-bottom:1px solid var(--cizgi)}
+.eklentiler .alan .rozet{margin-bottom:10px;display:inline-block}
+@media(min-width:820px){.eklentiler{grid-template-columns:1fr 1fr}
+  .eklentiler .alan:nth-last-child(-n+2){border-bottom:0}}
 
 /* ---------- adimlar ---------- */
 .adimlar{list-style:none;counter-reset:adim;display:grid;gap:2px}
@@ -2112,6 +2254,147 @@ def proje_sayfasi(i):
                  [kld, proje_ld])
 
 
+def eklenti_sayfasi():
+    baslik = "Shopify tema eklentileri — tek satırla kurulur"
+    aciklama = ("Temaya tek satır eklenir, özellik açılır. Kod lisans sunucusunda durur, "
+                "temaya kopyalanmaz. Aylık lisans; istediğiniz ay durdurursunuz.")
+    kb, kld = kirinti([("Ana sayfa", "/"), ("Tema eklentileri", None)])
+
+    kartlar = []
+    for e in EKLENTILER:
+        kartlar.append("""<article class="alan" id="e-%(kod)s">
+          <span class="rozet">%(nerede)s</span>
+          <h3>%(ad)s</h3>
+          <p>%(ozet)s</p>
+          %(ozellikler)s
+        </article>""" % {
+            "kod": kacir(e["kod"]),
+            "nerede": kacir(e["nerede"]),
+            "ad": kacir(e["ad"]),
+            "ozet": kacir(e["ozet"]),
+            "ozellikler": maddeler([kacir(o) for o in e["ozellikler"]], ikonlu=True),
+        })
+
+    kurulum = adimlar([
+        ("Eklentiyi seçin",
+         "Aşağıdaki listeden istediğinizi söyleyin. Mağaza adresinizi ve süreyi "
+         "iletin, size bir anahtar üreteyim."),
+        ("Temaya tek satır ekleyin",
+         "Verdiğim satırı temanızın theme.liquid dosyasına yapıştırmanız yeterli. "
+         "İsterseniz ben ekleyeyim."),
+        ("Özellik açılsın",
+         "Satır eklendiği anda çalışmaya başlar. Kurulum ücreti yok, uygulama "
+         "kurulumu yok, tema dosyalarınız değişmez."),
+    ])
+
+    ornek = ('&lt;script src="https://lisans.mftoktay.com/y/yapiskan-sepet'
+             '?k=ANAHTARINIZ&amp;d={{ shop.permanent_domain }}" defer&gt;&lt;/script&gt;')
+
+    sss_html, sss_ld = sss_blok([
+        ("Uygulama kurmam gerekiyor mu?",
+         "Hayır. Shopify App Store üzerinden kurulan bir uygulama değil. Temaya tek "
+         "satır giriyor, başka hiçbir şey değişmiyor."),
+        ("Temamı bozar mı?",
+         "Eklentiler temanın kendi düğmelerini ve kendi sepet akışını kullanır, "
+         "yerine geçmez. Kaldırmak istediğinizde eklediğiniz satırı silersiniz, "
+         "tema ilk günkü haline döner."),
+        ("Kod bana verilmiyor mu?",
+         "Hayır, kod lisans sunucusunda durur ve mağaza adresinize bağlı olarak "
+         "servis edilir. Bu yüzden aylık fiyat, tek seferlik geliştirme ücretinin "
+         "çok altında kalıyor. Kodun size ait olmasını istiyorsanız o ayrı bir iş; "
+         "özel geliştirme olarak konuşalım."),
+        ("Lisansı durdurursam ne olur?",
+         "Özellik çalışmayı bırakır, mağazanız etkilenmez. Temadaki satır zararsız "
+         "durur; istediğiniz zaman tekrar açabilirsiniz."),
+        ("Her temada çalışır mı?",
+         "Shopify&#39;ın kendi temaları ve onlardan türeyen temalarda çalışır. Ağır "
+         "özelleştirilmiş bir temada ayar gerekebilir; kurmadan önce mağazanıza "
+         "bakıp söylerim."),
+        ("Fiyat ne kadar?",
+         "Eklentiye ve süreye göre değişiyor. Mağaza adresinizi yazın, net fiyatı "
+         "geri döneyim — vitrindeki formu doldurmanız yeterli."),
+    ], beyaz=True)
+
+    govde = """
+  <div class="sarmal sarmal--genis">%(kb)s
+    <header class="giris giris--ic">
+      <p class="rol">Tema eklentileri</p>
+      <h1 class="ad ad--ic">Tek satırla kurulan Shopify özellikleri</h1>
+      <p>Her biri gerçek bir mağazada karşılaştığım bir sorundan doğdu: sepete
+        ulaşamayan müşteri, yanlış beden siparişi, kimsenin görmediği kargo eşiği.
+        Önce o mağaza için yazıldı, sonra her mağazada çalışacak hale getirildi.</p>
+      <p>Uygulama kurmanız gerekmiyor, tema dosyalarınız değişmiyor. Temaya
+        <strong>tek satır</strong> giriyor; gerisi lisans sunucusunda duruyor.</p>
+      %(ici)s
+    </header>
+  </div>
+
+  <section class="bolum" aria-labelledby="kurulum-h">
+    <div class="sarmal">
+      <h2 class="bolum-basligi" id="kurulum-h">Nasıl kuruluyor</h2>
+      %(kurulum)s
+      <figure class="konsol" style="margin-top:28px">
+        <figcaption class="konsol__ust">
+          <span class="konsol__noktalar"><i></i><i></i><i></i></span>
+          <span class="konsol__ad">theme.liquid</span>
+          <span class="konsol__dil">liquid</span>
+        </figcaption>
+        <pre><code>%(ornek)s</code></pre>
+      </figure>
+      <p class="kod__not">Temaya giren tek şey bu. Anahtar mağaza adresinize bağlıdır;
+        başka bir mağazaya taşındığında çalışmaz.</p>
+    </div>
+  </section>
+
+  <section class="bolum bolum--beyaz" aria-labelledby="liste-h">
+    <div class="sarmal sarmal--genis">
+      <h2 class="bolum-basligi" id="liste-h">Eklentiler</h2>
+      <div class="eklentiler">%(kartlar)s</div>
+      <p class="kod__not" style="margin-top:28px">Fiyatlar eklentiye ve süreye göre
+        değişiyor. Vitrinden mağaza adresinizi bırakın, net fiyatı geri döneyim.</p>
+      <p style="margin-top:16px"><a class="btn" href="%(adres)s" target="_blank"
+        rel="noopener">Vitrini aç ve talep bırak</a></p>
+    </div>
+  </section>
+
+  <section class="bolum" aria-labelledby="neden-h">
+    <div class="sarmal">
+      <h2 class="bolum-basligi" id="neden-h">Neden lisans, neden tek satır</h2>
+      %(neden)s
+    </div>
+  </section>
+%(sss)s
+%(cta)s""" % {
+        "kb": kb,
+        "ici": sayfa_ici([("kurulum-h", "Nasıl kuruluyor"), ("liste-h", "Eklentiler"),
+                          ("neden-h", "Neden lisans"), ("sss-h", "Sık sorulanlar")]),
+        "kurulum": kurulum,
+        "ornek": ornek,
+        "kartlar": "".join(kartlar),
+        "adres": EKLENTI_ADRES,
+        "neden": alanlar([
+            ("Tema dosyalarınız değişmiyor",
+             "Tema güncellemesi, tema değişikliği ya da başka bir geliştiricinin "
+             "çalışması eklentiyi bozmaz. Tek satır dışında hiçbir yere dokunulmuyor."),
+            ("Aylık ödeme, tek seferlik geliştirme değil",
+             "Aynı özelliği sıfırdan yazdırmak kurulum ücretiyle başlar. Burada kod "
+             "zaten yazılmış durumda; siz yalnızca kullanım için ödüyorsunuz."),
+            ("Hata çıkarsa tek yerden düzeliyor",
+             "Kod bende durduğu için düzeltme anında yansıyor. Sizden tema "
+             "güncellemesi, dosya değişimi ya da onay beklenmiyor."),
+            ("İstediğiniz zaman durdurursunuz",
+             "Süre dolduğunda özellik kendiliğinden kapanır. Sözleşme, taahhüt ya "
+             "da iptal süreci yok."),
+        ]),
+        "sss": sss_html,
+        "cta": cta("Mağazanıza uygun mu, bakayım",
+                   "Mağaza adresinizi yazın; hangi eklentinin işinize yarayacağını "
+                   "ve temanızda çalışıp çalışmayacağını söyleyeyim."),
+    }
+    return sayfa(baslik, aciklama, SITE + "/tema-eklentileri/", "/tema-eklentileri/",
+                 govde, [kld, sss_ld])
+
+
 def dort_yuz_dort():
     govde = """
   <div class="sarmal sarmal--genis">
@@ -2176,6 +2459,8 @@ def adresler():
     if PROJELER:
         yollar.append("/projeler/")
         yollar += ["/projeler/%s/" % i["slug"] for i in PROJELER]
+    if EKLENTILER:
+        yollar.append("/tema-eklentileri/")
     return yollar
 
 
@@ -2229,6 +2514,13 @@ def llms():
         for i in PROJELER:
             satirlar.append("  - [%s](%s/projeler/%s/): %s — %s"
                             % (i["baslik"], SITE, i["slug"], i["musteri"], duz(i["ozet"])))
+    if EKLENTILER:
+        satirlar.append(
+            "- [Tema eklentileri](%s/tema-eklentileri/): Shopify temasına tek satırla "
+            "eklenen, aylık lisansla satılan küçük özellikler. Kod lisans sunucusunda "
+            "durur, temaya kopyalanmaz." % SITE)
+        for e in EKLENTILER:
+            satirlar.append("  - %s (%s): %s" % (e["ad"], e["nerede"], duz(e["ozet"])))
     satirlar += ["",
                  "## İletişim",
                  "",
@@ -2301,6 +2593,9 @@ def main():
                 "Bu sayfa taşındı",
                 "Proje sayfası /projeler/ altına taşındı. Yönlendiriliyorsunuz.",
                 "https://mftoktay.com/projeler/%s/" % i["slug"]))
+
+    if EKLENTILER:
+        yaz("tema-eklentileri/index.html", eklenti_sayfasi())
 
     yaz("404.html", dort_yuz_dort())
 

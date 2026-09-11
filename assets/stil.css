@@ -137,6 +137,11 @@ a:focus-visible{outline:2px solid var(--yesil);outline-offset:3px;border-radius:
 .alan h3{font-family:'Newsreader',Georgia,serif;font-size:21px;font-weight:500;letter-spacing:-.01em;margin-bottom:6px}
 .alan p{color:var(--murekkep-2);max-width:64ch}
 .bolum--beyaz .alan{border-color:var(--cizgi)}
+.eklentiler{display:grid;gap:0 44px;grid-template-columns:1fr}
+.eklentiler .alan{border-bottom:1px solid var(--cizgi)}
+.eklentiler .alan .rozet{margin-bottom:10px;display:inline-block}
+@media(min-width:820px){.eklentiler{grid-template-columns:1fr 1fr}
+  .eklentiler .alan:nth-last-child(-n+2){border-bottom:0}}
 
 /* ---------- adimlar ---------- */
 .adimlar{list-style:none;counter-reset:adim;display:grid;gap:2px}

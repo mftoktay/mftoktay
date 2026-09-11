@@ -19,6 +19,16 @@
   - [Tarayıcıda çalışan şapka tasarım kurucusu](https://mftoktay.com/projeler/blackbork-sapka-tasarim-kurucusu/): BlackBörk USA — Müşteri şapkayı ve patch'i seçiyor; önizleme patch'i cırt cırt pedinin üstüne perspektifle oturtuyor.
   - [Ürün sayfası, sepet çekmecesi ve katalog düzeni](https://mftoktay.com/projeler/omerhas-urun-sayfasi-ve-katalog/): Ömer Has Kuyumculuk — Satın alma butonu yukarı taşındı, sabit çubuğun yanlış varyant hatası kapandı, katalog düzeni sadeleşti.
   - [Renk varyantlarının ürün sayfasında ayrı görünmesi](https://mftoktay.com/projeler/modaneslie-renk-varyanti-gorselleri/): Moda Neslie — Müşteri rengi seçince galeri o rengin fotoğrafına geçiyor; 22 fotoğraf arasında gezinmiyor.
+- [Tema eklentileri](https://mftoktay.com/tema-eklentileri/): Shopify temasına tek satırla eklenen, aylık lisansla satılan küçük özellikler. Kod lisans sunucusunda durur, temaya kopyalanmaz.
+  - Yapışkan Sepet Çubuğu (Ürün sayfası): Sepete Ekle düğmesi ekrandan çıkınca alt kenarda ürün adı, fiyatı ve satın alma düğmesiyle bir çubuk belirir.
+  - Favoriler (Tüm site): Müşteri beğendiği ürünleri kalp simgesiyle işaretler, tek düğmeyle listesini açar. Uygulama, hesap ve veritabanı gerekmez.
+  - Ücretsiz Kargo Eşiği Çubuğu (Tüm site): Sepet tutarına bakıp «X TL daha ekleyin, kargo bizden» der; eşik aşılınca teyit mesajına döner.
+  - Varyant Seçimi Zorunlu (Ürün sayfası): Müşteri beden ya da renk seçmeden sepete ekleyemez. Düğme «Beden seçin» der, sayfa ilgili seçeneğe kayar.
+  - WhatsApp Destek Butonu (Tüm site): Ekranın köşesinde sabit duran WhatsApp düğmesi. Ürün sayfasından yazan müşterinin mesajına ürün adı ve adres eklenir.
+  - Daha Fazla Yükle (Koleksiyon sayfası): Sayfa numaralarını tek düğmeyle değiştirir. Sonraki ürünler mevcut listenin sonuna eklenir, sayfa yenilenmez.
+  - Renge Göre Görsel Süzme (Ürün sayfası): Müşteri bir renk seçince galeri yalnızca o rengin görsellerini gösterir. Eşleşme görsel alt metninden yapılır.
+  - Kampanya Geri Sayımı (Üst şerit veya ürün sayfası): Kampanyanın bitmesine kalan süreyi gün, saat, dakika ve saniye olarak sayar.
+  - Kaydırmada Beliriş (Tüm site): Sayfa bölümleri ekrana girdikçe yumuşakça belirir. Temaya sınıf eklemek gerekmez.
 
 ## İletişim
 
