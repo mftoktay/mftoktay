@@ -1431,6 +1431,15 @@ a.marka:hover .marka__mono{border-color:var(--kor);color:var(--kor-2)}
 }
 .btn:hover{background:var(--kor);border-color:var(--kor);color:var(--gece)}
 .btn--sade{background:transparent;color:var(--sis);border-color:var(--cizgi)}
+.indir-kutu{margin:28px 0 8px}
+.btn--indir{gap:16px;min-height:76px;padding:18px 34px 18px 26px;font-size:15px;letter-spacing:.06em;
+  background:var(--kor);border-color:var(--kor);color:var(--gece);font-weight:700;border-radius:6px;
+  box-shadow:0 14px 34px -12px var(--kor);text-align:left}
+.btn--indir span{display:flex;flex-direction:column;gap:4px}
+.btn--indir small{font-size:10.5px;letter-spacing:.1em;opacity:.75;font-weight:500;text-transform:none}
+.btn--indir:hover{background:var(--sis);border-color:var(--sis);transform:translateY(-2px)}
+.btn--indir svg{flex:none}
+@media (max-width:560px){.btn--indir{width:100%;white-space:normal}}
 .btn--sade:hover{background:transparent;color:var(--kor);border-color:var(--kor)}
 
 .gorsel{margin-top:26px;width:100%;height:auto;border:1px solid var(--cizgi-2);border-radius:3px}
@@ -2606,9 +2615,13 @@ def firma_stok_sayfasi():
       <h1 class="ad ad--ic">Firma Stok</h1>
       <p>Küçük işletmeler için stok, cari hesap, kasa, çek/senet ve ön muhasebe programı.
         Veriler sizin bilgisayarınızda, şifreli tutulur; günlük kullanım için internet gerekmez.</p>
-      <p><a class="btn" href="%(indir)s">Kurulum dosyasını indir</a></p>
-      <p class="kucuk">Windows 10/11, 64 bit. Programı kullanmak için lisans kodu gerekir;
-        kod için iletişime geçin.</p>
+      <div class="indir-kutu">
+        <a class="btn btn--indir" href="%(indir)s" download>
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 20h16"/></svg>
+          <span>Firma Stok'u indir<small>Windows 10/11 · 64 bit · ücretsiz kurulum</small></span>
+        </a>
+      </div>
+      <p class="kucuk">Programı kullanmak için lisans kodu gerekir; kod için iletişime geçin.</p>
     </header>
   </div>
 

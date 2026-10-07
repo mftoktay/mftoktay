@@ -246,6 +246,15 @@ a.marka:hover .marka__mono{border-color:var(--kor);color:var(--kor-2)}
 }
 .btn:hover{background:var(--kor);border-color:var(--kor);color:var(--gece)}
 .btn--sade{background:transparent;color:var(--sis);border-color:var(--cizgi)}
+.indir-kutu{margin:28px 0 8px}
+.btn--indir{gap:16px;min-height:76px;padding:18px 34px 18px 26px;font-size:15px;letter-spacing:.06em;
+  background:var(--kor);border-color:var(--kor);color:var(--gece);font-weight:700;border-radius:6px;
+  box-shadow:0 14px 34px -12px var(--kor);text-align:left}
+.btn--indir span{display:flex;flex-direction:column;gap:4px}
+.btn--indir small{font-size:10.5px;letter-spacing:.1em;opacity:.75;font-weight:500;text-transform:none}
+.btn--indir:hover{background:var(--sis);border-color:var(--sis);transform:translateY(-2px)}
+.btn--indir svg{flex:none}
+@media (max-width:560px){.btn--indir{width:100%;white-space:normal}}
 .btn--sade:hover{background:transparent;color:var(--kor);border-color:var(--kor)}
 
 .gorsel{margin-top:26px;width:100%;height:auto;border:1px solid var(--cizgi-2);border-radius:3px}
