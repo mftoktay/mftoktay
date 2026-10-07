@@ -900,6 +900,7 @@ def menu_ogeleri():
         ogeler.append(("/projeler/", "Projeler"))
     if EKLENTILER:
         ogeler.append(("/tema-eklentileri/", "Eklentiler"))
+    ogeler.append(("/firma-stok/", "Firma Stok"))
     ogeler += [("/teknik/", "Teknik"), ("/yontem/", "Yöntem"), ("/iletisim/", "İletişim")]
     return ogeler
 
@@ -2492,7 +2493,7 @@ def yonlendirme(baslik, metin, hedef):
 def adresler():
     yollar = ["/", "/gelistirme/"]
     yollar += ["/%s/" % h["slug"] for h in HIZMETLER]
-    yollar += ["/teknik/", "/yontem/", "/iletisim/"]
+    yollar += ["/teknik/", "/yontem/", "/iletisim/", "/firma-stok/"]
     if UYGULAMALAR:
         yollar.append("/uygulamalar/")
         yollar += ["/uygulamalar/%s/" % u["slug"] for u in UYGULAMALAR]
@@ -2589,6 +2590,64 @@ def favicon():
 # CALISTIR
 # ---------------------------------------------------------------------------
 
+
+FIRMA_STOK_INDIR = "https://admin.mftoktay.com/indir"
+
+
+def firma_stok_sayfasi():
+    baslik = "Firma Stok: Windows stok ve ön muhasebe programı — %s" % AD
+    aciklama = ("Firma Stok: internetsiz çalışan Windows stok, cari, kasa ve ön muhasebe "
+                "programı. Kurulum dosyasını indirin, lisans kodunuzla etkinleştirin.")
+    kb, kld = kirinti([("Ana sayfa", "/"), ("Firma Stok", None)])
+    govde = """
+  <div class="sarmal sarmal--genis">%(kb)s
+    <header class="giris giris--ic">
+      <p class="rol">Windows programı</p>
+      <h1 class="ad ad--ic">Firma Stok</h1>
+      <p>Küçük işletmeler için stok, cari hesap, kasa, çek/senet ve ön muhasebe programı.
+        Veriler sizin bilgisayarınızda, şifreli tutulur; günlük kullanım için internet gerekmez.</p>
+      <p><a class="btn" href="%(indir)s">Kurulum dosyasını indir</a></p>
+      <p class="kucuk">Windows 10/11, 64 bit. Programı kullanmak için lisans kodu gerekir;
+        kod için iletişime geçin.</p>
+    </header>
+  </div>
+
+  <section class="bolum bolum--beyaz" aria-labelledby="ozellik-h">
+    <div class="sarmal">
+      <h2 class="bolum-basligi" id="ozellik-h">Neler var</h2>
+      %(ozellik)s
+    </div>
+  </section>
+
+  <section class="bolum" aria-labelledby="kurulum-h">
+    <div class="sarmal">
+      <h2 class="bolum-basligi" id="kurulum-h">Kurulum</h2>
+      %(kurulum)s
+    </div>
+  </section>
+%(cta)s""" % {
+        "kb": kb, "indir": FIRMA_STOK_INDIR,
+        "ozellik": maddeler([
+            "Satış, alış, iade ve teklif belgeleri; yazdırma ve etiket basımı.",
+            "Stok takibi, renk ve beden varyantları, barkod, stok hareketleri.",
+            "Müşteri ve tedarikçi cari hesapları, kredi limiti, alacak/borç yaşlandırma.",
+            "Kasa, tahsilat/ödeme, çek ve senet takibi, gelir/gider, tekrarlayan işlemler.",
+            "Gün sonu raporu, muhasebeciye aktarım, Ba/Bs listesi.",
+            "Kullanıcı ve yetki yönetimi, şifreli veritabanı, otomatik yedek.",
+            "Yeni sürümler program açıkken kendiliğinden iner ve kurulur.",
+        ], ikonlu=True),
+        "kurulum": maddeler([
+            "Kurulum dosyasını indirip çalıştırın. Windows “bilinmeyen yayıncı” uyarısı "
+            "verirse “Ek bilgi” ve “Yine de çalıştır” seçin.",
+            "İlk açılışta size verilen lisans kodunu girin.",
+            "Firma bilgilerinizi ve yönetici kullanıcınızı oluşturun; ekrandaki kurtarma "
+            "anahtarını yazdırıp saklayın.",
+        ]),
+        "cta": cta("Lisans ve destek", "Lisans kodu, kurulum ya da kullanım için yazın."),
+    }
+    return sayfa(baslik, aciklama, SITE + "/firma-stok/", "/firma-stok/", govde, [kld])
+
+
 def main():
     yaz("assets/stil.css", STIL)
     yaz("assets/site.js", BETIK)
@@ -2601,6 +2660,7 @@ def main():
     yaz("teknik/index.html", teknik_sayfasi())
     yaz("yontem/index.html", yontem_sayfasi())
     yaz("iletisim/index.html", iletisim_sayfasi())
+    yaz("firma-stok/index.html", firma_stok_sayfasi())
 
     if UYGULAMALAR:
         yaz("uygulamalar/index.html", uygulama_listesi())
