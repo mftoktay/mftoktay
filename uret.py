@@ -1431,7 +1431,9 @@ a.marka:hover .marka__mono{border-color:var(--kor);color:var(--kor-2)}
 }
 .btn:hover{background:var(--kor);border-color:var(--kor);color:var(--gece)}
 .btn--sade{background:transparent;color:var(--sis);border-color:var(--cizgi)}
-.indir-kutu{margin:28px 0 8px}
+.indir-kutu{margin:28px 0 8px;display:flex;gap:14px;flex-wrap:wrap}
+.btn--android{background:transparent;color:var(--sis);border-color:var(--kor);box-shadow:none}
+.btn--android:hover{background:var(--kor);color:var(--gece)}
 .btn--indir{gap:16px;min-height:76px;padding:18px 34px 18px 26px;font-size:15px;letter-spacing:.06em;
   background:var(--kor);border-color:var(--kor);color:var(--gece);font-weight:700;border-radius:6px;
   box-shadow:0 14px 34px -12px var(--kor);text-align:left}
@@ -2601,6 +2603,7 @@ def favicon():
 
 
 FIRMA_STOK_INDIR = "https://admin.mftoktay.com/indir"
+FIRMA_STOK_ANDROID = "https://admin.mftoktay.com/indir/android"
 
 
 def firma_stok_sayfasi():
@@ -2620,7 +2623,12 @@ def firma_stok_sayfasi():
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 20h16"/></svg>
           <span>Firma Stok'u indir<small>Windows 10/11 · 64 bit · ücretsiz kurulum</small></span>
         </a>
+        <a class="btn btn--indir btn--android" href="%(android)s">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>
+          <span>Android uygulaması<small>İşletme sahibi için · telefondan görüntüleme</small></span>
+        </a>
       </div>
+      <p class="kucuk">Android uygulaması Play Store dışından kurulur: dosyayı açınca telefon "bilinmeyen kaynak" izni ister. Uygulama, bilgisayardaki programla eşleştirilerek çalışır.</p>
       <p class="kucuk">Programı kullanmak için lisans kodu gerekir; kod için iletişime geçin.</p>
     </header>
   </div>
@@ -2639,7 +2647,7 @@ def firma_stok_sayfasi():
     </div>
   </section>
 %(cta)s""" % {
-        "kb": kb, "indir": FIRMA_STOK_INDIR,
+        "kb": kb, "indir": FIRMA_STOK_INDIR, "android": FIRMA_STOK_ANDROID,
         "ozellik": maddeler([
             "Satış, alış, iade ve teklif belgeleri; yazdırma ve etiket basımı.",
             "Stok takibi, renk ve beden varyantları, barkod, stok hareketleri.",

@@ -246,7 +246,9 @@ a.marka:hover .marka__mono{border-color:var(--kor);color:var(--kor-2)}
 }
 .btn:hover{background:var(--kor);border-color:var(--kor);color:var(--gece)}
 .btn--sade{background:transparent;color:var(--sis);border-color:var(--cizgi)}
-.indir-kutu{margin:28px 0 8px}
+.indir-kutu{margin:28px 0 8px;display:flex;gap:14px;flex-wrap:wrap}
+.btn--android{background:transparent;color:var(--sis);border-color:var(--kor);box-shadow:none}
+.btn--android:hover{background:var(--kor);color:var(--gece)}
 .btn--indir{gap:16px;min-height:76px;padding:18px 34px 18px 26px;font-size:15px;letter-spacing:.06em;
   background:var(--kor);border-color:var(--kor);color:var(--gece);font-weight:700;border-radius:6px;
   box-shadow:0 14px 34px -12px var(--kor);text-align:left}
